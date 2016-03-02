@@ -1,0 +1,18 @@
+platform :ios, '9.0'
+use_frameworks!
+
+target 'Reddit' do
+
+  pod 'Moya'
+  pod 'Kingfisher'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'NSObject+Rx'
+  pod 'Moya-ObjectMapper'
+  pod 'ObjectMapper'
+  
+end
+
+target 'RedditTests' do
+
+end
