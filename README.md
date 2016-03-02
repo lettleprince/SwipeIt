@@ -46,6 +46,8 @@ In order to minimize development time, a few dependencies will be used:
 
 - [Moya](https://github.com/Moya/Moya): Network abstraction layer written in Swift.
 - [Kingfisher](https://github.com/onevcat/Kingfisher): A lightweight and pure Swift implemented library for downloading and caching image from the web.
+- [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper): Simple JSON Object mapping written in Swift
+- [Moya-ObjectMapper](https://github.com/ivanbruel/Moya-ObjectMapper): ObjectMapper bindings for Moya and RxSwift
 - [RxSwift](https://github.com/ReactiveX/RxSwift): Reactive Programming in Swift
 - [RxCocoa](https://github.com/ReactiveX/RxSwift/tree/master/RxCocoa/iOS): A bundle with common-usage iOS reactive extensions.
 - [NSObject+Rx](https://github.com/RxSwiftCommunity/NSObject-Rx): Handy RxSwift extensions on NSObject, including rx_disposeBag.
