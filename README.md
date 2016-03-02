@@ -22,9 +22,9 @@ For this particular benchmark we're going to create a simple [Reddit](http://red
 
 This application will try to cover most of the concerns that iOS developers actually have nowadays (e.g. asynchronous network calls, JSON parsing, image loading, collection/table views, storyboarding, user authentication, etc)
 
-The application will be developed twice, once with an **MVC** arquitecture and again in `MVVM`.
+The application will be developed twice, once with an **MVC** arquitecture and again in **MVVM**.
 
-After the application is developed, some metrics will be measured, including:
+When both application arquitectures are developed, some metrics will be measured, including:
 
 - Runtime:
   - Binary size
@@ -38,4 +38,4 @@ After the application is developed, some metrics will be measured, including:
   - Number of functions and variables
   - Mutability vs Immutability
 
-
+Afterwards we will reflect upon results, and try to understand on which cases one of them trumps the other.
