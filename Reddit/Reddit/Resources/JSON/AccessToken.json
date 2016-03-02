@@ -1,0 +1,7 @@
+{
+  "access_token": "Sample access token",
+  "token_type": "bearer",
+  "expires_in": 1456945142,
+  "scope": "Sample scope",
+  "refresh_token": "Sample refresh token"
+}
