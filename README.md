@@ -52,3 +52,40 @@ In order to minimize development time, a few dependencies will be used:
 
 **RxSwift**, **RxCocoa** and **NSObject+Rx** will only be used on the **MVVM+FRP* project as they are the basis for **FRP** usage in iOS (in this particular case Swift).
 
+## Code style
+
+This project will try to follow the [GitHub Swift Styleguide](https://github.com/github/swift-style-guide) in every way possible.
+
+In order to enforce this, the project will also have a [Swiftlint](https://github.com/realm/SwiftLint) build phase to run the linter everytime the app is built.
+
+Variable naming conventions will be ignored whenever a **RxSwift**-based variable is created (as the naming convention of the library is to start it with **rx_** (e.g. `rx_contentOffset`).
+
+## Project Structure
+
+The project will follow this folder structure whenever applicable:
+
+```
+Reddit
+├── App
+│   └── AppDelegate
+├── Enums
+├── Extensions
+├── Externals
+├── Globals
+├── Helpers
+├── Models
+├── Networking
+├── Protocols
+├── Resources
+│   ├── LaunchScreen.storyboard
+│   ├── Localizable.strings
+│   └── Info.plist
+├── Structs
+├── ViewControllers
+│   ├── Onboarding
+│   │     └── Onboarding.storyboard
+│   └── Main
+│         └── Main.storyboard
+├── ViewModels
+└── Views
+```
