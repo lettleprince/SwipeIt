@@ -1,6 +1,6 @@
-# MVVM vs MVC Benchmark
+# MVVM+FRP vs MVC Benchmark
 
-This project is part of a benchmark between [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel) and [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) architectures in iOS app development.
+This project is part of a benchmark between [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)+[FRP](https://en.wikipedia.org/wiki/Functional_reactive_programming) and [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) architectures in iOS app development.
 
 This project serves as the [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel) with [FRP](https://en.wikipedia.org/wiki/Functional_reactive_programming) benchmark project.
 
@@ -39,3 +39,16 @@ When both application arquitectures are developed, some metrics will be measured
   - Mutability vs Immutability
 
 Afterwards we will reflect upon results, and try to understand on which cases one of them trumps the other.
+
+## Dependencies
+
+In order to minimize development time, a few dependencies will be used:
+
+- [Moya](https://github.com/Moya/Moya): Network abstraction layer written in Swift.
+- [Kingfisher](https://github.com/onevcat/Kingfisher): A lightweight and pure Swift implemented library for downloading and caching image from the web.
+- [RxSwift](https://github.com/ReactiveX/RxSwift): Reactive Programming in Swift
+- [RxCocoa](https://github.com/ReactiveX/RxSwift/tree/master/RxCocoa/iOS): A bundle with common-usage iOS reactive extensions.
+- [NSObject+Rx](https://github.com/RxSwiftCommunity/NSObject-Rx): Handy RxSwift extensions on NSObject, including rx_disposeBag.
+
+**RxSwift**, **RxCocoa** and **NSObject+Rx** will only be used on the **MVVM+FRP* project as they are the basis for **FRP** usage in iOS (in this particular case Swift).
+
