@@ -16,4 +16,26 @@ This project serves as the [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93vi
 
 **MVC** denotes the Model-View-Controller arquitectural pattern, where the **Controller** operates the **Model** and the **View** represents the **Model** state.
 
+# Project
+
+For this particular benchmark we're going to create a simple [Reddit](http://reddit.com) application using their [JSON API](https://www.reddit.com/dev/api). 
+
+This application will try to cover most of the concerns that iOS developers actually have nowadays (e.g. asynchronous network calls, JSON parsing, image loading, collection/table views, storyboarding, user authentication, etc)
+
+The application will be developed twice, once with an **MVC** arquitecture and again in `MVVM`.
+
+After the application is developed, some metrics will be measured, including:
+
+- Runtime:
+  - Binary size
+  - Bootup time
+  - CPU usage (and peaks)
+  - Memory usage (and peaks)
+  - Main thread locks
+- Code:
+  - Lines of code (total and average per file)
+  - Number of classes
+  - Number of functions and variables
+  - Mutability vs Immutability
+
 
