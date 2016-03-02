@@ -89,3 +89,5 @@ Reddit
 ├── ViewModels
 └── Views
 ```
+
+In order to enforce it to the filesystem we'll also be using [Synx](https://github.com/venmo/synx) to keep the folder structures clean and mirroring the project structure.
