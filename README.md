@@ -26,7 +26,7 @@ The application will be developed twice, once with an **MVC** arquitecture and a
 
 When both application arquitectures are developed, some metrics will be measured, including:
 
-- Runtime:
+- Binary:
   - Binary size
   - Bootup time
   - CPU usage (and peaks)
