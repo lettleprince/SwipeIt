@@ -7,8 +7,17 @@
 //
 
 import Foundation
+import ObjectMapper
 
 class JSONReader {
+
+  class func readFromJSON<T: Mappable>(filename: String) -> T? {
+    return Mapper<T>().map(JSONReader.readJSONString(filename))
+  }
+
+  class func readJSONString(filename: String) -> String? {
+    return String(data: readJSONData(filename), encoding: NSUTF8StringEncoding)
+  }
 
   class func readJSONData(filename: String) -> NSData {
     if let path = NSBundle(forClass: self).pathForResource(filename, ofType: "json") {
