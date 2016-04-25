@@ -130,9 +130,9 @@ public class ImageCache {
         })
         
 #if !os(OSX) && !os(watchOS)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "clearMemoryCache", name: UIApplicationDidReceiveMemoryWarningNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "cleanExpiredDiskCache", name: UIApplicationWillTerminateNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "backgroundCleanExpiredDiskCache", name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ImageCache.clearMemoryCache), name: UIApplicationDidReceiveMemoryWarningNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ImageCache.cleanExpiredDiskCache), name: UIApplicationWillTerminateNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ImageCache.backgroundCleanExpiredDiskCache), name: UIApplicationDidEnterBackgroundNotification, object: nil)
 #endif
     }
     
@@ -279,18 +279,8 @@ extension ImageCache {
         let options = options ?? KingfisherEmptyOptionsInfo
         
         if let image = self.retrieveImageInMemoryCacheForKey(key) {
-            //Found image in memory cache.
-            if options.backgroundDecode {
-                dispatch_async(self.processQueue, { () -> Void in
-                    let result = image.kf_decodedImage(scale: options.scaleFactor)
-                    dispatch_async_safely_to_queue(options.callbackDispatchQueue, { () -> Void in
-                        completionHandler(result, .Memory)
-                    })
-                })
-            } else {
-                dispatch_async_safely_to_queue(options.callbackDispatchQueue, { () -> Void in
-                    completionHandler(image, .Memory)
-                })
+            dispatch_async_safely_to_queue(options.callbackDispatchQueue) { () -> Void in
+                completionHandler(image, .Memory)
             }
         } else {
             var sSelf: ImageCache! = self
@@ -521,15 +511,17 @@ extension ImageCache {
     It will be called automatically when `UIApplicationDidEnterBackgroundNotification` received.
     */
     @objc public func backgroundCleanExpiredDiskCache() {
-        
+        // if 'sharedApplication()' is unavailable, then return
+        guard let sharedApplication = UIApplication.kf_sharedApplication() else { return }
+
         func endBackgroundTask(inout task: UIBackgroundTaskIdentifier) {
-            UIApplication.sharedApplication().endBackgroundTask(task)
+            sharedApplication.endBackgroundTask(task)
             task = UIBackgroundTaskInvalid
         }
         
         var backgroundTask: UIBackgroundTaskIdentifier!
         
-        backgroundTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler { () -> Void in
+        backgroundTask = sharedApplication.beginBackgroundTaskWithExpirationHandler { () -> Void in
             endBackgroundTask(&backgroundTask!)
         }
         
@@ -552,6 +544,21 @@ extension ImageCache {
         public let cacheType: CacheType?
     }
     
+    /**
+     Determine if a cached image exists for the given image, as keyed by the URL. It will return true if the
+     image is found either in memory or on disk. Essentially as long as there is a cache of the image somewhere
+     true is returned. A convenience method that decodes `isImageCachedForKey`.
+     
+     - parameter url: The image URL.
+     
+     - returns: True if the image is cached, false otherwise.
+     */
+    public func cachedImageExistsforURL(url: NSURL) -> Bool {
+        let resource = Resource(downloadURL: url)
+        let result = isImageCachedForKey(resource.cacheKey)
+        return result.cached
+    }
+
     /**
     Check whether an image is cached for a key.
     
@@ -604,6 +611,21 @@ extension ImageCache {
             })
         })
     }
+    
+    /**
+    Get the cache path for the key.
+    It is useful for projects with UIWebView or anyone that needs access to the local file path.
+    
+    i.e. `<img src='path_for_key'>`
+     
+    - Note: This method does not guarantee there is an image already cached in the path. 
+      You could use `isImageCachedForKey` method to check whether the image is cached under that key.
+    */
+    public func cachePathForKey(key: String) -> String {
+        let fileName = cacheFileNameForKey(key)
+        return (diskCachePath as NSString).stringByAppendingPathComponent(fileName)
+    }
+
 }
 
 // MARK: - Internal Helper
@@ -620,11 +642,6 @@ extension ImageCache {
     func diskImageDataForKey(key: String) -> NSData? {
         let filePath = cachePathForKey(key)
         return NSData(contentsOfFile: filePath)
-    }
-    
-    func cachePathForKey(key: String) -> String {
-        let fileName = cacheFileNameForKey(key)
-        return (diskCachePath as NSString).stringByAppendingPathComponent(fileName)
     }
     
     func cacheFileNameForKey(key: String) -> String {
@@ -645,3 +662,14 @@ extension Dictionary {
         return Array(self).sort{ isOrderedBefore($0.1, $1.1) }.map{ $0.0 }
     }
 }
+
+#if !os(OSX) && !os(watchOS)
+// MARK: - For App Extensions
+extension UIApplication {
+    public static func kf_sharedApplication() -> UIApplication? {
+        let selector = NSSelectorFromString("sharedApplication")
+        guard respondsToSelector(selector) else { return nil }
+        return performSelector(selector).takeRetainedValue() as? UIApplication
+    }
+}
+#endif

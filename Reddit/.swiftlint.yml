@@ -2,3 +2,4 @@ excluded:
   - Reddit/Externals
   - Reddit/Resources
   - Pods
+  - RedditTests
