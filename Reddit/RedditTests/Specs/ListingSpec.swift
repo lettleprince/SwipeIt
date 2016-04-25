@@ -25,7 +25,7 @@ class ListingSpec: QuickSpec {
         expect(listing).toNot(beNil())
 
         it("has 25 links") {
-          expect(listing.links?.count).to(be(25))
+          expect(listing.links?.count) == 25
         }
       }
     }
