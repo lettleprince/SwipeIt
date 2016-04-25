@@ -13,8 +13,9 @@ struct Media: Mappable {
 
   var type: String!
   var authorName: String!
-  var authorURL: String!
-  var providerURL: String!
+  var authorURL: NSURL!
+  var providerURL: NSURL!
+  var providerName: String!
   var providerDescription: String!
   var providerTitle: String!
   var width: Int!
@@ -32,17 +33,19 @@ struct Media: Mappable {
   }
 
   mutating func mapping(map: Map) {
-    type <- map["type"]
+    type <- map["oembed.type"]
     authorName <- map["oembed.author_name"]
-    authorURL <- map["oembed.author_url"]
-    providerURL <- map["oembed.provider_url"]
+    authorURL <- (map["oembed.author_url"], EmptyURLTransform())
+    providerURL <- (map["oembed.provider_url"], EmptyURLTransform())
     providerDescription <- map["oembed.description"]
+    providerName <- map["oembed.provider_name"]
     providerTitle <- map["oembed.title"]
     width <- map["oembed.width"]
     height <- map["oembed.height"]
     thumbnailWidth <- map["oembed.thumbnail_width"]
     thumbnailHeight <- map["oembed.thumbnail_height"]
-    html <- map["html"]
+    thumbnailURL <- (map["oembed.thumbnail_url"], EmptyURLTransform())
+    html <- map["oembed.html"]
   }
 
 }

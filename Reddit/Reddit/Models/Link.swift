@@ -106,13 +106,13 @@ struct Link: Thing, Created, Votable, Mappable {
     nsfw <- map["data.over_18"]
     permalink <- map["data.permalink"]
     saved <- map["data.saved"]
-    selfText <- (map["data.self_text"], EmptyStringTransform())
-    selfTextHtml <- map["data.self_text_html"]
+    selfText <- (map["data.selftext"], EmptyStringTransform())
+    selfTextHtml <- map["data.selftext_html"]
     subreddit <- map["data.subreddit"]
     subredditId <- map["data.subreddit_id"]
-    thumbnail <- (map["data.thumbnail"], URLTransform())
+    thumbnail <- (map["data.thumbnail"], EmptyURLTransform())
     title <- map["data.title"]
-    url <- (map["data.url"], URLTransform())
+    url <- (map["data.url"], EmptyURLTransform())
     edited <- (map["data.edited"], EditedTransform())
     distinguished <- map["data.distinguished"]
     stickied <- map["data.stickied"]

@@ -19,7 +19,7 @@ struct Image: Mappable {
   init?(_ map: Map) { }
 
   mutating func mapping(map: Map) {
-    url <- (map["url"], URLTransform())
+    url <- (map["url"], EmptyURLTransform())
     width <- map["width"]
     height <- map["height"]
   }
