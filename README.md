@@ -26,7 +26,7 @@ The application will be developed twice, once with an **MVC** arquitecture and a
 
 When both application arquitectures are developed, some metrics will be measured, including:
 
-- Runtime:
+- Binary:
   - Binary size
   - Bootup time
   - CPU usage (and peaks)
@@ -38,6 +38,7 @@ When both application arquitectures are developed, some metrics will be measured
   - Number of functions and variables
   - Mutability vs Immutability
   - Testability
+  - Compile time
 
 Afterwards we will reflect upon results, and try to understand on which cases one of them trumps the other.
 
