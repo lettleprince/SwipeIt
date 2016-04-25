@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ListingType {
+enum ListingType: Equatable {
   case Hot
   case New
   case Rising
@@ -28,8 +28,8 @@ enum ListingType {
       return "random"
     case .Controversial(let range):
       return "controversial/\(range)"
-    case .Top(let top):
-      return "controversial/\(top)"
+    case .Top(let range):
+      return "top/\(range)"
     }
   }
 
@@ -41,4 +41,23 @@ enum ListingType {
     case Year = "year"
   }
 
+}
+
+func == (lhs: ListingType, rhs: ListingType) -> Bool {
+  switch (lhs, rhs) {
+  case (.Hot, .Hot):
+    return true
+  case (.New, .New):
+    return true
+  case (.Rising, .Rising):
+    return true
+  case (.Random, .Random):
+    return true
+  case (.Controversial(let lhsRange), .Controversial(let rhsRange)):
+    return lhsRange == rhsRange
+  case (.Top(let lhsRange), .Top(let rhsRange)):
+    return lhsRange == rhsRange
+  default:
+    return false
+  }
 }
