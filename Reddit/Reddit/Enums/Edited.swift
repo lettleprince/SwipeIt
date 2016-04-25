@@ -36,11 +36,14 @@ enum Edited: Equatable {
 
   static func fromValue(value: AnyObject?) -> Edited {
     switch value {
+    case let epochDate as Int:
+      guard epochDate > 1 else {
+        return epochDate == 0 ? .False : .True(editedAt: nil)
+      }
+      return .True(editedAt: (NSDate(timeIntervalSince1970: Double(epochDate))))
     case let edited as Bool:
       return edited ? .True(editedAt: nil) : .False
-    case let epochDate as Int:
-      return .True(editedAt: (NSDate(timeIntervalSince1970: Double(epochDate))))
-        default:
+    default:
       return .False
     }
   }
