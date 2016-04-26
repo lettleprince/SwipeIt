@@ -270,7 +270,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  cocoapods
+  cocoapods (~> 1.0.0.beta.8)
   fastlane
 
 BUNDLED WITH
