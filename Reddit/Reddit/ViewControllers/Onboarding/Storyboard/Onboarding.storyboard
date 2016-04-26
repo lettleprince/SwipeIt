@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kxO-BE-fKk">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="UUQ-b3-M0p">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="kxO-BE-fKk" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OEh-Oi-cgR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Lne-AR-noZ" kind="relationship" relationship="rootViewController" id="RaT-pi-7N0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3N6-ug-Q1N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="269" y="353"/>
+        </scene>
+        <!--Walkthrough View Controller-->
+        <scene sceneID="dh7-xG-gdk">
+            <objects>
+                <viewController id="Lne-AR-noZ" customClass="WalkthroughViewController" customModule="Reddit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jQC-RO-wrO"/>
+                        <viewControllerLayoutGuide type="bottom" id="WZD-QL-pX3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="y20-If-DD0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kt9-rk-xe2">
+                                <rect key="frame" x="230" y="530" width="140" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="5uL-YZ-NKW"/>
+                                </constraints>
+                                <state key="normal" title="Skip"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ytk-WD-Rtl">
+                                <rect key="frame" x="230" y="460" width="140" height="30"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <segue destination="wMY-as-sr5" kind="presentation" id="1ti-KB-kRA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ytk-WD-Rtl" firstAttribute="width" secondItem="kt9-rk-xe2" secondAttribute="width" id="FSE-gl-sGQ"/>
+                            <constraint firstItem="WZD-QL-pX3" firstAttribute="top" secondItem="kt9-rk-xe2" secondAttribute="bottom" constant="40" id="YIY-pk-CXW"/>
+                            <constraint firstItem="Ytk-WD-Rtl" firstAttribute="centerX" secondItem="kt9-rk-xe2" secondAttribute="centerX" id="cay-yE-lHa"/>
+                            <constraint firstItem="kt9-rk-xe2" firstAttribute="centerX" secondItem="y20-If-DD0" secondAttribute="centerX" id="hmD-E8-ujy"/>
+                            <constraint firstItem="kt9-rk-xe2" firstAttribute="top" secondItem="Ytk-WD-Rtl" secondAttribute="bottom" constant="40" id="nlg-Yd-mDF"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="KpA-B5-k25"/>
+                    <connections>
+                        <outlet property="loginButton" destination="Ytk-WD-Rtl" id="Rwi-IL-rQV"/>
+                        <outlet property="skipButton" destination="kt9-rk-xe2" id="PZ7-p2-cfJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5t3-Hs-uuy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="905" y="350"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zSJ-qb-kVI">
+            <objects>
+                <navigationController id="wMY-as-sr5" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cU8-vK-8IQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="utO-9i-mli" kind="relationship" relationship="rootViewController" id="SAb-rf-EK4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nge-11-zax" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="905" y="-341"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="BQ6-q8-ykj">
+            <objects>
+                <viewController id="utO-9i-mli" customClass="LoginViewController" customModule="Reddit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CeR-zn-NU0"/>
+                        <viewControllerLayoutGuide type="bottom" id="EEL-qW-ilJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="S2p-j6-Uae">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="VaX-d5-VkV"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2CA-33-Ahb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1593" y="-341"/>
+        </scene>
+    </scenes>
+</document>
