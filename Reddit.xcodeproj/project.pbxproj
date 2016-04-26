@@ -640,7 +640,6 @@
 					};
 					308E96C71C875B7F00380735 = {
 						CreatedOnToolsVersion = 7.2.1;
-						TestTargetID = 308E96B31C875B7E00380735;
 					};
 				};
 			};
@@ -1053,14 +1052,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 606C05C543FD3501112D3184 /* Pods-RedditTests.debug.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = RedditTests/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vc.faber.RedditTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reddit.app/Reddit";
 			};
 			name = Debug;
 		};
@@ -1068,13 +1065,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AB974A7A5E2CA65EA1541B98 /* Pods-RedditTests.release.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = RedditTests/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vc.faber.RedditTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reddit.app/Reddit";
 			};
 			name = Release;
 		};
