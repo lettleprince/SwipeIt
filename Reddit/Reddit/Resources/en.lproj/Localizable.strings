@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  Reddit
+
+  Created by Ivan Bruel on 26/04/16.
+  Copyright © 2016 Faber Ventures. All rights reserved.
+*/
+
+"Closeable.Button.Close" = "Close";
+
+"Walkthrough.Button.Login" = "Login";
+"Walkthrough.Button.Skip" = "Skip";
