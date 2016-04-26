@@ -11,6 +11,7 @@ import Foundation
 class QueryReader {
 
   class func queryParametersFromString(string: String) -> [String: AnyObject] {
+
     let components = string.componentsSeparatedByString("&")
     let json = components.map { $0.componentsSeparatedByString("=") }
       .reduce([:]) { (dict, components) -> [String: AnyObject] in
