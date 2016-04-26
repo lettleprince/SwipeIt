@@ -594,7 +594,6 @@
 				308E96B21C875B7E00380735 /* Resources */,
 				046A1C1EBEC6BBA591E4E913 /* 📦 Embed Pods Frameworks */,
 				3F27E9DDFFE4C0F106263859 /* 📦 Copy Pods Resources */,
-				30A481811CCF79B1000F1090 /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -725,20 +724,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		30A481811CCF79B1000F1090 /* Fabric */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = Fabric;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" \"${REDDIT_FABRIC_CLIENT_ID}\" \"${REDDIT_FABRIC_SECRET}\"";
 		};
 		30DDB2481CCEDD34000B72E5 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
