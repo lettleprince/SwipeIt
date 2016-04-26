@@ -19,6 +19,8 @@ target 'Reddit' do
   pod 'Kingfisher'
   pod 'SnapKit'
   pod 'Device'
+  pod 'Fabric'
+  pod 'Crashlytics'
 
 end
 
