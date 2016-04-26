@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (3.3.1)
+  - Device (1.0.1)
   - Kingfisher (2.3.1)
   - Moya (6.4.0):
     - Moya/Core (= 6.4.0)
@@ -25,8 +26,10 @@ PODS:
   - RxCocoa (2.4):
     - RxSwift (~> 2.4)
   - RxSwift (2.4)
+  - SnapKit (0.20.0)
 
 DEPENDENCIES:
+  - Device
   - Kingfisher
   - Moya-ObjectMapper/RxSwift
   - Moya/RxSwift
@@ -36,9 +39,11 @@ DEPENDENCIES:
   - Quick
   - RxCocoa
   - RxSwift
+  - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  Device: 7ed5b87db148886e8c3cbcdde5dc997baddbe10b
   Kingfisher: 6d3fbada4829cbc7b89e883e8218c28afeb64e42
   Moya: 4d526954c8afd79820991393d40d7d8af756ceee
   Moya-ObjectMapper: 565c1e9e1e79bdf72e18fa8fa01a0741d042fa34
@@ -49,7 +54,8 @@ SPEC CHECKSUMS:
   Result: 9e75e1111c774c6ac594e14907b15057053a7959
   RxCocoa: 7d6cd877de99f5640306b3d6cf87f580c1d91b61
   RxSwift: 67b9ef4e8b34fb394e200e754c6a09cc16559f94
+  SnapKit: 5fce3c1bbbf1fbd31de9aa92f33eb9fa03f15650
 
-PODFILE CHECKSUM: e0fb4d65a779fd54a0d0a762ec4456253088f5e0
+PODFILE CHECKSUM: 7d802fd5f56ed0a1dc69d08f3c203fb22b8e8417
 
 COCOAPODS: 1.0.0.beta.8

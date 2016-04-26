@@ -1,2318 +1,1112 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>046A1C1EBEC6BBA591E4E913</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>&#128230; Embed Pods Frameworks</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Target Support Files/Pods-Reddit/Pods-Reddit-frameworks.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>068BF3C310D6D11B76BC8BDA</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>2B27ED8BA5192C786867B891</string>
-				<string>D7B6B33573677A8CA6635E40</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0A9F446D198CE600D4C14508</key>
-		<dict>
-			<key>fileRef</key>
-			<string>D7B6B33573677A8CA6635E40</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>2B27ED8BA5192C786867B891</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>Pods_Reddit.framework</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>303FA7C71CCA8E060027658E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30F6C9AF1C8A142500616707</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>303FA7C81CCA8E060027658E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30F6C9B11C8A142D00616707</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>303FA7C91CCA8E060027658E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30806BF31C8D861500EB1BD5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>303FA7CA1CCA8E150027658E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30806BFC1C8D9B2A00EB1BD5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>303FA7CB1CCA8E190027658E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30806BFA1C8D9A6C00EB1BD5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>303FA7CC1CCA8E1C0027658E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30806C081C8DA79000EB1BD5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>303FA7CD1CCA8EC00027658E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>308E96F81C8776BD00380735</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>303FA7CE1CCA8ECB0027658E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>308E96EC1C876C2700380735</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>303FA7CF1CCA919C0027658E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>308E96F11C87764F00380735</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>303FA7D01CCA919C0027658E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>308E96F31C87766A00380735</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>30806BF31C8D861500EB1BD5</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>Thing.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>30806BF41C8D861500EB1BD5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30806BF31C8D861500EB1BD5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>30806BF51C8D878F00EB1BD5</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>Comment.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>30806BF61C8D878F00EB1BD5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30806BF51C8D878F00EB1BD5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>30806BF71C8D978A00EB1BD5</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>Edited.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>30806BF81C8D978A00EB1BD5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30806BF71C8D978A00EB1BD5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>30806BF91C8D9A5B00EB1BD5</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>30806BFA1C8D9A6C00EB1BD5</string>
-				<string>309462CE1CCD971D00E18655</string>
-				<string>309462CB1CCD956200E18655</string>
-				<string>30DDB22F1CCE69BB000B72E5</string>
-				<string>30806C081C8DA79000EB1BD5</string>
-				<string>30806BFC1C8D9B2A00EB1BD5</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Transforms</string>
-			<key>path</key>
-			<string>Transforms</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>30806BFA1C8D9A6C00EB1BD5</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>EditedTransform.swift</string>
-			<key>path</key>
-			<string>EditedTransform.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>30806BFB1C8D9A6C00EB1BD5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30806BFA1C8D9A6C00EB1BD5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>30806BFC1C8D9B2A00EB1BD5</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>LikesTransform.swift</string>
-			<key>path</key>
-			<string>LikesTransform.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>30806BFD1C8D9B2A00EB1BD5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30806BFC1C8D9B2A00EB1BD5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>30806BFE1C8D9E0400EB1BD5</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>PreviewImage.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>30806BFF1C8D9E0400EB1BD5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30806BFE1C8D9E0400EB1BD5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>30806C001C8D9E4E00EB1BD5</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>Image.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>30806C011C8D9E4E00EB1BD5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30806C001C8D9E4E00EB1BD5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>30806C021C8DA0D900EB1BD5</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>Media.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>30806C031C8DA0D900EB1BD5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30806C021C8DA0D900EB1BD5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>30806C041C8DA33800EB1BD5</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>MediaEmbed.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>30806C051C8DA33800EB1BD5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30806C041C8DA33800EB1BD5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>30806C081C8DA79000EB1BD5</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>EpochDateTransform.swift</string>
-			<key>path</key>
-			<string>EpochDateTransform.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>30806C091C8DA79000EB1BD5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30806C081C8DA79000EB1BD5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>308216051CCA80D700D9A18B</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>ListingSpec.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308216061CCA80D700D9A18B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>308216051CCA80D700D9A18B</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>308216071CCA813900D9A18B</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>NetworkMock.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308216081CCA813900D9A18B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>308216071CCA813900D9A18B</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>308216091CCA845D00D9A18B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>308E96EA1C876B8200380735</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3082160A1CCA846600D9A18B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>308E96EE1C87701600380735</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3082160B1CCA846600D9A18B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30F6C9AD1C8A115400616707</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3082160C1CCA846600D9A18B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30806BF71C8D978A00EB1BD5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3082160D1CCA846F00D9A18B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30F6C9A71C8A081D00616707</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3082160E1CCA846F00D9A18B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30F6C9A91C8A096300616707</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3082160F1CCA846F00D9A18B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30F6C9AB1C8A0C2200616707</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>308216101CCA846F00D9A18B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30806BF51C8D878F00EB1BD5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>308216111CCA846F00D9A18B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30806BFE1C8D9E0400EB1BD5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>308216121CCA846F00D9A18B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30806C001C8D9E4E00EB1BD5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>308216131CCA846F00D9A18B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30806C021C8DA0D900EB1BD5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>308216141CCA846F00D9A18B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30806C041C8DA33800EB1BD5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>308216151CCA866D00D9A18B</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>309462C51CCD8A5C00E18655</string>
-				<string>308216051CCA80D700D9A18B</string>
-				<string>30DDB22D1CCE66B2000B72E5</string>
-				<string>309462D71CCE5CEF00E18655</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Specs</string>
-			<key>path</key>
-			<string>Specs</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308216161CCA867100D9A18B</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>308216071CCA813900D9A18B</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Mocks</string>
-			<key>path</key>
-			<string>Mocks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308216171CCA867600D9A18B</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>308E96F01C87763C00380735</string>
-				<string>308E96CE1C875B7F00380735</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Resources</string>
-			<key>path</key>
-			<string>Resources</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96AB1C875B7E00380735</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>068BF3C310D6D11B76BC8BDA</string>
-				<string>B4BC0F075FF944E5DF21C0E4</string>
-				<string>308E96B51C875B7E00380735</string>
-				<string>308E96B61C875B7E00380735</string>
-				<string>308E96CB1C875B7F00380735</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96AC1C875B7E00380735</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>LastSwiftUpdateCheck</key>
-				<string>0730</string>
-				<key>LastUpgradeCheck</key>
-				<string>0720</string>
-				<key>ORGANIZATIONNAME</key>
-				<string>Faber Ventures</string>
-				<key>TargetAttributes</key>
-				<dict>
-					<key>308E96B31C875B7E00380735</key>
-					<dict>
-						<key>CreatedOnToolsVersion</key>
-						<string>7.2.1</string>
-					</dict>
-					<key>308E96C71C875B7F00380735</key>
-					<dict>
-						<key>CreatedOnToolsVersion</key>
-						<string>7.2.1</string>
-						<key>TestTargetID</key>
-						<string>308E96B31C875B7E00380735</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>308E96AF1C875B7E00380735</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-				<string>Base</string>
-			</array>
-			<key>mainGroup</key>
-			<string>308E96AB1C875B7E00380735</string>
-			<key>productRefGroup</key>
-			<string>308E96B51C875B7E00380735</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectReferences</key>
-			<array/>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>308E96B31C875B7E00380735</string>
-				<string>308E96C71C875B7F00380735</string>
-			</array>
-		</dict>
-		<key>308E96AF1C875B7E00380735</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>308E96CF1C875B7F00380735</string>
-				<string>308E96D01C875B7F00380735</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>308E96B01C875B7E00380735</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>308E96EF1C87701600380735</string>
-				<string>308E96E91C876AA800380735</string>
-				<string>309462CC1CCD956200E18655</string>
-				<string>30806BFD1C8D9B2A00EB1BD5</string>
-				<string>30806C051C8DA33800EB1BD5</string>
-				<string>30F6C9A81C8A081D00616707</string>
-				<string>309462CF1CCD971D00E18655</string>
-				<string>30806BF61C8D878F00EB1BD5</string>
-				<string>30F6C9AA1C8A096300616707</string>
-				<string>30F6C9B21C8A142D00616707</string>
-				<string>30806BF81C8D978A00EB1BD5</string>
-				<string>30F6C9AE1C8A115400616707</string>
-				<string>30806C091C8DA79000EB1BD5</string>
-				<string>30DDB2301CCE69BB000B72E5</string>
-				<string>308E96B81C875B7E00380735</string>
-				<string>308E96EB1C876B8200380735</string>
-				<string>308E96F91C8776BD00380735</string>
-				<string>30806BFF1C8D9E0400EB1BD5</string>
-				<string>30806C011C8D9E4E00EB1BD5</string>
-				<string>30806C031C8DA0D900EB1BD5</string>
-				<string>30806BFB1C8D9A6C00EB1BD5</string>
-				<string>30806BF41C8D861500EB1BD5</string>
-				<string>30F6C9AC1C8A0C2200616707</string>
-				<string>308E96ED1C876C2700380735</string>
-				<string>30F6C9B01C8A142500616707</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>308E96B11C875B7E00380735</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>BDB0C09F2BCA7C2980065F7D</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>308E96B21C875B7E00380735</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>308E96C21C875B7E00380735</string>
-				<string>308E96BF1C875B7E00380735</string>
-				<string>308E96BD1C875B7E00380735</string>
-				<string>309462C91CCD8C4300E18655</string>
-				<string>308E96F21C87764F00380735</string>
-				<string>309462D51CCE5C8800E18655</string>
-				<string>308E96F41C87766A00380735</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>308E96B31C875B7E00380735</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>308E96D11C875B7F00380735</string>
-			<key>buildPhases</key>
-			<array>
-				<string>611F95E3417C8CEA6CED900A</string>
-				<string>308E96D71C87646500380735</string>
-				<string>308E96B01C875B7E00380735</string>
-				<string>308E96B11C875B7E00380735</string>
-				<string>308E96B21C875B7E00380735</string>
-				<string>046A1C1EBEC6BBA591E4E913</string>
-				<string>3F27E9DDFFE4C0F106263859</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>Reddit</string>
-			<key>productName</key>
-			<string>Reddit</string>
-			<key>productReference</key>
-			<string>308E96B41C875B7E00380735</string>
-			<key>productType</key>
-			<string>com.apple.product-type.application</string>
-		</dict>
-		<key>308E96B41C875B7E00380735</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.application</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>Reddit.app</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>308E96B51C875B7E00380735</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>308E96B41C875B7E00380735</string>
-				<string>308E96C81C875B7F00380735</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96B61C875B7E00380735</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>308E96D81C8769CB00380735</string>
-				<string>308E96D91C8769D000380735</string>
-				<string>308E96DA1C8769D500380735</string>
-				<string>308E96DB1C8769DA00380735</string>
-				<string>308E96DC1C8769DF00380735</string>
-				<string>308E96DD1C8769E300380735</string>
-				<string>308E96DE1C8769E700380735</string>
-				<string>308E96DF1C8769EB00380735</string>
-				<string>308E96E01C8769F000380735</string>
-				<string>308E96E11C8769F500380735</string>
-				<string>308E96E21C8769FA00380735</string>
-				<string>308E96E31C8769FE00380735</string>
-				<string>308E96E41C876A0300380735</string>
-				<string>308E96E51C876A0900380735</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Reddit</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96B71C875B7E00380735</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>AppDelegate.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96B81C875B7E00380735</key>
-		<dict>
-			<key>fileRef</key>
-			<string>308E96B71C875B7E00380735</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>308E96BB1C875B7E00380735</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>308E96BC1C875B7E00380735</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>Main.storyboard</string>
-			<key>path</key>
-			<string>.</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96BC1C875B7E00380735</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.storyboard</string>
-			<key>name</key>
-			<string>Base</string>
-			<key>path</key>
-			<string>Base.lproj/Main.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96BD1C875B7E00380735</key>
-		<dict>
-			<key>fileRef</key>
-			<string>308E96BB1C875B7E00380735</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>308E96BE1C875B7E00380735</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>folder.assetcatalog</string>
-			<key>path</key>
-			<string>Assets.xcassets</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96BF1C875B7E00380735</key>
-		<dict>
-			<key>fileRef</key>
-			<string>308E96BE1C875B7E00380735</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>308E96C01C875B7E00380735</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>308E96C11C875B7E00380735</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>LaunchScreen.storyboard</string>
-			<key>path</key>
-			<string>.</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96C11C875B7E00380735</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.storyboard</string>
-			<key>name</key>
-			<string>Base</string>
-			<key>path</key>
-			<string>Base.lproj/LaunchScreen.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96C21C875B7E00380735</key>
-		<dict>
-			<key>fileRef</key>
-			<string>308E96C01C875B7E00380735</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>308E96C31C875B7E00380735</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96C41C875B7F00380735</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>303FA7C81CCA8E060027658E</string>
-				<string>303FA7CE1CCA8ECB0027658E</string>
-				<string>3082160C1CCA846600D9A18B</string>
-				<string>303FA7C71CCA8E060027658E</string>
-				<string>308216121CCA846F00D9A18B</string>
-				<string>303FA7CD1CCA8EC00027658E</string>
-				<string>3082160D1CCA846F00D9A18B</string>
-				<string>3082160A1CCA846600D9A18B</string>
-				<string>309462D81CCE5CEF00E18655</string>
-				<string>3082160E1CCA846F00D9A18B</string>
-				<string>308216081CCA813900D9A18B</string>
-				<string>308216101CCA846F00D9A18B</string>
-				<string>308216061CCA80D700D9A18B</string>
-				<string>308216091CCA845D00D9A18B</string>
-				<string>308216111CCA846F00D9A18B</string>
-				<string>303FA7CC1CCA8E1C0027658E</string>
-				<string>309462CD1CCD956200E18655</string>
-				<string>308216141CCA846F00D9A18B</string>
-				<string>303FA7CA1CCA8E150027658E</string>
-				<string>309462C61CCD8A5C00E18655</string>
-				<string>303FA7C91CCA8E060027658E</string>
-				<string>308216131CCA846F00D9A18B</string>
-				<string>30DDB22E1CCE66B2000B72E5</string>
-				<string>303FA7CB1CCA8E190027658E</string>
-				<string>30DDB2311CCE69BB000B72E5</string>
-				<string>309462D01CCD971D00E18655</string>
-				<string>3082160F1CCA846F00D9A18B</string>
-				<string>3082160B1CCA846600D9A18B</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>308E96C51C875B7F00380735</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>0A9F446D198CE600D4C14508</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>308E96C61C875B7F00380735</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>309462CA1CCD8C4300E18655</string>
-				<string>303FA7D01CCA919C0027658E</string>
-				<string>309462D61CCE5C8800E18655</string>
-				<string>303FA7CF1CCA919C0027658E</string>
-				<string>30DDB22C1CCE6668000B72E5</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>308E96C71C875B7F00380735</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>308E96D41C875B7F00380735</string>
-			<key>buildPhases</key>
-			<array>
-				<string>F3041FEB8B385F0C30B5882A</string>
-				<string>308E96C41C875B7F00380735</string>
-				<string>308E96C51C875B7F00380735</string>
-				<string>308E96C61C875B7F00380735</string>
-				<string>380B7DB8104593AC24BEDE0E</string>
-				<string>B0D48D2E16B0D582BE6DB7CD</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>308E96CA1C875B7F00380735</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>RedditTests</string>
-			<key>productName</key>
-			<string>RedditTests</string>
-			<key>productReference</key>
-			<string>308E96C81C875B7F00380735</string>
-			<key>productType</key>
-			<string>com.apple.product-type.bundle.unit-test</string>
-		</dict>
-		<key>308E96C81C875B7F00380735</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.cfbundle</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>RedditTests.xctest</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>308E96C91C875B7F00380735</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>308E96AC1C875B7E00380735</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>308E96B31C875B7E00380735</string>
-			<key>remoteInfo</key>
-			<string>Reddit</string>
-		</dict>
-		<key>308E96CA1C875B7F00380735</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>target</key>
-			<string>308E96B31C875B7E00380735</string>
-			<key>targetProxy</key>
-			<string>308E96C91C875B7F00380735</string>
-		</dict>
-		<key>308E96CB1C875B7F00380735</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>308216161CCA867100D9A18B</string>
-				<string>308216171CCA867600D9A18B</string>
-				<string>308216151CCA866D00D9A18B</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>RedditTests</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96CE1C875B7F00380735</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96CF1C875B7F00380735</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>ENABLE_TESTABILITY</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_NO_COMMON_BLOCKS</key>
-				<string>YES</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.2</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>YES</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SWIFT_OPTIMIZATION_LEVEL</key>
-				<string>-Onone</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>308E96D01C875B7F00380735</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf-with-dsym</string>
-				<key>ENABLE_NS_ASSERTIONS</key>
-				<string>NO</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_NO_COMMON_BLOCKS</key>
-				<string>YES</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.2</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>308E96D11C875B7F00380735</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>308E96D21C875B7F00380735</string>
-				<string>308E96D31C875B7F00380735</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>308E96D21C875B7F00380735</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>BB58E2D13A5086BB9E2CF0AF</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Reddit/Resources/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks</string>
-				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>vc.faber.Reddit</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>308E96D31C875B7F00380735</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>4A82BC32D107E003A81C6E18</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Reddit/Resources/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks</string>
-				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>vc.faber.Reddit</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>308E96D41C875B7F00380735</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>308E96D51C875B7F00380735</string>
-				<string>308E96D61C875B7F00380735</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>308E96D51C875B7F00380735</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>606C05C543FD3501112D3184</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>BUNDLE_LOADER</key>
-				<string>$(TEST_HOST)</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>INFOPLIST_FILE</key>
-				<string>RedditTests/Resources/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
-				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>vc.faber.RedditTests</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SWIFT_OPTIMIZATION_LEVEL</key>
-				<string>-Onone</string>
-				<key>TEST_HOST</key>
-				<string>$(BUILT_PRODUCTS_DIR)/Reddit.app/Reddit</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>308E96D61C875B7F00380735</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>AB974A7A5E2CA65EA1541B98</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>BUNDLE_LOADER</key>
-				<string>$(TEST_HOST)</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>INFOPLIST_FILE</key>
-				<string>RedditTests/Resources/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
-				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>vc.faber.RedditTests</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>TEST_HOST</key>
-				<string>$(BUILT_PRODUCTS_DIR)/Reddit.app/Reddit</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>308E96D71C87646500380735</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Swiftlint</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>if which swiftlint &gt;/dev/null; then
-swiftlint
-else
-echo "SwiftLint does not exist, download from https://github.com/realm/SwiftLint"
-fi</string>
-		</dict>
-		<key>308E96D81C8769CB00380735</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>308E96B71C875B7E00380735</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>App</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96D91C8769D000380735</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>30806BF71C8D978A00EB1BD5</string>
-				<string>30F6C9AD1C8A115400616707</string>
-				<string>308E96EE1C87701600380735</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Enums</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96DA1C8769D500380735</key>
-		<dict>
-			<key>children</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Extensions</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96DB1C8769DA00380735</key>
-		<dict>
-			<key>children</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Externals</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96DC1C8769DF00380735</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>308E96EC1C876C2700380735</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Globals</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96DD1C8769E300380735</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>308E96F51C87768C00380735</string>
-				<string>30806BF91C8D9A5B00EB1BD5</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Helpers</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96DE1C8769E700380735</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>30806BF51C8D878F00EB1BD5</string>
-				<string>30806C001C8D9E4E00EB1BD5</string>
-				<string>30F6C9A91C8A096300616707</string>
-				<string>30F6C9A71C8A081D00616707</string>
-				<string>30806C021C8DA0D900EB1BD5</string>
-				<string>30806C041C8DA33800EB1BD5</string>
-				<string>30806BFE1C8D9E0400EB1BD5</string>
-				<string>30F6C9AB1C8A0C2200616707</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Models</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96DF1C8769EB00380735</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>308E96E81C876AA800380735</string>
-				<string>308E96EA1C876B8200380735</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Networking</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96E01C8769F000380735</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>30F6C9B11C8A142D00616707</string>
-				<string>30806BF31C8D861500EB1BD5</string>
-				<string>30F6C9AF1C8A142500616707</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Protocols</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96E11C8769F500380735</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>308E96BE1C875B7E00380735</string>
-				<string>308E96C31C875B7E00380735</string>
-				<string>308E96C01C875B7E00380735</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Resources</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96E21C8769FA00380735</key>
-		<dict>
-			<key>children</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Structs</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96E31C8769FE00380735</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>308E96E71C876A2700380735</string>
-				<string>308E96E61C876A2200380735</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>ViewControllers</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96E41C876A0300380735</key>
-		<dict>
-			<key>children</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>ViewModels</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96E51C876A0900380735</key>
-		<dict>
-			<key>children</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Views</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96E61C876A2200380735</key>
-		<dict>
-			<key>children</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Onboarding</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96E71C876A2700380735</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>308E96BB1C875B7E00380735</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Main</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96E81C876AA800380735</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>Network.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96E91C876AA800380735</key>
-		<dict>
-			<key>fileRef</key>
-			<string>308E96E81C876AA800380735</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>308E96EA1C876B8200380735</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>RedditAPI.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96EB1C876B8200380735</key>
-		<dict>
-			<key>fileRef</key>
-			<string>308E96EA1C876B8200380735</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>308E96EC1C876C2700380735</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>Constants.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96ED1C876C2700380735</key>
-		<dict>
-			<key>fileRef</key>
-			<string>308E96EC1C876C2700380735</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>308E96EE1C87701600380735</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>ListingType.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96EF1C87701600380735</key>
-		<dict>
-			<key>fileRef</key>
-			<string>308E96EE1C87701600380735</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>308E96F01C87763C00380735</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>308E96F11C87764F00380735</string>
-				<string>309462C81CCD8C4300E18655</string>
-				<string>308E96F31C87766A00380735</string>
-				<string>30DDB22B1CCE6667000B72E5</string>
-				<string>309462D41CCE5C8800E18655</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>JSON</string>
-			<key>path</key>
-			<string>JSON</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96F11C87764F00380735</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.json</string>
-			<key>path</key>
-			<string>AccessToken.json</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96F21C87764F00380735</key>
-		<dict>
-			<key>fileRef</key>
-			<string>308E96F11C87764F00380735</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>308E96F31C87766A00380735</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.json</string>
-			<key>path</key>
-			<string>Listing.json</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96F41C87766A00380735</key>
-		<dict>
-			<key>fileRef</key>
-			<string>308E96F31C87766A00380735</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>308E96F51C87768C00380735</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>308E96F81C8776BD00380735</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>JSONReader</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96F81C8776BD00380735</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>JSONReader.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308E96F91C8776BD00380735</key>
-		<dict>
-			<key>fileRef</key>
-			<string>308E96F81C8776BD00380735</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>309462C51CCD8A5C00E18655</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>ImageLinkSpec.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>309462C61CCD8A5C00E18655</key>
-		<dict>
-			<key>fileRef</key>
-			<string>309462C51CCD8A5C00E18655</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>309462C81CCD8C4300E18655</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.json</string>
-			<key>path</key>
-			<string>ImageLink.json</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>309462C91CCD8C4300E18655</key>
-		<dict>
-			<key>fileRef</key>
-			<string>309462C81CCD8C4300E18655</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>309462CA1CCD8C4300E18655</key>
-		<dict>
-			<key>fileRef</key>
-			<string>309462C81CCD8C4300E18655</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>309462CB1CCD956200E18655</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>EmptyStringTransform.swift</string>
-			<key>path</key>
-			<string>EmptyStringTransform.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>309462CC1CCD956200E18655</key>
-		<dict>
-			<key>fileRef</key>
-			<string>309462CB1CCD956200E18655</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>309462CD1CCD956200E18655</key>
-		<dict>
-			<key>fileRef</key>
-			<string>309462CB1CCD956200E18655</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>309462CE1CCD971D00E18655</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>EmptyArrayTransform.swift</string>
-			<key>path</key>
-			<string>EmptyArrayTransform.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>309462CF1CCD971D00E18655</key>
-		<dict>
-			<key>fileRef</key>
-			<string>309462CE1CCD971D00E18655</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>309462D01CCD971D00E18655</key>
-		<dict>
-			<key>fileRef</key>
-			<string>309462CE1CCD971D00E18655</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>309462D41CCE5C8800E18655</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.json</string>
-			<key>path</key>
-			<string>VideoLink.json</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>309462D51CCE5C8800E18655</key>
-		<dict>
-			<key>fileRef</key>
-			<string>309462D41CCE5C8800E18655</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>309462D61CCE5C8800E18655</key>
-		<dict>
-			<key>fileRef</key>
-			<string>309462D41CCE5C8800E18655</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>309462D71CCE5CEF00E18655</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>VideoLinkSpec.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>309462D81CCE5CEF00E18655</key>
-		<dict>
-			<key>fileRef</key>
-			<string>309462D71CCE5CEF00E18655</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>30DDB22B1CCE6667000B72E5</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.json</string>
-			<key>path</key>
-			<string>SelfLink.json</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>30DDB22C1CCE6668000B72E5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30DDB22B1CCE6667000B72E5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>30DDB22D1CCE66B2000B72E5</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>SelfLinkSpec.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>30DDB22E1CCE66B2000B72E5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30DDB22D1CCE66B2000B72E5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>30DDB22F1CCE69BB000B72E5</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>EmptyURLTransform.swift</string>
-			<key>path</key>
-			<string>EmptyURLTransform.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>30DDB2301CCE69BB000B72E5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30DDB22F1CCE69BB000B72E5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>30DDB2311CCE69BB000B72E5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30DDB22F1CCE69BB000B72E5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>30F6C9A71C8A081D00616707</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>Listing.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>30F6C9A81C8A081D00616707</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30F6C9A71C8A081D00616707</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>30F6C9A91C8A096300616707</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>Link.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>30F6C9AA1C8A096300616707</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30F6C9A91C8A096300616707</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>30F6C9AB1C8A0C2200616707</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>Subreddit.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>30F6C9AC1C8A0C2200616707</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30F6C9AB1C8A0C2200616707</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>30F6C9AD1C8A115400616707</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>Likes.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>30F6C9AE1C8A115400616707</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30F6C9AD1C8A115400616707</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>30F6C9AF1C8A142500616707</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>Votable.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>30F6C9B01C8A142500616707</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30F6C9AF1C8A142500616707</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>30F6C9B11C8A142D00616707</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>Created.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>30F6C9B21C8A142D00616707</key>
-		<dict>
-			<key>fileRef</key>
-			<string>30F6C9B11C8A142D00616707</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>380B7DB8104593AC24BEDE0E</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>&#128230; Embed Pods Frameworks</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Target Support Files/Pods-RedditTests/Pods-RedditTests-frameworks.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>3F27E9DDFFE4C0F106263859</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>&#128230; Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Target Support Files/Pods-Reddit/Pods-Reddit-resources.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>4A82BC32D107E003A81C6E18</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods-Reddit.release.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods-Reddit/Pods-Reddit.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>606C05C543FD3501112D3184</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods-RedditTests.debug.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods-RedditTests/Pods-RedditTests.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>611F95E3417C8CEA6CED900A</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>&#128230; Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>AB974A7A5E2CA65EA1541B98</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods-RedditTests.release.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods-RedditTests/Pods-RedditTests.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B0D48D2E16B0D582BE6DB7CD</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>&#128230; Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Target Support Files/Pods-RedditTests/Pods-RedditTests-resources.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>B4BC0F075FF944E5DF21C0E4</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>BB58E2D13A5086BB9E2CF0AF</string>
-				<string>4A82BC32D107E003A81C6E18</string>
-				<string>606C05C543FD3501112D3184</string>
-				<string>AB974A7A5E2CA65EA1541B98</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>BB58E2D13A5086BB9E2CF0AF</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods-Reddit.debug.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods-Reddit/Pods-Reddit.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>BDB0C09F2BCA7C2980065F7D</key>
-		<dict>
-			<key>fileRef</key>
-			<string>2B27ED8BA5192C786867B891</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>D7B6B33573677A8CA6635E40</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>Pods_RedditTests.framework</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>F3041FEB8B385F0C30B5882A</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>&#128230; Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>308E96AC1C875B7E00380735</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A9F446D198CE600D4C14508 /* Pods_RedditTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7B6B33573677A8CA6635E40 /* Pods_RedditTests.framework */; };
+		303FA7C71CCA8E060027658E /* Votable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F6C9AF1C8A142500616707 /* Votable.swift */; };
+		303FA7C81CCA8E060027658E /* Created.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F6C9B11C8A142D00616707 /* Created.swift */; };
+		303FA7C91CCA8E060027658E /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806BF31C8D861500EB1BD5 /* Thing.swift */; };
+		303FA7CA1CCA8E150027658E /* LikesTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806BFC1C8D9B2A00EB1BD5 /* LikesTransform.swift */; };
+		303FA7CB1CCA8E190027658E /* EditedTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806BFA1C8D9A6C00EB1BD5 /* EditedTransform.swift */; };
+		303FA7CC1CCA8E1C0027658E /* EpochDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806C081C8DA79000EB1BD5 /* EpochDateTransform.swift */; };
+		303FA7CD1CCA8EC00027658E /* JSONReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E96F81C8776BD00380735 /* JSONReader.swift */; };
+		303FA7CE1CCA8ECB0027658E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E96EC1C876C2700380735 /* Constants.swift */; };
+		303FA7CF1CCA919C0027658E /* AccessToken.json in Resources */ = {isa = PBXBuildFile; fileRef = 308E96F11C87764F00380735 /* AccessToken.json */; };
+		303FA7D01CCA919C0027658E /* Listing.json in Resources */ = {isa = PBXBuildFile; fileRef = 308E96F31C87766A00380735 /* Listing.json */; };
+		30806BF41C8D861500EB1BD5 /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806BF31C8D861500EB1BD5 /* Thing.swift */; };
+		30806BF61C8D878F00EB1BD5 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806BF51C8D878F00EB1BD5 /* Comment.swift */; };
+		30806BF81C8D978A00EB1BD5 /* Edited.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806BF71C8D978A00EB1BD5 /* Edited.swift */; };
+		30806BFB1C8D9A6C00EB1BD5 /* EditedTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806BFA1C8D9A6C00EB1BD5 /* EditedTransform.swift */; };
+		30806BFD1C8D9B2A00EB1BD5 /* LikesTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806BFC1C8D9B2A00EB1BD5 /* LikesTransform.swift */; };
+		30806BFF1C8D9E0400EB1BD5 /* PreviewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806BFE1C8D9E0400EB1BD5 /* PreviewImage.swift */; };
+		30806C011C8D9E4E00EB1BD5 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806C001C8D9E4E00EB1BD5 /* Image.swift */; };
+		30806C031C8DA0D900EB1BD5 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806C021C8DA0D900EB1BD5 /* Media.swift */; };
+		30806C051C8DA33800EB1BD5 /* MediaEmbed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806C041C8DA33800EB1BD5 /* MediaEmbed.swift */; };
+		30806C091C8DA79000EB1BD5 /* EpochDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806C081C8DA79000EB1BD5 /* EpochDateTransform.swift */; };
+		308216061CCA80D700D9A18B /* ListingSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308216051CCA80D700D9A18B /* ListingSpec.swift */; };
+		308216081CCA813900D9A18B /* NetworkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308216071CCA813900D9A18B /* NetworkMock.swift */; };
+		308216091CCA845D00D9A18B /* RedditAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E96EA1C876B8200380735 /* RedditAPI.swift */; };
+		3082160A1CCA846600D9A18B /* ListingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E96EE1C87701600380735 /* ListingType.swift */; };
+		3082160B1CCA846600D9A18B /* Likes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F6C9AD1C8A115400616707 /* Likes.swift */; };
+		3082160C1CCA846600D9A18B /* Edited.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806BF71C8D978A00EB1BD5 /* Edited.swift */; };
+		3082160D1CCA846F00D9A18B /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F6C9A71C8A081D00616707 /* Listing.swift */; };
+		3082160E1CCA846F00D9A18B /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F6C9A91C8A096300616707 /* Link.swift */; };
+		3082160F1CCA846F00D9A18B /* Subreddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F6C9AB1C8A0C2200616707 /* Subreddit.swift */; };
+		308216101CCA846F00D9A18B /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806BF51C8D878F00EB1BD5 /* Comment.swift */; };
+		308216111CCA846F00D9A18B /* PreviewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806BFE1C8D9E0400EB1BD5 /* PreviewImage.swift */; };
+		308216121CCA846F00D9A18B /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806C001C8D9E4E00EB1BD5 /* Image.swift */; };
+		308216131CCA846F00D9A18B /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806C021C8DA0D900EB1BD5 /* Media.swift */; };
+		308216141CCA846F00D9A18B /* MediaEmbed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806C041C8DA33800EB1BD5 /* MediaEmbed.swift */; };
+		308E96B81C875B7E00380735 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E96B71C875B7E00380735 /* AppDelegate.swift */; };
+		308E96BD1C875B7E00380735 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 308E96BB1C875B7E00380735 /* Main.storyboard */; };
+		308E96BF1C875B7E00380735 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 308E96BE1C875B7E00380735 /* Assets.xcassets */; };
+		308E96C21C875B7E00380735 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 308E96C01C875B7E00380735 /* LaunchScreen.storyboard */; };
+		308E96E91C876AA800380735 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E96E81C876AA800380735 /* Network.swift */; };
+		308E96EB1C876B8200380735 /* RedditAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E96EA1C876B8200380735 /* RedditAPI.swift */; };
+		308E96ED1C876C2700380735 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E96EC1C876C2700380735 /* Constants.swift */; };
+		308E96EF1C87701600380735 /* ListingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E96EE1C87701600380735 /* ListingType.swift */; };
+		308E96F21C87764F00380735 /* AccessToken.json in Resources */ = {isa = PBXBuildFile; fileRef = 308E96F11C87764F00380735 /* AccessToken.json */; };
+		308E96F41C87766A00380735 /* Listing.json in Resources */ = {isa = PBXBuildFile; fileRef = 308E96F31C87766A00380735 /* Listing.json */; };
+		308E96F91C8776BD00380735 /* JSONReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E96F81C8776BD00380735 /* JSONReader.swift */; };
+		309462C61CCD8A5C00E18655 /* ImageLinkSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309462C51CCD8A5C00E18655 /* ImageLinkSpec.swift */; };
+		309462C91CCD8C4300E18655 /* ImageLink.json in Resources */ = {isa = PBXBuildFile; fileRef = 309462C81CCD8C4300E18655 /* ImageLink.json */; };
+		309462CA1CCD8C4300E18655 /* ImageLink.json in Resources */ = {isa = PBXBuildFile; fileRef = 309462C81CCD8C4300E18655 /* ImageLink.json */; };
+		309462CC1CCD956200E18655 /* EmptyStringTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309462CB1CCD956200E18655 /* EmptyStringTransform.swift */; };
+		309462CD1CCD956200E18655 /* EmptyStringTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309462CB1CCD956200E18655 /* EmptyStringTransform.swift */; };
+		309462CF1CCD971D00E18655 /* EmptyArrayTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309462CE1CCD971D00E18655 /* EmptyArrayTransform.swift */; };
+		309462D01CCD971D00E18655 /* EmptyArrayTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309462CE1CCD971D00E18655 /* EmptyArrayTransform.swift */; };
+		309462D51CCE5C8800E18655 /* VideoLink.json in Resources */ = {isa = PBXBuildFile; fileRef = 309462D41CCE5C8800E18655 /* VideoLink.json */; };
+		309462D61CCE5C8800E18655 /* VideoLink.json in Resources */ = {isa = PBXBuildFile; fileRef = 309462D41CCE5C8800E18655 /* VideoLink.json */; };
+		309462D81CCE5CEF00E18655 /* VideoLinkSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309462D71CCE5CEF00E18655 /* VideoLinkSpec.swift */; };
+		30A4817F1CCF6FDC000F1090 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A4817E1CCF6FDC000F1090 /* LoginError.swift */; };
+		30DDB22C1CCE6668000B72E5 /* SelfLink.json in Resources */ = {isa = PBXBuildFile; fileRef = 30DDB22B1CCE6667000B72E5 /* SelfLink.json */; };
+		30DDB22E1CCE66B2000B72E5 /* SelfLinkSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDB22D1CCE66B2000B72E5 /* SelfLinkSpec.swift */; };
+		30DDB2301CCE69BB000B72E5 /* EmptyURLTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDB22F1CCE69BB000B72E5 /* EmptyURLTransform.swift */; };
+		30DDB2311CCE69BB000B72E5 /* EmptyURLTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDB22F1CCE69BB000B72E5 /* EmptyURLTransform.swift */; };
+		30DDB2331CCEC8DD000B72E5 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30DDB2321CCEC8DD000B72E5 /* Onboarding.storyboard */; };
+		30DDB2351CCECA00000B72E5 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDB2341CCECA00000B72E5 /* WalkthroughViewController.swift */; };
+		30DDB2371CCECA1F000B72E5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDB2361CCECA1F000B72E5 /* LoginViewController.swift */; };
+		30DDB23F1CCED41B000B72E5 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDB23E1CCED41B000B72E5 /* LoginViewModel.swift */; };
+		30DDB2451CCEDBAA000B72E5 /* CloseableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDB2441CCEDBAA000B72E5 /* CloseableViewController.swift */; };
+		30DDB2491CCEDE19000B72E5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30DDB24B1CCEDE19000B72E5 /* Localizable.strings */; };
+		30DDB24D1CCEDE2A000B72E5 /* Colors.rgb in Resources */ = {isa = PBXBuildFile; fileRef = 30DDB24C1CCEDE2A000B72E5 /* Colors.rgb */; };
+		30DDB2521CCEDE52000B72E5 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDB24F1CCEDE52000B72E5 /* Images.swift */; };
+		30DDB2531CCEDE52000B72E5 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDB2501CCEDE52000B72E5 /* Storyboards.swift */; };
+		30DDB2541CCEDE52000B72E5 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDB2511CCEDE52000B72E5 /* Strings.swift */; };
+		30DDB2571CCEDFE4000B72E5 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDB2561CCEDFE4000B72E5 /* WebViewController.swift */; };
+		30DDB25A1CCEE4B3000B72E5 /* WalkthroughViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDB2591CCEE4B3000B72E5 /* WalkthroughViewModel.swift */; };
+		30DDB25E1CCEEDB2000B72E5 /* UIStoryboardSegue+Naxigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDB25D1CCEEDB2000B72E5 /* UIStoryboardSegue+Naxigation.swift */; };
+		30DDB2601CCEF155000B72E5 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDB25F1CCEF155000B72E5 /* AccessToken.swift */; };
+		30DDB2611CCEF155000B72E5 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDB25F1CCEF155000B72E5 /* AccessToken.swift */; };
+		30DDB2641CCEF3E6000B72E5 /* RxSwift+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDB2631CCEF3E6000B72E5 /* RxSwift+Helpers.swift */; };
+		30DDB2691CCF5CED000B72E5 /* NowDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDB2681CCF5CED000B72E5 /* NowDateTransform.swift */; };
+		30DDB26C1CCF68B0000B72E5 /* QueryReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDB26B1CCF68B0000B72E5 /* QueryReader.swift */; };
+		30F6C9A81C8A081D00616707 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F6C9A71C8A081D00616707 /* Listing.swift */; };
+		30F6C9AA1C8A096300616707 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F6C9A91C8A096300616707 /* Link.swift */; };
+		30F6C9AC1C8A0C2200616707 /* Subreddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F6C9AB1C8A0C2200616707 /* Subreddit.swift */; };
+		30F6C9AE1C8A115400616707 /* Likes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F6C9AD1C8A115400616707 /* Likes.swift */; };
+		30F6C9B01C8A142500616707 /* Votable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F6C9AF1C8A142500616707 /* Votable.swift */; };
+		30F6C9B21C8A142D00616707 /* Created.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F6C9B11C8A142D00616707 /* Created.swift */; };
+		BDB0C09F2BCA7C2980065F7D /* Pods_Reddit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B27ED8BA5192C786867B891 /* Pods_Reddit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		308E96C91C875B7F00380735 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 308E96AC1C875B7E00380735 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 308E96B31C875B7E00380735;
+			remoteInfo = Reddit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2B27ED8BA5192C786867B891 /* Pods_Reddit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reddit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30806BF31C8D861500EB1BD5 /* Thing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
+		30806BF51C8D878F00EB1BD5 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		30806BF71C8D978A00EB1BD5 /* Edited.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edited.swift; sourceTree = "<group>"; };
+		30806BFA1C8D9A6C00EB1BD5 /* EditedTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditedTransform.swift; sourceTree = "<group>"; };
+		30806BFC1C8D9B2A00EB1BD5 /* LikesTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesTransform.swift; sourceTree = "<group>"; };
+		30806BFE1C8D9E0400EB1BD5 /* PreviewImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewImage.swift; sourceTree = "<group>"; };
+		30806C001C8D9E4E00EB1BD5 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		30806C021C8DA0D900EB1BD5 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		30806C041C8DA33800EB1BD5 /* MediaEmbed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaEmbed.swift; sourceTree = "<group>"; };
+		30806C081C8DA79000EB1BD5 /* EpochDateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpochDateTransform.swift; sourceTree = "<group>"; };
+		308216051CCA80D700D9A18B /* ListingSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingSpec.swift; sourceTree = "<group>"; };
+		308216071CCA813900D9A18B /* NetworkMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMock.swift; sourceTree = "<group>"; };
+		308E96B41C875B7E00380735 /* Reddit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reddit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		308E96B71C875B7E00380735 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		308E96BC1C875B7E00380735 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		308E96BE1C875B7E00380735 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		308E96C11C875B7E00380735 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		308E96C31C875B7E00380735 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		308E96C81C875B7F00380735 /* RedditTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedditTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		308E96CE1C875B7F00380735 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		308E96E81C876AA800380735 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		308E96EA1C876B8200380735 /* RedditAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditAPI.swift; sourceTree = "<group>"; };
+		308E96EC1C876C2700380735 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		308E96EE1C87701600380735 /* ListingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingType.swift; sourceTree = "<group>"; };
+		308E96F11C87764F00380735 /* AccessToken.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AccessToken.json; sourceTree = "<group>"; };
+		308E96F31C87766A00380735 /* Listing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Listing.json; sourceTree = "<group>"; };
+		308E96F81C8776BD00380735 /* JSONReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONReader.swift; sourceTree = "<group>"; };
+		309462C51CCD8A5C00E18655 /* ImageLinkSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLinkSpec.swift; sourceTree = "<group>"; };
+		309462C81CCD8C4300E18655 /* ImageLink.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ImageLink.json; sourceTree = "<group>"; };
+		309462CB1CCD956200E18655 /* EmptyStringTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStringTransform.swift; sourceTree = "<group>"; };
+		309462CE1CCD971D00E18655 /* EmptyArrayTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyArrayTransform.swift; sourceTree = "<group>"; };
+		309462D41CCE5C8800E18655 /* VideoLink.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VideoLink.json; sourceTree = "<group>"; };
+		309462D71CCE5CEF00E18655 /* VideoLinkSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoLinkSpec.swift; sourceTree = "<group>"; };
+		30A4817E1CCF6FDC000F1090 /* LoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginError.swift; path = Errors/LoginError.swift; sourceTree = "<group>"; };
+		30DDB22B1CCE6667000B72E5 /* SelfLink.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SelfLink.json; sourceTree = "<group>"; };
+		30DDB22D1CCE66B2000B72E5 /* SelfLinkSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfLinkSpec.swift; sourceTree = "<group>"; };
+		30DDB22F1CCE69BB000B72E5 /* EmptyURLTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyURLTransform.swift; sourceTree = "<group>"; };
+		30DDB2321CCEC8DD000B72E5 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		30DDB2341CCECA00000B72E5 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
+		30DDB2361CCECA1F000B72E5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		30DDB23E1CCED41B000B72E5 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		30DDB2441CCEDBAA000B72E5 /* CloseableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloseableViewController.swift; sourceTree = "<group>"; };
+		30DDB24A1CCEDE19000B72E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		30DDB24C1CCEDE2A000B72E5 /* Colors.rgb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Colors.rgb; sourceTree = "<group>"; };
+		30DDB24F1CCEDE52000B72E5 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		30DDB2501CCEDE52000B72E5 /* Storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
+		30DDB2511CCEDE52000B72E5 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		30DDB2561CCEDFE4000B72E5 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		30DDB2591CCEE4B3000B72E5 /* WalkthroughViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughViewModel.swift; sourceTree = "<group>"; };
+		30DDB25D1CCEEDB2000B72E5 /* UIStoryboardSegue+Naxigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboardSegue+Naxigation.swift"; sourceTree = "<group>"; };
+		30DDB25F1CCEF155000B72E5 /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
+		30DDB2631CCEF3E6000B72E5 /* RxSwift+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RxSwift+Helpers.swift"; path = "RxSwift+Helpers/RxSwift+Helpers.swift"; sourceTree = "<group>"; };
+		30DDB2681CCF5CED000B72E5 /* NowDateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowDateTransform.swift; sourceTree = "<group>"; };
+		30DDB26B1CCF68B0000B72E5 /* QueryReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueryReader.swift; path = QueryReader/QueryReader.swift; sourceTree = "<group>"; };
+		30F6C9A71C8A081D00616707 /* Listing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
+		30F6C9A91C8A096300616707 /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
+		30F6C9AB1C8A0C2200616707 /* Subreddit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subreddit.swift; sourceTree = "<group>"; };
+		30F6C9AD1C8A115400616707 /* Likes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Likes.swift; sourceTree = "<group>"; };
+		30F6C9AF1C8A142500616707 /* Votable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Votable.swift; sourceTree = "<group>"; };
+		30F6C9B11C8A142D00616707 /* Created.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Created.swift; sourceTree = "<group>"; };
+		4A82BC32D107E003A81C6E18 /* Pods-Reddit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reddit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Reddit/Pods-Reddit.release.xcconfig"; sourceTree = "<group>"; };
+		606C05C543FD3501112D3184 /* Pods-RedditTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedditTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RedditTests/Pods-RedditTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AB974A7A5E2CA65EA1541B98 /* Pods-RedditTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedditTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RedditTests/Pods-RedditTests.release.xcconfig"; sourceTree = "<group>"; };
+		BB58E2D13A5086BB9E2CF0AF /* Pods-Reddit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reddit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Reddit/Pods-Reddit.debug.xcconfig"; sourceTree = "<group>"; };
+		D7B6B33573677A8CA6635E40 /* Pods_RedditTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RedditTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		308E96B11C875B7E00380735 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDB0C09F2BCA7C2980065F7D /* Pods_Reddit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		308E96C51C875B7F00380735 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A9F446D198CE600D4C14508 /* Pods_RedditTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		068BF3C310D6D11B76BC8BDA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2B27ED8BA5192C786867B891 /* Pods_Reddit.framework */,
+				D7B6B33573677A8CA6635E40 /* Pods_RedditTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		30806BF91C8D9A5B00EB1BD5 /* Transforms */ = {
+			isa = PBXGroup;
+			children = (
+				30806BFA1C8D9A6C00EB1BD5 /* EditedTransform.swift */,
+				309462CE1CCD971D00E18655 /* EmptyArrayTransform.swift */,
+				309462CB1CCD956200E18655 /* EmptyStringTransform.swift */,
+				30DDB22F1CCE69BB000B72E5 /* EmptyURLTransform.swift */,
+				30806C081C8DA79000EB1BD5 /* EpochDateTransform.swift */,
+				30806BFC1C8D9B2A00EB1BD5 /* LikesTransform.swift */,
+				30DDB2681CCF5CED000B72E5 /* NowDateTransform.swift */,
+			);
+			path = Transforms;
+			sourceTree = "<group>";
+		};
+		308216151CCA866D00D9A18B /* Specs */ = {
+			isa = PBXGroup;
+			children = (
+				309462C51CCD8A5C00E18655 /* ImageLinkSpec.swift */,
+				308216051CCA80D700D9A18B /* ListingSpec.swift */,
+				30DDB22D1CCE66B2000B72E5 /* SelfLinkSpec.swift */,
+				309462D71CCE5CEF00E18655 /* VideoLinkSpec.swift */,
+			);
+			path = Specs;
+			sourceTree = "<group>";
+		};
+		308216161CCA867100D9A18B /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				308216071CCA813900D9A18B /* NetworkMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		308216171CCA867600D9A18B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				308E96F01C87763C00380735 /* JSON */,
+				308E96CE1C875B7F00380735 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		308E96AB1C875B7E00380735 = {
+			isa = PBXGroup;
+			children = (
+				068BF3C310D6D11B76BC8BDA /* Frameworks */,
+				B4BC0F075FF944E5DF21C0E4 /* Pods */,
+				308E96B51C875B7E00380735 /* Products */,
+				308E96B61C875B7E00380735 /* Reddit */,
+				308E96CB1C875B7F00380735 /* RedditTests */,
+			);
+			sourceTree = "<group>";
+		};
+		308E96B51C875B7E00380735 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				308E96B41C875B7E00380735 /* Reddit.app */,
+				308E96C81C875B7F00380735 /* RedditTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		308E96B61C875B7E00380735 /* Reddit */ = {
+			isa = PBXGroup;
+			children = (
+				308E96D81C8769CB00380735 /* App */,
+				308E96D91C8769D000380735 /* Enums */,
+				308E96DA1C8769D500380735 /* Extensions */,
+				308E96DB1C8769DA00380735 /* Externals */,
+				308E96DC1C8769DF00380735 /* Globals */,
+				308E96DD1C8769E300380735 /* Helpers */,
+				308E96DE1C8769E700380735 /* Models */,
+				308E96DF1C8769EB00380735 /* Networking */,
+				308E96E01C8769F000380735 /* Protocols */,
+				308E96E11C8769F500380735 /* Resources */,
+				308E96E21C8769FA00380735 /* Structs */,
+				308E96E31C8769FE00380735 /* ViewControllers */,
+				308E96E41C876A0300380735 /* ViewModels */,
+				308E96E51C876A0900380735 /* Views */,
+			);
+			path = Reddit;
+			sourceTree = "<group>";
+		};
+		308E96CB1C875B7F00380735 /* RedditTests */ = {
+			isa = PBXGroup;
+			children = (
+				308216161CCA867100D9A18B /* Mocks */,
+				308216171CCA867600D9A18B /* Resources */,
+				308216151CCA866D00D9A18B /* Specs */,
+			);
+			path = RedditTests;
+			sourceTree = "<group>";
+		};
+		308E96D81C8769CB00380735 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				308E96B71C875B7E00380735 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		308E96D91C8769D000380735 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				30A4817D1CCF6FCD000F1090 /* Errors */,
+				30806BF71C8D978A00EB1BD5 /* Edited.swift */,
+				30F6C9AD1C8A115400616707 /* Likes.swift */,
+				308E96EE1C87701600380735 /* ListingType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		308E96DA1C8769D500380735 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				30DDB2621CCEF3CA000B72E5 /* RxSwift+Helpers */,
+				30DDB25C1CCEED7B000B72E5 /* UIStoryboardSegue+Navigation */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		308E96DB1C8769DA00380735 /* Externals */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Externals;
+			sourceTree = "<group>";
+		};
+		308E96DC1C8769DF00380735 /* Globals */ = {
+			isa = PBXGroup;
+			children = (
+				308E96EC1C876C2700380735 /* Constants.swift */,
+			);
+			path = Globals;
+			sourceTree = "<group>";
+		};
+		308E96DD1C8769E300380735 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				30DDB26A1CCF689D000B72E5 /* QueryReader */,
+				308E96F51C87768C00380735 /* JSONReader */,
+				30806BF91C8D9A5B00EB1BD5 /* Transforms */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		308E96DE1C8769E700380735 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				30806BF51C8D878F00EB1BD5 /* Comment.swift */,
+				30806C001C8D9E4E00EB1BD5 /* Image.swift */,
+				30F6C9A91C8A096300616707 /* Link.swift */,
+				30F6C9A71C8A081D00616707 /* Listing.swift */,
+				30806C021C8DA0D900EB1BD5 /* Media.swift */,
+				30806C041C8DA33800EB1BD5 /* MediaEmbed.swift */,
+				30806BFE1C8D9E0400EB1BD5 /* PreviewImage.swift */,
+				30F6C9AB1C8A0C2200616707 /* Subreddit.swift */,
+				30DDB25F1CCEF155000B72E5 /* AccessToken.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		308E96DF1C8769EB00380735 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				308E96E81C876AA800380735 /* Network.swift */,
+				308E96EA1C876B8200380735 /* RedditAPI.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		308E96E01C8769F000380735 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				30DDB2421CCEDB89000B72E5 /* Models */,
+				30DDB2431CCEDB8E000B72E5 /* ViewControllers */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		308E96E11C8769F500380735 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				30DDB24E1CCEDE52000B72E5 /* SwiftGen */,
+				308E96BE1C875B7E00380735 /* Assets.xcassets */,
+				30DDB24C1CCEDE2A000B72E5 /* Colors.rgb */,
+				308E96C31C875B7E00380735 /* Info.plist */,
+				308E96C01C875B7E00380735 /* LaunchScreen.storyboard */,
+				30DDB24B1CCEDE19000B72E5 /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		308E96E21C8769FA00380735 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
+		308E96E31C8769FE00380735 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				30DDB2551CCEDFCE000B72E5 /* Base */,
+				308E96E71C876A2700380735 /* Main */,
+				308E96E61C876A2200380735 /* Onboarding */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		308E96E41C876A0300380735 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				30DDB23B1CCED3E3000B72E5 /* Login */,
+				30DDB2581CCEE4A0000B72E5 /* Walkthrough */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		308E96E51C876A0900380735 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		308E96E61C876A2200380735 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				30DDB2401CCED5FA000B72E5 /* Storyboard */,
+				30DDB2361CCECA1F000B72E5 /* LoginViewController.swift */,
+				30DDB2341CCECA00000B72E5 /* WalkthroughViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		308E96E71C876A2700380735 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				30DDB2411CCED601000B72E5 /* Storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		308E96F01C87763C00380735 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				308E96F11C87764F00380735 /* AccessToken.json */,
+				309462C81CCD8C4300E18655 /* ImageLink.json */,
+				308E96F31C87766A00380735 /* Listing.json */,
+				30DDB22B1CCE6667000B72E5 /* SelfLink.json */,
+				309462D41CCE5C8800E18655 /* VideoLink.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		308E96F51C87768C00380735 /* JSONReader */ = {
+			isa = PBXGroup;
+			children = (
+				308E96F81C8776BD00380735 /* JSONReader.swift */,
+			);
+			path = JSONReader;
+			sourceTree = "<group>";
+		};
+		30A4817D1CCF6FCD000F1090 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				30A4817E1CCF6FDC000F1090 /* LoginError.swift */,
+			);
+			name = Errors;
+			sourceTree = "<group>";
+		};
+		30DDB23B1CCED3E3000B72E5 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				30DDB23E1CCED41B000B72E5 /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		30DDB2401CCED5FA000B72E5 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				30DDB2321CCEC8DD000B72E5 /* Onboarding.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		30DDB2411CCED601000B72E5 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				308E96BB1C875B7E00380735 /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		30DDB2421CCEDB89000B72E5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				30F6C9B11C8A142D00616707 /* Created.swift */,
+				30806BF31C8D861500EB1BD5 /* Thing.swift */,
+				30F6C9AF1C8A142500616707 /* Votable.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		30DDB2431CCEDB8E000B72E5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				30DDB2441CCEDBAA000B72E5 /* CloseableViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		30DDB24E1CCEDE52000B72E5 /* SwiftGen */ = {
+			isa = PBXGroup;
+			children = (
+				30DDB24F1CCEDE52000B72E5 /* Images.swift */,
+				30DDB2501CCEDE52000B72E5 /* Storyboards.swift */,
+				30DDB2511CCEDE52000B72E5 /* Strings.swift */,
+			);
+			path = SwiftGen;
+			sourceTree = "<group>";
+		};
+		30DDB2551CCEDFCE000B72E5 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				30DDB2561CCEDFE4000B72E5 /* WebViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		30DDB2581CCEE4A0000B72E5 /* Walkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				30DDB2591CCEE4B3000B72E5 /* WalkthroughViewModel.swift */,
+			);
+			path = Walkthrough;
+			sourceTree = "<group>";
+		};
+		30DDB25C1CCEED7B000B72E5 /* UIStoryboardSegue+Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				30DDB25D1CCEEDB2000B72E5 /* UIStoryboardSegue+Naxigation.swift */,
+			);
+			path = "UIStoryboardSegue+Navigation";
+			sourceTree = "<group>";
+		};
+		30DDB2621CCEF3CA000B72E5 /* RxSwift+Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				30DDB2631CCEF3E6000B72E5 /* RxSwift+Helpers.swift */,
+			);
+			name = "RxSwift+Helpers";
+			sourceTree = "<group>";
+		};
+		30DDB26A1CCF689D000B72E5 /* QueryReader */ = {
+			isa = PBXGroup;
+			children = (
+				30DDB26B1CCF68B0000B72E5 /* QueryReader.swift */,
+			);
+			name = QueryReader;
+			sourceTree = "<group>";
+		};
+		B4BC0F075FF944E5DF21C0E4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BB58E2D13A5086BB9E2CF0AF /* Pods-Reddit.debug.xcconfig */,
+				4A82BC32D107E003A81C6E18 /* Pods-Reddit.release.xcconfig */,
+				606C05C543FD3501112D3184 /* Pods-RedditTests.debug.xcconfig */,
+				AB974A7A5E2CA65EA1541B98 /* Pods-RedditTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		308E96B31C875B7E00380735 /* Reddit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 308E96D11C875B7F00380735 /* Build configuration list for PBXNativeTarget "Reddit" */;
+			buildPhases = (
+				611F95E3417C8CEA6CED900A /* 📦 Check Pods Manifest.lock */,
+				308E96D71C87646500380735 /* Swiftlint */,
+				30DDB2481CCEDD34000B72E5 /* SwiftGen */,
+				308E96B01C875B7E00380735 /* Sources */,
+				308E96B11C875B7E00380735 /* Frameworks */,
+				308E96B21C875B7E00380735 /* Resources */,
+				046A1C1EBEC6BBA591E4E913 /* 📦 Embed Pods Frameworks */,
+				3F27E9DDFFE4C0F106263859 /* 📦 Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Reddit;
+			productName = Reddit;
+			productReference = 308E96B41C875B7E00380735 /* Reddit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		308E96C71C875B7F00380735 /* RedditTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 308E96D41C875B7F00380735 /* Build configuration list for PBXNativeTarget "RedditTests" */;
+			buildPhases = (
+				F3041FEB8B385F0C30B5882A /* 📦 Check Pods Manifest.lock */,
+				308E96C41C875B7F00380735 /* Sources */,
+				308E96C51C875B7F00380735 /* Frameworks */,
+				308E96C61C875B7F00380735 /* Resources */,
+				380B7DB8104593AC24BEDE0E /* 📦 Embed Pods Frameworks */,
+				B0D48D2E16B0D582BE6DB7CD /* 📦 Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				308E96CA1C875B7F00380735 /* PBXTargetDependency */,
+			);
+			name = RedditTests;
+			productName = RedditTests;
+			productReference = 308E96C81C875B7F00380735 /* RedditTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		308E96AC1C875B7E00380735 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Faber Ventures";
+				TargetAttributes = {
+					308E96B31C875B7E00380735 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					308E96C71C875B7F00380735 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 308E96B31C875B7E00380735;
+					};
+				};
+			};
+			buildConfigurationList = 308E96AF1C875B7E00380735 /* Build configuration list for PBXProject "Reddit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 308E96AB1C875B7E00380735;
+			productRefGroup = 308E96B51C875B7E00380735 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				308E96B31C875B7E00380735 /* Reddit */,
+				308E96C71C875B7F00380735 /* RedditTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		308E96B21C875B7E00380735 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				308E96C21C875B7E00380735 /* LaunchScreen.storyboard in Resources */,
+				308E96BF1C875B7E00380735 /* Assets.xcassets in Resources */,
+				308E96BD1C875B7E00380735 /* Main.storyboard in Resources */,
+				30DDB24D1CCEDE2A000B72E5 /* Colors.rgb in Resources */,
+				309462C91CCD8C4300E18655 /* ImageLink.json in Resources */,
+				30DDB2491CCEDE19000B72E5 /* Localizable.strings in Resources */,
+				308E96F21C87764F00380735 /* AccessToken.json in Resources */,
+				309462D51CCE5C8800E18655 /* VideoLink.json in Resources */,
+				308E96F41C87766A00380735 /* Listing.json in Resources */,
+				30DDB2331CCEC8DD000B72E5 /* Onboarding.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		308E96C61C875B7F00380735 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				309462CA1CCD8C4300E18655 /* ImageLink.json in Resources */,
+				303FA7D01CCA919C0027658E /* Listing.json in Resources */,
+				309462D61CCE5C8800E18655 /* VideoLink.json in Resources */,
+				303FA7CF1CCA919C0027658E /* AccessToken.json in Resources */,
+				30DDB22C1CCE6668000B72E5 /* SelfLink.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		046A1C1EBEC6BBA591E4E913 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Reddit/Pods-Reddit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		308E96D71C87646500380735 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		30DDB2481CCEDD34000B72E5 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftgen >/dev/null; then\n    \"swiftgen/swiftgen.sh\" \"${PROJECT}\"\nelse\n    echo \"SwiftGen does not exist, download from https://github.com/AliSoftware/SwiftGen\"\nfi";
+		};
+		380B7DB8104593AC24BEDE0E /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RedditTests/Pods-RedditTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F27E9DDFFE4C0F106263859 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Reddit/Pods-Reddit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		611F95E3417C8CEA6CED900A /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B0D48D2E16B0D582BE6DB7CD /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RedditTests/Pods-RedditTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3041FEB8B385F0C30B5882A /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		308E96B01C875B7E00380735 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30DDB2371CCECA1F000B72E5 /* LoginViewController.swift in Sources */,
+				30DDB2571CCEDFE4000B72E5 /* WebViewController.swift in Sources */,
+				308E96EF1C87701600380735 /* ListingType.swift in Sources */,
+				308E96E91C876AA800380735 /* Network.swift in Sources */,
+				309462CC1CCD956200E18655 /* EmptyStringTransform.swift in Sources */,
+				30806BFD1C8D9B2A00EB1BD5 /* LikesTransform.swift in Sources */,
+				30806C051C8DA33800EB1BD5 /* MediaEmbed.swift in Sources */,
+				30DDB2641CCEF3E6000B72E5 /* RxSwift+Helpers.swift in Sources */,
+				30DDB2351CCECA00000B72E5 /* WalkthroughViewController.swift in Sources */,
+				30DDB2691CCF5CED000B72E5 /* NowDateTransform.swift in Sources */,
+				30DDB2521CCEDE52000B72E5 /* Images.swift in Sources */,
+				30F6C9A81C8A081D00616707 /* Listing.swift in Sources */,
+				309462CF1CCD971D00E18655 /* EmptyArrayTransform.swift in Sources */,
+				30DDB2601CCEF155000B72E5 /* AccessToken.swift in Sources */,
+				30806BF61C8D878F00EB1BD5 /* Comment.swift in Sources */,
+				30F6C9AA1C8A096300616707 /* Link.swift in Sources */,
+				30F6C9B21C8A142D00616707 /* Created.swift in Sources */,
+				30806BF81C8D978A00EB1BD5 /* Edited.swift in Sources */,
+				30F6C9AE1C8A115400616707 /* Likes.swift in Sources */,
+				30806C091C8DA79000EB1BD5 /* EpochDateTransform.swift in Sources */,
+				30DDB2301CCE69BB000B72E5 /* EmptyURLTransform.swift in Sources */,
+				308E96B81C875B7E00380735 /* AppDelegate.swift in Sources */,
+				30A4817F1CCF6FDC000F1090 /* LoginError.swift in Sources */,
+				30DDB2541CCEDE52000B72E5 /* Strings.swift in Sources */,
+				308E96EB1C876B8200380735 /* RedditAPI.swift in Sources */,
+				308E96F91C8776BD00380735 /* JSONReader.swift in Sources */,
+				30DDB2531CCEDE52000B72E5 /* Storyboards.swift in Sources */,
+				30806BFF1C8D9E0400EB1BD5 /* PreviewImage.swift in Sources */,
+				30DDB23F1CCED41B000B72E5 /* LoginViewModel.swift in Sources */,
+				30806C011C8D9E4E00EB1BD5 /* Image.swift in Sources */,
+				30806C031C8DA0D900EB1BD5 /* Media.swift in Sources */,
+				30DDB2451CCEDBAA000B72E5 /* CloseableViewController.swift in Sources */,
+				30806BFB1C8D9A6C00EB1BD5 /* EditedTransform.swift in Sources */,
+				30DDB25E1CCEEDB2000B72E5 /* UIStoryboardSegue+Naxigation.swift in Sources */,
+				30806BF41C8D861500EB1BD5 /* Thing.swift in Sources */,
+				30F6C9AC1C8A0C2200616707 /* Subreddit.swift in Sources */,
+				308E96ED1C876C2700380735 /* Constants.swift in Sources */,
+				30DDB26C1CCF68B0000B72E5 /* QueryReader.swift in Sources */,
+				30F6C9B01C8A142500616707 /* Votable.swift in Sources */,
+				30DDB25A1CCEE4B3000B72E5 /* WalkthroughViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		308E96C41C875B7F00380735 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				303FA7C81CCA8E060027658E /* Created.swift in Sources */,
+				303FA7CE1CCA8ECB0027658E /* Constants.swift in Sources */,
+				3082160C1CCA846600D9A18B /* Edited.swift in Sources */,
+				303FA7C71CCA8E060027658E /* Votable.swift in Sources */,
+				308216121CCA846F00D9A18B /* Image.swift in Sources */,
+				303FA7CD1CCA8EC00027658E /* JSONReader.swift in Sources */,
+				3082160D1CCA846F00D9A18B /* Listing.swift in Sources */,
+				3082160A1CCA846600D9A18B /* ListingType.swift in Sources */,
+				309462D81CCE5CEF00E18655 /* VideoLinkSpec.swift in Sources */,
+				3082160E1CCA846F00D9A18B /* Link.swift in Sources */,
+				308216081CCA813900D9A18B /* NetworkMock.swift in Sources */,
+				30DDB2611CCEF155000B72E5 /* AccessToken.swift in Sources */,
+				308216101CCA846F00D9A18B /* Comment.swift in Sources */,
+				308216061CCA80D700D9A18B /* ListingSpec.swift in Sources */,
+				308216091CCA845D00D9A18B /* RedditAPI.swift in Sources */,
+				308216111CCA846F00D9A18B /* PreviewImage.swift in Sources */,
+				303FA7CC1CCA8E1C0027658E /* EpochDateTransform.swift in Sources */,
+				309462CD1CCD956200E18655 /* EmptyStringTransform.swift in Sources */,
+				308216141CCA846F00D9A18B /* MediaEmbed.swift in Sources */,
+				303FA7CA1CCA8E150027658E /* LikesTransform.swift in Sources */,
+				309462C61CCD8A5C00E18655 /* ImageLinkSpec.swift in Sources */,
+				303FA7C91CCA8E060027658E /* Thing.swift in Sources */,
+				308216131CCA846F00D9A18B /* Media.swift in Sources */,
+				30DDB22E1CCE66B2000B72E5 /* SelfLinkSpec.swift in Sources */,
+				303FA7CB1CCA8E190027658E /* EditedTransform.swift in Sources */,
+				30DDB2311CCE69BB000B72E5 /* EmptyURLTransform.swift in Sources */,
+				309462D01CCD971D00E18655 /* EmptyArrayTransform.swift in Sources */,
+				3082160F1CCA846F00D9A18B /* Subreddit.swift in Sources */,
+				3082160B1CCA846600D9A18B /* Likes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		308E96CA1C875B7F00380735 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 308E96B31C875B7E00380735 /* Reddit */;
+			targetProxy = 308E96C91C875B7F00380735 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		308E96BB1C875B7E00380735 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				308E96BC1C875B7E00380735 /* Base */,
+			);
+			name = Main.storyboard;
+			path = .;
+			sourceTree = "<group>";
+		};
+		308E96C01C875B7E00380735 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				308E96C11C875B7E00380735 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			path = .;
+			sourceTree = "<group>";
+		};
+		30DDB24B1CCEDE19000B72E5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				30DDB24A1CCEDE19000B72E5 /* en */,
+			);
+			name = Localizable.strings;
+			path = .;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		308E96CF1C875B7F00380735 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		308E96D01C875B7F00380735 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		308E96D21C875B7F00380735 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB58E2D13A5086BB9E2CF0AF /* Pods-Reddit.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Reddit/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = vc.faber.Reddit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		308E96D31C875B7F00380735 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A82BC32D107E003A81C6E18 /* Pods-Reddit.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Reddit/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = vc.faber.Reddit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		308E96D51C875B7F00380735 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 606C05C543FD3501112D3184 /* Pods-RedditTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = RedditTests/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = vc.faber.RedditTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reddit.app/Reddit";
+			};
+			name = Debug;
+		};
+		308E96D61C875B7F00380735 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB974A7A5E2CA65EA1541B98 /* Pods-RedditTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = RedditTests/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = vc.faber.RedditTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reddit.app/Reddit";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		308E96AF1C875B7E00380735 /* Build configuration list for PBXProject "Reddit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				308E96CF1C875B7F00380735 /* Debug */,
+				308E96D01C875B7F00380735 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		308E96D11C875B7F00380735 /* Build configuration list for PBXNativeTarget "Reddit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				308E96D21C875B7F00380735 /* Debug */,
+				308E96D31C875B7F00380735 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		308E96D41C875B7F00380735 /* Build configuration list for PBXNativeTarget "RedditTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				308E96D51C875B7F00380735 /* Debug */,
+				308E96D61C875B7F00380735 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 308E96AC1C875B7E00380735 /* Project object */;
+}

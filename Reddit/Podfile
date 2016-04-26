@@ -17,6 +17,8 @@ target 'Reddit' do
   common_pods
 
   pod 'Kingfisher'
+  pod 'SnapKit'
+  pod 'Device'
 
 end
 
