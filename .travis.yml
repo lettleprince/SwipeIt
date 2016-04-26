@@ -1,8 +1,5 @@
 osx_image: xcode7.3
 language: objective-c
-cache:
-  directories:
-  - vendor/bundle
 env:
   global:
   - FASTLANE_SKIP_UPDATE_CHECK=true
@@ -16,9 +13,6 @@ env:
   - secure: gj/hCioOAmoO6d6E/HCJi0LFa1WQ5g/lntiEsZPBGMVE070ddyjwmKWAX8XrOhcprogaLIENdcc/rTk//YujR5ThV6M2lPRIF3snhpw7Ji1+piq7z6jlVamaAv97U5J9vLoJhHQfX47d6Tc/zXZZkpX1wmecg7/Yfiinx7EuyPtoeJGm6n9ivDLtTk36ygJKLj9BPmIARNFhiVw+Qe8RypwiO/nWgP+d40Zp75l5bMOsXaNfduEmGIpLpouc+yPvOlmeDaOQl7ZLl86YLayq7zN01rBG46IPK3nxljaZ6zRYW+oXwraLK8Pwj0dmrQ1QIHNQffXa9ox2tE1E9ONsbwbi+NZ8OZMLj/oIWL7dqRchniAdFSlr2T8wyq/72SCccKTn2Fu8/ffsp6T9CrHAaQQvs3T7LPETs9CreM8NogbODVWlXtHqlb25kJcxk2Pah2WQ6QebyKN6MwK5ShNKJ8nZmuAGEEal3JNNQomduu1IIMpzAkHjMNg2Hun/rLe4c13ueCfbu3aybwzVt+4HWftLEjg49EsKJe4j1wpoiV/mFKi0TSFaV+NBfeN7dWePm0toreu6jB52gylwZzDozcX8EJjyhHD6TbffTq1XDyVOXVWiv+1wKs6EO/WNWU3vO/cajay0A83W+EVRZsa6OiDGnmtiiqKon9piywQyq0Y=
 install:
 - bundle install
-- bundle exec fastlane oss
-before_script:
-- export LANG=en_US.UTF-8
-script: set -o pipefail && fastlane ios Tests
+- bundle exec fastlane ios Tests
 after_success:
 - sleep 5
