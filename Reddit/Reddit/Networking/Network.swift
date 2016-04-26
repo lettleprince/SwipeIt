@@ -12,13 +12,13 @@ import RxSwift
 
 class Network {
 
-  static var provider = RxMoyaProvider<RedditAPI>(endpointClosure: { target -> Endpoint<RedditAPI> in
+  static var provider = RxMoyaProvider<RedditAPI>(endpointClosure: {
+    target -> Endpoint<RedditAPI> in
     return Endpoint<RedditAPI>(URL: target.url,
       sampleResponseClosure: { .NetworkResponse(200, target.sampleData) },
       method: target.method,
       parameters: target.parameters,
       parameterEncoding: target.parameterEncoding,
       httpHeaderFields: target.headers)
-  })
-
+    })
 }

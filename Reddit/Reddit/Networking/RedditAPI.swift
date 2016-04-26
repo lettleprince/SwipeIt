@@ -11,7 +11,6 @@ import Moya
 
 enum RedditAPI {
 
-  case AccessToken(authorizationCode: String, redirectURL: String)
   case Listing(token: String?, name: String, listing: ListingType, after: String?)
 
 }
@@ -22,8 +21,6 @@ extension RedditAPI: TargetType {
 
   var path: String {
     switch self {
-    case .AccessToken:
-      return "api/v1/access_token"
     case .Listing(_, let name, let listing, _):
       return "r/\(name)/\(listing.path)"
     }
@@ -31,8 +28,6 @@ extension RedditAPI: TargetType {
 
   var method: Moya.Method {
     switch self {
-    case .AccessToken:
-      return .POST
     case .Listing:
       return .GET
     }
@@ -40,11 +35,6 @@ extension RedditAPI: TargetType {
 
   var parameters: [String: AnyObject]? {
     switch self {
-    case .AccessToken(let authorizationCode, let redirectURL):
-      return [
-        "grant_type": "authorization_code",
-        "code": authorizationCode,
-        "redirect_uri": redirectURL]
     case .Listing(_, _, _, let after):
       guard let after = after else {
         return nil
@@ -55,8 +45,6 @@ extension RedditAPI: TargetType {
 
   var sampleData: NSData {
     switch self {
-    case .AccessToken:
-      return JSONReader.readJSONData("AccessToken")
     case .Listing:
       return JSONReader.readJSONData("Listing")
     }
@@ -76,14 +64,6 @@ extension RedditAPI: TargetType {
 
   var parameterEncoding: ParameterEncoding {
     switch self {
-    case .AccessToken:
-      return ParameterEncoding.Custom {
-        (URLRequestConvertible, parameters) -> (NSMutableURLRequest, NSError?) in
-        if let string = parameters?.map({ "\($0.0)=\($0.1.description)" }).joinWithSeparator("&") {
-          URLRequestConvertible.URLRequest.HTTPBody = string.dataUsingEncoding(NSUTF8StringEncoding)
-        }
-        return (URLRequestConvertible.URLRequest, nil)
-      }
     default:
       return method == .GET ? .URL : .JSON
     }
