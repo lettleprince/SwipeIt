@@ -3,3 +3,4 @@ excluded:
   - Reddit/Resources
   - Pods
   - RedditTests
+  - fastlane
