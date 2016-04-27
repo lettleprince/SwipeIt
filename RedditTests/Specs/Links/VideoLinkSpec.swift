@@ -38,34 +38,34 @@ class VideoLinkSpec: QuickSpec {
         it("is votable") {
           expect(link.downs) == 0
           expect(link.ups) == 5140
-          expect(link.likes) == Likes.NoVote
+          expect(link.voted) == Voted.None
           expect(link.score) == 5140
         }
 
         it("is has Link properties") {
           expect(link.author) == "Rpeezy"
-          expect(link.authorFlairCssClass).to(beNil())
+          expect(link.authorFlairClass).to(beNil())
           expect(link.clicked) == false
           expect(link.domain) == "youtu.be"
           expect(link.hidden) == false
-          expect(link.isSelf) == false
-          expect(link.linkFlairCssClass).to(beNil())
+          expect(link.selfPost) == false
+          expect(link.linkFlairClass).to(beNil())
           expect(link.linkFlairText).to(beNil())
           expect(link.locked) == false
           expect(link.media).toNot(beNil())
           expect(link.secureMedia).toNot(beNil())
           expect(link.mediaEmbed).toNot(beNil())
           expect(link.secureMediaEmbed).toNot(beNil())
-          expect(link.preview).toNot(beNil())
-          expect(link.numComments).to(equal(809))
+          expect(link.previewImages).toNot(beNil())
+          expect(link.totalComments).to(equal(809))
           expect(link.nsfw) == false
-          expect(link.permalink) == "/r/videos/comments/4gb535/draymond_green_puts_reporter_in_check_after/"
+          expect(link.permalink) == NSURL(string: "http://reddit.com/r/videos/comments/4gb535/draymond_green_puts_reporter_in_check_after/")
           expect(link.saved) == false
           expect(link.selfText).to(beNil())
-          expect(link.selfTextHtml).to(beNil())
+          expect(link.selfTextHTML).to(beNil())
           expect(link.subreddit) == "videos"
           expect(link.subredditId) == "t5_2qh1e"
-          expect(link.thumbnail) == NSURL(string: "http://b.thumbs.redditmedia.com/1KJzrRRlOrXzjt5iM2z5NWjpnsWUmw4Jse5m5KsG5gw.jpg")
+          expect(link.thumbnailURL) == NSURL(string: "http://b.thumbs.redditmedia.com/1KJzrRRlOrXzjt5iM2z5NWjpnsWUmw4Jse5m5KsG5gw.jpg")
           expect(link.title) == "Draymond Green puts reporter in check after reporter tries to connect the Warriors winning to the Houston floods"
           expect(link.edited) == Edited.False
           expect(link.distinguished).to(beNil())
@@ -80,19 +80,19 @@ class VideoLinkSpec: QuickSpec {
           expect(link.suggestedSort).to(beNil())
           expect(link.userReports).to(beNil())
           expect(link.fromKind).to(beNil())
-          expect(link.archived).to(beFalse())
+          expect(link.archived) == false
           expect(link.reportReasons).to(beNil())
           expect(link.from).to(beNil())
           expect(link.fromId).to(beNil())
-          expect(link.quarantine).to(beFalse())
+          expect(link.quarantine) == false
           expect(link.modReports).to(beNil())
-          expect(link.numReports).to(beNil())
+          expect(link.totalReports) == 0
         }
 
         it("has one image preview") {
-          expect(link.preview?.count) == 1
+          expect(link.previewImages?.count) == 1
 
-          let preview = link.preview!.first!
+          let preview = link.previewImages!.first!
           expect(preview.identifier) == "m7-x_7nHEgt1HkglW6XrWRJEp7FsV9rqf-Ln60v9DuY"
           expect(preview.source.url) == NSURL(string: "https://i.redditmedia.com/mjUazJywhD7BnWxsK1OSCmkzYU3X4PnhSXVQjLbMb7Q.jpg?s=b9b4d0a271232d9844497a236010ede0")
           expect(preview.source.width) == 480
@@ -113,7 +113,7 @@ class VideoLinkSpec: QuickSpec {
 
         it("has media") {
           let media = link.media!
-          expect(media.type) == "video"
+          expect(media.type) == "youtube.com"
           expect(media.providerURL) == NSURL(string: "https://www.youtube.com/")
           expect(media.providerTitle) == "GREEN ON FLOODS"
           expect(media.authorName) == "Joe Farris"
@@ -129,7 +129,7 @@ class VideoLinkSpec: QuickSpec {
 
         it("has secure media") {
           let media = link.secureMedia!
-          expect(media.type) == "video"
+          expect(media.type) == "youtube.com"
           expect(media.providerURL) == NSURL(string: "https://www.youtube.com/")
           expect(media.providerTitle) == "GREEN ON FLOODS"
           expect(media.authorName) == "Joe Farris"
