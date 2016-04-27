@@ -11,6 +11,7 @@ import ObjectMapper
 
 struct Media: Mappable {
 
+  // MARK: Media
   var type: String!
   var authorName: String!
   var authorURL: NSURL!
@@ -33,7 +34,7 @@ struct Media: Mappable {
   }
 
   mutating func mapping(map: Map) {
-    type <- map["oembed.type"]
+    type <- map["type"]
     authorName <- map["oembed.author_name"]
     authorURL <- (map["oembed.author_url"], EmptyURLTransform())
     providerURL <- (map["oembed.provider_url"], EmptyURLTransform())

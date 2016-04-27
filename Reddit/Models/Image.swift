@@ -11,6 +11,7 @@ import ObjectMapper
 
 struct Image: Mappable {
 
+  // MARK: Image
   var url: NSURL!
   var width: Int!
   var height: Int!

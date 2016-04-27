@@ -11,6 +11,7 @@ import ObjectMapper
 
 struct AccessToken: Mappable {
 
+  // MARK: AccessToken
   var accessToken: String!
   var tokenType: String!
   var expiresIn: NSDate!

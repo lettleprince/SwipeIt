@@ -11,6 +11,7 @@ import ObjectMapper
 
 struct PreviewImage: Mappable {
 
+  // MARK: PreviewImage
   var identifier: String!
   var source: Image!
   var resolutions: [Image]!

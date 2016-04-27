@@ -10,7 +10,10 @@ import Foundation
 import ObjectMapper
 
 // https://github.com/reddit/reddit/wiki/JSON
-struct Link: Thing, Created, Votable, Mappable {
+struct Link: Votable, Mappable {
+
+  private static let imageFileExtensions = ["tiff", "tif", "jpg", "jpeg", "gif", "png"]
+  private static let redditShortURL = NSURL(string: "http://redd.it/")!
 
   // MARK: Thing
   var identifier: String!
@@ -20,7 +23,7 @@ struct Link: Thing, Created, Votable, Mappable {
   // MARK: Votable
   var downs: Int!
   var ups: Int!
-  var likes: Likes!
+  var voted: Voted!
   var score: Int!
 
   // MARK: Created
@@ -28,33 +31,33 @@ struct Link: Thing, Created, Votable, Mappable {
 
   // MARK: Link
   var author: String?
-  var authorFlairCssClass: String?
+  var authorFlairClass: String?
   var authorFlairText: String?
   var clicked: Bool!
   var domain: String!
   var hidden: Bool!
-  var isSelf: Bool!
-  var linkFlairCssClass: String?
+  var selfPost: Bool!
+  var linkFlairClass: String?
   var linkFlairText: String?
   var locked: Bool!
   var media: Media?
   var secureMedia: Media?
-  var mediaEmbed: MediaEmbed?
-  var secureMediaEmbed: MediaEmbed?
-  var preview: [PreviewImage]?
-  var numComments: Int!
+  var mediaEmbed: EmbeddedMedia?
+  var secureMediaEmbed: EmbeddedMedia?
+  var previewImages: [PreviewImage]?
+  var totalComments: Int!
   var nsfw: Bool!
-  var permalink: String!
+  var permalink: NSURL!
   var saved: Bool!
   var selfText: String?
-  var selfTextHtml: String?
+  var selfTextHTML: String?
   var subreddit: String!
   var subredditId: String!
-  var thumbnail: NSURL?
+  var thumbnailURL: NSURL?
   var title: String!
   var url: NSURL!
   var edited: Edited!
-  var distinguished: String?
+  var distinguished: Distinguished?
   var stickied: Bool!
   var gilded: Int!
   var visited: Bool!
@@ -73,44 +76,54 @@ struct Link: Thing, Created, Votable, Mappable {
   var fromId: String?
   var quarantine: Bool!
   var modReports: [String]?
-  var numReports: Int?
+  var totalReports: Int!
+
+  // MARK: Accessors
+  var isImageLink: Bool {
+    guard let fileExtension = url.pathExtension else {
+      return false
+    }
+    return Link.imageFileExtensions.contains(fileExtension)
+  }
+
+  var shortURL: NSURL {
+    return Link.redditShortURL.URLByAppendingPathComponent(identifier)
+  }
 
   // MARK: JSON
   init?(_ map: Map) { }
 
   mutating func mapping(map: Map) {
-    mappingThing(map)
     mappingVotable(map)
-    mappingCreated(map)
     mappingLink(map)
     mappingMisc(map)
   }
 
   private mutating func mappingLink(map: Map) {
     author <- map["data.author"]
-    authorFlairCssClass <- map["data.author_flair_css_class"]
+    authorFlairClass <- map["data.author_flair_css_class"]
     authorFlairText <- map["data.author_flair_text"]
     clicked <- map["data.clicked"]
     domain <- map["data.domain"]
     hidden <- map["data.hidden"]
-    isSelf <- map["data.is_self"]
-    linkFlairCssClass <- map["data.link_flair_css_class"]
+    selfPost <- map["data.is_self"]
+    linkFlairClass <- map["data.link_flair_css_class"]
     linkFlairText <- map["data.link_flair_text"]
     locked <- map["data.locked"]
     media <- map["data.media"]
     secureMedia <- map["data.secure_media"]
     mediaEmbed <- map["data.media_embed"]
     secureMediaEmbed <- map["data.secure_media_embed"]
-    preview <- map["data.preview.images"]
-    numComments <- map["data.num_comments"]
+    thumbnailURL <- map["data.thumbnail"]
+    totalComments <- map["data.num_comments"]
     nsfw <- map["data.over_18"]
-    permalink <- map["data.permalink"]
+    permalink <- (map["data.permalink"], PermalinkTransform())
     saved <- map["data.saved"]
     selfText <- (map["data.selftext"], EmptyStringTransform())
-    selfTextHtml <- map["data.selftext_html"]
+    selfTextHTML <- map["data.selftext_html"]
     subreddit <- map["data.subreddit"]
     subredditId <- map["data.subreddit_id"]
-    thumbnail <- (map["data.thumbnail"], EmptyURLTransform())
+    thumbnailURL <- (map["data.thumbnail"], EmptyURLTransform())
     title <- map["data.title"]
     url <- (map["data.url"], EmptyURLTransform())
     edited <- (map["data.edited"], EditedTransform())
@@ -118,6 +131,7 @@ struct Link: Thing, Created, Votable, Mappable {
     stickied <- map["data.stickied"]
     gilded <- map["data.gilded"]
     visited <- map["data.visited"]
+    previewImages <- map["data.preview.images"]
   }
 
   private mutating func mappingMisc(map: Map) {
@@ -134,7 +148,7 @@ struct Link: Thing, Created, Votable, Mappable {
     fromId <- map["data.from_id"]
     quarantine <- map["data.quarantine"]
     modReports <- (map["data.mod_reports"], EmptyArrayTransform())
-    numReports <- map["data.num_reports"]
+    totalReports <- (map["data.num_reports"], ZeroDefaultTransform())
   }
 
 }
