@@ -11,20 +11,20 @@ import Nimble
 import Moya_ObjectMapper
 import NSObject_Rx
 
-class ListingSpec: QuickSpec {
+class LinkListingSpec: QuickSpec {
 
   override func spec() {
-    describe("A listing") {
-      var listing: Listing!
+    describe("A link listing") {
+      var listing: LinkListing!
       describe("can be loaded") {
-        NetworkMock.provider.request(.Listing(token: nil, name: "all", listing: .Hot, after: nil))
-          .mapObject(Listing)
+        NetworkMock.provider.request(.LinkListing(token: nil, subredditName: "all", listing: .Hot, after: nil))
+          .mapObject(LinkListing)
           .subscribeNext { networkListing in
             listing = networkListing
           }.addDisposableTo(self.rx_disposeBag)
-        expect(listing).toNot(beNil())
 
         it("has 25 links") {
+          expect(listing).toNot(beNil())
           expect(listing.links?.count) == 25
         }
       }
