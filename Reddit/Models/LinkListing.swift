@@ -9,8 +9,10 @@
 import Foundation
 import ObjectMapper
 
-struct Listing: Mappable {
+struct LinkListing: Mappable, Listing {
 
+  // MARK: LinkListing
+  var before: String?
   var after: String?
   var links: [Link]?
 
@@ -18,7 +20,7 @@ struct Listing: Mappable {
   init?(_ map: Map) { }
 
   mutating func mapping(map: Map) {
-    after <- map["data.after"]
+    mappingListing(map)
     links <- map["data.children"]
   }
 
