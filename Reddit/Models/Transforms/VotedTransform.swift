@@ -9,14 +9,14 @@
 import Foundation
 import ObjectMapper
 
-class LikesTransform: TransformType {
-  typealias Object = Likes
+class VotedTransform: TransformType {
+  typealias Object = Voted
   typealias JSON = Bool
 
   init() {}
 
   func transformFromJSON(value: AnyObject?) -> Object? {
-    return Likes.fromBool(value as? JSON)
+    return Voted.fromBool(value as? JSON)
   }
 
   func transformToJSON(value: Object?) -> JSON? {

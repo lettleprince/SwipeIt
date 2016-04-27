@@ -8,39 +8,39 @@
 
 import Foundation
 
-enum Likes: Equatable {
+enum Voted: Equatable {
 
-  case True
-  case False
-  case NoVote
+  case Upvoted
+  case Downvoted
+  case None
 
   var value: Bool? {
     switch self {
-    case .True:
+    case .Upvoted:
       return true
-    case .False:
+    case .Downvoted:
       return false
-    case .NoVote:
+    case .None:
       return nil
     }
   }
 
-  static func fromBool(bool: Bool?) -> Likes {
+  static func fromBool(bool: Bool?) -> Voted {
     guard let bool = bool else {
-      return .NoVote
+      return .None
     }
-    return bool ? .True : .False
+    return bool ? .Upvoted : .Downvoted
   }
 
 }
 
-func == (lhs: Likes, rhs: Likes) -> Bool {
+func == (lhs: Voted, rhs: Voted) -> Bool {
   switch (lhs, rhs) {
-  case (.False, .False):
+  case (.Downvoted, .Downvoted):
     return true
-  case (.True, .True):
+  case (.Upvoted, .Upvoted):
     return true
-  case (.NoVote, .NoVote):
+  case (.None, .None):
     return true
   default:
     return false

@@ -9,6 +9,7 @@
 import Foundation
 
 enum ListingType: Equatable {
+
   case Hot
   case New
   case Rising

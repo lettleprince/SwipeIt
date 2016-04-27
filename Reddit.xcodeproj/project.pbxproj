@@ -616,9 +616,9 @@
 		<dict>
 			<key>children</key>
 			<array>
-				<string>308D88401CD0FEED00C78E74</string>
 				<string>308D883E1CD0FEE300C78E74</string>
 				<string>308D883F1CD0FEE800C78E74</string>
+				<string>308D88401CD0FEED00C78E74</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -1047,6 +1047,8 @@
 			<string>PBXGroup</string>
 			<key>name</key>
 			<string>Links</string>
+			<key>path</key>
+			<string>Links</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1061,6 +1063,8 @@
 			<string>PBXGroup</string>
 			<key>name</key>
 			<string>Listings</string>
+			<key>path</key>
+			<string>Listings</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1073,6 +1077,8 @@
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
+			<string>Subreddits</string>
+			<key>path</key>
 			<string>Subreddits</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
@@ -1121,11 +1127,11 @@
 		<dict>
 			<key>children</key>
 			<array>
+				<string>CA566C387AC86B72B8D3B00C</string>
+				<string>128B46337E9A8D059D7EF603</string>
 				<string>308E96B51C875B7E00380735</string>
 				<string>308E96B61C875B7E00380735</string>
 				<string>308E96CB1C875B7F00380735</string>
-				<string>128B46337E9A8D059D7EF603</string>
-				<string>CA566C387AC86B72B8D3B00C</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -2312,9 +2318,9 @@ fi</string>
 				<string>309462C81CCD8C4300E18655</string>
 				<string>308E96F31C87766A00380735</string>
 				<string>30DDB22B1CCE6667000B72E5</string>
+				<string>308D88431CD0FFEA00C78E74</string>
 				<string>30482CAF1CCFDC080063D238</string>
 				<string>309462D41CCE5C8800E18655</string>
-				<string>308D88431CD0FFEA00C78E74</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>

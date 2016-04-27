@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-protocol Created {
+protocol Created: Thing {
 
   var created: NSDate! { get set }
 
@@ -20,6 +20,7 @@ protocol Created {
 extension Created {
 
   mutating func mappingCreated(map: Map) {
+    mappingThing(map)
     created <- (map["data.created_utc"], EpochDateTransform())
   }
 
