@@ -9,8 +9,9 @@
 import Foundation
 import ObjectMapper
 
-struct MediaEmbed: Mappable {
+struct EmbeddedMedia: Mappable {
 
+  // MARK: EmbeddedMedia
   var content: String!
   var scrolling: Bool!
   var width: Int!
