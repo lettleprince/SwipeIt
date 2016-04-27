@@ -37,24 +37,18 @@ extension WalkthroughViewController {
 
   private func setupViewModel() {
     viewModel.loggedIn
-      .subscribe { event in
-      switch event {
-      case .Next:
-        self.goToMainStoryboard()
-      case .Error(let error):
-        guard let loginError = error as? LoginError else {
+      .bindNext { error in
+        guard let error = error else {
+          self.goToMainStoryboard()
           return
         }
-        self.showLoginError(loginError)
-      default:
-        break
-      }
+        self.showLoginError(error)
     }.addDisposableTo(rx_disposeBag)
   }
 }
 
 // MARK: UI
-extension WalkthroughViewController {
+extension WalkthroughViewController: AlerteableViewController {
 
   private func goToMainStoryboard() {
     print("go to main storyboard")
@@ -62,6 +56,10 @@ extension WalkthroughViewController {
 
   private func showLoginError(error: LoginError) {
     print("Error \(error)")
+    presentAlert(tr(.LoginErrorTitle), message: error.description, buttonTitle: tr(.AlertButtonOK))
+      .bindNext { (buttonClicked) in
+      print(buttonClicked)
+    }.addDisposableTo(rx_disposeBag)
   }
 
 }

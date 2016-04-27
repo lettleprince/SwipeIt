@@ -10,3 +10,10 @@
 
 "Walkthrough.Button.Login" = "Login";
 "Walkthrough.Button.Skip" = "Skip";
+
+"Alert.Button.Cancel" = "Cancel";
+"Alert.Button.OK" = "OK";
+
+"Login.Error.Title" = "Log in error";
+"Login.Error.Unknown" = "Could not log in. Please try again later";
+"Login.Error.UserCancelled" = "Login was cancelled";

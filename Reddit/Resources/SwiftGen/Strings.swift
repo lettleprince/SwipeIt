@@ -9,6 +9,16 @@ enum L10n {
   case WalkthroughButtonLogin
   /// Skip
   case WalkthroughButtonSkip
+  /// Cancel
+  case AlertButtonCancel
+  /// OK
+  case AlertButtonOK
+  /// Log in error
+  case LoginErrorTitle
+  /// Could not log in. Please try again later
+  case LoginErrorUnknown
+  /// Login was cancelled
+  case LoginErrorUserCancelled
 }
 
 extension L10n: CustomStringConvertible {
@@ -22,6 +32,16 @@ extension L10n: CustomStringConvertible {
         return L10n.tr("Walkthrough.Button.Login")
       case .WalkthroughButtonSkip:
         return L10n.tr("Walkthrough.Button.Skip")
+      case .AlertButtonCancel:
+        return L10n.tr("Alert.Button.Cancel")
+      case .AlertButtonOK:
+        return L10n.tr("Alert.Button.OK")
+      case .LoginErrorTitle:
+        return L10n.tr("Login.Error.Title")
+      case .LoginErrorUnknown:
+        return L10n.tr("Login.Error.Unknown")
+      case .LoginErrorUserCancelled:
+        return L10n.tr("Login.Error.UserCancelled")
     }
   }
 

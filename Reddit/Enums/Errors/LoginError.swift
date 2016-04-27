@@ -9,6 +9,21 @@
 import Foundation
 
 enum LoginError: ErrorType {
+
   case UserCancelled
   case Unknown
+
+}
+
+extension LoginError: CustomStringConvertible {
+
+  var description: String {
+    switch self {
+    case .UserCancelled:
+      return tr(.LoginErrorUserCancelled)
+    case .Unknown:
+      return tr(.LoginErrorUnknown)
+    }
+  }
+
 }

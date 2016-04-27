@@ -12,27 +12,26 @@ import RxSwift
 // MARK: Properties and initializers
 class WalkthroughViewModel {
 
-  private let _loggedIn = PublishSubject<Void>()
+  private let _loggedIn = PublishSubject<LoginError?>()
   private var accessToken: AccessToken?
 
-  var loggedIn: Observable<Void> {
+  var loggedIn: Observable<LoginError?> {
     return _loggedIn.asObservable()
   }
 
   var loginViewModel: LoginViewModel {
     return LoginViewModel(loginCallback: loginWithAccessToken)
   }
-
 }
 
 extension WalkthroughViewModel {
 
   private func loginWithAccessToken(accessToken: AccessToken?, error: LoginError?) {
     if let error = error {
-      _loggedIn.onError(error)
+      _loggedIn.onNext(error)
     } else {
       self.accessToken = accessToken
-      _loggedIn.onNext()
+      _loggedIn.onNext(nil)
     }
   }
 }
