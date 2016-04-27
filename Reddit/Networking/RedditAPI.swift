@@ -11,7 +11,8 @@ import Moya
 
 enum RedditAPI {
 
-  case Listing(token: String?, name: String, listing: ListingType, after: String?)
+  case SubredditListing(token: String, after: String?)
+  case LinkListing(token: String?, subredditName: String, listing: ListingType, after: String?)
 
 }
 
@@ -21,21 +22,28 @@ extension RedditAPI: TargetType {
 
   var path: String {
     switch self {
-    case .Listing(_, let name, let listing, _):
-      return "r/\(name)/\(listing.path)"
+    case .SubredditListing:
+      return "subreddits/mine"
+    case .LinkListing(_, let subredditName, let listing, _):
+      return "r/\(subredditName)/\(listing.path)"
     }
   }
 
   var method: Moya.Method {
     switch self {
-    case .Listing:
+    default:
       return .GET
     }
   }
 
   var parameters: [String: AnyObject]? {
     switch self {
-    case .Listing(_, _, _, let after):
+    case .SubredditListing(_, let after):
+      guard let after = after else {
+        return nil
+      }
+      return ["after": after]
+    case .LinkListing(_, _, _, let after):
       guard let after = after else {
         return nil
       }
@@ -45,21 +53,27 @@ extension RedditAPI: TargetType {
 
   var sampleData: NSData {
     switch self {
-    case .Listing:
-      return JSONReader.readJSONData("Listing")
+    case .SubredditListing:
+      return JSONReader.readJSONData("SubredditList")
+    case .LinkListing:
+      return JSONReader.readJSONData("LinkListing")
     }
   }
 
   var headers: [String: String]? {
+    var bearerToken: String? = nil
     switch self {
-    case .Listing(let token, _, _, _):
-      guard let token = token else {
-        return nil
-      }
-      return ["Authorization": "bearer \(token)"]
+    case .SubredditListing(let token, _):
+      bearerToken = token
+    case .LinkListing(let token, _, _, _):
+      bearerToken = token
     default:
       return nil
     }
+    guard let token = bearerToken else {
+      return nil
+    }
+    return ["Authorization": "bearer \(token)"]
   }
 
   var parameterEncoding: ParameterEncoding {
@@ -70,7 +84,7 @@ extension RedditAPI: TargetType {
   }
 
   var url: String {
-    return "\(baseURL)\(path)"
+    return "\(baseURL)\(path).json"
   }
 
 }
