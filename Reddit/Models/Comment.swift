@@ -9,30 +9,34 @@
 import Foundation
 import ObjectMapper
 
-struct Comment: Thing, Created, Votable, Mappable {
+struct Comment: Votable, Mappable {
 
-  // Thing
+  // MARK: Constants
+  private static let deletedString = "[deleted]"
+
+  // MARK: Thing
   var identifier: String!
   var name: String!
   var kind: String!
 
-  // Votable
+  // MARK: Votable
   var downs: Int!
   var ups: Int!
-  var likes: Likes!
+  var voted: Voted!
   var score: Int!
 
-  // Created
+  // MARK: Created
   var created: NSDate!
 
-  // Comment
+  // MARK: Comment
   var approvedby: String?
   var author: String!
-  var authorFlairCssClass: String!
+  var linkAuthor: String?
+  var authorFlairClass: String!
   var authorFlairText: String?
   var bannedBy: String?
   var body: String!
-  var bodyHtml: String!
+  var bodyHTML: String!
   var edited: Edited!
   var gilded: Int!
   var archived: Bool!
@@ -45,15 +49,53 @@ struct Comment: Thing, Created, Votable, Mappable {
   var controversiality: Int!
   var subreddit: String!
   var subredditId: String!
-  var replies: [Comment]!
+  var replies: [Comment]?
+  var submissionContentText: String?
+  var submissionContentHTML: String?
+  var submissionLink: String?
+  var submissionParent: String?
+  var distinguished: Distinguished?
+
+  // MARK: Accessors
+  var deleted: Bool {
+    return author == Comment.deletedString && body == Comment.deletedString
+  }
 
   // MARK: JSON
   init?(_ map: Map) { }
 
   mutating func mapping(map: Map) {
-    mappingThing(map)
     mappingVotable(map)
-    mappingCreated(map)
+    mappingComment(map)
+  }
+
+  private mutating func mappingComment(map: Map) {
+    approvedby <- map["data.approved_by"]
+    bannedBy <- map["data.banned_by"]
+    author <- map["data.author"]
+    linkAuthor <- map["data.link_author"]
+    body <- map["data.body"]
+    bodyHTML <- map["data.body_html"]
+    scoreHidden <- map["data.score_hidden"]
+    replies <- map["data.replies.data.children"]
+    edited <- map["data.edited"]
+    archived <- map["data.archived"]
+    saved <- map["data.saved"]
+    linkId <- map["data.link_id"]
+    gilded <- map["data.gilded"]
+    score <- map["data.score"]
+    controversiality <- map ["controversiality"]
+    parentId <- map["data.parent_id"]
+    subreddit <- map["data.subreddit"]
+    subredditId <- map["data.subreddit_id"]
+    authorFlairText <- map["data.author_flair_text"]
+    authorFlairClass <- map["data.author_flair_css_class"]
+    totalReports <- (map["data.num_reports"], ZeroDefaultTransform())
+    submissionContentText <- map["data.contentText"]
+    submissionContentHTML <- map["data.contentHTML"]
+    submissionLink <- map["data.link"]
+    submissionParent <- map["data.parent"]
+    distinguished <- map["data.distinguished"]
   }
 
 }
