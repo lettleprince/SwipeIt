@@ -12,7 +12,10 @@ import Moya
 enum RedditAPI {
 
   case SubredditListing(token: String, after: String?)
+  case MultiredditListing(token: String)
+  case LinkDetails(token: String?, permalink: String)
   case LinkListing(token: String?, subredditName: String, listing: ListingType, after: String?)
+  case UserDetails(token: String?, username: String)
 
 }
 
@@ -23,9 +26,15 @@ extension RedditAPI: TargetType {
   var path: String {
     switch self {
     case .SubredditListing:
-      return "subreddits/mine"
+      return "/api/multi/mine"
+    case .MultiredditListing:
+      return "/subreddits/mine"
     case .LinkListing(_, let subredditName, let listing, _):
-      return "r/\(subredditName)/\(listing.path)"
+      return "/r/\(subredditName)/\(listing.path)"
+    case .LinkDetails(_, let permalink):
+      return permalink
+    case .UserDetails(_, let username):
+      return "/user/\(username)/about"
     }
   }
 
@@ -48,29 +57,28 @@ extension RedditAPI: TargetType {
         return nil
       }
       return ["after": after]
+    default:
+      return nil
     }
   }
 
   var sampleData: NSData {
     switch self {
     case .SubredditListing:
-      return JSONReader.readJSONData("SubredditList")
+      return JSONReader.readJSONData("SubredditListing")
     case .LinkListing:
       return JSONReader.readJSONData("LinkListing")
+    case .MultiredditListing:
+      return JSONReader.readJSONData("MultiredditListing")
+    case .LinkDetails:
+      return JSONReader.readJSONData("LinkDetails")
+    case .UserDetails:
+      return JSONReader.readJSONData("UserDetails")
     }
   }
 
   var headers: [String: String]? {
-    var bearerToken: String? = nil
-    switch self {
-    case .SubredditListing(let token, _):
-      bearerToken = token
-    case .LinkListing(let token, _, _, _):
-      bearerToken = token
-    default:
-      return nil
-    }
-    guard let token = bearerToken else {
+    guard let token = token else {
       return nil
     }
     return ["Authorization": "bearer \(token)"]
@@ -80,6 +88,21 @@ extension RedditAPI: TargetType {
     switch self {
     default:
       return method == .GET ? .URL : .JSON
+    }
+  }
+
+  var token: String? {
+    switch self {
+    case .SubredditListing(let token, _):
+      return token
+    case .LinkListing(let token, _, _, _):
+      return token
+    case .MultiredditListing(let token):
+      return token
+    case .LinkDetails(let token, _):
+      return token
+    case .UserDetails(let token, _):
+      return token
     }
   }
 

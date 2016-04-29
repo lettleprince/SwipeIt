@@ -10,30 +10,6 @@
 	<string>46</string>
 	<key>objects</key>
 	<dict>
-		<key>046A1C1EBEC6BBA591E4E913</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>&#128230; Embed Pods Frameworks</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Target Support Files/Pods-Reddit/Pods-Reddit-frameworks.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
 		<key>096603DD77AAD187A94A8AC4</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -103,6 +79,263 @@
 			<string>Pods/Target Support Files/Pods-Reddit/Pods-Reddit.debug.xcconfig</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>302786471CD2668F0072F711</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>JSONKeyTransform.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>302786481CD2668F0072F711</key>
+		<dict>
+			<key>fileRef</key>
+			<string>302786471CD2668F0072F711</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>302786491CD2668F0072F711</key>
+		<dict>
+			<key>fileRef</key>
+			<string>302786471CD2668F0072F711</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>3027864D1CD26CF80072F711</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>LastElementTransform.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3027864E1CD26CF80072F711</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3027864D1CD26CF80072F711</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>3027864F1CD26CF80072F711</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3027864D1CD26CF80072F711</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>302786501CD26EA40072F711</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.json</string>
+			<key>path</key>
+			<string>CommentsListing.json</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>302786511CD26EA40072F711</key>
+		<dict>
+			<key>fileRef</key>
+			<string>302786501CD26EA40072F711</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>302786521CD26EED0072F711</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.json</string>
+			<key>path</key>
+			<string>LinkDetails.json</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>302786531CD26EED0072F711</key>
+		<dict>
+			<key>fileRef</key>
+			<string>302786521CD26EED0072F711</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>302786541CD2702A0072F711</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>LinkDetailsSpec.swift</string>
+			<key>path</key>
+			<string>LinkDetailsSpec.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>302786551CD2702A0072F711</key>
+		<dict>
+			<key>fileRef</key>
+			<string>302786541CD2702A0072F711</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>302786561CD271190072F711</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>302786571CD2714F0072F711</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Moya-ObjectMapper+Custom</string>
+			<key>path</key>
+			<string>Moya-ObjectMapper+Custom</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>302786571CD2714F0072F711</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>Response+CustomMappers.swift</string>
+			<key>path</key>
+			<string>Response+CustomMappers.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>302786581CD2714F0072F711</key>
+		<dict>
+			<key>fileRef</key>
+			<string>302786571CD2714F0072F711</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>302786591CD2714F0072F711</key>
+		<dict>
+			<key>fileRef</key>
+			<string>302786571CD2714F0072F711</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>303E22051CD128BB005F0A8B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.json</string>
+			<key>path</key>
+			<string>MultiredditListing.json</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>303E22061CD128BB005F0A8B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>303E22051CD128BB005F0A8B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>303E22071CD128E8005F0A8B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>MutliredditListingSpec.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>303E22081CD128E8005F0A8B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>303E22071CD128E8005F0A8B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>303E220B1CD12D1F005F0A8B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.json</string>
+			<key>path</key>
+			<string>Multireddit.json</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>303E220C1CD12D1F005F0A8B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>303E220B1CD12D1F005F0A8B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>303E220D1CD12D45005F0A8B</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>303E220E1CD12D57005F0A8B</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Multireddits</string>
+			<key>path</key>
+			<string>Multireddits</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>303E220E1CD12D57005F0A8B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>MultiredditSpec.swift</string>
+			<key>path</key>
+			<string>MultiredditSpec.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>303E220F1CD12D57005F0A8B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>303E220E1CD12D57005F0A8B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
 		</dict>
 		<key>303FA7C71CCA8E060027658E</key>
 		<dict>
@@ -257,7 +490,7 @@
 			<key>lastKnownFileType</key>
 			<string>text.json</string>
 			<key>path</key>
-			<string>SubredditList.json</string>
+			<string>SubredditListing.json</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -277,7 +510,7 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.swift</string>
 			<key>path</key>
-			<string>SubredditListSpec.swift</string>
+			<string>SubredditListingSpec.swift</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -616,7 +849,9 @@
 		<dict>
 			<key>children</key>
 			<array>
+				<string>30D7FF441CD3670000808701</string>
 				<string>308D883E1CD0FEE300C78E74</string>
+				<string>303E220D1CD12D45005F0A8B</string>
 				<string>308D883F1CD0FEE800C78E74</string>
 				<string>308D88401CD0FEED00C78E74</string>
 			</array>
@@ -698,6 +933,8 @@
 				<string>309462CB1CCD956200E18655</string>
 				<string>30DDB22F1CCE69BB000B72E5</string>
 				<string>30806C081C8DA79000EB1BD5</string>
+				<string>302786471CD2668F0072F711</string>
+				<string>3027864D1CD26CF80072F711</string>
 				<string>308D882C1CD0D6B700C78E74</string>
 				<string>30DDB2681CCF5CED000B72E5</string>
 				<string>308D88111CD0C7F600C78E74</string>
@@ -954,33 +1191,6 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>308D88321CD0D77F00C78E74</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>MultiredditListing.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>308D88331CD0D77F00C78E74</key>
-		<dict>
-			<key>fileRef</key>
-			<string>308D88321CD0D77F00C78E74</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>308D88341CD0D77F00C78E74</key>
-		<dict>
-			<key>fileRef</key>
-			<string>308D88321CD0D77F00C78E74</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
 		<key>308D88351CD0D8BB00C78E74</key>
 		<dict>
 			<key>fileEncoding</key>
@@ -1045,8 +1255,6 @@
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Links</string>
 			<key>path</key>
 			<string>Links</string>
 			<key>sourceTree</key>
@@ -1056,15 +1264,18 @@
 		<dict>
 			<key>children</key>
 			<array>
+				<string>302786541CD2702A0072F711</string>
 				<string>308216051CCA80D700D9A18B</string>
+				<string>303E22071CD128E8005F0A8B</string>
 				<string>30482CB11CCFDD620063D238</string>
+				<string>30D7FF491CD36DE700808701</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>Listings</string>
+			<string>Network</string>
 			<key>path</key>
-			<string>Listings</string>
+			<string>Network</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1076,8 +1287,6 @@
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Subreddits</string>
 			<key>path</key>
 			<string>Subreddits</string>
 			<key>sourceTree</key>
@@ -1247,13 +1456,14 @@
 				<string>30A4817F1CCF6FDC000F1090</string>
 				<string>30DDB2541CCEDE52000B72E5</string>
 				<string>308E96EB1C876B8200380735</string>
+				<string>302786481CD2668F0072F711</string>
 				<string>308E96F91C8776BD00380735</string>
 				<string>30DDB2531CCEDE52000B72E5</string>
 				<string>308D88301CD0D75D00C78E74</string>
 				<string>30806BFF1C8D9E0400EB1BD5</string>
+				<string>3027864E1CD26CF80072F711</string>
 				<string>30DDB23F1CCED41B000B72E5</string>
 				<string>30806C011C8D9E4E00EB1BD5</string>
-				<string>308D88331CD0D77F00C78E74</string>
 				<string>30806C031C8DA0D900EB1BD5</string>
 				<string>30DDB2451CCEDBAA000B72E5</string>
 				<string>30806BFB1C8D9A6C00EB1BD5</string>
@@ -1267,6 +1477,7 @@
 				<string>308E96ED1C876C2700380735</string>
 				<string>30DDB26C1CCF68B0000B72E5</string>
 				<string>30F6C9B01C8A142500616707</string>
+				<string>302786581CD2714F0072F711</string>
 				<string>30DDB25A1CCEE4B3000B72E5</string>
 			</array>
 			<key>isa</key>
@@ -1316,14 +1527,11 @@
 			<key>buildPhases</key>
 			<array>
 				<string>75D24EEF61EB416E58CB91EF</string>
-				<string>611F95E3417C8CEA6CED900A</string>
 				<string>308E96D71C87646500380735</string>
 				<string>30DDB2481CCEDD34000B72E5</string>
 				<string>308E96B01C875B7E00380735</string>
 				<string>308E96B11C875B7E00380735</string>
 				<string>308E96B21C875B7E00380735</string>
-				<string>046A1C1EBEC6BBA591E4E913</string>
-				<string>3F27E9DDFFE4C0F106263859</string>
 				<string>3B702963A5ABA975CE20080B</string>
 				<string>0FEBA5741987740F00D05897</string>
 			</array>
@@ -1518,21 +1726,28 @@
 			<string>2147483647</string>
 			<key>files</key>
 			<array>
+				<string>302786491CD2668F0072F711</string>
 				<string>308D880D1CD0C51200C78E74</string>
 				<string>308D88101CD0C74B00C78E74</string>
+				<string>303E22081CD128E8005F0A8B</string>
 				<string>308D88221CD0CCB600C78E74</string>
+				<string>302786551CD2702A0072F711</string>
 				<string>303FA7C81CCA8E060027658E</string>
 				<string>303FA7CE1CCA8ECB0027658E</string>
 				<string>30482CAB1CCFD8580063D238</string>
 				<string>3082160C1CCA846600D9A18B</string>
 				<string>303FA7C71CCA8E060027658E</string>
 				<string>308216121CCA846F00D9A18B</string>
+				<string>3027864F1CD26CF80072F711</string>
 				<string>303FA7CD1CCA8EC00027658E</string>
+				<string>30D7FF461CD3671300808701</string>
 				<string>308D88371CD0D8BB00C78E74</string>
+				<string>30D7FF4A1CD36DE700808701</string>
 				<string>3082160D1CCA846F00D9A18B</string>
 				<string>308D881C1CD0CABD00C78E74</string>
 				<string>3082160A1CCA846600D9A18B</string>
 				<string>309462D81CCE5CEF00E18655</string>
+				<string>302786591CD2714F0072F711</string>
 				<string>3082160E1CCA846F00D9A18B</string>
 				<string>308216081CCA813900D9A18B</string>
 				<string>308D881F1CD0CB7B00C78E74</string>
@@ -1551,7 +1766,6 @@
 				<string>30482CB21CCFDD620063D238</string>
 				<string>303FA7CA1CCA8E150027658E</string>
 				<string>309462C61CCD8A5C00E18655</string>
-				<string>308D88341CD0D77F00C78E74</string>
 				<string>30482CAC1CCFD85C0063D238</string>
 				<string>30A481801CCF7461000F1090</string>
 				<string>308D883A1CD0F78E00C78E74</string>
@@ -1562,6 +1776,7 @@
 				<string>30DDB2311CCE69BB000B72E5</string>
 				<string>308D882E1CD0D6B700C78E74</string>
 				<string>309462D01CCD971D00E18655</string>
+				<string>303E220F1CD12D57005F0A8B</string>
 				<string>3082160F1CCA846F00D9A18B</string>
 				<string>3082160B1CCA846600D9A18B</string>
 			</array>
@@ -1589,13 +1804,19 @@
 			<string>2147483647</string>
 			<key>files</key>
 			<array>
+				<string>302786531CD26EED0072F711</string>
 				<string>308D88441CD0FFEA00C78E74</string>
+				<string>30D7FF481CD36D3200808701</string>
 				<string>309462CA1CCD8C4300E18655</string>
+				<string>303E22061CD128BB005F0A8B</string>
 				<string>303FA7D01CCA919C0027658E</string>
 				<string>309462D61CCE5C8800E18655</string>
 				<string>303FA7CF1CCA919C0027658E</string>
 				<string>30482CB01CCFDC080063D238</string>
+				<string>303E220C1CD12D1F005F0A8B</string>
 				<string>30DDB22C1CCE6668000B72E5</string>
+				<string>302786511CD26EA40072F711</string>
+				<string>30D7FF431CD3659300808701</string>
 			</array>
 			<key>isa</key>
 			<string>PBXResourcesBuildPhase</string>
@@ -1609,12 +1830,9 @@
 			<key>buildPhases</key>
 			<array>
 				<string>32DA23759D40FB62A1152396</string>
-				<string>F3041FEB8B385F0C30B5882A</string>
 				<string>308E96C41C875B7F00380735</string>
 				<string>308E96C51C875B7F00380735</string>
 				<string>308E96C61C875B7F00380735</string>
-				<string>380B7DB8104593AC24BEDE0E</string>
-				<string>B0D48D2E16B0D582BE6DB7CD</string>
 				<string>53AE95277C7122B8602529AF</string>
 				<string>5DED82D991154340B3F3BF1E</string>
 			</array>
@@ -2028,6 +2246,7 @@ fi</string>
 		<dict>
 			<key>children</key>
 			<array>
+				<string>302786561CD271190072F711</string>
 				<string>30DDB2621CCEF3CA000B72E5</string>
 				<string>30DDB25C1CCEED7B000B72E5</string>
 			</array>
@@ -2093,7 +2312,6 @@ fi</string>
 				<string>30806C021C8DA0D900EB1BD5</string>
 				<string>308D881A1CD0CABD00C78E74</string>
 				<string>308D881D1CD0CB7B00C78E74</string>
-				<string>308D88321CD0D77F00C78E74</string>
 				<string>30806BFE1C8D9E0400EB1BD5</string>
 				<string>30F6C9AB1C8A0C2200616707</string>
 				<string>308D882F1CD0D75D00C78E74</string>
@@ -2315,11 +2533,17 @@ fi</string>
 			<key>children</key>
 			<array>
 				<string>308E96F11C87764F00380735</string>
+				<string>30D7FF421CD3659300808701</string>
+				<string>302786501CD26EA40072F711</string>
 				<string>309462C81CCD8C4300E18655</string>
+				<string>302786521CD26EED0072F711</string>
 				<string>308E96F31C87766A00380735</string>
+				<string>303E220B1CD12D1F005F0A8B</string>
+				<string>303E22051CD128BB005F0A8B</string>
 				<string>30DDB22B1CCE6667000B72E5</string>
 				<string>308D88431CD0FFEA00C78E74</string>
 				<string>30482CAF1CCFDC080063D238</string>
+				<string>30D7FF471CD36D3200808701</string>
 				<string>309462D41CCE5C8800E18655</string>
 			</array>
 			<key>isa</key>
@@ -2587,6 +2811,103 @@ fi</string>
 		<dict>
 			<key>fileRef</key>
 			<string>30DDB2681CCF5CED000B72E5</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>30D7FF421CD3659300808701</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.json</string>
+			<key>path</key>
+			<string>Comment.json</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>30D7FF431CD3659300808701</key>
+		<dict>
+			<key>fileRef</key>
+			<string>30D7FF421CD3659300808701</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>30D7FF441CD3670000808701</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>30D7FF451CD3671300808701</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Comments</string>
+			<key>path</key>
+			<string>Comments</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>30D7FF451CD3671300808701</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>CommentSpec.swift</string>
+			<key>path</key>
+			<string>CommentSpec.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>30D7FF461CD3671300808701</key>
+		<dict>
+			<key>fileRef</key>
+			<string>30D7FF451CD3671300808701</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>30D7FF471CD36D3200808701</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.json</string>
+			<key>path</key>
+			<string>UserDetails.json</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>30D7FF481CD36D3200808701</key>
+		<dict>
+			<key>fileRef</key>
+			<string>30D7FF471CD36D3200808701</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>30D7FF491CD36DE700808701</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>UserDetailsSpec.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>30D7FF4A1CD36DE700808701</key>
+		<dict>
+			<key>fileRef</key>
+			<string>30D7FF491CD36DE700808701</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -3327,30 +3648,6 @@ fi
 			<key>showEnvVarsInLog</key>
 			<string>0</string>
 		</dict>
-		<key>380B7DB8104593AC24BEDE0E</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>&#128230; Embed Pods Frameworks</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Target Support Files/Pods-RedditTests/Pods-RedditTests-frameworks.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
 		<key>394127CF07D65FD4A85054E8</key>
 		<dict>
 			<key>explicitFileType</key>
@@ -3384,30 +3681,6 @@ fi
 			<string>/bin/sh</string>
 			<key>shellScript</key>
 			<string>"${SRCROOT}/Pods/Target Support Files/Pods-Reddit/Pods-Reddit-frameworks.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>3F27E9DDFFE4C0F106263859</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>&#128230; Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Target Support Files/Pods-Reddit/Pods-Reddit-resources.sh"
 </string>
 			<key>showEnvVarsInLog</key>
 			<string>0</string>
@@ -3456,36 +3729,6 @@ fi
 			<string>/bin/sh</string>
 			<key>shellScript</key>
 			<string>"${SRCROOT}/Pods/Target Support Files/Pods-RedditTests/Pods-RedditTests-resources.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>611F95E3417C8CEA6CED900A</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>&#128230; Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
 </string>
 			<key>showEnvVarsInLog</key>
 			<string>0</string>
@@ -3540,30 +3783,6 @@ fi
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>B0D48D2E16B0D582BE6DB7CD</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>&#128230; Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Target Support Files/Pods-RedditTests/Pods-RedditTests-resources.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
 		<key>BE339EA3E83195D5094F9D16</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -3607,36 +3826,6 @@ fi
 			<string>Frameworks</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F3041FEB8B385F0C30B5882A</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>&#128230; Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
 		</dict>
 		<key>FA1898D8FB295A584518F3D2</key>
 		<dict>
