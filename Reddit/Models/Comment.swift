@@ -49,12 +49,17 @@ struct Comment: Votable, Mappable {
   var controversiality: Int!
   var subreddit: String!
   var subredditId: String!
-  var replies: [Comment]?
+  var replies: CommentsListing?
   var submissionContentText: String?
   var submissionContentHTML: String?
   var submissionLink: String?
   var submissionParent: String?
   var distinguished: Distinguished?
+  var removalReason: String?
+  var userReports: [String]?
+  var modReports: [String]?
+  var reportReasons: String?
+  var stickied: Bool!
 
   // MARK: Accessors
   var deleted: Bool {
@@ -77,14 +82,14 @@ struct Comment: Votable, Mappable {
     body <- map["data.body"]
     bodyHTML <- map["data.body_html"]
     scoreHidden <- map["data.score_hidden"]
-    replies <- map["data.replies.data.children"]
-    edited <- map["data.edited"]
+    replies <- map["data.replies"]
+    edited <- (map["data.edited"], EditedTransform())
     archived <- map["data.archived"]
     saved <- map["data.saved"]
     linkId <- map["data.link_id"]
     gilded <- map["data.gilded"]
     score <- map["data.score"]
-    controversiality <- map ["controversiality"]
+    controversiality <- map ["data.controversiality"]
     parentId <- map["data.parent_id"]
     subreddit <- map["data.subreddit"]
     subredditId <- map["data.subreddit_id"]
@@ -96,6 +101,11 @@ struct Comment: Votable, Mappable {
     submissionLink <- map["data.link"]
     submissionParent <- map["data.parent"]
     distinguished <- map["data.distinguished"]
+    removalReason <- map["data.removal_reason"]
+    userReports <- (map["data.user_reports"], EmptyArrayTransform())
+    modReports <- (map["data.mod_reports"], EmptyArrayTransform())
+    reportReasons <- map["data.report_reasons"]
+    stickied <- map["data.stickied"]
   }
 
 }
