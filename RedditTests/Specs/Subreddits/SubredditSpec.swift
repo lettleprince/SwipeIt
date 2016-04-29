@@ -33,7 +33,7 @@ class SubredditSpec: QuickSpec {
           expect(subreddit.created) == NSDate(timeIntervalSince1970: 1141150769.0)
         }
 
-        it("is has Subreddit properties") {
+        it("has Subreddit properties") {
           expect(subreddit.bannerImage).to(beNil())
           expect(subreddit.submitTextHTML).to(beNil())
           expect(subreddit.wikiEnabled) == true

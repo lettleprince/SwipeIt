@@ -15,7 +15,7 @@ class SubredditListSpec: QuickSpec {
 
   override func spec() {
     describe("A subreddit listing") {
-      var listing: SubredditListing!
+      var listing: SubredditListing?
       describe("can be loaded") {
         NetworkMock.provider.request(.SubredditListing(token: "token", after: nil))
           .mapObject(SubredditListing)
@@ -24,8 +24,8 @@ class SubredditListSpec: QuickSpec {
           }.addDisposableTo(self.rx_disposeBag)
 
         it("has 25 subreddits") {
-          expect(listing).toNot(beNil())
-          expect(listing?.subreddits?.count) == 25
+          expect(listing).toEventuallyNot(beNil())
+          expect(listing?.subreddits?.count).toEventually(equal(25))
         }
       }
     }
