@@ -25,8 +25,7 @@ struct CommentsListing: Mappable, Listing {
   mutating func mapping(map: Map) {
     mappingListing(map)
     comments <- map["data.children"]
-    // TODO: Extract last item
-    moreComments <- map["data.children"]
+    moreComments <- (map["data.children"], LastElementTransform())
   }
 
 }
