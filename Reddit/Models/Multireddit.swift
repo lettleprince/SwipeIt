@@ -14,26 +14,30 @@ struct Multireddit: Mappable {
   // MARK: Multireddit
   var name: String!
   var displayName: String!
-  var path: String!
+  var path: NSURL!
   var descriptionHTML: String?
   var descriptionMarkdown: String?
   var copiedFrom: String?
   var subreddits: [String]!
+  var iconURL: NSURL?
   var editable: Bool!
   var visibility: MultiredditVisibility!
   var created: NSDate!
+  var keyColor: String?
+  var iconName: String?
 
   lazy var username: String? = {
     do {
-      let regex = try NSRegularExpression(pattern: "/user/(.*)/m/", options: [])
+      let regex = try NSRegularExpression(pattern: "http://reddit.com/user/(.*)/m/", options: [])
+      let path = self.path.absoluteString
       if let firstMatch = regex
-        .firstMatchInString(self.path, options: [],
-                            range: NSRange(location: 0, length: self.path.characters.count)) {
+        .firstMatchInString(path, options: [],
+                            range: NSRange(location: 0, length: path.characters.count)) {
         let nsRange = firstMatch.rangeAtIndex(1)
-        let initialIndex = self.path.startIndex.advancedBy(nsRange.location)
-        let endIndex = self.path.startIndex.advancedBy(nsRange.location + nsRange.length)
+        let initialIndex = path.startIndex.advancedBy(nsRange.location)
+        let endIndex = path.startIndex.advancedBy(nsRange.location + nsRange.length)
 
-        return self.path.substringWithRange(initialIndex..<endIndex)
+        return path.substringWithRange(initialIndex..<endIndex)
       }
     } catch { }
     return nil
@@ -45,14 +49,17 @@ struct Multireddit: Mappable {
   mutating func mapping(map: Map) {
     name <- map["data.name"]
     displayName <- map["data.display_name"]
-    path <- map["data.path"]
+    path <- (map["data.path"], PermalinkTransform())
     descriptionHTML <- map["data.description_html"]
     descriptionMarkdown <- map["data.description_md"]
     copiedFrom <- map["data.copied_from"]
     editable <- map["data.can_edit"]
-    subreddits <- map["data.subreddits.name"]
+    subreddits <- (map["data.subreddits"], JSONKeyTransform("name"))
     visibility <- map["data.visibility"]
     created <- (map["data.created_utc"], EpochDateTransform())
+    iconURL <- (map["data.icon_url"], EmptyURLTransform())
+    keyColor <- (map["data.key_color"], EmptyStringTransform())
+    iconName <- (map["data.icon_name"], EmptyStringTransform())
   }
 
 }

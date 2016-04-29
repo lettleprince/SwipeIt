@@ -1,0 +1,76 @@
+{
+  "kind": "LabeledMulti",
+  "data": {
+    "can_edit": false,
+    "display_name": "redditpets",
+    "name": "redditpets",
+    "description_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Photos of reddit pets. &amp;lt;3&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "created": 1368513354.0,
+    "copied_from": null,
+    "icon_url": null,
+    "subreddits": [{
+                   "name": "mogmonday"
+                   }, {
+                   "name": "wrigleygonewild"
+                   }, {
+                   "name": "StellatheStar"
+                   }, {
+                   "name": "cannoodlebutt"
+                   }, {
+                   "name": "ChillyWilly"
+                   }, {
+                   "name": "PickleCheeseDonut"
+                   }, {
+                   "name": "AuronAndHisBelly"
+                   }, {
+                   "name": "umbros"
+                   }, {
+                   "name": "SosAndTheTiny"
+                   }, {
+                   "name": "AliceAndTheDubber"
+                   }, {
+                   "name": "randomrosie"
+                   }, {
+                   "name": "TheDailyBailey"
+                   }, {
+                   "name": "Toby"
+                   }, {
+                   "name": "cupcakecaturday"
+                   }, {
+                   "name": "sophiepotamus"
+                   }, {
+                   "name": "burritogonecuddly"
+                   }, {
+                   "name": "Dory"
+                   }, {
+                   "name": "ShedsALotAndNoTail"
+                   }, {
+                   "name": "kn0thingsKarma"
+                   }, {
+                   "name": "BomberTheBulldog"
+                   }, {
+                   "name": "ramsesthepup"
+                   }, {
+                   "name": "lunapuppy"
+                   }, {
+                   "name": "chickpea"
+                   }, {
+                   "name": "patrickthepetshark"
+                   }, {
+                   "name": "yukipics"
+                   }, {
+                   "name": "pennyandpork"
+                   }, {
+                   "name": "FantaFriday"
+                   }, {
+                   "name": "SporkMinions"
+                   }],
+    "created_utc": 1368484554.0,
+    "key_color": "#cee3f8",
+    "visibility": "public",
+    "icon_name": "",
+    "weighting_scheme": "classic",
+    "path": "/user/reddit/m/redditpets",
+    "description_md": "Photos of reddit pets. &lt;3"
+  }
+}
