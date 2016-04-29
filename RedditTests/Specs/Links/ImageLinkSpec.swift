@@ -41,7 +41,7 @@ class ImageLinkSpec: QuickSpec {
           expect(link.score) == 3070
         }
 
-        it("is has Link properties") {
+        it("has Link properties") {
           expect(link.author) == "Tentaye"
           expect(link.authorFlairClass).to(beNil())
           expect(link.clicked) == false
@@ -53,12 +53,12 @@ class ImageLinkSpec: QuickSpec {
           expect(link.locked) == false
           expect(link.media).to(beNil())
           expect(link.secureMedia).to(beNil())
-          expect(link.mediaEmbed).to(beNil())
-          expect(link.secureMediaEmbed).to(beNil())
+          expect(link.embeddedMedia).to(beNil())
+          expect(link.secureEmbeddedMedia).to(beNil())
           expect(link.previewImages).toNot(beNil())
           expect(link.totalComments) == 192
           expect(link.nsfw) == false
-          expect(link.permalink) == NSURL(string: "http://reddit.com/r/gameofthrones/comments/4g95yg/s6waiting_in_anticipation/")
+          expect(link.permalink) == "/r/gameofthrones/comments/4g95yg/s6waiting_in_anticipation/"
           expect(link.saved) == false
           expect(link.selfText).to(beNil())
           expect(link.selfTextHTML).to(beNil())

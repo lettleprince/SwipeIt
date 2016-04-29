@@ -42,7 +42,7 @@ class VideoLinkSpec: QuickSpec {
           expect(link.score) == 5140
         }
 
-        it("is has Link properties") {
+        it("has Link properties") {
           expect(link.author) == "Rpeezy"
           expect(link.authorFlairClass).to(beNil())
           expect(link.clicked) == false
@@ -54,12 +54,12 @@ class VideoLinkSpec: QuickSpec {
           expect(link.locked) == false
           expect(link.media).toNot(beNil())
           expect(link.secureMedia).toNot(beNil())
-          expect(link.mediaEmbed).toNot(beNil())
-          expect(link.secureMediaEmbed).toNot(beNil())
+          expect(link.embeddedMedia).toNot(beNil())
+          expect(link.secureEmbeddedMedia).toNot(beNil())
           expect(link.previewImages).toNot(beNil())
           expect(link.totalComments).to(equal(809))
           expect(link.nsfw) == false
-          expect(link.permalink) == NSURL(string: "http://reddit.com/r/videos/comments/4gb535/draymond_green_puts_reporter_in_check_after/")
+          expect(link.permalink) == "/r/videos/comments/4gb535/draymond_green_puts_reporter_in_check_after/"
           expect(link.saved) == false
           expect(link.selfText).to(beNil())
           expect(link.selfTextHTML).to(beNil())
@@ -144,7 +144,7 @@ class VideoLinkSpec: QuickSpec {
         }
 
         it("has media embed") {
-          let mediaEmbed = link.mediaEmbed!
+          let mediaEmbed = link.embeddedMedia!
           expect(mediaEmbed.content) == "&lt;iframe width=\"600\" height=\"338\" src=\"https://www.youtube.com/embed/VoLzNjCeNF0?feature=oembed\" frameborder=\"0\" allowfullscreen&gt;&lt;/iframe&gt;"
           expect(mediaEmbed.width) == 600
           expect(mediaEmbed.height) == 338
@@ -152,7 +152,7 @@ class VideoLinkSpec: QuickSpec {
         }
 
         it("has secure media embed") {
-          let mediaEmbed = link.secureMediaEmbed!
+          let mediaEmbed = link.secureEmbeddedMedia!
           expect(mediaEmbed.content) == "&lt;iframe width=\"600\" height=\"338\" src=\"https://www.youtube.com/embed/VoLzNjCeNF0?feature=oembed\" frameborder=\"0\" allowfullscreen&gt;&lt;/iframe&gt;"
           expect(mediaEmbed.width) == 600
           expect(mediaEmbed.height) == 338

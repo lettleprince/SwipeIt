@@ -14,6 +14,7 @@ struct Link: Votable, Mappable {
 
   private static let imageFileExtensions = ["tiff", "tif", "jpg", "jpeg", "gif", "png"]
   private static let redditShortURL = NSURL(string: "http://redd.it/")!
+  private static let redditURL = NSURL(string: "http://reddit.com")!
 
   // MARK: Thing
   var identifier: String!
@@ -40,14 +41,15 @@ struct Link: Votable, Mappable {
   var linkFlairClass: String?
   var linkFlairText: String?
   var locked: Bool!
+  var upvoteRatio: Float?
   var media: Media?
   var secureMedia: Media?
-  var mediaEmbed: EmbeddedMedia?
-  var secureMediaEmbed: EmbeddedMedia?
+  var embeddedMedia: EmbeddedMedia?
+  var secureEmbeddedMedia: EmbeddedMedia?
   var previewImages: [PreviewImage]?
   var totalComments: Int!
   var nsfw: Bool!
-  var permalink: NSURL!
+  var permalink: String!
   var saved: Bool!
   var selfText: String?
   var selfTextHTML: String?
@@ -90,6 +92,10 @@ struct Link: Votable, Mappable {
     return Link.redditShortURL.URLByAppendingPathComponent(identifier)
   }
 
+  var permalinkURL: NSURL {
+    return Link.redditURL.URLByAppendingPathComponent(permalink)
+  }
+
   // MARK: JSON
   init?(_ map: Map) { }
 
@@ -101,6 +107,7 @@ struct Link: Votable, Mappable {
 
   private mutating func mappingLink(map: Map) {
     author <- map["data.author"]
+    upvoteRatio <- map["data.upvote_ratio"]
     authorFlairClass <- map["data.author_flair_css_class"]
     authorFlairText <- map["data.author_flair_text"]
     clicked <- map["data.clicked"]
@@ -112,12 +119,12 @@ struct Link: Votable, Mappable {
     locked <- map["data.locked"]
     media <- map["data.media"]
     secureMedia <- map["data.secure_media"]
-    mediaEmbed <- map["data.media_embed"]
-    secureMediaEmbed <- map["data.secure_media_embed"]
+    embeddedMedia <- map["data.media_embed"]
+    secureEmbeddedMedia <- map["data.secure_media_embed"]
     thumbnailURL <- map["data.thumbnail"]
     totalComments <- map["data.num_comments"]
     nsfw <- map["data.over_18"]
-    permalink <- (map["data.permalink"], PermalinkTransform())
+    permalink <- map["data.permalink"]
     saved <- map["data.saved"]
     selfText <- (map["data.selftext"], EmptyStringTransform())
     selfTextHTML <- map["data.selftext_html"]
