@@ -86,6 +86,7 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Reddit/Alamofire.framework"
   install_framework "Pods-Reddit/Device.framework"
+  install_framework "Pods-Reddit/KeychainSwift.framework"
   install_framework "Pods-Reddit/Kingfisher.framework"
   install_framework "Pods-Reddit/Moya.framework"
   install_framework "Pods-Reddit/Moya_ObjectMapper.framework"
@@ -93,12 +94,14 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Reddit/ObjectMapper.framework"
   install_framework "Pods-Reddit/Result.framework"
   install_framework "Pods-Reddit/RxCocoa.framework"
+  install_framework "Pods-Reddit/RxOptional.framework"
   install_framework "Pods-Reddit/RxSwift.framework"
   install_framework "Pods-Reddit/SnapKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Reddit/Alamofire.framework"
   install_framework "Pods-Reddit/Device.framework"
+  install_framework "Pods-Reddit/KeychainSwift.framework"
   install_framework "Pods-Reddit/Kingfisher.framework"
   install_framework "Pods-Reddit/Moya.framework"
   install_framework "Pods-Reddit/Moya_ObjectMapper.framework"
@@ -106,6 +109,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Reddit/ObjectMapper.framework"
   install_framework "Pods-Reddit/Result.framework"
   install_framework "Pods-Reddit/RxCocoa.framework"
+  install_framework "Pods-Reddit/RxOptional.framework"
   install_framework "Pods-Reddit/RxSwift.framework"
   install_framework "Pods-Reddit/SnapKit.framework"
 fi

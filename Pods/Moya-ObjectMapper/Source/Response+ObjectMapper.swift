@@ -14,7 +14,9 @@ public extension Response {
   /// Maps data received from the signal into an object which implements the Mappable protocol.
   /// If the conversion fails, the signal errors.
   public func mapObject<T: Mappable>() throws -> T {
-    guard let object = Mapper<T>().map(try mapJSON()) else {
+    let json = try mapJSON()
+    print(json)
+    guard let object = Mapper<T>().map(json) else {
       throw Error.JSONMapping(self)
     }
    return object

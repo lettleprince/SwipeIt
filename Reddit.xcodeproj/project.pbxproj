@@ -182,8 +182,6 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>LinkDetailsSpec.swift</string>
 			<key>path</key>
 			<string>LinkDetailsSpec.swift</string>
 			<key>sourceTree</key>
@@ -204,8 +202,6 @@
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Moya-ObjectMapper+Custom</string>
 			<key>path</key>
 			<string>Moya-ObjectMapper+Custom</string>
 			<key>sourceTree</key>
@@ -219,8 +215,6 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>Response+CustomMappers.swift</string>
 			<key>path</key>
 			<string>Response+CustomMappers.swift</string>
 			<key>sourceTree</key>
@@ -237,6 +231,199 @@
 		<dict>
 			<key>fileRef</key>
 			<string>302786571CD2714F0072F711</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>303DAC0C1CD8B8F900712D91</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Observable+Result.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>303DAC0D1CD8B8F900712D91</key>
+		<dict>
+			<key>fileRef</key>
+			<string>303DAC0C1CD8B8F900712D91</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>303DAC0E1CD8FC8F00712D91</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>303DAC0F1CD8FCCB00712D91</string>
+				<string>303DAC151CD907B700712D91</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>ViewModels</string>
+			<key>path</key>
+			<string>ViewModels</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>303DAC0F1CD8FCCB00712D91</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>TitledViewModel.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>303DAC101CD8FCCB00712D91</key>
+		<dict>
+			<key>fileRef</key>
+			<string>303DAC0F1CD8FCCB00712D91</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>303DAC111CD8FD5300712D91</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>TitledViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>303DAC121CD8FD5300712D91</key>
+		<dict>
+			<key>fileRef</key>
+			<string>303DAC111CD8FD5300712D91</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>303DAC131CD907A400712D91</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>ViewModelViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>303DAC141CD907A400712D91</key>
+		<dict>
+			<key>fileRef</key>
+			<string>303DAC131CD907A400712D91</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>303DAC151CD907B700712D91</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>ViewModel.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>303DAC161CD907B700712D91</key>
+		<dict>
+			<key>fileRef</key>
+			<string>303DAC151CD907B700712D91</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>303DAC171CD90C0700712D91</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>303DAC181CD90C1700712D91</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Subscriptions</string>
+			<key>path</key>
+			<string>Subscriptions</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>303DAC181CD90C1700712D91</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>SubscriptionsViewModel.swift</string>
+			<key>path</key>
+			<string>SubscriptionsViewModel.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>303DAC191CD90C1700712D91</key>
+		<dict>
+			<key>fileRef</key>
+			<string>303DAC181CD90C1700712D91</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>303DAC1A1CD90CDA00712D91</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Scope.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>303DAC1B1CD90CDA00712D91</key>
+		<dict>
+			<key>fileRef</key>
+			<string>303DAC1A1CD90CDA00712D91</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>303DAC1C1CD90F4000712D91</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Duration.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>303DAC1D1CD90F4000712D91</key>
+		<dict>
+			<key>fileRef</key>
+			<string>303DAC1C1CD90F4000712D91</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -308,8 +495,6 @@
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Multireddits</string>
 			<key>path</key>
 			<string>Multireddits</string>
 			<key>sourceTree</key>
@@ -323,8 +508,6 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>MultiredditSpec.swift</string>
 			<key>path</key>
 			<string>MultiredditSpec.swift</string>
 			<key>sourceTree</key>
@@ -518,6 +701,187 @@
 		<dict>
 			<key>fileRef</key>
 			<string>30482CB11CCFDD620063D238</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>306E2C081CD766CE004AF2EF</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>DefaultSubreddits.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>306E2C091CD766CE004AF2EF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>306E2C081CD766CE004AF2EF</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>306E2C0A1CD7693A004AF2EF</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>306E2C0F1CD76E6A004AF2EF</string>
+				<string>306E2C0D1CD76DD1004AF2EF</string>
+				<string>306E2C121CD76ED9004AF2EF</string>
+				<string>306E2C0B1CD76958004AF2EF</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>SubredditList</string>
+			<key>path</key>
+			<string>SubredditList</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>306E2C0B1CD76958004AF2EF</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>SubredditListViewModel.swift</string>
+			<key>path</key>
+			<string>SubredditListViewModel.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>306E2C0C1CD76958004AF2EF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>306E2C0B1CD76958004AF2EF</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>306E2C0D1CD76DD1004AF2EF</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>SubredditListNameViewModel.swift</string>
+			<key>path</key>
+			<string>SubredditListNameViewModel.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>306E2C0E1CD76DD1004AF2EF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>306E2C0D1CD76DD1004AF2EF</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>306E2C0F1CD76E6A004AF2EF</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>306E2C101CD76E8F004AF2EF</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Protocols</string>
+			<key>path</key>
+			<string>Protocols</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>306E2C101CD76E8F004AF2EF</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>SubredditListItemViewModel.swift</string>
+			<key>path</key>
+			<string>SubredditListItemViewModel.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>306E2C111CD76E8F004AF2EF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>306E2C101CD76E8F004AF2EF</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>306E2C121CD76ED9004AF2EF</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>SubredditListSubredditViewModel.swift</string>
+			<key>path</key>
+			<string>SubredditListSubredditViewModel.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>306E2C131CD76ED9004AF2EF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>306E2C121CD76ED9004AF2EF</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>306E2C141CD77A25004AF2EF</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>SubscriptionsViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>306E2C151CD77A25004AF2EF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>306E2C141CD77A25004AF2EF</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>306E2C171CD77BC1004AF2EF</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>HideableHairlineViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>306E2C181CD77BC1004AF2EF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>306E2C171CD77BC1004AF2EF</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -894,9 +1258,11 @@
 			<key>children</key>
 			<array>
 				<string>308D880B1CD0C51200C78E74</string>
+				<string>303DAC1C1CD90F4000712D91</string>
 				<string>30806BF71C8D978A00EB1BD5</string>
 				<string>308E96EE1C87701600380735</string>
 				<string>308D88201CD0CCB600C78E74</string>
+				<string>303DAC1A1CD90CDA00712D91</string>
 				<string>30482CA91CCFD8580063D238</string>
 				<string>30482CA71CCFD7E70063D238</string>
 				<string>30F6C9AD1C8A115400616707</string>
@@ -1272,8 +1638,6 @@
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Network</string>
 			<key>path</key>
 			<string>Network</string>
 			<key>sourceTree</key>
@@ -1437,14 +1801,20 @@
 				<string>30482CA81CCFD7E70063D238</string>
 				<string>308D88211CD0CCB600C78E74</string>
 				<string>30DDB2641CCEF3E6000B72E5</string>
+				<string>303DAC1D1CD90F4000712D91</string>
 				<string>30DDB2351CCECA00000B72E5</string>
 				<string>30DDB2691CCF5CED000B72E5</string>
 				<string>30DDB2521CCEDE52000B72E5</string>
+				<string>303DAC101CD8FCCB00712D91</string>
+				<string>306E2C181CD77BC1004AF2EF</string>
 				<string>30F6C9A81C8A081D00616707</string>
+				<string>303DAC0D1CD8B8F900712D91</string>
 				<string>309462CF1CCD971D00E18655</string>
 				<string>30DDB2601CCEF155000B72E5</string>
+				<string>306E2C151CD77A25004AF2EF</string>
 				<string>30806BF61C8D878F00EB1BD5</string>
 				<string>308D880C1CD0C51200C78E74</string>
+				<string>30CD97C41CD796E500B678AE</string>
 				<string>30F6C9AA1C8A096300616707</string>
 				<string>30F6C9B21C8A142D00616707</string>
 				<string>30482CAA1CCFD8580063D238</string>
@@ -1453,8 +1823,11 @@
 				<string>30806C091C8DA79000EB1BD5</string>
 				<string>30DDB2301CCE69BB000B72E5</string>
 				<string>308E96B81C875B7E00380735</string>
+				<string>306E2C0C1CD76958004AF2EF</string>
 				<string>30A4817F1CCF6FDC000F1090</string>
+				<string>30CD97C11CD7929000B678AE</string>
 				<string>30DDB2541CCEDE52000B72E5</string>
+				<string>30CD97C61CD7B1A800B678AE</string>
 				<string>308E96EB1C876B8200380735</string>
 				<string>302786481CD2668F0072F711</string>
 				<string>308E96F91C8776BD00380735</string>
@@ -1465,15 +1838,23 @@
 				<string>30DDB23F1CCED41B000B72E5</string>
 				<string>30806C011C8D9E4E00EB1BD5</string>
 				<string>30806C031C8DA0D900EB1BD5</string>
+				<string>303DAC191CD90C1700712D91</string>
+				<string>303DAC141CD907A400712D91</string>
+				<string>306E2C111CD76E8F004AF2EF</string>
 				<string>30DDB2451CCEDBAA000B72E5</string>
+				<string>303DAC1B1CD90CDA00712D91</string>
 				<string>30806BFB1C8D9A6C00EB1BD5</string>
 				<string>308D882A1CD0D57500C78E74</string>
 				<string>308D881E1CD0CB7B00C78E74</string>
 				<string>30DDB25E1CCEEDB2000B72E5</string>
+				<string>306E2C131CD76ED9004AF2EF</string>
+				<string>303DAC161CD907B700712D91</string>
 				<string>308D880F1CD0C74B00C78E74</string>
 				<string>30806BF41C8D861500EB1BD5</string>
 				<string>308D88391CD0F78E00C78E74</string>
 				<string>30F6C9AC1C8A0C2200616707</string>
+				<string>303DAC121CD8FD5300712D91</string>
+				<string>306E2C0E1CD76DD1004AF2EF</string>
 				<string>308E96ED1C876C2700380735</string>
 				<string>30DDB26C1CCF68B0000B72E5</string>
 				<string>30F6C9B01C8A142500616707</string>
@@ -1513,6 +1894,7 @@
 				<string>308E96F21C87764F00380735</string>
 				<string>309462D51CCE5C8800E18655</string>
 				<string>308E96F41C87766A00380735</string>
+				<string>306E2C091CD766CE004AF2EF</string>
 				<string>30DDB2331CCEC8DD000B72E5</string>
 			</array>
 			<key>isa</key>
@@ -2247,6 +2629,7 @@ fi</string>
 			<key>children</key>
 			<array>
 				<string>302786561CD271190072F711</string>
+				<string>30CD97C21CD796C400B678AE</string>
 				<string>30DDB2621CCEF3CA000B72E5</string>
 				<string>30DDB25C1CCEED7B000B72E5</string>
 			</array>
@@ -2273,6 +2656,7 @@ fi</string>
 			<key>children</key>
 			<array>
 				<string>308E96EC1C876C2700380735</string>
+				<string>30CD97C51CD7B1A800B678AE</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -2343,6 +2727,7 @@ fi</string>
 			<key>children</key>
 			<array>
 				<string>30DDB2431CCEDB8E000B72E5</string>
+				<string>303DAC0E1CD8FC8F00712D91</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -2358,6 +2743,7 @@ fi</string>
 				<string>30DDB24E1CCEDE52000B72E5</string>
 				<string>308E96BE1C875B7E00380735</string>
 				<string>30DDB24C1CCEDE2A000B72E5</string>
+				<string>306E2C081CD766CE004AF2EF</string>
 				<string>308E96C31C875B7E00380735</string>
 				<string>308E96C01C875B7E00380735</string>
 				<string>30DDB24B1CCEDE19000B72E5</string>
@@ -2400,6 +2786,8 @@ fi</string>
 			<key>children</key>
 			<array>
 				<string>30DDB23B1CCED3E3000B72E5</string>
+				<string>306E2C0A1CD7693A004AF2EF</string>
+				<string>303DAC171CD90C0700712D91</string>
 				<string>30DDB2581CCEE4A0000B72E5</string>
 			</array>
 			<key>isa</key>
@@ -2440,6 +2828,7 @@ fi</string>
 			<key>children</key>
 			<array>
 				<string>30DDB2411CCED601000B72E5</string>
+				<string>306E2C141CD77A25004AF2EF</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -2814,6 +3203,83 @@ fi</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>30CD97C01CD7929000B678AE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>PageViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>30CD97C11CD7929000B678AE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>30CD97C01CD7929000B678AE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>30CD97C21CD796C400B678AE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>30CD97C31CD796E500B678AE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>RawRepresentable+OptionalRawValue</string>
+			<key>path</key>
+			<string>RawRepresentable+OptionalRawValue</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>30CD97C31CD796E500B678AE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>RawRepresentable+OptionalRawValue.swift</string>
+			<key>path</key>
+			<string>RawRepresentable+OptionalRawValue.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>30CD97C41CD796E500B678AE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>30CD97C31CD796E500B678AE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>30CD97C51CD7B1A800B678AE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Globals.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>30CD97C61CD7B1A800B678AE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>30CD97C51CD7B1A800B678AE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>30D7FF421CD3659300808701</key>
 		<dict>
 			<key>fileEncoding</key>
@@ -2842,8 +3308,6 @@ fi</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Comments</string>
 			<key>path</key>
 			<string>Comments</string>
 			<key>sourceTree</key>
@@ -2857,8 +3321,6 @@ fi</string>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>CommentSpec.swift</string>
 			<key>path</key>
 			<string>CommentSpec.swift</string>
 			<key>sourceTree</key>
@@ -3103,6 +3565,9 @@ fi</string>
 			<array>
 				<string>30482CA51CCFC8BA0063D238</string>
 				<string>30DDB2441CCEDBAA000B72E5</string>
+				<string>306E2C171CD77BC1004AF2EF</string>
+				<string>303DAC111CD8FD5300712D91</string>
+				<string>303DAC131CD907A400712D91</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -3290,6 +3755,7 @@ fi</string>
 		<dict>
 			<key>children</key>
 			<array>
+				<string>30CD97C01CD7929000B678AE</string>
 				<string>30DDB2561CCEDFE4000B72E5</string>
 			</array>
 			<key>isa</key>
@@ -3417,6 +3883,7 @@ fi</string>
 			<key>children</key>
 			<array>
 				<string>30DDB2631CCEF3E6000B72E5</string>
+				<string>303DAC0C1CD8B8F900712D91</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -3434,7 +3901,7 @@ fi</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.swift</string>
 			<key>path</key>
-			<string>RxSwift+Helpers.swift</string>
+			<string>Observable+MapVoid.swift</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
