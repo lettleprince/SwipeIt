@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>announcements</string>
+	<string>Art</string>
+	<string>AskReddit</string>
+	<string>askscience</string>
+	<string>aww</string>
+	<string>blog</string>
+	<string>books</string>
+	<string>creepy</string>
+	<string>dataisbeautiful</string>
+	<string>DIY</string>
+	<string>Documentaries</string>
+	<string>EarthPorn</string>
+	<string>europe</string>
+	<string>explainlikeimfive</string>
+	<string>Fitness</string>
+	<string>food</string>
+	<string>funny</string>
+	<string>Futurology</string>
+	<string>gadgets</string>
+	<string>gaming</string>
+	<string>GetMotivated</string>
+	<string>gifs</string>
+	<string>history</string>
+	<string>IAmA</string>
+	<string>InternetIsBeautiful</string>
+	<string>Jokes</string>
+	<string>LifeProTis</string>
+	<string>listentothis</string>
+	<string>midlyinteresting</string>
+	<string>movies</string>
+	<string>Music</string>
+	<string>news</string>
+	<string>nosleep</string>
+	<string>nottheonion</string>
+	<string>OldSchoolCool</string>
+	<string>personalfinance</string>
+	<string>philosophy</string>
+	<string>photoshopbattles</string>
+	<string>pics</string>
+	<string>science</string>
+	<string>Showerthoughts</string>
+	<string>space</string>
+	<string>sports</string>
+	<string>television</string>
+	<string>tifu</string>
+	<string>todayilearned</string>
+	<string>TwoXChromosomes</string>
+	<string>UpliftingNews</string>
+	<string>videos</string>
+	<string>worldnews</string>
+	<string>WritingPrompts</string>
+</array>
+</plist>
