@@ -9,7 +9,5 @@
 import Foundation
 
 func void<T>(_: T) -> Void {
-
   return Void()
-
 }
