@@ -9,25 +9,25 @@
 import UIKit
 
 // MARK: Properties and Lifecycle
-class WalkthroughViewController: UIViewController {
+class WalkthroughViewController: UIViewController, ViewModelViewController {
+
+  var viewModel: WalkthroughViewModel! = WalkthroughViewModel()
 
   @IBOutlet private weak var loginButton: UIButton! {
     didSet {
       loginButton.setTitle(tr(.WalkthroughButtonLogin), forState: .Normal)
     }
   }
+
   @IBOutlet private weak var skipButton: UIButton! {
     didSet {
       skipButton.setTitle(tr(.WalkthroughButtonSkip), forState: .Normal)
     }
   }
 
-  private let viewModel = WalkthroughViewModel()
-
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    setupViewModel()
+    setup()
   }
 
 }
@@ -35,31 +35,30 @@ class WalkthroughViewController: UIViewController {
 // MARK: Setup
 extension WalkthroughViewController {
 
-  private func setupViewModel() {
-    viewModel.loggedIn
-      .bindNext { error in
+  private func setup() {
+    viewModel.loginResult
+      .bindNext { [weak self] error in
         guard let error = error else {
-          self.goToMainStoryboard()
+          self?.goToMainStoryboard()
           return
         }
-        self.showLoginError(error)
-    }.addDisposableTo(rx_disposeBag)
+        self?.showLoginError(error)
+      }.addDisposableTo(self.rx_disposeBag)
   }
+
 }
 
 // MARK: UI
 extension WalkthroughViewController: AlerteableViewController {
 
   private func goToMainStoryboard() {
-    print("go to main storyboard")
+    performSegue(StoryboardSegue.Onboarding.MainSegue)
   }
 
-  private func showLoginError(error: LoginError) {
-    print("Error \(error)")
-    presentAlert(tr(.LoginErrorTitle), message: error.description, buttonTitle: tr(.AlertButtonOK))
-      .bindNext { (buttonClicked) in
-      print(buttonClicked)
-    }.addDisposableTo(rx_disposeBag)
+  private func showLoginError(error: ErrorType) {
+    let loginError = error as? LoginError ?? .Unknown
+    presentAlert(tr(.LoginErrorTitle), message: loginError.description,
+                 buttonTitle: tr(.AlertButtonOK))
   }
 
 }
@@ -68,12 +67,18 @@ extension WalkthroughViewController: AlerteableViewController {
 extension WalkthroughViewController {
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    guard let loginViewController = segue.navigationRootViewController as? LoginViewController
-      else {
-        return
+    guard let rootViewController = segue.navigationRootViewController else {
+      return
     }
 
-    loginViewController.viewModel = viewModel.loginViewModel
+    switch rootViewController {
+    case let loginViewController as LoginViewController:
+      loginViewController.viewModel = viewModel.loginViewModel
+    case let subscriptionsViewController as SubscriptionsViewController:
+      subscriptionsViewController.viewModel = viewModel.subscriptionsViewModel
+    default:
+      return
+    }
   }
 
 }

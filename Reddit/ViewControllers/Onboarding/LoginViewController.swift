@@ -11,14 +11,15 @@ import WebKit
 import SnapKit
 
 // MARK: Properties and Lifecycle
-class LoginViewController: WebViewController, CloseableViewController {
+class LoginViewController: WebViewController, CloseableViewController,
+TitledViewModelViewController {
 
   var viewModel: LoginViewModel!
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    setupViews()
+    setup()
   }
 
 }
@@ -26,9 +27,10 @@ class LoginViewController: WebViewController, CloseableViewController {
 // MARK: Setup
 extension LoginViewController {
 
-  private func setupViews() {
+  private func setup() {
     setupWebView()
     setupCloseButton()
+    bindTitle()
   }
 
   private func setupWebView() {

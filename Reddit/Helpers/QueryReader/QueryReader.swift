@@ -10,18 +10,17 @@ import Foundation
 
 class QueryReader {
 
-  class func queryParametersFromString(string: String) -> [String: AnyObject] {
-
-    let components = string.componentsSeparatedByString("&")
-    let json = components.map { $0.componentsSeparatedByString("=") }
-      .reduce([:]) { (dict, components) -> [String: AnyObject] in
-        var dict = dict
-        if components.count == 2 {
-          dict[components[0]] = components[1]
-        }
-        return dict
+  class func queryParametersFromString(URLString: String) -> [String: String] {
+    guard let URLComponents = NSURLComponents(string: URLString) else {
+      return [:]
     }
-    return json
+    return URLComponents.queryItems?.reduce([:]) { (dictionary, queryItem) -> [String: String] in
+      var dictionary = dictionary
+      if let value = queryItem.value {
+        dictionary[queryItem.name] = value
+      }
+      return dictionary
+    } ?? [:]
   }
 
 }

@@ -8,30 +8,58 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
+import Result
 
 // MARK: Properties and initializers
-class WalkthroughViewModel {
+class WalkthroughViewModel: NSObject, ViewModel {
 
-  private let _loggedIn = PublishSubject<LoginError?>()
+  // MARK: Public Properties
+  var loginResult: Observable<LoginError?> {
+    return loginViewModel.loginResult
+      .doOnSuccess { [weak self] accessToken in
+        self?.accessToken = accessToken
+      }.flatMap { result -> Observable<Result<User, LoginError>> in
+        switch result {
+          case .Success(let accessToken):
+            return WalkthroughViewModel.getUserDetails(accessToken)
+              .map { Result(value: $0) }
+          case .Failure(let error):
+          return .just(Result(error: error))
+        }
+
+      }.doOnSuccess { [weak self] user in
+        self?.user = user
+      }.map { $0.error }
+  }
+
+  var loginViewModel = LoginViewModel()
+
+  var subscriptionsViewModel: SubscriptionsViewModel {
+    return SubscriptionsViewModel(user: user, accessToken: accessToken)
+  }
+
+  // MARK: Private Properties
   private var accessToken: AccessToken?
+  private var user: User?
 
-  var loggedIn: Observable<LoginError?> {
-    return _loggedIn.asObservable()
-  }
-
-  var loginViewModel: LoginViewModel {
-    return LoginViewModel(loginCallback: loginWithAccessToken)
-  }
 }
 
+// MARK: Networking
 extension WalkthroughViewModel {
 
-  private func loginWithAccessToken(accessToken: AccessToken?, error: LoginError?) {
-    if let error = error {
-      _loggedIn.onNext(error)
-    } else {
-      self.accessToken = accessToken
-      _loggedIn.onNext(nil)
+  // Object isn't wrapped in a data object as opposed to all other endpoints
+  private static func getUserDetails(accessToken: AccessToken) -> Observable<User> {
+    return Network.provider
+      .request(.UserMeDetails(token: accessToken.token))
+      .mapObject(User.self) { json in
+        guard let jsonObject = json else {
+          return json
+        }
+        return [
+          "kind": "t2",
+          "data": jsonObject
+        ]
     }
   }
 }

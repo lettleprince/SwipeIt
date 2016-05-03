@@ -13,12 +13,16 @@ enum L10n {
   case AlertButtonCancel
   /// OK
   case AlertButtonOK
-  /// Log in error
+  /// Login
+  case LoginTitle
+  /// Login error
   case LoginErrorTitle
   /// Could not log in. Please try again later
   case LoginErrorUnknown
   /// Login was cancelled
   case LoginErrorUserCancelled
+  /// Subscriptions
+  case SubscriptionsTitle
 }
 
 extension L10n: CustomStringConvertible {
@@ -36,12 +40,16 @@ extension L10n: CustomStringConvertible {
         return L10n.tr("Alert.Button.Cancel")
       case .AlertButtonOK:
         return L10n.tr("Alert.Button.OK")
+      case .LoginTitle:
+        return L10n.tr("Login.Title")
       case .LoginErrorTitle:
         return L10n.tr("Login.Error.Title")
       case .LoginErrorUnknown:
         return L10n.tr("Login.Error.Unknown")
       case .LoginErrorUserCancelled:
         return L10n.tr("Login.Error.UserCancelled")
+      case .SubscriptionsTitle:
+        return L10n.tr("Subscriptions.Title")
     }
   }
 

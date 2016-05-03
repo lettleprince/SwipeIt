@@ -14,6 +14,9 @@
 "Alert.Button.Cancel" = "Cancel";
 "Alert.Button.OK" = "OK";
 
-"Login.Error.Title" = "Log in error";
+"Login.Title" = "Login";
+"Login.Error.Title" = "Login error";
 "Login.Error.Unknown" = "Could not log in. Please try again later";
 "Login.Error.UserCancelled" = "Login was cancelled";
+
+"Subscriptions.Title" = "Subscriptions";

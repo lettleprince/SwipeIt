@@ -13,7 +13,7 @@ import RxSwift
 
 extension Response {
 
-  public func mapPair<T: Mappable, U: Mappable>() throws -> (T, U) {
+  func mapPair<T: Mappable, U: Mappable>() throws -> (T, U) {
     guard let jsonArray = try mapJSON() as? [AnyObject] where jsonArray.count == 2 else {
       throw Error.JSONMapping(self)
     }
@@ -24,6 +24,14 @@ extension Response {
     return (firstObject, secondObject)
   }
 
+  func mapObject<T: Mappable>(jsonTransform: (AnyObject?) -> AnyObject?) throws -> T {
+    let json = try jsonTransform(mapJSON())
+    guard let object = Mapper<T>().map(json) else {
+      throw Error.JSONMapping(self)
+    }
+    return object
+  }
+
 }
 
 extension ObservableType where E == Response {
@@ -31,6 +39,13 @@ extension ObservableType where E == Response {
   func mapPair<T: Mappable, U: Mappable>(type1: T.Type, _ type2: U.Type) -> Observable<(T, U)> {
     return flatMap { response -> Observable<(T, U)> in
       return Observable.just(try response.mapPair())
+    }
+  }
+
+  public func mapObject<T: Mappable>(type: T.Type, jsonTransform: (AnyObject?) -> AnyObject?)
+    -> Observable<T> {
+    return flatMap { response -> Observable<T> in
+      return Observable.just(try response.mapObject(jsonTransform))
     }
   }
 }
