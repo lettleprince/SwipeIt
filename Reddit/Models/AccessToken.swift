@@ -12,11 +12,11 @@ import ObjectMapper
 struct AccessToken: Mappable {
 
   // MARK: AccessToken
-  var accessToken: String!
+  var token: String!
   var tokenType: String!
   var expiresIn: NSDate!
   var scope: String!
-  var state: String!
+  var refreshToken: String!
 
   // MARK: JSON
   init?(_ map: Map) {
@@ -26,10 +26,10 @@ struct AccessToken: Mappable {
   }
 
   mutating func mapping(map: Map) {
-    accessToken <- map["access_token"]
+    token <- map["access_token"]
     tokenType <- map["token_type"]
     expiresIn <- (map["expires_in"], NowDateTransform())
     scope <- map["scope"]
-    state <- map["state"]
+    refreshToken <- map["refresh_token"]
   }
 }
