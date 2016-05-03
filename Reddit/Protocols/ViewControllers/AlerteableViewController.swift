@@ -15,7 +15,8 @@ protocol AlerteableViewController {
                     message: String?,
                     textField: AlertTextField?,
                     buttonTitle: String?,
-                    cancelButtonTitle: String?) -> Observable<AlertButtonClicked>
+                    cancelButtonTitle: String?,
+                    alertClicked: ((AlertButtonClicked) -> Void)?)
 
 }
 
@@ -25,49 +26,40 @@ extension AlerteableViewController where Self: UIViewController {
                     message: String? = nil,
                     textField: AlertTextField? = nil,
                     buttonTitle: String? = nil,
-                    cancelButtonTitle: String? = nil) -> Observable<AlertButtonClicked> {
+                    cancelButtonTitle: String? = nil,
+                    alertClicked: ((AlertButtonClicked) -> Void)? = nil) {
 
-    return Observable.create { [weak self] observable in
+    let alertController = UIAlertController(title: title, message: message,
+                                            preferredStyle: .Alert)
 
-      let alertController = UIAlertController(title: title, message: message,
-        preferredStyle: .Alert)
-
-      if let cancelButtonTitle = cancelButtonTitle {
-        let dismissAction = UIAlertAction(title: cancelButtonTitle, style: .Cancel) { _ in
-          observable.onNext(.Cancel)
-          observable.onCompleted()
-        }
-        alertController.addAction(dismissAction)
+    if let cancelButtonTitle = cancelButtonTitle {
+      let dismissAction = UIAlertAction(title: cancelButtonTitle, style: .Cancel) { _ in
+        alertClicked?(.Cancel)
       }
+      alertController.addAction(dismissAction)
+    }
 
-      if let textFieldConfig = textField {
-        alertController.addTextFieldWithConfigurationHandler { (textField) in
-          textField.placeholder = textFieldConfig.placeholder
-          textField.text = textFieldConfig.text
+    if let textFieldConfig = textField {
+      alertController.addTextFieldWithConfigurationHandler { (textField) in
+        textField.placeholder = textFieldConfig.placeholder
+        textField.text = textFieldConfig.text
 
-          if let buttonTitle = buttonTitle {
-            let buttonAction = UIAlertAction(title: buttonTitle, style: .Default) { _ in
-              observable.onNext(.ButtonWithText(textField.text))
-              observable.onCompleted()
-            }
-            alertController.addAction(buttonAction)
-          }
-        }
-      } else {
         if let buttonTitle = buttonTitle {
           let buttonAction = UIAlertAction(title: buttonTitle, style: .Default) { _ in
-            observable.onNext(.Button)
-            observable.onCompleted()
+            alertClicked?(.ButtonWithText(textField.text))
           }
           alertController.addAction(buttonAction)
         }
       }
-      self?.presentViewController(alertController, animated: true, completion: nil)
-
-      return AnonymousDisposable {
-        alertController.dismissViewControllerAnimated(true, completion: nil)
+    } else {
+      if let buttonTitle = buttonTitle {
+        let buttonAction = UIAlertAction(title: buttonTitle, style: .Default) { _ in
+          alertClicked?(.Button)
+        }
+        alertController.addAction(buttonAction)
       }
-    }.take(1)
+    }
+    self.presentViewController(alertController, animated: true, completion: nil)
   }
 }
 
