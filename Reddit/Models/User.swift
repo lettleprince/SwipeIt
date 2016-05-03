@@ -32,7 +32,11 @@ struct User: Mappable, Created {
   var over18: Bool!
 
   // MARK: JSON
-  init?(_ map: Map) { }
+  init?(_ map: Map) {
+    guard let _ = map.JSONDictionary["data"] else {
+      return nil
+    }
+  }
 
   mutating func mapping(map: Map) {
     mappingCreated(map)
