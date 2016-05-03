@@ -1,25 +1,135 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S2v-XF-HS7">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="fg7-ms-xRy">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Reddit" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="S2v-XF-HS7" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wcQ-b3-E3w">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="qwo-NE-Iyc" kind="relationship" relationship="rootViewController" id="g1E-Zw-6ov"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4gj-32-xa0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="441" y="441"/>
+        </scene>
+        <!--Subscriptions View Controller-->
+        <scene sceneID="4fH-P0-cSL">
+            <objects>
+                <viewController id="qwo-NE-Iyc" customClass="SubscriptionsViewController" customModule="Reddit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="ZUS-sp-vJM"/>
+                        <viewControllerLayoutGuide type="bottom" id="CNx-6s-Q7u"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="A07-DD-5YN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Imn-UR-ZlX">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="u7i-AH-4Db" kind="embed" identifier="embedPageViewController" id="UNH-JI-cht"/>
+                                </connections>
+                            </containerView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PHJ-tF-zha">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="abi-ga-vsX"/>
+                                    <barButtonItem width="200" style="plain" id="SPA-HA-WRs">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Ttd-uY-kMv">
+                                            <rect key="frame" x="200" y="7" width="200" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Subreddits"/>
+                                                <segment title="Multireddits"/>
+                                            </segments>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="cBc-oV-dx9"/>
+                                </items>
+                                <connections>
+                                    <outlet property="delegate" destination="qwo-NE-Iyc" id="GGA-rQ-95c"/>
+                                </connections>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PHJ-tF-zha" firstAttribute="top" secondItem="ZUS-sp-vJM" secondAttribute="bottom" id="FeR-5O-PLk"/>
+                            <constraint firstItem="CNx-6s-Q7u" firstAttribute="top" secondItem="Imn-UR-ZlX" secondAttribute="bottom" id="JXY-VZ-tG5"/>
+                            <constraint firstAttribute="trailing" secondItem="PHJ-tF-zha" secondAttribute="trailing" id="T1e-7q-baw"/>
+                            <constraint firstAttribute="trailing" secondItem="Imn-UR-ZlX" secondAttribute="trailing" id="cJ5-0X-8Ag"/>
+                            <constraint firstItem="Imn-UR-ZlX" firstAttribute="leading" secondItem="A07-DD-5YN" secondAttribute="leading" id="d72-6k-h1C"/>
+                            <constraint firstItem="PHJ-tF-zha" firstAttribute="leading" secondItem="A07-DD-5YN" secondAttribute="leading" id="gdt-Xe-4C9"/>
+                            <constraint firstItem="Imn-UR-ZlX" firstAttribute="top" secondItem="A07-DD-5YN" secondAttribute="top" id="oQG-EP-ydi"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ffm-8B-Iyy"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="segmentedControl" destination="Ttd-uY-kMv" id="fS6-2Y-qGw"/>
+                        <outlet property="toolbar" destination="PHJ-tF-zha" id="3ny-2z-UmC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y2Z-zD-EhH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1106" y="440"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="F0X-g9-DiL">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="u7i-AH-4Db" customClass="PageViewController" customModule="Reddit" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="RBw-pY-Zoy"/>
+                    <connections>
+                        <segue destination="KaK-1e-yGT" kind="custom" identifier="subredditsSegue" customClass="PageSegue" customModule="Reddit" animates="NO" id="eEM-kv-anf"/>
+                        <segue destination="EQO-2k-TEj" kind="custom" identifier="multiredditsSegue" customClass="PageSegue" customModule="Reddit" animates="NO" id="2l4-7O-bDT"/>
+                    </connections>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gkm-1j-Va3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1803" y="441"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Jfw-YF-oTx">
+            <objects>
+                <viewController id="KaK-1e-yGT" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HyQ-Sz-SUI"/>
+                        <viewControllerLayoutGuide type="bottom" id="XVh-sx-4Py"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6qn-HE-9Ts">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.23921568630000001" green="0.49019607840000001" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1pB-lO-a6i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2569" y="95"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="cAm-x4-Mgi">
+            <objects>
+                <viewController id="EQO-2k-TEj" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Q6S-k0-Sa9"/>
+                        <viewControllerLayoutGuide type="bottom" id="bw1-RK-IAO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fzU-dh-HJx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.74117647060000003" green="0.1215686275" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2MS-i5-1Ci" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2569" y="765"/>
         </scene>
     </scenes>
 </document>

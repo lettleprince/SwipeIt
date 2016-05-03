@@ -47,4 +47,12 @@ struct StoryboardScene {
 }
 
 struct StoryboardSegue {
+  enum Main: String, StoryboardSegueType {
+    case EmbedPageViewController = "embedPageViewController"
+    case MultiredditsSegue = "multiredditsSegue"
+    case SubredditsSegue = "subredditsSegue"
+  }
+  enum Onboarding: String, StoryboardSegueType {
+    case MainSegue = "mainSegue"
+  }
 }
