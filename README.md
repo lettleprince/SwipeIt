@@ -10,7 +10,7 @@ This project serves as the [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93vi
 
 ![MVVM](https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/MVVMPattern.png/660px-MVVMPattern.png)
 
-**MVVM** denotes the Model-View-ViewModel arquitectural pattern, where **Model** data is encapsulated in **ViewModel** objects and the **View* does a (sometimes two-way) binding with the **ViewModel**'s **Model** representation.
+**MVVM** denotes the Model-View-ViewModel arquitectural pattern, where **Model** data is encapsulated in **ViewModel** objects and the **View** does a (sometimes two-way) binding with the **ViewModel**'s **Model** representation.
 
 ## MVC
 
@@ -61,7 +61,7 @@ In order to minimize development time, a few dependencies will be used:
 - [Device](https://github.com/Ekhoo/Device): Device detect the current  device model and screen size.
 - [Cell-Rx](https://github.com/ivanbruel/Cell-Rx): Cell+Rx provides a similar API to NSObject+Rx but for cells who are reused along the way.
 
-**RxSwift**, **RxCocoa**, **RxOptional**, **Cell-Rx** and **NSObject+Rx** will only be used on the **MVVM+FRP* project as they are the basis for **FRP** usage in iOS (in this particular case Swift).
+**RxSwift**, **RxCocoa**, **RxOptional**, **Cell-Rx** and **NSObject+Rx** will only be used on the **MVVM+FRP** project as they are the basis for **FRP** usage in iOS (in this particular case Swift).
 
 ## Code style
 
