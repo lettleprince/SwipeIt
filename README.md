@@ -6,6 +6,8 @@ This project is part of a benchmark between [MVVM](https://en.wikipedia.org/wiki
 
 This project serves as the [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel) with [FRP](https://en.wikipedia.org/wiki/Functional_reactive_programming) benchmark project.
 
+You can read more about it in [Medium](https://medium.com/faber-dev/mvvm-benchmark-in-an-mvc-world-part-1-dab952617395#.9nw0hx21c).
+
 ## MVVM
 
 ![MVVM](https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/MVVMPattern.png/660px-MVVMPattern.png)
