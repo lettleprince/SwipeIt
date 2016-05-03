@@ -60,7 +60,10 @@ extension WebViewController: WKNavigationDelegate {
         guard let estimatedProgress = estimatedProgress else {
           return
         }
-        self.progressView.setProgress(Float(estimatedProgress), animated: true)
+        self.progressView.layer.removeAllAnimations()
+        let floatEstimatedProgress = Float(estimatedProgress)
+        let animateChange = self.progressView.progress < floatEstimatedProgress
+        self.progressView.setProgress(floatEstimatedProgress, animated: animateChange)
         if estimatedProgress == 1 {
           self.hideProgressView()
         } else {
