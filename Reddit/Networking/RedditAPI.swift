@@ -11,20 +11,30 @@ import Moya
 
 enum RedditAPI {
 
+  case AccessToken(code: String, redirectURL: String, clientId: String)
+  case RefreshToken(refreshToken: String, clientId: String)
   case SubredditListing(token: String, after: String?)
   case MultiredditListing(token: String)
   case LinkDetails(token: String?, permalink: String)
   case LinkListing(token: String?, subredditName: String, listing: ListingType, after: String?)
   case UserDetails(token: String?, username: String)
+  case UserMeDetails(token: String)
 
 }
 
 extension RedditAPI: TargetType {
 
-  var baseURL: NSURL { return NSURL(string: Constants.baseURL)! }
+  var baseURL: NSURL {
+    guard let _ = token else {
+      return NSURL(string: "https://www.reddit.com")!
+    }
+    return NSURL(string: "https://oauth.reddit.com")!
+  }
 
   var path: String {
     switch self {
+    case .AccessToken, RefreshToken:
+      return "/api/v1/access_token"
     case .SubredditListing:
       return "/api/multi/mine"
     case .MultiredditListing:
@@ -33,6 +43,8 @@ extension RedditAPI: TargetType {
       return "/r/\(subredditName)/\(listing.path)"
     case .LinkDetails(_, let permalink):
       return permalink
+    case .UserMeDetails(_):
+      return "/api/v1/me"
     case .UserDetails(_, let username):
       return "/user/\(username)/about"
     }
@@ -40,6 +52,8 @@ extension RedditAPI: TargetType {
 
   var method: Moya.Method {
     switch self {
+    case .AccessToken, .RefreshToken:
+      return .POST
     default:
       return .GET
     }
@@ -47,6 +61,16 @@ extension RedditAPI: TargetType {
 
   var parameters: [String: AnyObject]? {
     switch self {
+    case .AccessToken(let code, let redirectURL, _):
+      return [
+        "grant_type": "authorization_code",
+        "code": code,
+        "redirect_uri": redirectURL]
+    case .RefreshToken(let refreshToken, _):
+      return [
+        "grant_type": "refresh_token",
+        "refresh_token": refreshToken
+      ]
     case .SubredditListing(_, let after):
       guard let after = after else {
         return nil
@@ -64,6 +88,8 @@ extension RedditAPI: TargetType {
 
   var sampleData: NSData {
     switch self {
+    case .AccessToken, .RefreshToken:
+      return JSONReader.readJSONData("AccessToken")
     case .SubredditListing:
       return JSONReader.readJSONData("SubredditListing")
     case .LinkListing:
@@ -72,7 +98,7 @@ extension RedditAPI: TargetType {
       return JSONReader.readJSONData("MultiredditListing")
     case .LinkDetails:
       return JSONReader.readJSONData("LinkDetails")
-    case .UserDetails:
+    case .UserDetails, .UserMeDetails:
       return JSONReader.readJSONData("UserDetails")
     }
   }
@@ -86,6 +112,8 @@ extension RedditAPI: TargetType {
 
   var parameterEncoding: ParameterEncoding {
     switch self {
+    case .AccessToken, .RefreshToken:
+      return .URL
     default:
       return method == .GET ? .URL : .JSON
     }
@@ -103,11 +131,26 @@ extension RedditAPI: TargetType {
       return token
     case .UserDetails(let token, _):
       return token
+    case .UserMeDetails(let token):
+      return token
+    default:
+      return nil
     }
   }
 
   var url: String {
     return "\(baseURL)\(path).json"
+  }
+
+  var credentials: NSURLCredential? {
+    switch self {
+    case .AccessToken(_, _, let clientId):
+      return NSURLCredential(user: clientId, password: "", persistence: .None)
+    case .RefreshToken(_, let clientId):
+      return NSURLCredential(user: clientId, password: "", persistence: .None)
+    default:
+      return nil
+    }
   }
 
 }

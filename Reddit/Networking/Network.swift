@@ -20,5 +20,12 @@ class Network {
       parameters: target.parameters,
       parameterEncoding: target.parameterEncoding,
       httpHeaderFields: target.headers)
-    })
+    }, plugins: [credentialsPlugin,
+      NetworkLoggerPlugin()
+    ])
+
+  private static var credentialsPlugin = CredentialsPlugin { target -> NSURLCredential? in
+    guard let target = target as? RedditAPI else { return nil }
+    return target.credentials
+  }
 }

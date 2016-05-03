@@ -10,6 +10,4 @@ import Foundation
 
 class Constants {
 
-  static var baseURL = "https://reddit.com"
-
 }
