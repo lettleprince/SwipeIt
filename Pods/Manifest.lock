@@ -47,6 +47,7 @@ DEPENDENCIES:
   - NSObject+Rx
   - ObjectMapper
   - Quick
+  - Result
   - RxCocoa
   - RxOptional
   - RxSwift
