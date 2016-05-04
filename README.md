@@ -12,13 +12,13 @@ You can read more about it in [Medium](https://medium.com/faber-dev/mvvm-benchma
 
 ![MVVM](https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/MVVMPattern.png/660px-MVVMPattern.png)
 
-**MVVM** denotes the Model-View-ViewModel arquitectural pattern, where **Model** data is encapsulated in **ViewModel** objects and the **View** does a (sometimes two-way) binding with the **ViewModel**'s **Model** representation.
+**MVVM** denotes the Model-View-ViewModel architectural pattern, where **Model** data is encapsulated in **ViewModel** objects and the **View** does a (sometimes two-way) binding with the **ViewModel**'s **Model** representation.
 
 ## MVC
 
 ![MVC](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/MVC-Process.svg/500px-MVC-Process.svg.png)
 
-**MVC** denotes the Model-View-Controller arquitectural pattern, where the **Controller** operates the **Model** and the **View** represents the **Model** state.
+**MVC** denotes the Model-View-Controller architectural pattern, where the **Controller** operates the **Model** and the **View** represents the **Model** state.
 
 # Project
 
@@ -26,7 +26,7 @@ For this particular benchmark we're going to create a simple [Reddit](http://red
 
 This application will try to cover most of the concerns that iOS developers actually have nowadays (e.g. asynchronous network calls, JSON parsing, image loading, collection/table views, storyboarding, user authentication, etc)
 
-The application will be developed twice, once with an **MVC** arquitecture and again in **MVVM**.
+The application will be developed twice, once with an **MVC** architecture and again in **MVVM**.
 
 When both application arquitectures are developed, some metrics will be measured, including:
 
