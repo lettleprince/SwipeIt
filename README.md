@@ -1,6 +1,6 @@
 MVVM+FRP vs MVC Benchmark
 ========================
-[![Build Status](https://travis-ci.org/ivanbruel/MVVM-Benchmark.svg?branch=master)](https://travis-ci.org/ivanbruel/MVVM-Benchmark)
+[![Build Status](https://travis-ci.org/ivanbruel/Reddit-MVVM-Benchmark.svg?branch=master)](https://travis-ci.org/ivanbruel/Reddit-MVVM-Benchmark)
 
 This project is part of a benchmark between [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)+[FRP](https://en.wikipedia.org/wiki/Functional_reactive_programming) and [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) architectures in iOS app development.
 
