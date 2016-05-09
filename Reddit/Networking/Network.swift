@@ -20,8 +20,8 @@ class Network {
       parameters: target.parameters,
       parameterEncoding: target.parameterEncoding,
       httpHeaderFields: target.headers)
-    }, plugins: [credentialsPlugin,
-      NetworkLoggerPlugin()
+    }, plugins: [//NetworkLoggerPlugin(),
+      credentialsPlugin
     ])
 
   private static var credentialsPlugin = CredentialsPlugin { target -> NSURLCredential? in
