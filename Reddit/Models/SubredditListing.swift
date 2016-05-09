@@ -19,7 +19,10 @@ struct SubredditListing: Mappable, Listing {
   var subreddits: [Subreddit]?
 
   // MARK: JSON
-  init?(_ map: Map) { }
+  init?(_ map: Map) {
+    // Fail if no data is found
+    guard let _ = map.JSONDictionary["data"] else { return nil }
+  }
 
   mutating func mapping(map: Map) {
     mappingListing(map)
