@@ -23,7 +23,7 @@ class LoginViewModel: NSObject {
   private static let responseType = "code"
   private static let duration = Duration.Permanent
   private static let scopes: [Scope] = [.Subscribe, .Vote, .MySubreddits, .Submit, .Save, .Read,
-                               .Report, .Identity, .Account, .Edit, .History]
+                                        .Report, .Identity, .Account, .Edit, .History]
   /// Show Compact page only on iPhone
   private static var authorizePath: String = {
     return Device.type() == .iPad ? "authorize" : "authorize.compact"
@@ -64,15 +64,21 @@ class LoginViewModel: NSObject {
 // MARK: Token Reuse
 extension LoginViewModel {
 
-  /// Automatic login in case we already have a valid access token
-  /// Or refresh the token if it has expired
+  // Automatic login in case we already have a valid access token
+  // Or refresh the token if it has expired
   private func reuseToken() {
-    if let accessToken = Globals.accessToken {
-      if accessToken.expiresIn.compare(NSDate()) == .OrderedAscending {
-        self._loginResult.onNext(Result(accessToken))
-      } else {
-        refreshToken(accessToken)
-      }
+    guard let accessToken = Globals.accessToken else { return }
+
+    // Refresh token if it has a refreshToken and the access token is invalid
+    if let oldRefreshToken = accessToken.refreshToken
+      where !accessToken.tokenIsValid {
+        refreshToken(oldRefreshToken)
+        return
+    }
+
+    // Use token if token is valid
+    if accessToken.tokenIsValid {
+      _loginResult.onNext(Result(accessToken))
     }
   }
 
@@ -95,6 +101,7 @@ extension LoginViewModel {
   }
 
   func loginWithRedirectURL(URLString: String) {
+    // Checks if the redirect URL is the prefix of URLString, returns Unknown error in case it's not
     guard URLString.hasPrefix(LoginViewModel.redirectURL) else {
       _loginResult.onNext(Result(error: .Unknown))
       return
@@ -102,35 +109,51 @@ extension LoginViewModel {
 
     let queryParameters = QueryReader.queryParametersFromString(URLString)
 
+    // Look for state and code query parameters, if they don't exist, the user Cancelled.
     guard let state = queryParameters["state"], code = queryParameters["code"]
       where state == self.state else {
         _loginResult.onNext(Result(error: .UserCancelled))
         return
     }
+
+    // Ask for the access token with the OAuth code
     getAccessToken(code)
+  }
+
+  private func successfulLogin(accessToken: AccessToken) {
+    Globals.accessToken = accessToken
+    _loginResult.onNext(Result(accessToken))
   }
 }
 
 // MARK: Networking
 extension LoginViewModel {
 
+  // Retrieve the access token from the OAuth API, save it in the keychain for automatic login.
   private func getAccessToken(code: String) {
     Network.provider.request(.AccessToken(code: code, redirectURL: LoginViewModel.redirectURL,
       clientId: LoginViewModel.clientId))
       .mapObject(AccessToken)
       .bindNext { [weak self] accessToken in
-        Globals.accessToken = accessToken
-        self?._loginResult.onNext(Result(accessToken))
+        self?.successfulLogin(accessToken)
       }.addDisposableTo(rx_disposeBag)
   }
 
-  private func refreshToken(accessToken: AccessToken) {
-    Network.provider.request(.RefreshToken(refreshToken: accessToken.refreshToken,
-      clientId: LoginViewModel.clientId))
+  // The Refresh Token request does not send a new refresh_token, therefor we need to reuse the
+  // refresh token from the old AccessToken.
+  private func refreshToken(refreshToken: String) {
+
+    let networkRequest = Network.provider.request(.RefreshToken(refreshToken: refreshToken,
+      clientId: LoginViewModel.clientId)).debug()
       .mapObject(AccessToken)
+
+    Observable
+      .combineLatest(networkRequest, Observable.just(refreshToken)) { ($0, $1) }
+      .map { (accessToken: AccessToken, refreshToken: String) in
+        AccessToken(accessToken: accessToken, refreshToken: refreshToken)
+      }
       .bindNext { [weak self] accessToken in
-        Globals.accessToken = accessToken
-        self?._loginResult.onNext(Result(accessToken))
+        self?.successfulLogin(accessToken)
       }.addDisposableTo(rx_disposeBag)
   }
 }
