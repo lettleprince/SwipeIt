@@ -14,6 +14,7 @@ enum RedditAPI {
   case AccessToken(code: String, redirectURL: String, clientId: String)
   case RefreshToken(refreshToken: String, clientId: String)
   case SubredditListing(token: String, after: String?)
+  case DefaultSubredditListing(after: String?)
   case MultiredditListing(token: String)
   case LinkDetails(token: String?, permalink: String)
   case LinkListing(token: String?, subredditName: String, listing: ListingType, after: String?)
@@ -35,10 +36,12 @@ extension RedditAPI: TargetType {
     switch self {
     case .AccessToken, RefreshToken:
       return "/api/v1/access_token"
-    case .SubredditListing:
-      return "/api/multi/mine"
     case .MultiredditListing:
+      return "/api/multi/mine"
+    case .SubredditListing:
       return "/subreddits/mine"
+    case .DefaultSubredditListing:
+      return "/subreddits/default"
     case .LinkListing(_, let subredditName, let listing, _):
       return "/r/\(subredditName)/\(listing.path)"
     case .LinkDetails(_, let permalink):
@@ -76,6 +79,11 @@ extension RedditAPI: TargetType {
         return nil
       }
       return ["after": after]
+    case .DefaultSubredditListing(let after):
+      guard let after = after else {
+        return nil
+      }
+      return ["after": after]
     case .LinkListing(_, _, _, let after):
       guard let after = after else {
         return nil
@@ -91,6 +99,8 @@ extension RedditAPI: TargetType {
     case .AccessToken, .RefreshToken:
       return JSONReader.readJSONData("AccessToken")
     case .SubredditListing:
+      return JSONReader.readJSONData("SubredditListing")
+    case .DefaultSubredditListing:
       return JSONReader.readJSONData("SubredditListing")
     case .LinkListing:
       return JSONReader.readJSONData("LinkListing")
