@@ -12,11 +12,20 @@ import RxCocoa
 
 // MARK: PageViewControllerDelegate
 public protocol PageViewControllerDelegate {
+
+  // Called when the view controller changes to another page
   func pageViewController(pageViewController: PageViewController, didTransitionToIndex: Int)
+
+  // Called when the view controller prepares for a segue, to allow parent view controller to inject
+  // properties into child view controller
+  func pageViewController(pageViewController: PageViewController,
+                          prepareForSegue segue: UIStoryboardSegue, sender: AnyObject?)
+
 }
 
 public class PageViewController: UIPageViewController {
 
+  // Dynamic so it can be observable
   private dynamic var _selectedIndex: Int = 0
 
   public var selectedIndex: Int {
@@ -28,22 +37,14 @@ public class PageViewController: UIPageViewController {
     }
   }
 
-  public var pageViewControllers: [UIViewController] = [] {
-    didSet {
-      guard let firstViewController = pageViewControllers.first else {
-        setViewControllers(nil, direction: .Forward, animated: false, completion: nil)
-        return
-      }
-      setViewControllers([firstViewController], direction: .Forward, animated: false,
-                         completion: nil)
-    }
-  }
+  public var pageViewControllers: [UIViewController] = []
 
   public var pageViewControllerDelegate: PageViewControllerDelegate?
 
   override init(transitionStyle style: UIPageViewControllerTransitionStyle,
                                 navigationOrientation: UIPageViewControllerNavigationOrientation,
                                 options: [String : AnyObject]?) {
+
     super.init(transitionStyle: style, navigationOrientation: navigationOrientation,
                options: options)
     commonSetup()
@@ -61,14 +62,23 @@ public class PageViewController: UIPageViewController {
 
   public override func viewDidLoad() {
     super.viewDidLoad()
-    if let segueTemplates = valueForKey("storyboardSegueTemplates") as? [AnyObject] {
-      segueTemplates
-        .filter {
-          ($0.valueForKey("segueClassName") as? String)?.containsString("PageSegue") ?? false
-        }.flatMap { $0.valueForKey("identifier") as? String }
-        .forEach { self.performSegueWithIdentifier($0, sender: nil) }
+    performPageSegues()
+  }
+
+  // A very hacky way to automatically perform segues defined in the storyboard
+  // storyboardSegueTemplates has a property named segueClassName which contains the mangled name
+  // for the Segue's class e.g. 't3gdxPageSegue'; it also has the identifier property to perform
+  // the segue with identifier call.
+  private func performPageSegues() {
+    guard let segueTemplates = valueForKey("storyboardSegueTemplates") as? [AnyObject] else {
+      return
     }
 
+    segueTemplates
+      .filter {
+        ($0.valueForKey("segueClassName") as? String)?.containsString("PageSegue") ?? false
+      }.flatMap { $0.valueForKey("identifier") as? String }
+      .forEach { self.performSegueWithIdentifier($0, sender: nil) }
   }
 
   public func setSelectedIndex(index: Int, animated: Bool) {
@@ -124,6 +134,15 @@ extension PageViewController: UIPageViewControllerDataSource {
 
 }
 
+// MARK: Segue
+extension PageViewController {
+
+  override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    pageViewControllerDelegate?.pageViewController(self, prepareForSegue: segue, sender: sender)
+  }
+
+}
+
 // MARK: Rx Bindings
 // swiftlint:disable variable_name
 extension PageViewController {
@@ -133,7 +152,7 @@ extension PageViewController {
       return (self?.rx_observe(Int.self, "_selectedIndex") ?? Observable.empty())
         .map { index in
           index ?? 0
-        }
+      }
     }
 
     let bindingObserver = UIBindingObserver(UIElement: self) {
@@ -157,6 +176,6 @@ public class PageSegue: UIStoryboardSegue {
       pageViewController.pageViewControllers = viewControllers
     }
   }
-  
+
   override public func perform() { }
 }
