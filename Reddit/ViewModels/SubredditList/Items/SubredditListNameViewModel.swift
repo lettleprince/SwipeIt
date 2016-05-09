@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 // MARK: Properties and Initializer
-class SubredditListNameViewModel: SubredditListItemViewModel, ViewModel {
+class SubredditListNameViewModel: NSObject, SubredditListItemViewModel {
 
   let name: String
 

@@ -10,12 +10,12 @@ import Foundation
 import RxSwift
 
 // MARK: Properties and Initializer
-class SubredditListSubredditViewModel: SubredditListItemViewModel, ViewModel {
+class SubredditListSubredditViewModel: NSObject, SubredditListItemViewModel {
 
   private let subreddit: Subreddit
 
   var name: String {
-    return subreddit.name
+    return subreddit.displayName
   }
 
   init(subreddit: Subreddit) {

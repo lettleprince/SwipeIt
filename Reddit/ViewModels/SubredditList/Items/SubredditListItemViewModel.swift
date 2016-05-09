@@ -8,7 +8,8 @@
 
 import Foundation
 
-protocol SubredditListItemViewModel {
+// Protocol to wrap both SubredditListNameViewModel and SubredditListSubredditViewModel
+protocol SubredditListItemViewModel: ViewModel {
 
   var name: String { get }
 
