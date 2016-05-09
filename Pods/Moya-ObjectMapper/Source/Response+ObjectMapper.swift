@@ -15,7 +15,6 @@ public extension Response {
   /// If the conversion fails, the signal errors.
   public func mapObject<T: Mappable>() throws -> T {
     let json = try mapJSON()
-    print(json)
     guard let object = Mapper<T>().map(json) else {
       throw Error.JSONMapping(self)
     }

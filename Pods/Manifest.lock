@@ -1,11 +1,11 @@
 PODS:
-  - Alamofire (3.3.1)
+  - Alamofire (3.4.0)
   - Crashlytics (3.7.0):
     - Fabric (~> 1.6.3)
   - Device (1.0.1)
   - Fabric (1.6.7)
   - KeychainSwift (3.0.13)
-  - Kingfisher (2.3.1)
+  - Kingfisher (2.4.0)
   - Moya (6.4.0):
     - Moya/Core (= 6.4.0)
   - Moya-ObjectMapper/Core (1.2):
@@ -29,6 +29,9 @@ PODS:
   - Result (2.0.0)
   - RxCocoa (2.4):
     - RxSwift (~> 2.4)
+  - RxDataSources (0.8):
+    - RxCocoa (~> 2.2)
+    - RxSwift (~> 2.2)
   - RxOptional (2.0.0):
     - RxCocoa (~> 2.0)
     - RxSwift (~> 2.0)
@@ -49,17 +52,18 @@ DEPENDENCIES:
   - Quick
   - Result
   - RxCocoa
+  - RxDataSources
   - RxOptional
   - RxSwift
   - SnapKit
 
 SPEC CHECKSUMS:
-  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
   Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
   Device: 7ed5b87db148886e8c3cbcdde5dc997baddbe10b
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   KeychainSwift: 3bda518adb1ab386da0a9a1de93b561ee2c9322b
-  Kingfisher: 6d3fbada4829cbc7b89e883e8218c28afeb64e42
+  Kingfisher: 9171a424ee7f8031f518f649bb850d1eab541247
   Moya: 4d526954c8afd79820991393d40d7d8af756ceee
   Moya-ObjectMapper: 565c1e9e1e79bdf72e18fa8fa01a0741d042fa34
   Nimble: 0f3c8b8b084cda391209c3c5efbb48bedeeb920a
@@ -68,6 +72,7 @@ SPEC CHECKSUMS:
   Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226
   Result: 9e75e1111c774c6ac594e14907b15057053a7959
   RxCocoa: 7d6cd877de99f5640306b3d6cf87f580c1d91b61
+  RxDataSources: 8755a221c065930a75cf24020f6f2c63713c486e
   RxOptional: b77fb47a0190213cf8a37c7a2b7fda28160b4563
   RxSwift: 67b9ef4e8b34fb394e200e754c6a09cc16559f94
   SnapKit: 5fce3c1bbbf1fbd31de9aa92f33eb9fa03f15650

@@ -7,7 +7,6 @@ def common_pods
   pod 'RxSwift'
   pod 'Moya/RxSwift'
   pod 'Moya-ObjectMapper/RxSwift'
-  pod 'RxCocoa'
   pod 'NSObject+Rx'
   pod 'RxOptional'
   pod 'Result'
@@ -24,6 +23,8 @@ target 'Reddit' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'KeychainSwift'
+  pod 'RxDataSources'
+  pod 'RxCocoa'
 
 end
 
