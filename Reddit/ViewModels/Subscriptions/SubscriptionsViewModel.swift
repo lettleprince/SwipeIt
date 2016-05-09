@@ -17,6 +17,10 @@ class SubscriptionsViewModel: NSObject, TitledViewModel {
     return SubredditListViewModel(user: user, accessToken: accessToken)
   }
 
+  var multiredditListViewModel: MultiredditListViewModel {
+    return MultiredditListViewModel(user: user, accessToken: accessToken)
+  }
+
   var title: Observable<String> {
     return .just(tr(.SubscriptionsTitle))
   }
