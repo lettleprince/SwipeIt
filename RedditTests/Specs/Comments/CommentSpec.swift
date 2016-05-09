@@ -6,7 +6,6 @@
 //  Copyright © 2016 Faber Ventures. All rights reserved.
 //
 
-
 import Quick
 import Nimble
 import Moya_ObjectMapper

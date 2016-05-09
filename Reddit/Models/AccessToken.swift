@@ -17,10 +17,10 @@ struct AccessToken: Mappable {
   var expirationDate: NSDate?
   var scope: String!
   var refreshToken: String?
-  var createdAt: NSDate! {
+  var created: NSDate! {
     didSet {
-      if createdAt == nil {
-        createdAt = NSDate()
+      if created == nil {
+        created = NSDate()
       }
     }
   }
@@ -33,7 +33,7 @@ struct AccessToken: Mappable {
     self.expirationDate = accessToken.expirationDate
     self.scope = accessToken.scope
     self.refreshToken = refreshToken
-    self.createdAt = accessToken.createdAt
+    self.created = accessToken.created
   }
 
   // Checks if the token is valid according to the expiration date
@@ -52,10 +52,10 @@ struct AccessToken: Mappable {
   }
 
   mutating func mapping(map: Map) {
-    createdAt <- (map["created_at"], EpochDateTransform())
+    created <- (map["created"], EpochDateTransform())
     token <- map["access_token"]
     tokenType <- map["token_type"]
-    expirationDate <- (map["expires_in"], NowDateTransform(now: createdAt))
+    expirationDate <- (map["expires_in"], NowDateTransform(now: created))
     scope <- map["scope"]
     refreshToken <- map["refresh_token"]
   }
