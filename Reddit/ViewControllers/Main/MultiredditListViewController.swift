@@ -12,8 +12,7 @@ import NSObject_Rx
 import RxDataSources
 
 // MARK: Properties
-class MultiredditListViewController: UIViewController, ViewModelViewController,
-InsettableScrollViewViewController {
+class MultiredditListViewController: UIViewController, InsettableScrollViewViewController {
 
   // MARK: Static Properties
   private static let estimatedTableViewCellHeight: CGFloat = 60

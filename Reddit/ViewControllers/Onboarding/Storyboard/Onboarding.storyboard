@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kxO-BE-fKk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kxO-BE-fKk">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
@@ -18,7 +18,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3N6-ug-Q1N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="269" y="353"/>
+            <point key="canvasLocation" x="224" y="350"/>
         </scene>
         <!--Walkthrough View Controller-->
         <scene sceneID="dh7-xG-gdk">
@@ -39,7 +39,7 @@
                                 </constraints>
                                 <state key="normal" title="Skip"/>
                                 <connections>
-                                    <segue destination="QTS-Nv-oCX" kind="presentation" identifier="mainSegue" id="WXh-1u-AVT"/>
+                                    <segue destination="QTS-Nv-oCX" kind="presentation" identifier="main" id="WXh-1u-AVT"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ytk-WD-Rtl">

@@ -30,7 +30,7 @@ extension LoginViewController {
   private func setup() {
     setupWebView()
     setupCloseButton()
-    bindTitle()
+    bindTitle(viewModel)
   }
 
   private func setupWebView() {

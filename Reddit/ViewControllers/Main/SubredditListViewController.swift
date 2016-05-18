@@ -12,8 +12,7 @@ import NSObject_Rx
 import RxDataSources
 
 // MARK: Properties
-class SubredditListViewController: UIViewController, ViewModelViewController,
-InsettableScrollViewViewController {
+class SubredditListViewController: UIViewController, InsettableScrollViewViewController {
 
   // MARK: IBOutlets
   @IBOutlet private weak var tableView: UITableView!
@@ -32,7 +31,6 @@ extension SubredditListViewController {
     super.viewDidLoad()
     setup()
   }
-
 }
 
 // MARK: Setup

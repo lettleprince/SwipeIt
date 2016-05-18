@@ -9,20 +9,18 @@
 import Foundation
 import NSObject_Rx
 
-protocol TitledViewModelViewController: ViewModelViewController {
+protocol TitledViewModelViewController {
 
-  func bindTitle()
+  func bindTitle(viewModel: TitledViewModel)
 
 }
 
-extension TitledViewModelViewController
-where Self: UIViewController, ViewModelType: TitledViewModel {
+extension TitledViewModelViewController where Self: UIViewController {
 
-  func bindTitle() {
+  func bindTitle(viewModel: TitledViewModel) {
     viewModel.title
       .bindNext { [weak self] title in
       self?.title = title
     }.addDisposableTo(rx_disposeBag)
   }
-
 }

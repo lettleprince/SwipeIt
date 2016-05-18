@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: Properties and Lifecycle
-class WalkthroughViewController: UIViewController, ViewModelViewController {
+class WalkthroughViewController: UIViewController {
 
   var viewModel: WalkthroughViewModel! = WalkthroughViewModel()
 
@@ -52,7 +52,7 @@ extension WalkthroughViewController {
 extension WalkthroughViewController: AlerteableViewController {
 
   private func goToMainStoryboard() {
-    performSegue(StoryboardSegue.Onboarding.MainSegue)
+    performSegue(StoryboardSegue.Onboarding.Main)
   }
 
   private func showLoginError(error: ErrorType) {
