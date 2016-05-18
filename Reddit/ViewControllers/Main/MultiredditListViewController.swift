@@ -48,6 +48,7 @@ extension MultiredditListViewController {
   private func setup() {
     bindTableView()
     setupInsettableScrollView(tableView)
+    viewModel.requestMultireddits()
   }
 
   private func bindTableView() {
