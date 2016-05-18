@@ -52,7 +52,7 @@ struct AccessToken: Mappable {
   }
 
   mutating func mapping(map: Map) {
-    created <- (map["created"], EpochDateTransform())
+    created <- (map["created_at"], EpochDateTransform())
     token <- map["access_token"]
     tokenType <- map["token_type"]
     expirationDate <- (map["expires_in"], NowDateTransform(now: created))
