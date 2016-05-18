@@ -8,7 +8,6 @@
 
 import UIKit
 import RxSwift
-import RxCocoa
 
 // MARK: Properties
 class SubscriptionsViewController: UIViewController, HideableHairlineViewController,

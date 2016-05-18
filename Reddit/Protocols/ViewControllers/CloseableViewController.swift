@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RxCocoa
 import NSObject_Rx
 
 protocol CloseableViewController {

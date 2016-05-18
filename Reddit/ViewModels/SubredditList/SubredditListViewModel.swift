@@ -9,10 +9,9 @@
 import Foundation
 import RxSwift
 import RxOptional
-import RxCocoa
 
 // MARK: Properties and Initializer
-class SubredditListViewModel: NSObject, ViewModel {
+class SubredditListViewModel: ViewModel {
 
   typealias SubredditListSectionViewModel = SectionViewModel<SubredditListItemViewModel>
 

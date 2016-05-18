@@ -9,10 +9,9 @@
 import Foundation
 import RxSwift
 import RxOptional
-import RxCocoa
 
 // MARK: Properties and Initializer
-class MultiredditListViewModel: NSObject, ViewModel {
+class MultiredditListViewModel: ViewModel {
 
   typealias MultiredditListSectionViewModel = SectionViewModel<MultiredditListItemViewModel>
 
