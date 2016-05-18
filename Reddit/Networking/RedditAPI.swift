@@ -17,9 +17,10 @@ enum RedditAPI {
   case DefaultSubredditListing(after: String?)
   case MultiredditListing(token: String)
   case LinkDetails(token: String?, permalink: String)
-  case LinkListing(token: String?, subredditName: String, listing: ListingType, after: String?)
+  case LinkListing(token: String?, path: String, listingPath: String, after: String?)
   case UserDetails(token: String?, username: String)
   case UserMeDetails(token: String)
+  case Vote(token: String, identifier: String, direction: Int)
 
 }
 
@@ -42,20 +43,22 @@ extension RedditAPI: TargetType {
       return "/subreddits/mine"
     case .DefaultSubredditListing:
       return "/subreddits/default"
-    case .LinkListing(_, let subredditName, let listing, _):
-      return "/r/\(subredditName)/\(listing.path)"
+    case .LinkListing(_, let path, let listingPath, _):
+      return "\(path)\(listingPath)"
     case .LinkDetails(_, let permalink):
       return permalink
     case .UserMeDetails(_):
       return "/api/v1/me"
     case .UserDetails(_, let username):
       return "/user/\(username)/about"
+    case .Vote:
+      return "/api/vote"
     }
   }
 
   var method: Moya.Method {
     switch self {
-    case .AccessToken, .RefreshToken:
+    case .AccessToken, .RefreshToken, .Vote:
       return .POST
     default:
       return .GET
@@ -89,6 +92,8 @@ extension RedditAPI: TargetType {
         return nil
       }
       return ["after": after]
+    case .Vote(_, let identifier, let direction):
+      return ["id": identifier, "dir": direction]
     default:
       return nil
     }
@@ -110,6 +115,8 @@ extension RedditAPI: TargetType {
       return JSONReader.readJSONData("LinkDetails")
     case .UserDetails, .UserMeDetails:
       return JSONReader.readJSONData("UserDetails")
+    case .Vote:
+      return JSONReader.readJSONData("Upvoted")
     }
   }
 
@@ -142,6 +149,8 @@ extension RedditAPI: TargetType {
     case .UserDetails(let token, _):
       return token
     case .UserMeDetails(let token):
+      return token
+    case .Vote(let token, _, _):
       return token
     default:
       return nil

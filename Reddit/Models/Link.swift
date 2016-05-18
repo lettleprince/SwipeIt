@@ -82,9 +82,8 @@ struct Link: Votable, Mappable {
 
   // MARK: Accessors
   var isImageLink: Bool {
-    guard let fileExtension = url.pathExtension else {
-      return false
-    }
+    guard let fileExtension = previewImages?.first?.source.url.pathExtension
+      else { return false }
     return Link.imageFileExtensions.contains(fileExtension)
   }
 

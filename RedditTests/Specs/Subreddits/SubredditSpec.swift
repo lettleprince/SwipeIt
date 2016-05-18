@@ -62,6 +62,7 @@ class SubredditSpec: QuickSpec {
           expect(subreddit.language) == "en"
           expect(subreddit.keyColor).to(beNil())
           expect(subreddit.url) == NSURL(string: "http://reddit.com/r/programming/")
+          expect(subreddit.path) == "/r/programming/"
           expect(subreddit.quarantine) == false
           expect(subreddit.hideAds) == false
           expect(subreddit.bannerWidth).to(beNil())
