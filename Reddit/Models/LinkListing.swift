@@ -14,7 +14,7 @@ struct LinkListing: Mappable, Listing {
   // MARK: LinkListing
   var before: String?
   var after: String?
-  var links: [Link]?
+  var links: [Link]!
 
   // MARK: JSON
   init?(_ map: Map) { }

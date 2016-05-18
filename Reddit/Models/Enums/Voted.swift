@@ -8,41 +8,28 @@
 
 import Foundation
 
-enum Voted: Equatable {
+enum Vote: Int {
 
-  case Upvoted
-  case Downvoted
-  case None
+  case Upvote = 1
+  case Downvote = -1
+  case None = 0
 
   var value: Bool? {
     switch self {
-    case .Upvoted:
+    case .Upvote:
       return true
-    case .Downvoted:
+    case .Downvote:
       return false
     case .None:
       return nil
     }
   }
 
-  static func fromBool(bool: Bool?) -> Voted {
+  static func fromBool(bool: Bool?) -> Vote {
     guard let bool = bool else {
       return .None
     }
-    return bool ? .Upvoted : .Downvoted
+    return bool ? .Upvote : .Downvote
   }
 
-}
-
-func == (lhs: Voted, rhs: Voted) -> Bool {
-  switch (lhs, rhs) {
-  case (.Downvoted, .Downvoted):
-    return true
-  case (.Upvoted, .Upvoted):
-    return true
-  case (.None, .None):
-    return true
-  default:
-    return false
-  }
 }

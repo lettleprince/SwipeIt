@@ -22,7 +22,7 @@ struct Comment: Votable, Mappable {
   // MARK: Votable
   var downs: Int!
   var ups: Int!
-  var voted: Voted!
+  var vote: Vote!
   var score: Int!
 
   // MARK: Created

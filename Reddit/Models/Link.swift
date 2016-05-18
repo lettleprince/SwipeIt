@@ -24,14 +24,14 @@ struct Link: Votable, Mappable {
   // MARK: Votable
   var downs: Int!
   var ups: Int!
-  var voted: Voted!
+  var vote: Vote!
   var score: Int!
 
   // MARK: Created
   var created: NSDate!
 
   // MARK: Link
-  var author: String?
+  var author: String!
   var authorFlairClass: String?
   var authorFlairText: String?
   var clicked: Bool!
@@ -96,8 +96,31 @@ struct Link: Votable, Mappable {
     return Link.redditURL.URLByAppendingPathComponent(permalink)
   }
 
+  var scoreWithoutVote: Int {
+    if vote == .Upvote {
+      return score - 1
+    } else if vote == .Downvote {
+      return score + 1
+    }
+    return score
+  }
+
+  func scoreWithVote(voted: Vote) -> Int {
+    switch voted {
+    case .Upvote:
+      return scoreWithoutVote + 1
+    case .Downvote:
+      return scoreWithoutVote - 1
+    case .None:
+      return scoreWithoutVote
+    }
+  }
+
   // MARK: JSON
-  init?(_ map: Map) { }
+  init?(_ map: Map) {
+    // Fail if no data is found
+    guard let _ = map.JSONDictionary["data"] else { return nil }
+  }
 
   mutating func mapping(map: Map) {
     mappingVotable(map)

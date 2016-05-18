@@ -38,7 +38,7 @@ class VideoLinkSpec: QuickSpec {
         it("is votable") {
           expect(link.downs) == 0
           expect(link.ups) == 5140
-          expect(link.voted) == Voted.None
+          expect(link.vote) == Vote.None
           expect(link.score) == 5140
         }
 

@@ -34,7 +34,7 @@ class LinkDetailsSpec: QuickSpec {
           expect(link?.subreddit).toEventually(equal("programming"))
           expect(link?.selfTextHTML).toEventually(beNil())
           expect(link?.selfText).toEventually(beNil())
-          expect(link?.voted).toEventually(equal(Voted.None))
+          expect(link?.vote).toEventually(equal(Vote.None))
           expect(link?.suggestedSort).toEventually(beNil())
           expect(link?.userReports).toEventually(beNil())
           expect(link?.secureMedia).toEventually(beNil())

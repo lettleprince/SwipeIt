@@ -37,7 +37,7 @@ class CommentSpec: QuickSpec {
         it("is votable") {
           expect(comment.downs) == 0
           expect(comment.ups) == 352
-          expect(comment.voted) == Voted.None
+          expect(comment.vote) == Vote.None
           expect(comment.score) == 352
         }
 

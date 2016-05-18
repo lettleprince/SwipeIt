@@ -37,7 +37,7 @@ class SelfLinkSpec: QuickSpec {
         it("is votable") {
           expect(link.downs) == 0
           expect(link.ups) == 1523
-          expect(link.voted) == Voted.Upvoted
+          expect(link.vote) == Vote.Upvote
           expect(link.score) == 1523
         }
 

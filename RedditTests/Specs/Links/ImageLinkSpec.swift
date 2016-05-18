@@ -37,7 +37,7 @@ class ImageLinkSpec: QuickSpec {
         it("is votable") {
           expect(link.downs) == 0
           expect(link.ups) == 3070
-          expect(link.voted) == Voted.None
+          expect(link.vote) == Vote.None
           expect(link.score) == 3070
         }
 

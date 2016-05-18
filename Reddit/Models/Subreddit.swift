@@ -48,6 +48,7 @@ struct Subreddit: Mappable, Created {
   var language: String!
   var keyColor: String?
   var url: NSURL!
+  var path: String!
   var quarantine: Bool!
   var hideAds: Bool!
   var bannerWidth: Int?
@@ -102,6 +103,7 @@ struct Subreddit: Mappable, Created {
     language <- map["data.lang"]
     keyColor <- (map["data.key_color"], EmptyStringTransform())
     url <- (map["data.url"], PermalinkTransform())
+    path <- map["data.url"]
     quarantine <- map["data.quarantine"]
     hideAds <- map["data.hide_ads"]
     bannerWidth <- map["data.banner_size.0"]
