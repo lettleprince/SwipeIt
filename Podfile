@@ -1,7 +1,7 @@
 platform :ios, '9.0'
 use_frameworks!
 
-def common_pods
+abstract_target 'RedditCommon' do
 
   pod 'ObjectMapper'
   pod 'RxSwift'
@@ -10,29 +10,28 @@ def common_pods
   pod 'NSObject+Rx'
   pod 'RxOptional'
   pod 'Result'
+  pod 'Kanna'
 
-end
+  target 'Reddit' do
 
-target 'Reddit' do
+    pod 'RxCocoa'
+    pod 'Kingfisher'
+    pod 'SnapKit'
+    pod 'Device'
+    pod 'Fabric'
+    pod 'Crashlytics'
+    pod 'KeychainSwift'
+    pod 'RxDataSources'
+    pod 'DateTools'
+    pod 'RxAlamofire'
+    
+  end
 
-  common_pods
+  target 'RedditTests' do
 
-  pod 'Kingfisher'
-  pod 'SnapKit'
-  pod 'Device'
-  pod 'Fabric'
-  pod 'Crashlytics'
-  pod 'KeychainSwift'
-  pod 'RxDataSources'
-  pod 'RxCocoa'
-
-end
-
-target 'RedditTests' do
-
-  common_pods
-
-  pod 'Quick'
-  pod 'Nimble'
-
+    pod 'Quick'
+    pod 'Nimble'
+    
+  end
+  
 end
