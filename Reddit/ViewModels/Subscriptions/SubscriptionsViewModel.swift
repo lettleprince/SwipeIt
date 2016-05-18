@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 // MARK: Properties and Initializer
-class SubscriptionsViewModel: NSObject, TitledViewModel {
+class SubscriptionsViewModel {
 
   // MARK: Public Properties
   var subredditListViewModel: SubredditListViewModel {

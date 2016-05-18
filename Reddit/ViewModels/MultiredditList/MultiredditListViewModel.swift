@@ -19,6 +19,7 @@ class MultiredditListViewModel: ViewModel {
   private let user: User?
   private let accessToken: AccessToken?
   private let multireddits: Variable<[Multireddit]>
+  private let disposeBag = DisposeBag()
 
   // 1. Map multireddits into their view model
   // 4. Create sections from the subreddit view models
@@ -36,24 +37,20 @@ class MultiredditListViewModel: ViewModel {
     self.accessToken = accessToken
 
     multireddits = Variable([])
-
-    super.init()
-
-    requestMultireddits()
   }
 }
 
 // MARK: Networking
 extension MultiredditListViewModel {
 
-  private func requestMultireddits() {
+  func requestMultireddits() {
     guard let accessToken = accessToken else { return }
 
     Network.provider.request(.MultiredditListing(token: accessToken.token))
       .mapArray(Multireddit)
       .bindNext { [weak self] multireddits in
         self?.multireddits.value = multireddits
-      }.addDisposableTo(rx_disposeBag)
+      }.addDisposableTo(disposeBag)
   }
 }
 

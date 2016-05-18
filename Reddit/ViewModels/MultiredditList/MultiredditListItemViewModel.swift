@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MultiredditListItemViewModel: NSObject, ViewModel {
+class MultiredditListItemViewModel: ViewModel {
 
   private let multireddit: Multireddit
 

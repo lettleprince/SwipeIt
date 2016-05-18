@@ -10,7 +10,7 @@ import Foundation
 import RxDataSources
 
 // Generic Section View Model for ViewModel implementations
-final class SectionViewModel<T>: NSObject, ViewModel {
+final class SectionViewModel<T>: ViewModel {
 
   let title: String
   let viewModels: [T]

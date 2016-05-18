@@ -8,11 +8,10 @@
 
 import Foundation
 import RxSwift
-import RxCocoa
 import Result
 
 // MARK: Properties and initializers
-class WalkthroughViewModel: NSObject, ViewModel {
+class WalkthroughViewModel: ViewModel {
 
   // MARK: Public Properties
   var loginResult: Observable<LoginError?> {

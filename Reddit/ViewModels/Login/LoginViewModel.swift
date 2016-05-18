@@ -11,11 +11,10 @@ import Device
 import RxSwift
 import Moya_ObjectMapper
 import ObjectMapper
-import NSObject_Rx
 import Result
 
 // MARK: Properties and Initializer
-class LoginViewModel: NSObject {
+class LoginViewModel {
 
   // MARK: Static
   private static let clientId = "S8m1IOZ4TW9vLQ"
@@ -47,10 +46,10 @@ class LoginViewModel: NSObject {
   // MARK: Private Properties
   private let state = NSUUID().UUIDString
   private let _loginResult = ReplaySubject<Result<AccessToken, LoginError>>.create(bufferSize: 1)
+  private let disposeBag = DisposeBag()
 
   // MARK: Initializer
-  override init() {
-    super.init()
+  init() {
     reuseToken()
   }
 
@@ -136,7 +135,7 @@ extension LoginViewModel {
       .mapObject(AccessToken)
       .bindNext { [weak self] accessToken in
         self?.successfulLogin(accessToken)
-      }.addDisposableTo(rx_disposeBag)
+      }.addDisposableTo(disposeBag)
   }
 
   // The Refresh Token request does not send a new refresh_token, therefor we need to reuse the
@@ -144,7 +143,7 @@ extension LoginViewModel {
   private func refreshToken(refreshToken: String) {
 
     let networkRequest = Network.provider.request(.RefreshToken(refreshToken: refreshToken,
-      clientId: LoginViewModel.clientId)).debug()
+      clientId: LoginViewModel.clientId))
       .mapObject(AccessToken)
 
     Observable
@@ -154,6 +153,6 @@ extension LoginViewModel {
       }
       .bindNext { [weak self] accessToken in
         self?.successfulLogin(accessToken)
-      }.addDisposableTo(rx_disposeBag)
+      }.addDisposableTo(disposeBag)
   }
 }
