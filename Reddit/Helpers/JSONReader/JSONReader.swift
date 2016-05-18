@@ -20,18 +20,7 @@ class JSONReader {
   }
 
   class func readJSONData(filename: String) -> NSData {
-    if let path = NSBundle(forClass: self).pathForResource(filename, ofType: "json") {
-      do {
-        let data = try NSData(contentsOfURL: NSURL(fileURLWithPath: path),
-          options: NSDataReadingOptions.DataReadingMappedIfSafe)
-        return data
-      } catch let error as NSError {
-        print(error.localizedDescription)
-      }
-    } else {
-      print("Could not find file: \(filename).json")
-    }
-    return NSData()
+    return FileReader.readFileData(filename, fileExtension: "json")
   }
 
 }
