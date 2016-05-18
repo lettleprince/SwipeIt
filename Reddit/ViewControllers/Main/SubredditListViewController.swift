@@ -39,6 +39,7 @@ extension SubredditListViewController {
   private func setup() {
     bindTableView()
     setupInsettableScrollView(tableView)
+    viewModel.requestAllSubreddits()
   }
 
   private func bindTableView() {
@@ -69,5 +70,17 @@ extension SubredditListViewController {
       .bindTo(tableView.rx_itemsWithDataSource(dataSource))
       .addDisposableTo(rx_disposeBag)
   }
+}
 
+// MARK: Segues
+extension SubredditListViewController {
+
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    guard let segueEnum = StoryboardSegue.Main(optionalRawValue: segue.identifier) else { return }
+
+    if let linkListViewController = segue.navigationRootViewController as? LinkListViewController,
+      cell = sender as? SubredditListItemTableViewCell where segueEnum == .LinkList {
+      linkListViewController.viewModel = cell.viewModel.linkListViewModel
+    }
+  }
 }

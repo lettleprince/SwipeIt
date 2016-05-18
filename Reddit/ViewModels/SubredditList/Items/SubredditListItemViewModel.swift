@@ -12,5 +12,5 @@ import Foundation
 protocol SubredditListItemViewModel: ViewModel {
 
   var name: String { get }
-
+  var linkListViewModel: LinkListViewModel { get }
 }
