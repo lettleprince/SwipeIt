@@ -23,6 +23,8 @@ enum L10n {
   case LoginErrorUserCancelled
   /// Subscriptions
   case SubscriptionsTitle
+  /// hidden
+  case LinkScoreHidden
 }
 
 extension L10n: CustomStringConvertible {
@@ -50,6 +52,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr("Login.Error.UserCancelled")
       case .SubscriptionsTitle:
         return L10n.tr("Subscriptions.Title")
+      case .LinkScoreHidden:
+        return L10n.tr("Link.Score.Hidden")
     }
   }
 
