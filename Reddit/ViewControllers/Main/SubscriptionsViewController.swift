@@ -57,7 +57,7 @@ extension SubscriptionsViewController {
 extension SubscriptionsViewController {
 
   private func setup() {
-    bindTitle()
+    bindTitle(viewModel)
     bindPageViewController()
     bindSegmentedControl()
   }
@@ -125,7 +125,7 @@ extension SubscriptionsViewController {
     guard let segueEnum = StoryboardSegue.Main(optionalRawValue: segue.identifier) else { return }
 
     if let pageViewController = segue.destinationViewController as? PageViewController
-      where segueEnum == .EmbedPageViewController {
+      where segueEnum == .Page {
       self.pageViewController = pageViewController
     }
   }

@@ -21,10 +21,6 @@ class SubscriptionsViewModel {
     return MultiredditListViewModel(user: user, accessToken: accessToken)
   }
 
-  var title: Observable<String> {
-    return .just(tr(.SubscriptionsTitle))
-  }
-
   // MARK: Private Properties
   private let user: User?
   private let accessToken: AccessToken?
@@ -35,4 +31,12 @@ class SubscriptionsViewModel {
     self.accessToken = accessToken
   }
 
+}
+
+// MARK: TitledViewModel
+extension SubscriptionsViewModel: TitledViewModel {
+
+  var title: Observable<String> {
+    return .just(tr(.SubscriptionsTitle))
+  }
 }
