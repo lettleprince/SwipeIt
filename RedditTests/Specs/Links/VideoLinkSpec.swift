@@ -158,6 +158,10 @@ class VideoLinkSpec: QuickSpec {
           expect(mediaEmbed.height) == 338
           expect(mediaEmbed.scrolling) == false
         }
+
+        it("has the video link type") {
+          expect(link.type) == LinkType.Video
+        }
         
       }
     }

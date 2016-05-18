@@ -87,6 +87,10 @@ class SelfLinkSpec: QuickSpec {
           expect(link.modReports).to(beNil())
           expect(link.totalReports) == 0
         }
+
+        it("has the self post link type") {
+          expect(link.type) == LinkType.SelfPost
+        }
       }
     }
   }

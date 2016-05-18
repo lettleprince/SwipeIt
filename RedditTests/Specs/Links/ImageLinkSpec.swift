@@ -110,6 +110,9 @@ class ImageLinkSpec: QuickSpec {
           expect(preview.nsfwResolutions).to(beNil())
         }
 
+        it("has the image link type") {
+          expect(link.type) == LinkType.Image
+        }
       }
     }
   }

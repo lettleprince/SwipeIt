@@ -88,6 +88,14 @@ struct Link: Votable, Mappable {
     return Link.imageFileExtensions.contains(fileExtension)
   }
 
+  var isVideoLink: Bool {
+    return media != nil
+  }
+
+  var type: LinkType {
+    return LinkType.typeFromLink(self)
+  }
+
   var shortURL: NSURL {
     return Link.redditShortURL.URLByAppendingPathComponent(identifier)
   }
