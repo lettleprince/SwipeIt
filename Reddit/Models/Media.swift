@@ -34,7 +34,7 @@ struct Media: Mappable {
   }
 
   mutating func mapping(map: Map) {
-    type <- map["type"]
+    type <- map["oembed.type"]
     authorName <- map["oembed.author_name"]
     authorURL <- (map["oembed.author_url"], EmptyURLTransform())
     providerURL <- (map["oembed.provider_url"], EmptyURLTransform())

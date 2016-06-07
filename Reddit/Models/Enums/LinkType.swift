@@ -12,6 +12,7 @@ enum LinkType: Equatable {
 
   case Video
   case Image
+  case Album
   case SelfPost
   case LinkPost
 }
@@ -19,12 +20,14 @@ enum LinkType: Equatable {
 extension LinkType {
 
   static func typeFromLink(link: Link) -> LinkType {
-    if link.isVideoLink {
+    if link.selfPost == true {
+      return .SelfPost
+    } else if link.isVideoLink {
       return .Video
+    } else if link.isAlbumLink {
+      return .Album
     } else if link.isImageLink {
       return .Image
-    } else if link.selfPost == true {
-      return .SelfPost
     } else {
       return .LinkPost
     }
@@ -36,6 +39,8 @@ func == (lhs: LinkType, rhs: LinkType) -> Bool {
   case (.Video, .Video):
     return true
   case (.Image, .Image):
+    return true
+  case (.Album, .Album):
     return true
   case (.SelfPost, .SelfPost):
     return true

@@ -16,6 +16,10 @@ struct Image: Mappable {
   var width: Int!
   var height: Int!
 
+  var size: CGSize {
+    return CGSize(width: width, height: height)
+  }
+
   // MARK: JSON
   init?(_ map: Map) { }
 

@@ -113,7 +113,7 @@ class VideoLinkSpec: QuickSpec {
 
         it("has media") {
           let media = link.media!
-          expect(media.type) == "youtube.com"
+          expect(media.type) == "video"
           expect(media.providerURL) == NSURL(string: "https://www.youtube.com/")
           expect(media.providerTitle) == "GREEN ON FLOODS"
           expect(media.authorName) == "Joe Farris"
@@ -129,7 +129,7 @@ class VideoLinkSpec: QuickSpec {
 
         it("has secure media") {
           let media = link.secureMedia!
-          expect(media.type) == "youtube.com"
+          expect(media.type) == "video"
           expect(media.providerURL) == NSURL(string: "https://www.youtube.com/")
           expect(media.providerTitle) == "GREEN ON FLOODS"
           expect(media.authorName) == "Joe Farris"

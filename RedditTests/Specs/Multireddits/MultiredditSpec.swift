@@ -44,7 +44,8 @@ class MultiredditSpec: QuickSpec {
           expect(multireddit.keyColor) == "#cee3f8"
           expect(multireddit.visibility) == MultiredditVisibility.Public
           expect(multireddit.iconName).to(beNil())
-          expect(multireddit.path) == NSURL(string: "http://reddit.com/user/reddit/m/redditpets")
+          expect(multireddit.url) == NSURL(string: "http://reddit.com/user/reddit/m/redditpets")
+          expect(multireddit.path) == "/user/reddit/m/redditpets/"
           expect(multireddit.descriptionMarkdown) == "Photos of reddit pets. &lt;3"
         }
 

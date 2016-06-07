@@ -14,7 +14,8 @@ struct Multireddit: Mappable {
   // MARK: Multireddit
   var name: String!
   var displayName: String!
-  var path: NSURL!
+  var path: String!
+  var url: NSURL!
   var descriptionHTML: String?
   var descriptionMarkdown: String?
   var copiedFrom: String?
@@ -29,7 +30,7 @@ struct Multireddit: Mappable {
   lazy var username: String? = {
     do {
       let regex = try NSRegularExpression(pattern: "http://reddit.com/user/(.*)/m/", options: [])
-      let path = self.path.absoluteString
+      let path = self.url.absoluteString
       if let firstMatch = regex
         .firstMatchInString(path, options: [],
                             range: NSRange(location: 0, length: path.characters.count)) {
@@ -49,7 +50,8 @@ struct Multireddit: Mappable {
   mutating func mapping(map: Map) {
     name <- map["data.name"]
     displayName <- map["data.display_name"]
-    path <- (map["data.path"], PermalinkTransform())
+    url <- (map["data.path"], PermalinkTransform())
+    path <- (map["data.path"], PathTransform())
     descriptionHTML <- map["data.description_html"]
     descriptionMarkdown <- map["data.description_md"]
     copiedFrom <- map["data.copied_from"]

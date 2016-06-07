@@ -12,7 +12,9 @@ import ObjectMapper
 // https://github.com/reddit/reddit/wiki/JSON
 struct Link: Votable, Mappable {
 
-  private static let imageFileExtensions = ["tiff", "tif", "jpg", "jpeg", "gif", "png"]
+  private static let imageURLRegexes = ["^https?://.*imgur.com/", "^https?://.*reddituploads.com/",
+                                        "^https?://(?: www.)?gfycat.com/",
+                                        "^https?://.*.media.tumblr.com/", "(.jpe?g|.png|.gif)"]
   private static let redditShortURL = NSURL(string: "http://redd.it/")!
   private static let redditURL = NSURL(string: "http://reddit.com")!
 
@@ -82,17 +84,47 @@ struct Link: Votable, Mappable {
 
   // MARK: Accessors
   var isImageLink: Bool {
-    guard let fileExtension = previewImages?.first?.source.url.pathExtension
-      else { return false }
-    return Link.imageFileExtensions.contains(fileExtension)
+    let URLString = url.absoluteString
+    for regex in Link.imageURLRegexes {
+      if URLString.rangeOfString(regex, options: .RegularExpressionSearch) != nil {
+        return true
+      }
+    }
+    return false
   }
 
   var isVideoLink: Bool {
-    return media != nil
+    return media?.type == "video"
+  }
+
+  var isAlbumLink: Bool {
+    return media?.type == "rich"
+  }
+
+  var isGIFLink: Bool {
+    guard let fileExtension = previewImages?.first?.source.url.pathExtension else {
+      return false
+    }
+    return fileExtension == "gif"
+  }
+
+  var isSpoiler: Bool {
+    return title.lowercaseString.containsString("spoiler")
   }
 
   var type: LinkType {
     return LinkType.typeFromLink(self)
+  }
+
+  var imageURL: NSURL? {
+    let firstPreviewImage = previewImages?.first
+    return firstPreviewImage?.source.url ?? firstPreviewImage?.resolutions.last?.url
+      ?? url
+  }
+
+  var imageSize: CGSize? {
+    let firstPreviewImage = previewImages?.first
+    return firstPreviewImage?.source.size ?? firstPreviewImage?.resolutions.last?.size
   }
 
   var shortURL: NSURL {
@@ -187,5 +219,4 @@ struct Link: Votable, Mappable {
     modReports <- (map["data.mod_reports"], EmptyArrayTransform())
     totalReports <- (map["data.num_reports"], ZeroDefaultTransform())
   }
-
 }
