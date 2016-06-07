@@ -103,7 +103,7 @@ extension SubredditListViewModel {
       request = .SubredditListing(token: accessToken.token, after: after)
     }
 
-    Network.provider.request(request)
+    Network.request(request)
       .mapObject(SubredditListing)
       .bindNext { [weak self] subredditListing in
         self?.subredditListings.value.append(subredditListing)

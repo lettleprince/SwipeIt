@@ -130,7 +130,7 @@ extension LoginViewModel {
 
   // Retrieve the access token from the OAuth API, save it in the keychain for automatic login.
   private func getAccessToken(code: String) {
-    Network.provider.request(.AccessToken(code: code, redirectURL: LoginViewModel.redirectURL,
+    Network.request(.AccessToken(code: code, redirectURL: LoginViewModel.redirectURL,
       clientId: LoginViewModel.clientId))
       .mapObject(AccessToken)
       .bindNext { [weak self] accessToken in
@@ -142,7 +142,7 @@ extension LoginViewModel {
   // refresh token from the old AccessToken.
   private func refreshToken(refreshToken: String) {
 
-    let networkRequest = Network.provider.request(.RefreshToken(refreshToken: refreshToken,
+    let networkRequest = Network.request(.RefreshToken(refreshToken: refreshToken,
       clientId: LoginViewModel.clientId))
       .mapObject(AccessToken)
 

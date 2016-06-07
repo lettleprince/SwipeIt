@@ -105,7 +105,7 @@ extension LinkListItemViewModel {
 
   private func vote(accessToken: AccessToken?, oldVote: Vote, newVote: Vote) {
     guard let accessToken = accessToken else { return }
-    Network.provider.request(.Vote(token: accessToken.token, identifier: link.identifier,
+    Network.request(.Vote(token: accessToken.token, identifier: link.identifier,
       direction: newVote.rawValue))
       .subscribeError { [weak self] _ in
         self?.vote.value = oldVote

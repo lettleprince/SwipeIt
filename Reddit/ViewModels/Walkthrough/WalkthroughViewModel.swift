@@ -49,8 +49,7 @@ extension WalkthroughViewModel {
 
   // Object isn't wrapped in a data object as opposed to all other endpoints
   private static func getUserDetails(accessToken: AccessToken) -> Observable<User> {
-    return Network.provider
-      .request(.UserMeDetails(token: accessToken.token))
+    return Network.request(.UserMeDetails(token: accessToken.token))
       .mapObject(User.self) { json in
         guard let jsonObject = json else {
           return json
