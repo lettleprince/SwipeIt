@@ -187,85 +187,51 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="256" id="Np0-Mx-SuH">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LinkCell" rowHeight="256" id="Np0-Mx-SuH" customClass="LinkCell" customModule="Reddit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="600" height="256"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Np0-Mx-SuH" id="9q7-53-esq">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="255"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8B-EB-Jt6">
-                                                    <rect key="frame" x="8" y="8" width="584" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uBz-yw-mdj">
-                                                    <rect key="frame" x="8" y="211" width="78" height="44"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AB9-Qe-VbJ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="35" height="44"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                            <state key="normal" title="Button"/>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3yi-pM-e89">
-                                                            <rect key="frame" x="43" y="0.0" width="35" height="44"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                            <state key="normal" title="Button"/>
-                                                        </button>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="44" id="a7R-ym-3fI"/>
-                                                    </constraints>
-                                                </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Cqe-JU-7gc">
-                                                    <rect key="frame" x="455" y="211" width="137" height="44"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6FY-kp-exJ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="31" height="44"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                            <state key="normal" title="Share"/>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8PN-yL-cEw">
-                                                            <rect key="frame" x="39" y="0.0" width="52" height="44"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                            <state key="normal" title="Downvote"/>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEa-rx-oGK">
-                                                            <rect key="frame" x="99" y="0.0" width="38" height="44"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                            <state key="normal" title="Upvote"/>
-                                                        </button>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="44" id="QgZ-aq-LMw"/>
-                                                    </constraints>
-                                                </stackView>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mvu-Nz-Vbh" customClass="LinkContextView" customModule="Reddit" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="34" width="134" height="16"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="16" id="0Yu-0r-c0m"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                                                            <real key="value" value="11"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pft-Lz-8qa" customClass="LinkView" customModule="Reddit" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="255"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="Cqe-JU-7gc" secondAttribute="bottom" id="Cqn-Hz-fkZ"/>
-                                                <constraint firstItem="mvu-Nz-Vbh" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="H8B-EB-Jt6" secondAttribute="trailing" id="Epm-js-GfQ"/>
-                                                <constraint firstItem="H8B-EB-Jt6" firstAttribute="leading" secondItem="9q7-53-esq" secondAttribute="leading" constant="8" id="Les-si-K8q"/>
-                                                <constraint firstItem="mvu-Nz-Vbh" firstAttribute="top" secondItem="H8B-EB-Jt6" secondAttribute="bottom" constant="8" id="WDU-Zf-kpL"/>
-                                                <constraint firstAttribute="bottom" secondItem="uBz-yw-mdj" secondAttribute="bottom" id="eMz-0c-bp4"/>
-                                                <constraint firstAttribute="trailing" secondItem="H8B-EB-Jt6" secondAttribute="trailing" constant="8" id="eTj-JT-dyd"/>
-                                                <constraint firstItem="uBz-yw-mdj" firstAttribute="leading" secondItem="9q7-53-esq" secondAttribute="leading" constant="8" id="gAy-Pk-jQS"/>
-                                                <constraint firstItem="H8B-EB-Jt6" firstAttribute="top" secondItem="9q7-53-esq" secondAttribute="top" constant="8" id="gbY-3P-W3M"/>
-                                                <constraint firstAttribute="trailing" secondItem="Cqe-JU-7gc" secondAttribute="trailing" constant="8" id="m9p-cs-rIG"/>
-                                                <constraint firstItem="mvu-Nz-Vbh" firstAttribute="leading" secondItem="H8B-EB-Jt6" secondAttribute="leading" id="mXc-Uz-oWh"/>
+                                                <constraint firstAttribute="trailing" secondItem="pft-Lz-8qa" secondAttribute="trailing" id="4ZP-vh-mHu"/>
+                                                <constraint firstItem="pft-Lz-8qa" firstAttribute="leading" secondItem="9q7-53-esq" secondAttribute="leading" id="Cvr-Ak-Xqj"/>
+                                                <constraint firstAttribute="bottom" secondItem="pft-Lz-8qa" secondAttribute="bottom" id="RAJ-sc-4c1"/>
+                                                <constraint firstItem="pft-Lz-8qa" firstAttribute="top" secondItem="9q7-53-esq" secondAttribute="top" id="xDp-Pz-AsG"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="linkView" destination="pft-Lz-8qa" id="GqJ-dd-8gv"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LinkImageCell" id="Lsy-Pj-fkr" customClass="LinkImageCell" customModule="Reddit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="328" width="600" height="256"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lsy-Pj-fkr" id="tiA-pi-NMg">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="255"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VMh-Bj-7A1" customClass="LinkImageView" customModule="Reddit" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="255"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="VMh-Bj-7A1" firstAttribute="leading" secondItem="tiA-pi-NMg" secondAttribute="leading" id="47Q-j0-Jqd"/>
+                                                <constraint firstAttribute="bottom" secondItem="VMh-Bj-7A1" secondAttribute="bottom" id="SjQ-Z7-wJv"/>
+                                                <constraint firstAttribute="trailing" secondItem="VMh-Bj-7A1" secondAttribute="trailing" id="kM9-yN-kEK"/>
+                                                <constraint firstItem="VMh-Bj-7A1" firstAttribute="top" secondItem="tiA-pi-NMg" secondAttribute="top" id="xKy-Vr-W4V"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="linkImageView" destination="VMh-Bj-7A1" id="tAc-pe-Ti0"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
