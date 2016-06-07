@@ -14,6 +14,7 @@ import ObjectMapper
 // MARK: Generic
 class Globals {
 
+  private static let userDefaults = NSUserDefaults.userDefaults
   private static let keychain = KeychainSwift()
 
 }
@@ -31,6 +32,23 @@ extension Globals {
         keychain.set(jsonString, forKey: "accessToken")
       } else {
         keychain.delete("accessToken")
+      }
+    }
+  }
+}
+
+// MARK: User Defaults
+extension Globals {
+
+  static var theme: Theme? {
+    get {
+      return Theme(optionalRawValue: userDefaults.stringForKey("theme"))
+    }
+    set {
+      if let theme = newValue {
+        userDefaults.setObject(theme.rawValue, forKey: "theme")
+      } else {
+        userDefaults.removeObjectForKey("theme")
       }
     }
   }

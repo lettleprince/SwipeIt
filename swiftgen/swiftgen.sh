@@ -11,5 +11,5 @@ mkdir -p "$project_folder/Resources/SwiftGen"
 ​
 swiftgen storyboards "$project_folder" --output "$project_folder/Resources/SwiftGen/Storyboards.swift"
 swiftgen images "$project_folder" --output "$project_folder/Resources/SwiftGen/Images.swift"
-swiftgen colors "$project_folder/Resources/Colors.rgb" --output "$project_folder/Resources/SwiftGen/Colors.swift"
+swiftgen colors "$project_folder/Resources/Colors.txt" --output "$project_folder/Resources/SwiftGen/Colors.swift"
 swiftgen strings "$project_folder/Resources/en.lproj/Localizable.strings" --output "$project_folder/Resources/SwiftGen/Strings.swift"
