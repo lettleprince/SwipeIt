@@ -25,5 +25,4 @@ extension LoginError: CustomStringConvertible {
       return tr(.LoginErrorUnknown)
     }
   }
-
 }

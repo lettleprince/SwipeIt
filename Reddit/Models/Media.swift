@@ -48,5 +48,4 @@ struct Media: Mappable {
     thumbnailURL <- (map["oembed.thumbnail_url"], EmptyURLTransform())
     html <- map["oembed.html"]
   }
-
 }
