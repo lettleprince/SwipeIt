@@ -29,20 +29,11 @@ class LinkListVideoViewModel: LinkListItemViewModel {
     self.accessToken = accessToken
     self.link = link
 
-    imageURL = LinkListVideoViewModel.imageFromLink(link)
+    imageURL = link.imageURL
     videoURL = link.url
     openGraphViewModel = OpenGraphViewModel(url: link.url)
     vote = Variable(link.vote)
 
     setupObservers()
-  }
-}
-
-extension LinkListVideoViewModel {
-
-  private class func imageFromLink(link: Link) -> NSURL? {
-    let firstPreviewImage = link.previewImages?.first
-    return link.media?.thumbnailURL ?? firstPreviewImage?.source.url ??
-      firstPreviewImage?.resolutions.last?.url ?? link.thumbnailURL
   }
 }

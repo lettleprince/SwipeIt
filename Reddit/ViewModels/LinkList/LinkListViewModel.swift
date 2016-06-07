@@ -18,6 +18,7 @@ class LinkListViewModel {
   private let user: User?
   private let accessToken: AccessToken?
   private let linkListings: Variable<[LinkListing]> = Variable([])
+  private let _viewModels: Variable<[LinkListItemViewModel]> = Variable([])
   private let _listingType: Variable<ListingType> = Variable(.Hot)
   private let disposeBag = DisposeBag()
 
@@ -32,6 +33,11 @@ class LinkListViewModel {
   convenience init(user: User?, accessToken: AccessToken?, subreddit: Subreddit) {
     self.init(user: user, accessToken: accessToken, title: subreddit.displayName,
               path: subreddit.path)
+  }
+
+  convenience init(user: User?, accessToken: AccessToken?, multireddit: Multireddit) {
+    self.init(user: user, accessToken: accessToken, title: multireddit.name,
+              path: multireddit.path)
   }
 }
 
@@ -61,50 +67,58 @@ extension LinkListViewModel {
         Array(linkListings.flatMap { $0.links }.flatten())
     }
   }
+
+  private var request: Observable<LinkListing> {
+    return Observable
+      .combineLatest(listingType, afterObservable, accessTokenObservable, pathObservable) {
+      ($0, $1, $2, $3)
+      }.take(1)
+      .flatMap {
+        (listingType: ListingType, after: String?, accessToken: AccessToken?, path: String) in
+        Network.request(RedditAPI.LinkListing(token: accessToken?.token,
+          path: path, listingPath: listingType.path, after: after))
+      }.mapObject(LinkListing)
+  }
 }
 
-// MARK: Public Observables
+// MARK: Public API
 extension LinkListViewModel {
+
+  var viewModels: Observable<[LinkListItemViewModel]> {
+    return _viewModels.asObservable()
+  }
 
   var listingType: Observable<ListingType> {
     return _listingType.asObservable()
   }
 
-  // TODO: Fix view model reusage (OpenGraph problem)
-  var viewModels: Observable<[LinkListItemViewModel]> {
-    let linksObservable = linkListings.asObservable()
-      .map { (linkListings: [LinkListing]) -> [Link] in
-        Array(linkListings.flatMap { $0.links }.flatten())
-    }
-    return Observable.combineLatest(userObservable, accessTokenObservable, linksObservable) {
-      ($0, $1, $2)
-      }.map { (user: User?, accessToken: AccessToken?, links: [Link]) in
-        links.map { links in
-          LinkListViewModel.viewModelFromLink(links, user: user, accessToken: accessToken)
-        }
-    }
+  func viewModelForIndex(index: Int) -> LinkListItemViewModel? {
+    return _viewModels.value.get(index)
   }
 
   func requestLinks() {
-    Observable.combineLatest(listingType, afterObservable, accessTokenObservable, pathObservable) {
-      ($0, $1, $2, $3)
+    Observable.combineLatest(request, userObservable, accessTokenObservable) {
+      ($0, $1, $2)
       }.take(1)
-      .flatMap {
-        (listingType: ListingType, after: String?, accessToken: AccessToken?, path: String) in
-        Network.provider.request(RedditAPI.LinkListing(token: accessToken?.token,
-          path: path, listingPath: listingType.path, after: after))
-      }.mapObject(LinkListing)
-      .bindNext { [weak self] linkListing in
+      .bindNext { [weak self] (linkListing, user, accessToken) in
         self?.linkListings.value.append(linkListing)
+        let viewModels = LinkListViewModel.viewModelsFromLinkListing(linkListing,
+          user: user, accessToken: accessToken)
+        viewModels.forEach { $0.preloadData() }
+        self?._viewModels.value += viewModels
       }.addDisposableTo(disposeBag)
   }
+}
 
-  static func viewModelFromLink(link: Link, user: User?, accessToken: AccessToken?)
+// MARK: Helpers
+extension LinkListViewModel {
+
+  private static func viewModelFromLink(link: Link, user: User?, accessToken: AccessToken?)
     -> LinkListItemViewModel {
       switch link.type {
       case .Video:
         return LinkListVideoViewModel(user: user, accessToken: accessToken, link: link)
-      case .Image:
+      case .Image, .Album:
         return LinkListImageViewModel(user: user, accessToken: accessToken, link: link)
       case .SelfPost:
         return LinkListSelfPostViewModel(user: user, accessToken: accessToken, link: link)
@@ -112,8 +126,15 @@ extension LinkListViewModel {
         return LinkListLinkViewModel(user: user, accessToken: accessToken, link: link)
       }
   }
-}
 
+  private static func viewModelsFromLinkListing(linkListing: LinkListing, user: User?,
+                                                accessToken: AccessToken?)
+    -> [LinkListItemViewModel] {
+      return linkListing.links.map { links in
+        LinkListViewModel.viewModelFromLink(links, user: user, accessToken: accessToken)
+      }
+  }
+}
 
 // MARK: TitledViewModel
 extension LinkListViewModel: TitledViewModel {

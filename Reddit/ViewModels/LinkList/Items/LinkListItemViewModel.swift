@@ -29,6 +29,7 @@ protocol LinkListItemViewModel: class, ViewModel {
   var downvoted: Observable<Bool> { get }
   var score: Observable<String> { get }
 
+  func preloadData()
   func upvote()
   func downvote()
   func setupObservers()
@@ -54,6 +55,7 @@ extension LinkListItemViewModel {
 
   var timeAgo: Observable<String> {
     let timer = Observable<Void>.create { observer in
+      observer.onNext()
       let timer = NSTimer.schedule(repeatInterval: 1.0) { timer in
         observer.onNext()
       }
@@ -62,7 +64,8 @@ extension LinkListItemViewModel {
         timer.invalidate()
       }
     }
-    return Observable.combineLatest(Observable.just(link.created), timer) { ($0, $1) }
+    return Observable
+      .combineLatest(Observable.just(link.created), timer) { ($0, $1) }
       .map { (created, _) in
         created.shortTimeAgoSinceNow()
     }
@@ -79,19 +82,23 @@ extension LinkListItemViewModel {
   }
 
   var score: Observable<String> {
-    return Observable.combineLatest(Observable.just(link), vote.asObservable()) { ($0, $1) }
+    return Observable
+      .combineLatest(Observable.just(link), vote.asObservable()) { ($0, $1) }
       .map { (link, vote) in
-        link.hideScore == true ? tr(.LinkScoreHidden) : "\(link.scoreWithVote(vote)))"
+        link.hideScore == true ? tr(.LinkScoreHidden) : "\(link.scoreWithVote(vote))"
     }
   }
 
   func setupObservers() {
     let votes = Observable.zip(vote.asObservable().skip(1), vote.asObservable()) { ($0, $1) }
-    Observable.combineLatest(Observable.just(accessToken).filterNil(), votes) { ($0, $1.0, $1.1) }
+    Observable
+      .combineLatest(Observable.just(accessToken).filterNil(), votes) { ($0, $1.0, $1.1) }
       .bindNext { [weak self] (accessToken, oldVote, newVote) in
         self?.vote(accessToken, oldVote: oldVote, newVote: newVote)
     }.addDisposableTo(disposeBag)
   }
+
+  func preloadData() { }
 
   func upvote() {
     guard let _ = accessToken else { return }
