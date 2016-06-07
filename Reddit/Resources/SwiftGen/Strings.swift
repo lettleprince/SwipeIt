@@ -25,6 +25,12 @@ enum L10n {
   case SubscriptionsTitle
   /// hidden
   case LinkScoreHidden
+  /// GIF
+  case LinkIndicatorGIF
+  /// NSFW
+  case LinkIndicatorNSFW
+  /// Spoiler
+  case LinkIndicatorSpoiler
 }
 
 extension L10n: CustomStringConvertible {
@@ -54,6 +60,12 @@ extension L10n: CustomStringConvertible {
         return L10n.tr("Subscriptions.Title")
       case .LinkScoreHidden:
         return L10n.tr("Link.Score.Hidden")
+      case .LinkIndicatorGIF:
+        return L10n.tr("Link.Indicator.GIF")
+      case .LinkIndicatorNSFW:
+        return L10n.tr("Link.Indicator.NSFW")
+      case .LinkIndicatorSpoiler:
+        return L10n.tr("Link.Indicator.Spoiler")
     }
   }
 

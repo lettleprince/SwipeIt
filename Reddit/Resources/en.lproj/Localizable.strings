@@ -22,3 +22,6 @@
 "Subscriptions.Title" = "Subscriptions";
 
 "Link.Score.Hidden" = "hidden";
+"Link.Indicator.GIF" = "GIF";
+"Link.Indicator.NSFW" = "NSFW";
+"Link.Indicator.Spoiler" = "Spoiler";
