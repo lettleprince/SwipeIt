@@ -81,3 +81,16 @@ extension MultiredditListViewController {
   }
 
 }
+
+// MARK: Segues
+extension MultiredditListViewController {
+
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    guard let segueEnum = StoryboardSegue.Main(optionalRawValue: segue.identifier) else { return }
+
+    if let linkListViewController = segue.navigationRootViewController as? LinkListViewController,
+      cell = sender as? MultiredditListItemTableViewCell where segueEnum == .LinkList {
+      linkListViewController.viewModel = cell.viewModel.linkListViewModel
+    }
+  }
+}

@@ -24,9 +24,12 @@ class MultiredditListViewModel: ViewModel {
   // 1. Map multireddits into their view model
   // 4. Create sections from the subreddit view models
   var viewModels: Observable<[MultiredditListSectionViewModel]> {
-    return multireddits.asObservable()
-      .map { (multireddits: [Multireddit]) -> [MultiredditListItemViewModel] in
-        multireddits.map { MultiredditListItemViewModel(multireddit: $0) }
+    return Observable.combineLatest(multireddits.asObservable(), userObservable,
+    accessTokenObservable) { ($0, $1, $2) }
+      .map { (multireddits, user, accessToken) in
+        multireddits.map {
+          MultiredditListItemViewModel(user: user, accessToken: accessToken, multireddit: $0)
+        }
       }.map { multiredditViewModels in
         return MultiredditListViewModel.sectionsFromMultiredditViewModels(multiredditViewModels)
     }
@@ -40,13 +43,25 @@ class MultiredditListViewModel: ViewModel {
   }
 }
 
+// MARK: Private Observables
+extension MultiredditListViewModel {
+
+  private var userObservable: Observable<User?> {
+    return .just(user)
+  }
+
+  private var accessTokenObservable: Observable<AccessToken?> {
+    return .just(accessToken)
+  }
+}
+
 // MARK: Networking
 extension MultiredditListViewModel {
 
   func requestMultireddits() {
     guard let accessToken = accessToken else { return }
 
-    Network.provider.request(.MultiredditListing(token: accessToken.token))
+    Network.request(.MultiredditListing(token: accessToken.token))
       .mapArray(Multireddit)
       .bindNext { [weak self] multireddits in
         self?.multireddits.value = multireddits

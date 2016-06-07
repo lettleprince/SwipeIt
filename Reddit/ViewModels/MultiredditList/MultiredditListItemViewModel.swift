@@ -10,12 +10,21 @@ import Foundation
 
 class MultiredditListItemViewModel: ViewModel {
 
+  // MARK: Private Properties
+  private let user: User?
+  private let accessToken: AccessToken?
   private let multireddit: Multireddit
 
   let name: String
   let subreddits: String
 
-  init(multireddit: Multireddit) {
+  var linkListViewModel: LinkListViewModel {
+    return LinkListViewModel(user: user, accessToken: accessToken, multireddit: multireddit)
+  }
+
+  init(user: User?, accessToken: AccessToken?, multireddit: Multireddit) {
+    self.user = user
+    self.accessToken = accessToken
     self.multireddit = multireddit
 
     name = multireddit.name
