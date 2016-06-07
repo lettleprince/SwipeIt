@@ -24,6 +24,8 @@ abstract_target 'RedditCommon' do
     pod 'RxDataSources'
     pod 'DateTools'
     pod 'RxAlamofire'
+    pod 'Cell+Rx'
+    pod 'AsyncSwift'
     
   end
 
