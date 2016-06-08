@@ -105,7 +105,11 @@ class ImageLinkSpec: QuickSpec {
           expect(preview.resolutions[1].url) == NSURL(string: "https://i.redditmedia.com/wHLsAOLJS0LI0_VpZEoNo-hXMDYAr-YIhoz5FV3a-bA.jpg?fit=crop&amp;crop=faces%2Centropy&amp;arh=2&amp;w=216&amp;s=4ca86ed3896238a2a5cd2a7cb472d824")
           expect(preview.resolutions[1].width) == 216
           expect(preview.resolutions[1].height) == 216
+<<<<<<< HEAD
           expect(preview.resolutions[1].size) == CGSize(width: 216, height: 216)
+=======
+          expect(preview.resolutions[1].size) == CGSize(width: 320, height: 320)
+>>>>>>> f7e48796c4f246955d67d24886255946f7064d1f
           expect(preview.resolutions[2].url) == NSURL(string: "https://i.redditmedia.com/wHLsAOLJS0LI0_VpZEoNo-hXMDYAr-YIhoz5FV3a-bA.jpg?fit=crop&amp;crop=faces%2Centropy&amp;arh=2&amp;w=320&amp;s=c9a1a0c63e9ffe5a954a3ccc72d87c0f")
           expect(preview.resolutions[2].width) == 320
           expect(preview.resolutions[2].height) == 320
