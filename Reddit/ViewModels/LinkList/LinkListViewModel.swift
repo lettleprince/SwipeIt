@@ -21,6 +21,7 @@ class LinkListViewModel {
   private let _viewModels: Variable<[LinkListItemViewModel]> = Variable([])
   private let _listingType: Variable<ListingType> = Variable(.Hot)
   private let disposeBag = DisposeBag()
+  private let _loadingState = Variable<LoadingState>(.Normal)
 
   // MARK: Initializer
   init(user: User?, accessToken: AccessToken?, title: String, path: String) {
@@ -73,11 +74,15 @@ extension LinkListViewModel {
       .combineLatest(listingType, afterObservable, accessTokenObservable, pathObservable) {
       ($0, $1, $2, $3)
       }.take(1)
-      .flatMap {
+      .doOnNext { [weak self] _ in
+        self?._loadingState.value = .Loading
+      }.flatMap {
         (listingType: ListingType, after: String?, accessToken: AccessToken?, path: String) in
         Network.request(RedditAPI.LinkListing(token: accessToken?.token,
           path: path, listingPath: listingType.path, after: after))
-      }.mapObject(LinkListing)
+      }.observeOn(SerialDispatchQueueScheduler(globalConcurrentQueueQOS: .Background))
+      .mapObject(LinkListing)
+      .observeOn(MainScheduler.instance)
   }
 }
 
@@ -86,6 +91,10 @@ extension LinkListViewModel {
 
   var viewModels: Observable<[LinkListItemViewModel]> {
     return _viewModels.asObservable()
+  }
+
+  var loadingState: Observable<LoadingState> {
+    return _loadingState.asObservable()
   }
 
   var listingType: Observable<ListingType> {
@@ -97,15 +106,26 @@ extension LinkListViewModel {
   }
 
   func requestLinks() {
-    Observable.combineLatest(request, userObservable, accessTokenObservable) {
-      ($0, $1, $2)
-      }.take(1)
-      .bindNext { [weak self] (linkListing, user, accessToken) in
-        self?.linkListings.value.append(linkListing)
-        let viewModels = LinkListViewModel.viewModelsFromLinkListing(linkListing,
-          user: user, accessToken: accessToken)
-        viewModels.forEach { $0.preloadData() }
-        self?._viewModels.value += viewModels
+    guard _loadingState.value != .Loading else { return }
+
+    Observable.combineLatest(request, userObservable, accessTokenObservable) { ($0, $1, $2) }
+      .take(1)
+      .subscribe { [weak self] event in
+        guard let `self` = self else { return }
+
+        switch event {
+        case let .Next(linkListing, user, accessToken):
+          self.linkListings.value.append(linkListing)
+          let viewModels = LinkListViewModel.viewModelsFromLinkListing(linkListing,
+            user: user, accessToken: accessToken)
+          viewModels.forEach { $0.preloadData() }
+          self._viewModels.value += viewModels
+          self._loadingState.value = self._viewModels.value.count > 0 ? .Normal : .Empty
+        case .Error:
+          self._loadingState.value = .Error
+        default: break
+        }
+
       }.addDisposableTo(disposeBag)
   }
 }
@@ -118,7 +138,7 @@ extension LinkListViewModel {
       switch link.type {
       case .Video:
         return LinkListVideoViewModel(user: user, accessToken: accessToken, link: link)
-      case .Image, .Album:
+      case .Image, .GIF, .Album:
         return LinkListImageViewModel(user: user, accessToken: accessToken, link: link)
       case .SelfPost:
         return LinkListSelfPostViewModel(user: user, accessToken: accessToken, link: link)
