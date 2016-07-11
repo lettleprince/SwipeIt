@@ -62,8 +62,10 @@ class LinkListImageViewModel: LinkListItemViewModel {
 extension LinkListImageViewModel {
 
   private class func indicatorFromLink(link: Link) -> String? {
-    if link.isGIFLink {
+    if link.type == .GIF {
       return tr(.LinkIndicatorGIF)
+    } else if link.type == .Album {
+      return tr(.LinkIndicatorAlbum)
     } else if link.isSpoiler {
       return tr(.LinkIndicatorSpoiler)
     } else if link.nsfw == true {

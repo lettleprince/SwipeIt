@@ -28,6 +28,8 @@ protocol LinkListItemViewModel: class, ViewModel {
   var upvoted: Observable<Bool> { get }
   var downvoted: Observable<Bool> { get }
   var score: Observable<String> { get }
+  var gilded: String { get }
+  var linkContext: [LinkContext] { get }
 
   func preloadData()
   func upvote()
@@ -51,6 +53,24 @@ extension LinkListItemViewModel {
 
   var totalComments: String {
     return "\(link.totalComments)"
+  }
+
+  var gilded: String {
+    return "x\(link.gilded)"
+  }
+
+  var linkContext: [LinkContext] {
+    var linkContext: [LinkContext] = [.TimeAgo, .Subreddit, .Author]
+    if link.gilded > 0 {
+      linkContext.append(.Gold)
+    }
+    if link.stickied == true {
+      linkContext.append(.Stickied)
+    }
+    if link.locked == true {
+      linkContext.append(.Locked)
+    }
+    return linkContext
   }
 
   var timeAgo: Observable<String> {
