@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import Async
+import Kingfisher
 
 class LinkContentImageView: UIView {
 
@@ -49,16 +50,24 @@ class LinkContentImageView: UIView {
   }
 
   lazy var imageView: UIImageView = {
-    let imageView = UIImageView()
+    let imageView = AnimatedImageView()
     imageView.contentMode = .ScaleAspectFit
     return imageView
   }()
 
   lazy var indicatorLabel: UILabel = {
-    let indicatorLabel = UILabel()
+    let indicatorLabel = InsettedLabel()
     indicatorLabel.font = UIFont.systemFontOfSize(self.indicatorLabelFontSize)
-    indicatorLabel.backgroundColor = .whiteColor()
-    indicatorLabel.textColor = .clearColor()
+    indicatorLabel.layer.cornerRadius = 4
+    indicatorLabel.layer.masksToBounds = true
+    indicatorLabel.textAlignment = .Center
+    indicatorLabel.insets = UIEdgeInsets(top: 2, left: 4, bottom: 2, right: 4)
+    Theming.sharedInstance.backgroundColor
+      .bindTo(indicatorLabel.rx_backgroundColor)
+      .addDisposableTo(self.rx_disposeBag)
+    Theming.sharedInstance.secondaryTextColor
+      .bindTo(indicatorLabel.rx_textColor)
+      .addDisposableTo(self.rx_disposeBag)
     return indicatorLabel
   }()
 

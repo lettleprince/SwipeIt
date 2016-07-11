@@ -78,7 +78,6 @@ import UIKit
 
   lazy var contextView: LinkContextView = {
     let contextView = LinkContextView()
-    contextView.spacing = LinkView.spacing
     return contextView
   }()
 

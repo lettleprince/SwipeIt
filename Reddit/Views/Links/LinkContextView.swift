@@ -8,23 +8,28 @@
 
 import UIKit
 
+enum LinkContext {
+  case TimeAgo
+  case Subreddit
+  case Author
+  case Gold
+  case Locked
+  case Stickied
+}
+
 @IBDesignable class LinkContextView: UIView {
 
   // MARK: Inspectable Properties
   @IBInspectable var fontSize: CGFloat = UIFont.smallSystemFontSize() {
     didSet {
-      timeAgoLabel.font = UIFont.systemFontOfSize(fontSize)
-      firstSeparatorLabel.font = UIFont.systemFontOfSize(fontSize)
-      authorButton.titleLabel?.font = UIFont.systemFontOfSize(fontSize)
-      secondSeparatorLabel.font = UIFont.systemFontOfSize(fontSize)
-      subredditButton.titleLabel?.font = UIFont.systemFontOfSize(fontSize)
+      labels.forEach { $0.font = UIFont.systemFontOfSize(fontSize) }
+      buttons.forEach { $0.titleLabel?.font = UIFont.systemFontOfSize(fontSize/2) }
     }
   }
 
   @IBInspectable var separator: String = "●" {
     didSet {
-      firstSeparatorLabel.text = separator
-      secondSeparatorLabel.text = separator
+      separatorLabels.forEach { $0.text = separator }
     }
   }
 
@@ -35,65 +40,44 @@ import UIKit
   }
 
   // MARK: Views
-  lazy var timeAgoLabel: UILabel = {
-    let timeAgoLabel = UILabel()
-    timeAgoLabel.font = UIFont.systemFontOfSize(self.fontSize)
-    timeAgoLabel.text = "9h"
-    Theming.sharedInstance.secondaryTextColor
-      .bindTo(timeAgoLabel.rx_textColor)
-      .addDisposableTo(self.rx_disposeBag)
-    return timeAgoLabel
+  lazy var timeAgoLabel: UILabel = self.buildLabel()
+  lazy var authorButton: UIButton = self.buildButton()
+  lazy var subredditButton: UIButton = self.buildButton()
+  lazy var goldLabel: UILabel = self.buildLabel()
+  lazy var lockedLabel: UILabel = {
+    let lockedLabel = self.buildLabel()
+    lockedLabel.text = tr(.LinkContextLocked)
+    return lockedLabel
   }()
 
-  private lazy var firstSeparatorLabel: UILabel = {
-    let firstSeparatorLabel = UILabel()
-    firstSeparatorLabel.font = UIFont.systemFontOfSize(self.fontSize)
-    firstSeparatorLabel.text = self.separator
-    Theming.sharedInstance.secondaryTextColor
-      .bindTo(firstSeparatorLabel.rx_textColor)
-      .addDisposableTo(self.rx_disposeBag)
-    return firstSeparatorLabel
-  }()
-
-  lazy var authorButton: UIButton = {
-    let authorButton = UIButton(type: UIButtonType.System)
-    authorButton.setTitle("Author", forState: .Normal)
-    authorButton.titleLabel?.font = UIFont.systemFontOfSize(self.fontSize)
-    Theming.sharedInstance.accentColor
-      .bindTo(authorButton.rx_titleColor)
-      .addDisposableTo(self.rx_disposeBag)
-    return authorButton
-  }()
-
-  private lazy var secondSeparatorLabel: UILabel = {
-    let secondSeparatorLabel = UILabel()
-    secondSeparatorLabel.font = UIFont.systemFontOfSize(self.fontSize)
-    secondSeparatorLabel.text = self.separator
-    Theming.sharedInstance.secondaryTextColor
-      .bindTo(secondSeparatorLabel.rx_textColor)
-      .addDisposableTo(self.rx_disposeBag)
-    return secondSeparatorLabel
-  }()
-
-  lazy var subredditButton: UIButton = {
-    let subredditButton = UIButton(type: UIButtonType.System)
-    subredditButton.setTitle("Subreddit", forState: .Normal)
-    subredditButton.titleLabel?.font = UIFont.systemFontOfSize(self.fontSize)
-    Theming.sharedInstance.accentColor
-      .bindTo(subredditButton.rx_titleColor)
-      .addDisposableTo(self.rx_disposeBag)
-    return subredditButton
+  lazy var stickiedLabel: UILabel = {
+    let lockedLabel = self.buildLabel()
+    lockedLabel.text = tr(.LinkContextStickied)
+    return lockedLabel
   }()
 
   private lazy var stackView: UIStackView = {
-    let views = [self.timeAgoLabel, self.firstSeparatorLabel,
-                 self.authorButton, self.secondSeparatorLabel, self.subredditButton]
-    let stackView = UIStackView(arrangedSubviews: views)
+    let stackView = UIStackView(arrangedSubviews: [])
     stackView.spacing = self.spacing
     stackView.distribution = .Fill
     return stackView
   }()
 
+  private var separatorLabels: [UILabel] = []
+  private var labels: [UILabel] {
+    return stackView.arrangedSubviews.flatMap { $0 as? UILabel }
+  }
+  private var buttons: [UIButton] {
+    return stackView.arrangedSubviews.flatMap { $0 as? UIButton }
+  }
+
+  var linkContext: [LinkContext] = [] {
+    didSet {
+      build()
+    }
+  }
+
+  // MARK: Init
   override init(frame: CGRect) {
     super.init(frame: frame)
     setup()
@@ -112,43 +96,64 @@ import UIKit
     }
   }
 
+  // MARK: View Builders
+  private func buildSeparatorLabel() -> UILabel {
+    let separatorLabel = UILabel()
+    separatorLabel.font = UIFont.systemFontOfSize(self.fontSize/2)
+    separatorLabel.text = self.separator
+    Theming.sharedInstance.secondaryTextColor
+      .bindTo(separatorLabel.rx_textColor)
+      .addDisposableTo(separatorLabel.rx_disposeBag)
+    return separatorLabel
+  }
 
-  private func showSubredditButton() {
-    if subredditButton.hidden {
-      subredditButton.hidden = false
-      secondSeparatorLabel.hidden = false
-      stackView.addArrangedSubview(secondSeparatorLabel)
+  private func buildButton() -> UIButton {
+    let button = LabelButton(type: .System)
+    button.titleLabel?.font = UIFont.systemFontOfSize(self.fontSize)
+    Theming.sharedInstance.accentColor
+      .bindTo(button.rx_titleColor)
+      .addDisposableTo(button.rx_disposeBag)
+    return button
+  }
+
+  private func buildLabel() -> UILabel {
+    let label = UILabel()
+    label.font = UIFont.systemFontOfSize(self.fontSize)
+    Theming.sharedInstance.secondaryTextColor
+      .bindTo(label.rx_textColor)
+      .addDisposableTo(label.rx_disposeBag)
+    return label
+  }
+
+  private func build() {
+    stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+    linkContext.forEach { self.addLinkContext($0) }
+
+    if let lastSeparator = separatorLabels.last {
+      lastSeparator.removeFromSuperview()
+      separatorLabels.removeLast()
+    }
+  }
+
+  private func addLinkContext(linkContext: LinkContext) {
+    switch linkContext {
+    case .TimeAgo:
+      stackView.addArrangedSubview(timeAgoLabel)
+    case .Subreddit:
       stackView.addArrangedSubview(subredditButton)
+    case .Author:
+      stackView.addArrangedSubview(authorButton)
+    case .Gold:
+      stackView.addArrangedSubview(goldLabel)
+    case .Locked:
+      stackView.addArrangedSubview(lockedLabel)
+    case .Stickied:
+      stackView.addArrangedSubview(stickiedLabel)
     }
+
+    let separatorLabel = buildSeparatorLabel()
+    stackView.addArrangedSubview(separatorLabel)
+    separatorLabels.append(separatorLabel)
   }
 
-  private func hideSubredditButton() {
-    if !subredditButton.hidden {
-      subredditButton.hidden = true
-      secondSeparatorLabel.hidden = true
-      stackView.removeArrangedSubview(subredditButton)
-      stackView.removeArrangedSubview(secondSeparatorLabel)
-    }
-  }
-}
-
-// MARK: Public API
-extension LinkContextView {
-
-  func setTimeAgo(timeAgo: String) {
-    timeAgoLabel.text = timeAgo
-  }
-
-  func setSubredditName(subredditName: String?) {
-    guard let subredditName = subredditName else {
-      hideSubredditButton()
-      return
-    }
-    showSubredditButton()
-    subredditButton.setTitle(subredditName, forState: .Normal)
-  }
-
-  func setAuthorName(authorName: String) {
-    authorButton.setTitle(authorName, forState: .Normal)
-  }
 }
