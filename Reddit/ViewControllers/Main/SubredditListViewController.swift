@@ -31,6 +31,11 @@ extension SubredditListViewController {
     super.viewDidLoad()
     setup()
   }
+
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    tableView.deselectRows(true)
+  }
 }
 
 // MARK: Setup
