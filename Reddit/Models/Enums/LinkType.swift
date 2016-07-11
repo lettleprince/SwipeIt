@@ -12,6 +12,7 @@ enum LinkType: Equatable {
 
   case Video
   case Image
+  case GIF
   case Album
   case SelfPost
   case LinkPost
@@ -22,12 +23,12 @@ extension LinkType {
   static func typeFromLink(link: Link) -> LinkType {
     if link.selfPost == true {
       return .SelfPost
-    } else if link.isVideoLink {
+    } else if link.media?.type == "video" {
       return .Video
-    } else if link.isAlbumLink {
+    } else if link.media?.type == "rich" {
       return .Album
-    } else if link.isImageLink {
-      return .Image
+    } else if link.imageURL != nil {
+      return link.imageURL?.pathExtension == ".gif" ? .GIF : .Image
     } else {
       return .LinkPost
     }
@@ -45,6 +46,8 @@ func == (lhs: LinkType, rhs: LinkType) -> Bool {
   case (.SelfPost, .SelfPost):
     return true
   case (.LinkPost, .LinkPost):
+    return true
+  case (.GIF, .GIF):
     return true
   default:
     return false

@@ -12,9 +12,10 @@ import ObjectMapper
 // https://github.com/reddit/reddit/wiki/JSON
 struct Link: Votable, Mappable {
 
+  private static let imageExtensionRegex = "(.jpe?g|.png|.gif)"
   private static let imageURLRegexes = ["^https?://.*imgur.com/", "^https?://.*reddituploads.com/",
                                         "^https?://(?: www.)?gfycat.com/",
-                                        "^https?://.*.media.tumblr.com/", "(.jpe?g|.png|.gif)"]
+                                        "^https?://.*.media.tumblr.com/", imageExtensionRegex]
   private static let redditShortURL = NSURL(string: "http://redd.it/")!
   private static let redditURL = NSURL(string: "http://reddit.com")!
 
@@ -83,29 +84,18 @@ struct Link: Votable, Mappable {
   var totalReports: Int!
 
   // MARK: Accessors
-  var isImageLink: Bool {
-    let URLString = url.absoluteString
-    for regex in Link.imageURLRegexes {
-      if URLString.rangeOfString(regex, options: .RegularExpressionSearch) != nil {
-        return true
-      }
+  private var previewImage: PreviewImage? {
+    return previewImages?.first
+  }
+
+  var imageURL: NSURL? {
+    if let imageURL = ImgurImageProvider.imageURLFromLink(self)
+      ?? self.previewImage?.gifSource?.url
+      ?? self.previewImage?.nsfwSource?.url
+      ?? self.previewImage?.source.url {
+      return imageURL
     }
-    return false
-  }
-
-  var isVideoLink: Bool {
-    return media?.type == "video"
-  }
-
-  var isAlbumLink: Bool {
-    return media?.type == "rich"
-  }
-
-  var isGIFLink: Bool {
-    guard let fileExtension = previewImages?.first?.source.url.pathExtension else {
-      return false
-    }
-    return fileExtension == "gif"
+    return self.url.absoluteString.matchesWithRegex(Link.imageExtensionRegex) ? self.url : nil
   }
 
   var isSpoiler: Bool {
@@ -116,15 +106,9 @@ struct Link: Votable, Mappable {
     return LinkType.typeFromLink(self)
   }
 
-  var imageURL: NSURL? {
-    let firstPreviewImage = previewImages?.first
-    return firstPreviewImage?.source.url ?? firstPreviewImage?.resolutions.last?.url
-      ?? url
-  }
-
   var imageSize: CGSize? {
-    let firstPreviewImage = previewImages?.first
-    return firstPreviewImage?.source.size ?? firstPreviewImage?.resolutions.last?.size
+    return previewImage?.gifSource?.size ?? previewImage?.nsfwSource?.size
+      ?? previewImage?.source.size
   }
 
   var shortURL: NSURL {
@@ -193,7 +177,7 @@ struct Link: Votable, Mappable {
     subreddit <- map["data.subreddit"]
     subredditId <- map["data.subreddit_id"]
     thumbnailURL <- (map["data.thumbnail"], EmptyURLTransform())
-    title <- map["data.title"]
+    title <- (map["data.title"], HTMLEncodingTransform())
     url <- (map["data.url"], EmptyURLTransform())
     edited <- (map["data.edited"], EditedTransform())
     distinguished <- map["data.distinguished"]

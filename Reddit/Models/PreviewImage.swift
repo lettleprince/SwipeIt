@@ -13,10 +13,14 @@ struct PreviewImage: Mappable {
 
   // MARK: PreviewImage
   var identifier: String!
-  var source: Image!
-  var resolutions: [Image]!
-  var nsfwSource: Image?
-  var nsfwResolutions: [Image]?
+  var source: ImageSource!
+  var resolutions: [ImageSource]!
+  var gifSource: ImageSource?
+  var gifResolutions: [ImageSource]?
+  var mp4Source: ImageSource?
+  var mp4Resolutions: [ImageSource]?
+  var nsfwSource: ImageSource?
+  var nsfwResolutions: [ImageSource]?
 
   // MARK: JSON
   init?(_ map: Map) { }
@@ -27,6 +31,9 @@ struct PreviewImage: Mappable {
     resolutions <- map["resolutions"]
     nsfwSource <- map["variants.nsfw.source"]
     nsfwResolutions <- map["variants.nsfw.resolutions"]
+    gifSource <- map["variants.gif.source"]
+    gifResolutions <- map["variants.gif.resolutions"]
+    mp4Source <- map["variants.mp4.source"]
+    mp4Resolutions <- map["variants.mp4.resolutions"]
   }
-
 }
