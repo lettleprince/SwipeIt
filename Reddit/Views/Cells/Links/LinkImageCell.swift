@@ -24,9 +24,10 @@ class LinkImageCell: LinkCell {
       if let imageURL = linkImageViewModel.imageURL {
         linkImageView.imageView
           .kf_setImageWithURL(imageURL, optionsInfo: [.Transition(.Fade(0.25))]) {
-            [weak self] (image, _, _, _) in
-            guard let image = image else { return }
-            self?.linkImageViewModel.imageSize.value = image.size
+                                [weak self] (image, _, _, _) in
+                                guard let `self` = self, image = image else { return }
+
+                                self.linkImageViewModel.imageSize.value = image.size
         }
       } else {
         linkImageView.imageView.image = nil
