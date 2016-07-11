@@ -118,9 +118,9 @@ extension SubredditListViewModel {
   private class func specialSubredditViewModels(user: User?, accessToken: AccessToken?)
     -> [SubredditListItemViewModel] {
       let frontpage = SubredditListNameViewModel(user: user, accessToken: accessToken,
-                                                 name: "Frontpage", path: "")
+                                                 name: "Frontpage", path: "/")
       let all = SubredditListNameViewModel(user: user, accessToken: accessToken,
-                                           name: "All", path: "/r/all")
+                                           name: "All", path: "/r/all/")
       return [frontpage, all]
   }
 
