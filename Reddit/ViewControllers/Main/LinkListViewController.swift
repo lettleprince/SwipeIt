@@ -9,7 +9,8 @@
 import UIKit
 import Async
 
-class LinkListViewController: UIViewController, TitledViewModelViewController {
+class LinkListViewController: UIViewController, TitledViewModelViewController,
+CloseableViewController {
 
   // MARK: IBOutlets
   @IBOutlet private weak var tableView: UITableView!
@@ -24,6 +25,7 @@ extension LinkListViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupCloseButton()
     bindViewModel()
     setupViews()
   }
@@ -35,9 +37,14 @@ extension LinkListViewController {
   private func setupViews() {
     tableView.rx_setDelegate(self)
       .addDisposableTo(rx_disposeBag)
+    tableView.rx_paginate
+      .subscribeNext { [weak self] in
+      self?.viewModel.requestLinks()
+    }.addDisposableTo(rx_disposeBag)
   }
 
   private func bindViewModel() {
+
     bindTitle(viewModel)
     viewModel.requestLinks()
     viewModel.viewModels

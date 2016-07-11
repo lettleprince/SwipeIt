@@ -178,7 +178,7 @@
 		309462D81CCE5CEF00E18655 /* VideoLinkSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309462D71CCE5CEF00E18655 /* VideoLinkSpec.swift */; };
 		30A4817F1CCF6FDC000F1090 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A4817E1CCF6FDC000F1090 /* LoginError.swift */; };
 		30A481801CCF7461000F1090 /* NowDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDB2681CCF5CED000B72E5 /* NowDateTransform.swift */; };
-		30A8BB151D33CD5A00FE264A /* ClearLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8BB141D33CD5A00FE264A /* ClearLabel.swift */; };
+		30A8BB151D33CD5A00FE264A /* InsettedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8BB141D33CD5A00FE264A /* InsettedLabel.swift */; };
 		30BAC22F1CDA479100882942 /* InsettableScrollViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BAC22E1CDA479100882942 /* InsettableScrollViewViewController.swift */; };
 		30BC0F261CDA044300DB3E19 /* SubredditListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BC0F251CDA044300DB3E19 /* SubredditListViewController.swift */; };
 		30BC0F281CDA09AD00DB3E19 /* SectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BC0F271CDA09AD00DB3E19 /* SectionViewModel.swift */; };
@@ -369,7 +369,7 @@
 		309462D41CCE5C8800E18655 /* VideoLink.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VideoLink.json; sourceTree = "<group>"; };
 		309462D71CCE5CEF00E18655 /* VideoLinkSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoLinkSpec.swift; sourceTree = "<group>"; };
 		30A4817E1CCF6FDC000F1090 /* LoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
-		30A8BB141D33CD5A00FE264A /* ClearLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClearLabel.swift; sourceTree = "<group>"; };
+		30A8BB141D33CD5A00FE264A /* InsettedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsettedLabel.swift; sourceTree = "<group>"; };
 		30BAC22E1CDA479100882942 /* InsettableScrollViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsettableScrollViewViewController.swift; sourceTree = "<group>"; };
 		30BC0F251CDA044300DB3E19 /* SubredditListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubredditListViewController.swift; sourceTree = "<group>"; };
 		30BC0F271CDA09AD00DB3E19 /* SectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionViewModel.swift; sourceTree = "<group>"; };
@@ -1120,7 +1120,7 @@
 		30A8BB131D33CD4A00FE264A /* Labels */ = {
 			isa = PBXGroup;
 			children = (
-				30A8BB141D33CD5A00FE264A /* ClearLabel.swift */,
+				30A8BB141D33CD5A00FE264A /* InsettedLabel.swift */,
 			);
 			path = Labels;
 			sourceTree = "<group>";
@@ -1637,7 +1637,7 @@
 				300C2AE51D088ACF0046DFA4 /* HTMLEncodingTransform.swift in Sources */,
 				30BC0F2B1CDA0AB900DB3E19 /* String+FirstLetter.swift in Sources */,
 				308D88301CD0D75D00C78E74 /* SubredditListing.swift in Sources */,
-				30A8BB151D33CD5A00FE264A /* ClearLabel.swift in Sources */,
+				30A8BB151D33CD5A00FE264A /* InsettedLabel.swift in Sources */,
 				30BC0F311CDA0F6800DB3E19 /* SubredditListItemTableViewCell.swift in Sources */,
 				30806BFF1C8D9E0400EB1BD5 /* PreviewImage.swift in Sources */,
 				3027864E1CD26CF80072F711 /* LastElementTransform.swift in Sources */,
