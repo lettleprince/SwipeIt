@@ -25,3 +25,6 @@
 "Link.Indicator.GIF" = "GIF";
 "Link.Indicator.NSFW" = "NSFW";
 "Link.Indicator.Spoiler" = "Spoiler";
+"Link.Indicator.Album" = "Album";
+"Link.Context.Stickied" = "Stickied";
+"Link.Context.Locked" = "Locked";

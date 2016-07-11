@@ -31,6 +31,12 @@ enum L10n {
   case LinkIndicatorNSFW
   /// Spoiler
   case LinkIndicatorSpoiler
+  /// Album
+  case LinkIndicatorAlbum
+  /// Stickied
+  case LinkContextStickied
+  /// Locked
+  case LinkContextLocked
 }
 
 extension L10n: CustomStringConvertible {
@@ -66,6 +72,12 @@ extension L10n: CustomStringConvertible {
         return L10n.tr("Link.Indicator.NSFW")
       case .LinkIndicatorSpoiler:
         return L10n.tr("Link.Indicator.Spoiler")
+      case .LinkIndicatorAlbum:
+        return L10n.tr("Link.Indicator.Album")
+      case .LinkContextStickied:
+        return L10n.tr("Link.Context.Stickied")
+      case .LinkContextLocked:
+        return L10n.tr("Link.Context.Locked")
     }
   }
 

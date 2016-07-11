@@ -1,5 +1,5 @@
 //
-//  Image.swift
+//  ImageSource.swift
 //  Reddit
 //
 //  Created by Ivan Bruel on 07/03/16.
@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-struct Image: Mappable {
+struct ImageSource: Mappable {
 
   // MARK: Image
   var url: NSURL!
