@@ -20,7 +20,7 @@ abstract_target 'RedditCommon' do
     pod 'Device'
     pod 'Fabric'
     pod 'Crashlytics'
-    pod 'KeychainSwift'
+    pod 'KeychainSwift', '~> 3.0'
     pod 'RxDataSources'
     pod 'DateTools'
     pod 'RxAlamofire'
