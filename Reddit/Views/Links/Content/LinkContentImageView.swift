@@ -49,9 +49,11 @@ class LinkContentImageView: UIView {
     }
   }
 
-  lazy var imageView: UIImageView = {
+  lazy var imageView: AnimatedImageView = {
     let imageView = AnimatedImageView()
     imageView.contentMode = .ScaleAspectFit
+    // Better performance while scrolling
+    imageView.framePreloadCount = 1
     return imageView
   }()
 

@@ -74,6 +74,25 @@ extension LinkListViewController {
   }
 }
 
+// MARK: Helpers
+extension LinkListViewController {
+
+  private var visibleImageTableViewCells: [LinkImageCell] {
+    return tableView.visibleCells.flatMap { $0 as? LinkImageCell }
+  }
+
+  private func stopGIFs() {
+    guard !Globals.playGIFScrolling else { return }
+    visibleImageTableViewCells.forEach { $0.stopGIF() }
+  }
+
+  private func startGIFs() {
+    guard Globals.autoPlayGIF else { return }
+    visibleImageTableViewCells.forEach { $0.playGIF() }
+  }
+
+}
+
 // MARK: UITableViewDelegate
 extension LinkListViewController: UITableViewDelegate {
 
@@ -87,5 +106,21 @@ extension LinkListViewController: UITableViewDelegate {
       default:
         return LinkView.heightForWidth(viewModel.title, width: tableView.bounds.width)
       }
+  }
+
+  func scrollViewDidScroll(scrollView: UIScrollView) {
+    stopGIFs()
+  }
+
+  func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    startGIFs()
+  }
+
+  func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    startGIFs()
+  }
+
+  func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+    startGIFs()
   }
 }

@@ -8,12 +8,13 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class LinkImageView: LinkView {
 
   private let imageContentView = LinkContentImageView()
 
-  var imageView: UIImageView {
+  var imageView: AnimatedImageView {
     return imageContentView.imageView
   }
 

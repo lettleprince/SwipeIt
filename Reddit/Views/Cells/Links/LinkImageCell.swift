@@ -22,12 +22,12 @@ class LinkImageCell: LinkCell {
       linkViewModel = linkImageViewModel
 
       if let imageURL = linkImageViewModel.imageURL {
+        linkImageView.imageView.autoPlayAnimatedImage = Globals.autoPlayGIF
         linkImageView.imageView
           .kf_setImageWithURL(imageURL, optionsInfo: [.Transition(.Fade(0.25))]) {
-                                [weak self] (image, _, _, _) in
-                                guard let `self` = self, image = image else { return }
-
-                                self.linkImageViewModel.imageSize.value = image.size
+            [weak self] (image, _, _, _) in
+            guard let `self` = self, image = image else { return }
+            self.linkImageViewModel.imageSize.value = image.size
         }
       } else {
         linkImageView.imageView.image = nil
@@ -47,5 +47,13 @@ class LinkImageCell: LinkCell {
         linkImageView.indicatorLabel.hidden = true
       }
     }
+  }
+
+  func playGIF() {
+    linkImageView.imageView.startAnimating()
+  }
+
+  func stopGIF() {
+    linkImageView.imageView.stopAnimating()
   }
 }
