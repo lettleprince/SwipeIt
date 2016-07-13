@@ -10,6 +10,30 @@ Reddit
 [![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat)](https://github.com/ivanbruel/Reddit-MVVM-Benchmark/blob/master/LICENSE)
 [![Twitter](https://img.shields.io/badge/Twitter-@ivanbruel-blue.svg?style=flat)](http://twitter.com/ivanbruel)
 
+## Getting Started
+
+Run the following two commands to install Xcode's command line tools and bundler, if you don't have that yet.
+
+```bash
+[sudo] gem install bundler
+xcode-select --install
+```
+
+The following commands will clone the repo and install all the required dependencies.
+
+```bash
+git clone https://github.com/ivanbruel/Reddit-MVVM-Benchmark.git
+cd Reddit-MVVM-Benchmark
+bundle install
+bundle exec pod install
+```
+
+You can also run the tests by calling:
+
+```bash
+bundle exec fastlane ios test
+```
+
 ## Code style
 
 This project will follow the [GitHub Swift Styleguide](https://github.com/github/swift-style-guide) in every way possible.
@@ -100,6 +124,8 @@ None at the moment
 - [Quick](https://github.com/Quick/Quick): The Swift (and Objective-C) testing framework.
 - [Nimble](https://github.com/Quick/Nimble): A Matcher Framework for Swift and Objective-C
 
+In order to run the app j
+
 ## Continuous Integration
 
 We are using [Travis](https://travis-ci.org/ivanbruel/MVVM-Benchmark) alongside [Fastlane](https://fastlane.tools/) to perform continuous integration both by unit testing and deploying to [Fabric](https://fabric.io) or [iTunes Connect](https://itunesconnect.apple.com) later on.
@@ -119,6 +145,21 @@ To make sure Fabric and iTunes can deploy, make sure you have them set to someth
 - `REDDIT_SIGNING_IDENTITY_PROD`: iPhone Distribution: Company Name (ID)
 - `REDDIT_ITUNES_TEAM_ID`: Team ID from [iTunes Membership](https://developer.apple.com/account/#/membership)
 
+### Deployment
+
+Although all the deployment is done through Travis, you can do it manually through Fastlane:
+
+#### Deployment to Fabric
+
+```bash
+bundle exec fastlane ios fabric
+```
+
+### Deployment to iTunes Connect
+
+```bash
+bundle exec fastlane ios itunes
+```
 
 ## Contributing
 
