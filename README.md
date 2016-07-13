@@ -28,6 +28,8 @@ bundle install
 bundle exec pod install
 ```
 
+Now you can open `Reddit.xcworkspace` and Run the `Reddit` target onto your simulator or iOS device.
+
 You can also run the tests by calling:
 
 ```bash
