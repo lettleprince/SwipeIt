@@ -163,6 +163,10 @@ bundle exec fastlane ios fabric
 bundle exec fastlane ios itunes
 ```
 
+## Yet another Reddit app
+
+This application is being developed as a side project in an effort to benchmark MVVM vs. MVC architectures, you can read more about it in [Medium](https://medium.com/faber-dev/mvvm-benchmark-in-an-mvc-world-part-1-dab952617395) and in our [MVVM vs. MVC README](https://github.com/ivanbruel/Reddit-MVVM-Benchmark/blob/master/MVVM-MVC.md)
+
 ## Contributing
 
 Should anyone want to contribute to this long-term benchmark, feel free to do pull requests, open up issues and even join me on [Twitter](https://twitter.com/ivanbruel) to discuss the architecture.
