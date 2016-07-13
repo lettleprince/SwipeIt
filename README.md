@@ -6,8 +6,8 @@ Reddit
 [![Build Status](https://travis-ci.org/ivanbruel/Reddit-MVVM-Benchmark.svg?branch=master)](https://travis-ci.org/ivanbruel/Reddit-MVVM-Benchmark)
 [![codecov](https://codecov.io/gh/ivanbruel/Reddit-MVVM-Benchmark/branch/master/graph/badge.svg)](https://codecov.io/gh/ivanbruel/Reddit-MVVM-Benchmark)
 [![codebeat badge](https://codebeat.co/badges/18e57729-b99d-4f4c-84a9-ef02203324c6)](https://codebeat.co/projects/github-com-ivanbruel-reddit-mvvm-benchmark)
-[![GitHub issues](https://img.shields.io/github/issues/ivanbruel/Reddit-MVVM-Benchmark.svg)](https://github.com/ivanbruel/Reddit-MVVM-Benchmark/issues)
-[![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat)](https://github.com/ivanbruel/Reddit-MVVM-Benchmark/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/ivanbruel/Reddit-MVVM-Benchmark.svg?style=flat)](https://github.com/ivanbruel/Reddit-MVVM-Benchmark/issues)
+[![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/ivanbruel/Reddit-MVVM-Benchmark/blob/master/LICENSE)
 [![Twitter](https://img.shields.io/badge/Twitter-@ivanbruel-blue.svg?style=flat)](http://twitter.com/ivanbruel)
 
 ## Getting Started
