@@ -26,6 +26,7 @@ abstract_target 'RedditCommon' do
     pod 'RxAlamofire'
     pod 'Cell+Rx'
     pod 'AsyncSwift'
+    pod 'SwiftGen'
     
   end
 

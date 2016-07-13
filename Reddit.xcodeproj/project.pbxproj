@@ -802,10 +802,10 @@
 		308D883E1CD0FEE300C78E74 /* Links */ = {
 			isa = PBXGroup;
 			children = (
+				30D960711D344BC800808FC0 /* AlbumLinkSpec.swift */,
 				309462C51CCD8A5C00E18655 /* ImageLinkSpec.swift */,
 				30DDB22D1CCE66B2000B72E5 /* SelfLinkSpec.swift */,
 				309462D71CCE5CEF00E18655 /* VideoLinkSpec.swift */,
-				30D960711D344BC800808FC0 /* AlbumLinkSpec.swift */,
 			);
 			path = Links;
 			sourceTree = "<group>";
@@ -1078,6 +1078,7 @@
 			isa = PBXGroup;
 			children = (
 				308E96F11C87764F00380735 /* AccessToken.json */,
+				30D9606F1D344BB000808FC0 /* AlbumLink.json */,
 				30D7FF421CD3659300808701 /* Comment.json */,
 				302786501CD26EA40072F711 /* CommentsListing.json */,
 				300C2AF01D0987470046DFA4 /* Gifs.json */,
@@ -1096,7 +1097,6 @@
 				303E28831CE0FC3300537BAB /* Upvoted.json */,
 				30D7FF471CD36D3200808701 /* UserDetails.json */,
 				309462D41CCE5C8800E18655 /* VideoLink.json */,
-				30D9606F1D344BB000808FC0 /* AlbumLink.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -1316,6 +1316,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 308E96D11C875B7F00380735 /* Build configuration list for PBXNativeTarget "Reddit" */;
 			buildPhases = (
+				42661B076F74486AE7FE6851 /* 📦 Check Pods Manifest.lock */,
 				8BE2D45449DFF8B39EB52E0E /* [CP] Check Pods Manifest.lock */,
 				308E96D71C87646500380735 /* Swiftlint */,
 				30DDB2481CCEDD34000B72E5 /* SwiftGen */,
@@ -1324,6 +1325,8 @@
 				308E96B21C875B7E00380735 /* Resources */,
 				31EB1779F34375B48A336737 /* [CP] Embed Pods Frameworks */,
 				FE39E6439F6CEFEBFCA5938A /* [CP] Copy Pods Resources */,
+				BBBC3904C3C058A6AA3AB3C1 /* 📦 Embed Pods Frameworks */,
+				BFCD74965EC49F126C01D759 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1338,12 +1341,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 308E96D41C875B7F00380735 /* Build configuration list for PBXNativeTarget "RedditTests" */;
 			buildPhases = (
+				676C5290E5A08BAF268431C9 /* 📦 Check Pods Manifest.lock */,
 				A460C2466E6C579F1BE56238 /* [CP] Check Pods Manifest.lock */,
 				308E96C41C875B7F00380735 /* Sources */,
 				308E96C51C875B7F00380735 /* Frameworks */,
 				308E96C61C875B7F00380735 /* Resources */,
 				88419F0DB6754BFCEB1F59B2 /* [CP] Embed Pods Frameworks */,
 				246E1976E5C2F49FF3AA5CC4 /* [CP] Copy Pods Resources */,
+				87623DB169B46CAB6F1CB490 /* 📦 Embed Pods Frameworks */,
+				89B5B0EF4ECD94A840CF3EED /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1464,7 +1470,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		30DDB2481CCEDD34000B72E5 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1478,7 +1484,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftgen >/dev/null; then\n    \"swiftgen/swiftgen.sh\" \"${PROJECT}\"\nelse\n    echo \"SwiftGen does not exist, download from https://github.com/AliSoftware/SwiftGen\"\nfi";
+			shellScript = "# swiftgen bin from pods\nSWIFTGEN=\"${PODS_ROOT}/SwiftGen/bin/swiftgen\"\n\n# Make sure it is there\nif which \"$SWIFTGEN\" >/dev/null; then\n\n    # Folder for output\n    SWIFTGEN_FOLDER=\"${PROJECT}/Resources/SwiftGen\"\n\n    # Project folder\n    PROJECT_FOLDER=\"${PROJECT}\"\n\n    # Make sure output folder exists\n    mkdir -p \"$SWIFTGEN_FOLDER\"\n\n    # Get all storyboards into Storyboards.swift\n    \"$SWIFTGEN\" storyboards \"$PROJECT_FOLDER\" --output \"$SWIFTGEN_FOLDER/Storyboards.swift\"\n\n    # Get all images into Images.swift\n    \"$SWIFTGEN\" images \"$PROJECT_FOLDER\" --output \"$SWIFTGEN_FOLDER/Images.swift\"\n\n    # Get colors from Colors.txt into Colors.swift\n    \"$SWIFTGEN\" colors \"$PROJECT_FOLDER/Resources/Colors.txt\" --output \"$SWIFTGEN_FOLDER/Colors.swift\"\n\n    # Get all english strings (as a base for all others) into Strings.swift\n    \"$SWIFTGEN\" strings \"$PROJECT_FOLDER/Resources/en.lproj/Localizable.strings\" --output \"$SWIFTGEN_FOLDER/Strings.swift\"\nelse\n    echo \"SwiftGen does not exist, download from https://github.com/AliSoftware/SwiftGen\"\nfi\n\n";
 		};
 		31EB1779F34375B48A336737 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1495,6 +1501,51 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RedditCommon-Reddit/Pods-RedditCommon-Reddit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		42661B076F74486AE7FE6851 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		676C5290E5A08BAF268431C9 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		87623DB169B46CAB6F1CB490 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RedditCommon-RedditTests/Pods-RedditCommon-RedditTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		88419F0DB6754BFCEB1F59B2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1508,6 +1559,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RedditCommon-RedditTests/Pods-RedditCommon-RedditTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89B5B0EF4ECD94A840CF3EED /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RedditCommon-RedditTests/Pods-RedditCommon-RedditTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8BE2D45449DFF8B39EB52E0E /* [CP] Check Pods Manifest.lock */ = {
@@ -1538,6 +1604,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BBBC3904C3C058A6AA3AB3C1 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RedditCommon-Reddit/Pods-RedditCommon-Reddit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BFCD74965EC49F126C01D759 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RedditCommon-Reddit/Pods-RedditCommon-Reddit-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FE39E6439F6CEFEBFCA5938A /* [CP] Copy Pods Resources */ = {

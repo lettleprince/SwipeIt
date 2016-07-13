@@ -47,6 +47,7 @@ PODS:
     - RxSwift (~> 2.0)
   - RxSwift (2.6.0)
   - SnapKit (0.21.1)
+  - SwiftGen (2.0.0)
 
 DEPENDENCIES:
   - AsyncSwift
@@ -71,6 +72,7 @@ DEPENDENCIES:
   - RxOptional
   - RxSwift
   - SnapKit
+  - SwiftGen
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
@@ -96,7 +98,8 @@ SPEC CHECKSUMS:
   RxOptional: b77fb47a0190213cf8a37c7a2b7fda28160b4563
   RxSwift: 77f3a0b15324baa7a1c9bfa9f199648a82424e26
   SnapKit: bbad04cb016c7cead63965f16b00c09318d271ee
+  SwiftGen: 67c900e9f1db8168612f2df843ec20a66783a8e5
 
-PODFILE CHECKSUM: 3a2f8264459f6965580eed28a9c63bf6fc90eb39
+PODFILE CHECKSUM: 2ef13dda5ccf1082a80521c570ccd78dc0823650
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.0.0
