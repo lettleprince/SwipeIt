@@ -90,12 +90,12 @@ struct Link: Votable, Mappable {
 
   var imageURL: NSURL? {
     if let imageURL = ImgurImageProvider.imageURLFromLink(self)
-      ?? self.previewImage?.gifSource?.url
-      ?? self.previewImage?.nsfwSource?.url
-      ?? self.previewImage?.source.url {
+      ?? previewImage?.gifSource?.url
+      ?? previewImage?.nsfwSource?.url
+      ?? previewImage?.source.url {
       return imageURL
     }
-    return self.url.absoluteString.matchesWithRegex(Link.imageExtensionRegex) ? self.url : nil
+    return url.absoluteString.matchesWithRegex(Link.imageExtensionRegex) ? url : nil
   }
 
   var isSpoiler: Bool {
