@@ -6,8 +6,8 @@ Reddit
 [![Build Status](https://travis-ci.org/ivanbruel/Reddit-MVVM-Benchmark.svg?branch=master)](https://travis-ci.org/ivanbruel/Reddit-MVVM-Benchmark)
 [![codecov](https://codecov.io/gh/ivanbruel/Reddit-MVVM-Benchmark/branch/master/graph/badge.svg)](https://codecov.io/gh/ivanbruel/Reddit-MVVM-Benchmark)
 [![codebeat badge](https://codebeat.co/badges/18e57729-b99d-4f4c-84a9-ef02203324c6)](https://codebeat.co/projects/github-com-ivanbruel-reddit-mvvm-benchmark)
-[![GitHub issues](https://img.shields.io/github/issues/ivanbruel/Reddit-MVVM-Benchmark.svg)](https://github.com/ivanbruel/Reddit-MVVM-Benchmark/issues)
-[![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat)](https://github.com/ivanbruel/Reddit-MVVM-Benchmark/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/ivanbruel/Reddit-MVVM-Benchmark.svg?style=flat)](https://github.com/ivanbruel/Reddit-MVVM-Benchmark/issues)
+[![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/ivanbruel/Reddit-MVVM-Benchmark/blob/master/LICENSE)
 [![Twitter](https://img.shields.io/badge/Twitter-@ivanbruel-blue.svg?style=flat)](http://twitter.com/ivanbruel)
 
 ## Getting Started
@@ -27,6 +27,8 @@ cd Reddit-MVVM-Benchmark
 bundle install
 bundle exec pod install
 ```
+
+Now you can open `Reddit.xcworkspace` and Run the `Reddit` target onto your simulator or iOS device.
 
 You can also run the tests by calling:
 
@@ -147,7 +149,7 @@ To make sure Fabric and iTunes can deploy, make sure you have them set to someth
 
 ### Deployment
 
-Although all the deployment is done through Travis, you can do it manually through Fastlane:
+Although all the deployment is done through Travis, you can do it manually through [Fastlane](https://github.com/ivanbruel/Reddit-MVVM-Benchmark/blob/master/fastlane/README.md):
 
 #### Deployment to Fabric
 
@@ -160,6 +162,10 @@ bundle exec fastlane ios fabric
 ```bash
 bundle exec fastlane ios itunes
 ```
+
+## Yet another Reddit app
+
+This application is being developed as a side project in an effort to benchmark MVVM vs. MVC architectures, you can read more about it in [Medium](https://medium.com/faber-dev/mvvm-benchmark-in-an-mvc-world-part-1-dab952617395) and in our [MVVM vs. MVC README](https://github.com/ivanbruel/Reddit-MVVM-Benchmark/blob/master/MVVM-MVC.md)
 
 ## Contributing
 
