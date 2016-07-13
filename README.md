@@ -147,7 +147,7 @@ To make sure Fabric and iTunes can deploy, make sure you have them set to someth
 
 ### Deployment
 
-Although all the deployment is done through Travis, you can do it manually through Fastlane:
+Although all the deployment is done through Travis, you can do it manually through [Fastlane](https://github.com/ivanbruel/Reddit-MVVM-Benchmark/blob/master/fastlane/README.md):
 
 #### Deployment to Fabric
 
