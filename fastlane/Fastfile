@@ -38,17 +38,17 @@ platform :ios do
 
   desc "Submit a new Beta Build to Fabric"
   desc "This will also make sure the profile is up to date"
-  lane :Fabric do
-    fabric(scheme: "Reddit")
+  lane :fabric do
+    fabric_beta(scheme: "Reddit")
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
-  lane :iTunes do
-    itc(scheme: "Reddit")
+  lane :itc do
+    itunes(scheme: "Reddit")
   end
 
-  private_lane :fabric do |options|
+  private_lane :fabric_beta do |options|
     scheme = options[:scheme]
 
     sigh(
@@ -75,7 +75,7 @@ platform :ios do
     #post_to_slack(scheme: scheme, destination: "Crashlytics")
   end
 
-  private_lane :itc do |options|
+  private_lane :itunes do |options|
     scheme = options[:scheme]
 
     sigh(

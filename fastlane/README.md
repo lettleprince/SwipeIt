@@ -11,16 +11,16 @@ sudo gem install fastlane
 fastlane ios test
 ```
 Runs all the unit tests
-### ios Fabric
+### ios fabric
 ```
-fastlane ios Fabric
+fastlane ios fabric
 ```
 Submit a new Beta Build to Fabric
 
 This will also make sure the profile is up to date
-### ios iTunes
+### ios itc
 ```
-fastlane ios iTunes
+fastlane ios itc
 ```
 Submit a new Beta Build to Apple TestFlight
 
