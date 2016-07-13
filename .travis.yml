@@ -18,3 +18,4 @@ install:
 - bundle exec fastlane ios test
 after_success:
 - sleep 5
+- bash <(curl -s https://codecov.io/bash)
