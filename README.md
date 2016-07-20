@@ -126,7 +126,11 @@ None at the moment
 - [Quick](https://github.com/Quick/Quick): The Swift (and Objective-C) testing framework.
 - [Nimble](https://github.com/Quick/Nimble): A Matcher Framework for Swift and Objective-C
 
-In order to run the app j
+In order to run the tests execute:
+
+```bash
+bundle exec fastlane ios tests
+```
 
 ## Continuous Integration
 
