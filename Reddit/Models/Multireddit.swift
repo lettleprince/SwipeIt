@@ -29,7 +29,8 @@ struct Multireddit: Mappable {
 
   lazy var username: String? = {
     do {
-      let regex = try NSRegularExpression(pattern: "http://reddit.com/user/(.*)/m/", options: [])
+      let regex = try NSRegularExpression(pattern: "\(Constants.redditURL)/user/(.*)/m/",
+                                          options: [])
       let path = self.url.absoluteString
       if let firstMatch = regex
         .firstMatchInString(path, options: [],

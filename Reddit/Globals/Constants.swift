@@ -10,4 +10,6 @@ import Foundation
 
 class Constants {
 
+  static let redditURL = "http://reddit.com"
+
 }

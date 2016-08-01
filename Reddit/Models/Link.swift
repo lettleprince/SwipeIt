@@ -17,7 +17,7 @@ struct Link: Votable, Mappable {
                                         "^https?://(?: www.)?gfycat.com/",
                                         "^https?://.*.media.tumblr.com/", imageExtensionRegex]
   private static let redditShortURL = NSURL(string: "http://redd.it/")!
-  private static let redditURL = NSURL(string: "http://reddit.com")!
+  private static let redditURL = NSURL(string: Constants.redditURL)!
 
   // MARK: Thing
   var identifier: String!

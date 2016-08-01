@@ -19,7 +19,7 @@ public class PermalinkTransform: TransformType {
     guard let value = value as? String else {
       return nil
     }
-    let fullPermalink = "http://reddit.com\(value)"
+    let fullPermalink = "\(Constants.redditURL)\(value)"
     return NSURL(string: fullPermalink)
   }
 
