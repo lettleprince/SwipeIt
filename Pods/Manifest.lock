@@ -11,7 +11,7 @@ PODS:
   - Kanna (1.1.0)
   - KeychainSwift (3.0.16)
   - Kingfisher (2.4.2)
-  - MarkdownKit (1.0.1)
+  - MarkdownKit (1.0.2)
   - Moya (7.0.0):
     - Moya/Core (= 7.0.0)
   - Moya-ObjectMapper/Core (1.3.1):
@@ -46,7 +46,12 @@ PODS:
   - RxOptional (2.0.0):
     - RxCocoa (~> 2.0)
     - RxSwift (~> 2.0)
+  - RxResult (1.0.2):
+    - Result (~> 2.1.3)
+    - RxSwift (~> 2.6)
   - RxSwift (2.6.0)
+  - RxTimer (1.0):
+    - RxSwift (~> 2.6)
   - SnapKit (0.21.1)
   - SwiftGen (2.0.0)
   - TTTAttributedLabel (2.0.0)
@@ -73,7 +78,9 @@ DEPENDENCIES:
   - RxCocoa
   - RxDataSources
   - RxOptional
+  - RxResult
   - RxSwift
+  - RxTimer
   - SnapKit
   - SwiftGen
   - TTTAttributedLabel
@@ -89,7 +96,7 @@ SPEC CHECKSUMS:
   Kanna: 355ed0193e5d8caf4fd996856b5bc98d586c11b6
   KeychainSwift: a5bb85cd498ce2217b55e055ec59e9268d83384c
   Kingfisher: 05bf8d04408aaa70fcd2c8c81b9f1d0f1ad313dd
-  MarkdownKit: 0241bc31b43445637a36a5adc661482b19850353
+  MarkdownKit: 40e8e0bf2d3a8d873c2fbb379bd676f97102270f
   Moya: f004b82418fb8165ee1fc9f86190db4b3611fda9
   Moya-ObjectMapper: 52f15abd982efc8ba2ce3fc49619555c926c14a1
   Nimble: 97a0a4cae5124c117115634b2d055d8c97d0af19
@@ -101,11 +108,13 @@ SPEC CHECKSUMS:
   RxCocoa: 89ab00d5753502520227940e3a0e0a0413683c6b
   RxDataSources: e169bba94a7be584df7c1e1487fa56edc8753ae6
   RxOptional: b77fb47a0190213cf8a37c7a2b7fda28160b4563
+  RxResult: 627b7572a50293c33ad11fdc3f058f0a922e4833
   RxSwift: 77f3a0b15324baa7a1c9bfa9f199648a82424e26
+  RxTimer: f3acacf6e2071a10b8bc1528fadc21d62fd038b4
   SnapKit: bbad04cb016c7cead63965f16b00c09318d271ee
   SwiftGen: 67c900e9f1db8168612f2df843ec20a66783a8e5
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: 00d7ed271e7e8031d9eec514835203aae001dbe8
+PODFILE CHECKSUM: e768c3a1aad50e990a921af386fa86a7fab86daf
 
 COCOAPODS: 1.0.1

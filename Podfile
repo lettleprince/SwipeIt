@@ -29,6 +29,8 @@ abstract_target 'RedditCommon' do
     pod 'SwiftGen'
     pod 'MarkdownKit'
     pod 'TTTAttributedLabel'
+    pod 'RxTimer'
+    pod 'RxResult'
     
   end
 
