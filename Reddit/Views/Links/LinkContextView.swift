@@ -15,8 +15,11 @@ enum LinkContext {
   case Gold
   case Locked
   case Stickied
+  case LinkFlair
+  case AuthorFlair
 }
 
+// MARK: Properties and Initializer
 @IBDesignable class LinkContextView: UIView {
 
   // MARK: Inspectable Properties
@@ -55,6 +58,9 @@ enum LinkContext {
     lockedLabel.text = tr(.LinkContextStickied)
     return lockedLabel
   }()
+
+  lazy var linkFlairLabel: UILabel = self.buildTagLabel()
+  lazy var authorFlairLabel: UILabel = self.buildTagLabel()
 
   private lazy var stackView: UIStackView = {
     let stackView = UIStackView(arrangedSubviews: [])
@@ -125,6 +131,22 @@ enum LinkContext {
     return label
   }
 
+  private func buildTagLabel() -> UILabel {
+    let label = InsettedLabel()
+    label.textAlignment = .Center
+    label.insets = UIEdgeInsets(top: 0, left: self.spacing, bottom: 0, right: self.spacing)
+    label.font = UIFont.systemFontOfSize(self.fontSize)
+    label.layer.cornerRadius = self.spacing
+    label.layer.masksToBounds = true
+    Theming.sharedInstance.backgroundColor
+      .bindTo(label.rx_textColor)
+      .addDisposableTo(label.rx_disposeBag)
+    Theming.sharedInstance.accentColor
+      .bindTo(label.rx_backgroundColor)
+      .addDisposableTo(label.rx_disposeBag)
+    return label
+  }
+
   private func build() {
     stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
     linkContext.forEach { self.addLinkContext($0) }
@@ -143,6 +165,10 @@ enum LinkContext {
       stackView.addArrangedSubview(subredditButton)
     case .Author:
       stackView.addArrangedSubview(authorButton)
+    case .LinkFlair:
+      stackView.addArrangedSubview(linkFlairLabel)
+    case .AuthorFlair:
+      stackView.addArrangedSubview(authorFlairLabel)
     case .Gold:
       stackView.addArrangedSubview(goldLabel)
     case .Locked:
