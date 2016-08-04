@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S2v-XF-HS7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S2v-XF-HS7">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -187,7 +187,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LinkCell" rowHeight="256" id="Np0-Mx-SuH" customClass="LinkCell" customModule="Reddit" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="LinkCell" rowHeight="256" id="Np0-Mx-SuH" customClass="LinkCell" customModule="Reddit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="600" height="256"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Np0-Mx-SuH" id="9q7-53-esq">
@@ -210,7 +210,7 @@
                                             <outlet property="linkView" destination="pft-Lz-8qa" id="GqJ-dd-8gv"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LinkImageCell" id="Lsy-Pj-fkr" customClass="LinkImageCell" customModule="Reddit" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LinkImageCell" id="Lsy-Pj-fkr" customClass="LinkImageCell" customModule="Reddit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="328" width="600" height="256"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lsy-Pj-fkr" id="tiA-pi-NMg">
@@ -231,6 +231,29 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="linkImageView" destination="VMh-Bj-7A1" id="tAc-pe-Ti0"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LinkSelfPostCell" id="a6M-jD-6eG" customClass="LinkSelfPostCell" customModule="Reddit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="584" width="600" height="256"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a6M-jD-6eG" id="1qh-lt-Vk4">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="255"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sxW-s8-PMJ" customClass="LinkSelfPostView" customModule="Reddit" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="255"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="sxW-s8-PMJ" firstAttribute="leading" secondItem="1qh-lt-Vk4" secondAttribute="leading" id="Qax-bm-Sfx"/>
+                                                <constraint firstAttribute="trailing" secondItem="sxW-s8-PMJ" secondAttribute="trailing" id="dhB-s4-xl2"/>
+                                                <constraint firstAttribute="bottom" secondItem="sxW-s8-PMJ" secondAttribute="bottom" id="ls7-Vq-d4P"/>
+                                                <constraint firstItem="sxW-s8-PMJ" firstAttribute="top" secondItem="1qh-lt-Vk4" secondAttribute="top" id="pFd-6c-2w6"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="linkSelfPostView" destination="sxW-s8-PMJ" id="Ggu-fW-hMy"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

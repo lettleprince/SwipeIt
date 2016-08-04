@@ -8,12 +8,14 @@
 
 import UIKit
 
+// MARK: Properties and Initializers
 @IBDesignable class LinkView: UIView {
 
+  // MARK: Constants
   private static let actionBarViewHeight: CGFloat = 44
   private static let contextViewHeight: CGFloat = 20
   private static let titleFontSize: CGFloat = UIFont.labelFontSize()
-  private static let spacing: CGFloat = 8
+  static let spacing: CGFloat = 8
 
   // MARK: Views
   lazy var titleLabel: UILabel = {
@@ -87,7 +89,7 @@ import UIKit
   }()
 
 
-  // MARK: Init
+  // MARK: Initializers
   override init(frame: CGRect) {
     super.init(frame: frame)
     setup()
@@ -131,37 +133,5 @@ import UIKit
       make.bottom.right.equalTo(self).inset(LinkView.spacing)
       make.height.equalTo(LinkView.actionBarViewHeight)
     }
-  }
-}
-
-// MARK: Size
-extension LinkView {
-
-  class func heightForWidth(title: String, width: CGFloat) -> CGFloat {
-    let spacing = LinkView.spacing
-    let titleHeight = titleLabelHeight(title, forWidth: width - spacing * 2)
-    let contentHeight: CGFloat = 0
-    let contextHeight = LinkView.contextViewHeight
-    let actionBarHeight = LinkView.actionBarViewHeight
-
-    let heights: [CGFloat] = [spacing,
-                              titleHeight,
-                              spacing,
-                              contextHeight,
-                              spacing,
-                              contentHeight,
-                              spacing,
-                              actionBarHeight,
-                              spacing]
-    return heights.reduce(0, combine: +)
-  }
-
-  private class func titleLabelHeight(title: String, forWidth width: CGFloat) -> CGFloat {
-    let attributes = [NSFontAttributeName: UIFont.systemFontOfSize(LinkView.titleFontSize)]
-    let titleLabelSize = (title as NSString)
-      .boundingRectWithSize(CGSize(width: width, height: CGFloat.max),
-                            options: [.UsesLineFragmentOrigin, .UsesFontLeading],
-                            attributes: attributes, context: nil)
-    return ceil(titleLabelSize.height + 1)
   }
 }
