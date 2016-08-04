@@ -37,6 +37,8 @@ enum L10n {
   case LinkContextStickied
   /// Locked
   case LinkContextLocked
+  /// Read more
+  case LinkContentSelfPostReadMore
 }
 
 extension L10n: CustomStringConvertible {
@@ -78,6 +80,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr("Link.Context.Stickied")
       case .LinkContextLocked:
         return L10n.tr("Link.Context.Locked")
+      case .LinkContentSelfPostReadMore:
+        return L10n.tr("Link.Content.SelfPost.ReadMore")
     }
   }
 
