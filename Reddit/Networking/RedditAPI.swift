@@ -161,6 +161,10 @@ extension RedditAPI: TargetType {
     return "\(baseURL)\(path).json"
   }
 
+  var multipartBody: [MultipartFormData]? {
+    return nil
+  }
+
   var credentials: NSURLCredential? {
     switch self {
     case .AccessToken(_, _, let clientId):
