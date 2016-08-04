@@ -18,7 +18,7 @@ class LinkListViewModel {
   private let user: User?
   private let accessToken: AccessToken?
   private let linkListings: Variable<[LinkListing]> = Variable([])
-  private let _viewModels: Variable<[LinkListItemViewModel]> = Variable([])
+  private let _viewModels: Variable<[LinkItemViewModel]> = Variable([])
   private let _listingType: Variable<ListingType> = Variable(.Hot)
   private let disposeBag = DisposeBag()
   private let _loadingState = Variable<LoadingState>(.Normal)
@@ -89,7 +89,7 @@ extension LinkListViewModel {
 // MARK: Public API
 extension LinkListViewModel {
 
-  var viewModels: Observable<[LinkListItemViewModel]> {
+  var viewModels: Observable<[LinkItemViewModel]> {
     return _viewModels.asObservable()
   }
 
@@ -101,7 +101,7 @@ extension LinkListViewModel {
     return _listingType.asObservable()
   }
 
-  func viewModelForIndex(index: Int) -> LinkListItemViewModel? {
+  func viewModelForIndex(index: Int) -> LinkItemViewModel? {
     return _viewModels.value.get(index)
   }
 
@@ -133,25 +133,12 @@ extension LinkListViewModel {
 // MARK: Helpers
 extension LinkListViewModel {
 
-  private static func viewModelFromLink(link: Link, user: User?, accessToken: AccessToken?)
-    -> LinkListItemViewModel {
-      switch link.type {
-      case .Video:
-        return LinkListVideoViewModel(user: user, accessToken: accessToken, link: link)
-      case .Image, .GIF, .Album:
-        return LinkListImageViewModel(user: user, accessToken: accessToken, link: link)
-      case .SelfPost:
-        return LinkListSelfPostViewModel(user: user, accessToken: accessToken, link: link)
-      case .LinkPost:
-        return LinkListLinkViewModel(user: user, accessToken: accessToken, link: link)
-      }
-  }
 
   private static func viewModelsFromLinkListing(linkListing: LinkListing, user: User?,
                                                 accessToken: AccessToken?)
-    -> [LinkListItemViewModel] {
+    -> [LinkItemViewModel] {
       return linkListing.links.map { links in
-        LinkListViewModel.viewModelFromLink(links, user: user, accessToken: accessToken)
+        LinkItemViewModel.viewModelFromLink(links, user: user, accessToken: accessToken)
       }
   }
 }

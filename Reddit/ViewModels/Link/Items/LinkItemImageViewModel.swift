@@ -1,5 +1,5 @@
 //
-//  LinkListImageViewModel.swift
+//  LinkItemImageViewModel.swift
 //  Reddit
 //
 //  Created by Ivan Bruel on 09/05/16.
@@ -11,55 +11,52 @@ import RxSwift
 import Kingfisher
 
 // MARK: Properties and initializer
-class LinkListImageViewModel: LinkListItemViewModel {
+class LinkItemImageViewModel: LinkItemViewModel {
 
+  // MARK: Constants
   private static let defaultImageSize = CGSize(width: 4, height: 3)
 
   // MARK: Private Properties
   private var prefetcher: Prefetcher? = nil
-
-  // MARK: LinkListItemViewModel Private Properties
-  let user: User?
-  let accessToken: AccessToken?
-  let link: Link
-  let vote: Variable<Vote>
-  let disposeBag = DisposeBag()
+  private let _imageSize: Variable<CGSize>
 
   // MARK: Public Properties
   let imageURL: NSURL?
   let indicator: String?
   let overlay: String?
-  let imageSize: Variable<CGSize>
+  var imageSize: Observable<CGSize> {
+    return _imageSize.asObservable()
+  }
 
-
-  init(user: User?, accessToken: AccessToken?, link: Link) {
-    self.user = user
-    self.accessToken = accessToken
-    self.link = link
-
+  override init(user: User?, accessToken: AccessToken?, link: Link) {
     imageURL = link.imageURL
-    vote = Variable(link.vote)
-    indicator = LinkListImageViewModel.indicatorFromLink(link)
-    overlay = LinkListImageViewModel.overlayFromLink(link)
-    imageSize = Variable(link.imageSize ?? LinkListImageViewModel.defaultImageSize)
-    setupObservers()
+    indicator = LinkItemImageViewModel.indicatorFromLink(link)
+    overlay = LinkItemImageViewModel.overlayFromLink(link)
+    _imageSize = Variable(link.imageSize ?? LinkItemImageViewModel.defaultImageSize)
+
+    super.init(user: user, accessToken: accessToken, link: link)
   }
 
   deinit {
     prefetcher?.stop()
   }
 
-  func preloadData() {
+  // MARK: API
+  func setImageSize(imageSize: CGSize) {
+    _imageSize.value = imageSize
+  }
+  override func preloadData() {
     guard let imageURL = imageURL else { return }
     prefetcher = Prefetcher(imageURL: imageURL) { [weak self] image in
       guard let image = image else { return }
-      self?.imageSize.value = image.size
+      self?._imageSize.value = image.size
     }
     prefetcher?.start()
   }
 }
 
-extension LinkListImageViewModel {
+// MARK: Helpers
+extension LinkItemImageViewModel {
 
   private class func indicatorFromLink(link: Link) -> String? {
     if link.type == .GIF {
