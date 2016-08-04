@@ -131,6 +131,8 @@ extension RedditAPI: TargetType {
     switch self {
     case .AccessToken, .RefreshToken:
       return .URL
+    case .Vote:
+      return .URLEncodedInURL
     default:
       return method == .GET ? .URL : .JSON
     }
