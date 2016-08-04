@@ -21,7 +21,7 @@ enum LinkType: Equatable {
 extension LinkType {
 
   static func typeFromLink(link: Link) -> LinkType {
-    if link.selfPost == true {
+    if link.selfPost == true && link.selfText != nil {
       return .SelfPost
     } else if link.media?.type == "video" {
       return .Video
