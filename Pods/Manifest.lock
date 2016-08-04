@@ -40,6 +40,9 @@ PODS:
     - RxSwift (~> 2.5)
   - RxCocoa (2.6.0):
     - RxSwift (~> 2.5)
+  - RxColor (1.0.1):
+    - RxCocoa (~> 2.6)
+    - RxSwift (~> 2.6)
   - RxDataSources (0.9):
     - RxCocoa (~> 2.2)
     - RxSwift (~> 2.2)
@@ -76,6 +79,7 @@ DEPENDENCIES:
   - Result
   - RxAlamofire
   - RxCocoa
+  - RxColor
   - RxDataSources
   - RxOptional
   - RxResult
@@ -83,7 +87,16 @@ DEPENDENCIES:
   - RxTimer
   - SnapKit
   - SwiftGen
-  - TTTAttributedLabel
+  - TTTAttributedLabel (from `https://github.com/ivanbruel/TTTAttributedLabel`)
+
+EXTERNAL SOURCES:
+  TTTAttributedLabel:
+    :git: https://github.com/ivanbruel/TTTAttributedLabel
+
+CHECKOUT OPTIONS:
+  TTTAttributedLabel:
+    :commit: b960ccde0b9781ee9e406a0757cf127dfd1ee820
+    :git: https://github.com/ivanbruel/TTTAttributedLabel
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
@@ -106,6 +119,7 @@ SPEC CHECKSUMS:
   Result: 18e1a7597fbcca5923c565b40a25a98afafdee02
   RxAlamofire: b4572a077b6b2410c8732a27266299df4c00736e
   RxCocoa: 89ab00d5753502520227940e3a0e0a0413683c6b
+  RxColor: cb71bd9d6f9324ba8868f8c05d1f93168fb45652
   RxDataSources: e169bba94a7be584df7c1e1487fa56edc8753ae6
   RxOptional: b77fb47a0190213cf8a37c7a2b7fda28160b4563
   RxResult: 627b7572a50293c33ad11fdc3f058f0a922e4833
@@ -115,6 +129,6 @@ SPEC CHECKSUMS:
   SwiftGen: 67c900e9f1db8168612f2df843ec20a66783a8e5
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: e768c3a1aad50e990a921af386fa86a7fab86daf
+PODFILE CHECKSUM: 955f7542ab043c1156475be52b9f5aaa8e2d1940
 
 COCOAPODS: 1.0.1

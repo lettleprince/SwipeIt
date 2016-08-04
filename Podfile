@@ -28,9 +28,10 @@ abstract_target 'RedditCommon' do
     pod 'AsyncSwift'
     pod 'SwiftGen'
     pod 'MarkdownKit'
-    pod 'TTTAttributedLabel'
+    pod 'TTTAttributedLabel', :git => 'https://github.com/ivanbruel/TTTAttributedLabel'
     pod 'RxTimer'
     pod 'RxResult'
+    pod 'RxColor'
     
   end
 
