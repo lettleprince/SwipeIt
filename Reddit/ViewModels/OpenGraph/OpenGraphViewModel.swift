@@ -46,7 +46,7 @@ extension OpenGraphViewModel {
 
   func requestOpenGraph() {
     let headers = ["User-Agent": OpenGraphViewModel.facebookBotUserAgent]
-    requestString(Method.GET, url.absoluteString, headers: headers).debug()
+    requestString(Method.GET, url.absoluteString, headers: headers)
       .observeOn(MainScheduler.instance)
       .bindNext { [weak self] (_, html) in
         self?.openGraph.value = OpenGraph(html: html)

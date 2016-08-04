@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import Result
+import RxResult
 
 // MARK: Properties and initializers
 class WalkthroughViewModel: ViewModel {
