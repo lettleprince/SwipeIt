@@ -10,22 +10,13 @@ import UIKit
 import SnapKit
 import Kingfisher
 
+// MARK: Properties and Initializer
 class LinkImageView: LinkView {
 
-  private let imageContentView = LinkContentImageView()
+  // MARK: Private Properties
+  private let imageContentView = LinkImageContentView()
 
-  var imageView: AnimatedImageView {
-    return imageContentView.imageView
-  }
-
-  var indicatorLabel: UILabel {
-    return imageContentView.indicatorLabel
-  }
-
-  var overlayLabel: UILabel {
-    return imageContentView.overlayLabel
-  }
-
+  // MARK: Initializer
   override init(frame: CGRect) {
     super.init(frame: frame)
     setup()
@@ -44,23 +35,46 @@ class LinkImageView: LinkView {
     }
   }
 
+  // MARK: API
+  var overlayText: String? {
+    get {
+      return imageContentView.overlayText
+    }
+    set {
+      imageContentView.overlayText = newValue
+    }
+  }
+
+  var indicatorText: String? {
+    get {
+      return imageContentView.indicatorText
+    }
+    set {
+      imageContentView.indicatorText = newValue
+    }
+  }
+
+  func setImageWithURL(imageURL: NSURL?, completion: ((UIImage?, NSURL?) -> Void)? = nil) {
+    imageContentView.setImageWithURL(imageURL, completion: completion)
+  }
+
+  func playGIF() {
+    imageContentView.playGIF()
+  }
+
+  func stopGIF() {
+    imageContentView.stopGIF()
+  }
+
+  func setImageSize(size: CGSize) {
+    imageContentView.setImageSize(size)
+  }
+
   func showOverlay(animated: Bool = false) {
     imageContentView.showOverlay(animated)
   }
 
   func hideOverlay(animated: Bool = false) {
     imageContentView.hideOverlay(animated)
-  }
-}
-
-// MARK: Size
-extension LinkImageView {
-
-  class func heightForWidth(title: String, imageSize: CGSize, width: CGFloat) -> CGFloat {
-    let linkViewHeight = heightForWidth(title, width: width)
-    let ratio = imageSize.height / imageSize.width
-    let imageHeight = width * ratio
-    let heights = [linkViewHeight, imageHeight]
-    return heights.reduce(0, combine: +)
   }
 }

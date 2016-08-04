@@ -1,5 +1,5 @@
 //
-//  LinkContentImageView.swift
+//  LinkImageContentView.swift
 //  Reddit
 //
 //  Created by Ivan Bruel on 06/06/16.
@@ -10,8 +10,10 @@ import UIKit
 import SnapKit
 import Async
 import Kingfisher
+import RxColor
 
-class LinkContentImageView: UIView {
+// MARK: Properties and Initializer
+class LinkImageContentView: UIView {
 
   // MARK: IBInspectable
   @IBInspectable var spacing: CGFloat = 8 {
@@ -20,18 +22,6 @@ class LinkContentImageView: UIView {
         make.right.equalTo(self).inset(spacing)
         make.top.equalTo(self).offset(spacing)
       }
-    }
-  }
-
-  @IBInspectable var overlayLabelFontSize: CGFloat = UIFont.buttonFontSize() {
-    didSet {
-      overlayLabel.font = UIFont.systemFontOfSize(overlayLabelFontSize)
-    }
-  }
-
-  @IBInspectable var indicatorLabelFontSize: CGFloat = UIFont.smallSystemFontSize() {
-    didSet {
-      indicatorLabel.font = UIFont.systemFontOfSize(indicatorLabelFontSize)
     }
   }
 
@@ -49,7 +39,8 @@ class LinkContentImageView: UIView {
     }
   }
 
-  lazy var imageView: AnimatedImageView = {
+  // MARK: Inner Views
+  private lazy var imageView: AnimatedImageView = {
     let imageView = AnimatedImageView()
     imageView.contentMode = .ScaleAspectFit
     // Better performance while scrolling
@@ -57,9 +48,9 @@ class LinkContentImageView: UIView {
     return imageView
   }()
 
-  lazy var indicatorLabel: UILabel = {
+  private lazy var indicatorLabel: UILabel = {
     let indicatorLabel = InsettedLabel()
-    indicatorLabel.font = UIFont.systemFontOfSize(self.indicatorLabelFontSize)
+    indicatorLabel.font = UIFont.systemFontOfSize(UIFont.smallSystemFontSize())
     indicatorLabel.layer.cornerRadius = 4
     indicatorLabel.layer.masksToBounds = true
     indicatorLabel.textAlignment = .Center
@@ -73,10 +64,10 @@ class LinkContentImageView: UIView {
     return indicatorLabel
   }()
 
-  lazy var overlayView: UIView = {
+  private lazy var overlayView: UIView = {
     let overlayView = UIView()
     let tapGestureRecognizer =
-      UITapGestureRecognizer(target: self, action: #selector(LinkContentImageView.overlayTapped))
+      UITapGestureRecognizer(target: self, action: #selector(LinkImageContentView.overlayTapped))
     overlayView.addGestureRecognizer(tapGestureRecognizer)
     Theming.sharedInstance.backgroundColor
       .bindTo(overlayView.rx_backgroundColor)
@@ -85,10 +76,10 @@ class LinkContentImageView: UIView {
     return overlayView
   }()
 
-  lazy var overlayLabel: UILabel = {
+  private lazy var overlayLabel: UILabel = {
     let overlayLabel = UILabel()
     overlayLabel.textAlignment = .Center
-    overlayLabel.font = UIFont.systemFontOfSize(self.overlayLabelFontSize)
+    overlayLabel.font = UIFont.systemFontOfSize(UIFont.buttonFontSize())
     overlayLabel.adjustsFontSizeToFitWidth = true
     overlayLabel.minimumScaleFactor = 0.5
     overlayLabel.layer.borderWidth = self.overlayBorderWidth
@@ -100,6 +91,9 @@ class LinkContentImageView: UIView {
     return overlayLabel
   }()
 
+  private var heightConstraint: Constraint? = nil
+
+  // MARK: Initializers
   override init(frame: CGRect) {
     super.init(frame: frame)
     setup()
@@ -110,6 +104,7 @@ class LinkContentImageView: UIView {
     setup()
   }
 
+  // MARK: Setup
   private func setup() {
     clipsToBounds = true
     addSubview(imageView)
@@ -143,29 +138,84 @@ class LinkContentImageView: UIView {
     overlayLabel.layer.cornerRadius = overlayLabel.bounds.width / 2
   }
 
-  func showOverlay(animated: Bool) {
-    let animations = {
-      self.overlayView.alpha = 1
+  // MARK: API
+  var overlayText: String? {
+    get {
+      return overlayLabel.text
     }
-    if animated {
-      UIView.animateWithDuration(0.25, animations: animations)
-    } else {
-      animations()
+    set {
+      overlayLabel.text = newValue
+      if newValue != nil {
+        imageView.autoPlayAnimatedImage = false
+        showOverlay()
+      } else {
+        imageView.autoPlayAnimatedImage = Globals.autoPlayGIF
+        hideOverlay()
+      }
     }
   }
 
+  var indicatorText: String? {
+    get {
+      return indicatorLabel.text
+    }
+    set {
+      indicatorLabel.text = newValue
+      indicatorLabel.hidden = newValue == nil
+    }
+  }
+
+  func setImageWithURL(imageURL: NSURL?, completion: ((UIImage?, NSURL?) -> Void)? = nil) {
+    imageView.kf_setImageWithURL(imageURL, optionsInfo: [.Transition(.Fade(0.25))]) {
+      (image, _, _, imageURL) in
+      completion?(image, imageURL)
+    }
+  }
+
+  func playGIF() {
+    imageView.startAnimating()
+  }
+
+  func stopGIF() {
+    imageView.stopAnimating()
+  }
+
+  func setImageSize(size: CGSize) {
+    heightConstraint?.uninstall()
+    imageView.snp_updateConstraints { make in
+      heightConstraint = make.height.equalTo(imageView.snp_width)
+        .dividedBy(size.ratio).priority(999).constraint
+    }
+  }
+
+  // Hides overlay upon a tap on the overlay
   func overlayTapped() {
-    hideOverlay(true)
+    hideOverlay(true) { _ in
+      self.imageView.startAnimating()
+    }
   }
 
-  func hideOverlay(animated: Bool) {
-    let animations = {
-      self.overlayView.alpha = 0
-    }
-    if animated {
-      UIView.animateWithDuration(0.25, animations: animations)
-    } else {
-      animations()
-    }
+  func showOverlay(animated: Bool = false, completion: ((Bool) -> Void)? = nil) {
+    animateOverlay(true, animated: animated, completion: completion)
+  }
+
+  func hideOverlay(animated: Bool = false, completion: ((Bool) -> Void)? = nil) {
+    animateOverlay(false, animated: animated, completion: completion)
+  }
+
+  private func animateOverlay(show: Bool, animated: Bool, completion: ((Bool) -> Void)?) {
+    UIView.animateWithDuration(0.25, animations: {
+      self.overlayView.alpha = show ? 1 : 0
+      }, completion: completion)
+  }
+}
+
+// MARK: Helpers
+extension LinkImageContentView {
+
+  class func heightForWidth(imageSize: CGSize, width: CGFloat) -> CGFloat {
+    let ratio = imageSize.height / imageSize.width
+    let imageHeight = width * ratio
+    return imageHeight
   }
 }

@@ -17,43 +17,35 @@ class LinkImageCell: LinkCell {
     }
   }
 
-  var linkImageViewModel: LinkListImageViewModel! {
+  var linkImageViewModel: LinkItemImageViewModel! {
     didSet {
       linkViewModel = linkImageViewModel
 
-      if let imageURL = linkImageViewModel.imageURL {
-        linkImageView.imageView.autoPlayAnimatedImage = Globals.autoPlayGIF
-        linkImageView.imageView
-          .kf_setImageWithURL(imageURL, optionsInfo: [.Transition(.Fade(0.25))]) {
-            [weak self] (image, _, _, _) in
-            guard let `self` = self, image = image else { return }
-            self.linkImageViewModel.imageSize.value = image.size
-        }
-      } else {
-        linkImageView.imageView.image = nil
+      linkImageViewModel.imageSize.asObservable()
+        .distinctUntilChanged()
+        .subscribeNext { [weak self] size in
+          self?.linkImageView.setImageSize(size)
+        }.addDisposableTo(rx_reusableDisposeBag)
+
+      linkImageView.setImageWithURL(linkImageViewModel.imageURL) { [weak self] (image, imageURL) in
+
+          guard let `self` = self, image = image
+            where imageURL == self.linkImageViewModel.imageURL else {
+              return
+          }
+          self.linkImageViewModel.setImageSize(image.size)
       }
 
-      if let overlay = linkImageViewModel.overlay {
-        linkImageView.overlayLabel.text = overlay
-        linkImageView.showOverlay()
-      } else {
-        linkImageView.hideOverlay()
-      }
-
-      if let indicator = linkImageViewModel.indicator {
-        linkImageView.indicatorLabel.text = indicator
-        linkImageView.indicatorLabel.hidden = false
-      } else {
-        linkImageView.indicatorLabel.hidden = true
-      }
+      linkImageView.overlayText = linkImageViewModel.overlay
+      linkImageView.indicatorText = linkImageViewModel.indicator
     }
   }
 
   func playGIF() {
-    linkImageView.imageView.startAnimating()
+    linkImageView.playGIF()
   }
 
   func stopGIF() {
-    linkImageView.imageView.stopAnimating()
+    linkImageView.stopGIF()
   }
 }
