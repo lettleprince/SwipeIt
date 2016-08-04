@@ -13,10 +13,14 @@ class Theming {
 
   static let sharedInstance = Theming()
 
-  private let theme: Variable<Theme>
+  private let _theme: Variable<Theme>
+
+  var theme: Theme {
+    return _theme.value
+  }
 
   init(theme: Theme) {
-    self.theme = Variable(theme)
+    self._theme = Variable(theme)
   }
 
   private convenience init() {
@@ -24,7 +28,7 @@ class Theming {
   }
 
   func setTheme(theme: Theme) {
-    self.theme.value = theme
+    self._theme.value = theme
   }
 }
 
@@ -32,18 +36,18 @@ class Theming {
 extension Theming {
 
   var textColor: Observable<UIColor> {
-    return theme.asObservable().map { $0.textColor }
+    return _theme.asObservable().map { $0.textColor }
   }
 
   var secondaryTextColor: Observable<UIColor> {
-    return theme.asObservable().map { $0.secondaryTextColor }
+    return _theme.asObservable().map { $0.secondaryTextColor }
   }
 
   var accentColor: Observable<UIColor> {
-    return theme.asObservable().map { $0.accentColor }
+    return _theme.asObservable().map { $0.accentColor }
   }
 
   var backgroundColor: Observable<UIColor> {
-    return theme.asObservable().map { $0.backgroundColor }
+    return _theme.asObservable().map { $0.backgroundColor }
   }
 }
