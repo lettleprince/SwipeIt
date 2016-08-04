@@ -8,13 +8,20 @@
 
 import Foundation
 
+// MARK: - Enum Values
 enum LoadingState: Equatable {
+
+  /// Content is available and not loading any content
   case Normal
+  /// No Content is available
   case Empty
+  /// Got an error loading content
   case Error
+  /// Is loading content
   case Loading
 }
 
+// MARK: - Equatable
 func == (lhs: LoadingState, rhs: LoadingState) -> Bool {
   switch (lhs, rhs) {
   case (.Normal, .Normal):

@@ -8,13 +8,16 @@
 
 import Foundation
 
+// MARK: - Enum Values
 enum LoginError: ErrorType {
 
+  /// User cancelled the login
   case UserCancelled
+  /// Any other error
   case Unknown
-
 }
 
+// MARK: - Printable
 extension LoginError: CustomStringConvertible {
 
   var description: String {

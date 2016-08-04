@@ -10,6 +10,13 @@ import Foundation
 
 extension RawRepresentable {
 
+  /**
+   Failable initializer for RawRepresentables with optional raw values
+
+   - parameter optionalRawValue: An optional raw value.
+
+   - returns: The RawRepresentable value or nil.
+   */
   init?(optionalRawValue: RawValue?) {
 
     guard let rawValue = optionalRawValue, value = Self(rawValue: rawValue) else { return nil }

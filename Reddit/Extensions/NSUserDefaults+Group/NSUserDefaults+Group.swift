@@ -10,9 +10,11 @@ import Foundation
 
 extension NSUserDefaults {
 
-  private static let suitName = "group.vc.faber.Reddit"
+  /// The suite name for the app group
+  private static let suiteName = "group.vc.faber.Reddit"
 
+  /// Accessor to the suite's NSUserDefaults
   static var userDefaults: NSUserDefaults {
-    return NSUserDefaults(suiteName: suitName) ?? .standardUserDefaults()
+    return NSUserDefaults(suiteName: suiteName) ?? .standardUserDefaults()
   }
 }

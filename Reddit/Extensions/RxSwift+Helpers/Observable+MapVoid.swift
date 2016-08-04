@@ -8,6 +8,10 @@
 
 import Foundation
 
+/**
+ Helpful function to be able to abstract observable sequences into void.
+ e.g. Observable.just(something).map(void)
+ */
 func void<T>(_: T) -> Void {
   return Void()
 }
