@@ -59,6 +59,15 @@ extension Globals {
     }
   }
 
+  static var selfPostNumberOfLines: Int {
+    get {
+      return userDefaults.objectForKey("selfPostNumberOfLines") as? Int ?? 5
+    }
+    set {
+      userDefaults.setInteger(newValue, forKey: "selfPostNumberOfLines")
+    }
+  }
+
   static var theme: Theme? {
     get {
       return Theme(optionalRawValue: userDefaults.stringForKey("theme"))
