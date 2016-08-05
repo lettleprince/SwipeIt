@@ -17,7 +17,8 @@ enum RedditAPI {
   case DefaultSubredditListing(after: String?)
   case MultiredditListing(token: String)
   case LinkDetails(token: String?, permalink: String)
-  case LinkListing(token: String?, path: String, listingPath: String, after: String?)
+  case LinkListing(token: String?, path: String, listingPath: String, listingTypeRange: String?,
+    after: String?)
   case UserDetails(token: String?, username: String)
   case UserMeDetails(token: String)
   case Vote(token: String, identifier: String, direction: Int)
@@ -43,7 +44,7 @@ extension RedditAPI: TargetType {
       return "/subreddits/mine"
     case .DefaultSubredditListing:
       return "/subreddits/default"
-    case .LinkListing(_, let path, let listingPath, _):
+    case .LinkListing(_, let path, let listingPath, _, _):
       return "\(path)\(listingPath)"
     case .LinkDetails(_, let permalink):
       return permalink
@@ -87,11 +88,11 @@ extension RedditAPI: TargetType {
         return nil
       }
       return ["after": after]
-    case .LinkListing(_, _, _, let after):
+    case .LinkListing(_, _, _, let listingTypeRange, let after):
       guard let after = after else {
         return nil
       }
-      return ["after": after]
+      return JSONHelper.flatJSON(["after": after, "t": listingTypeRange])
     case .Vote(_, let identifier, let direction):
       return ["id": identifier, "dir": direction]
     default:
@@ -142,7 +143,7 @@ extension RedditAPI: TargetType {
     switch self {
     case .SubredditListing(let token, _):
       return token
-    case .LinkListing(let token, _, _, _):
+    case .LinkListing(let token, _, _, _, _):
       return token
     case .MultiredditListing(let token):
       return token

@@ -20,7 +20,7 @@ class LinkListViewModel {
   private let linkListings: Variable<[LinkListing]> = Variable([])
   private let _viewModels: Variable<[LinkItemViewModel]> = Variable([])
   private let _listingType: Variable<ListingType> = Variable(.Hot)
-  private let disposeBag = DisposeBag()
+  private var disposeBag = DisposeBag()
   private let _loadingState = Variable<LoadingState>(.Normal)
 
   // MARK: Initializer
@@ -58,6 +58,10 @@ extension LinkListViewModel {
       .map { $0.last?.after }
   }
 
+  private var listingTypeObservable: Observable<ListingType> {
+    return _listingType.asObservable()
+  }
+
   private var pathObservable: Observable<String> {
     return .just(path)
   }
@@ -71,15 +75,16 @@ extension LinkListViewModel {
 
   private var request: Observable<LinkListing> {
     return Observable
-      .combineLatest(listingType, afterObservable, accessTokenObservable, pathObservable) {
-      ($0, $1, $2, $3)
-      }.take(1)
+      .combineLatest(listingTypeObservable, afterObservable, accessTokenObservable,
+        pathObservable) { ($0, $1, $2, $3) }
+      .take(1)
       .doOnNext { [weak self] _ in
         self?._loadingState.value = .Loading
       }.flatMap {
         (listingType: ListingType, after: String?, accessToken: AccessToken?, path: String) in
         Network.request(RedditAPI.LinkListing(token: accessToken?.token,
-          path: path, listingPath: listingType.path, after: after))
+          path: path, listingPath: listingType.path, listingTypeRange: listingType.range?.rawValue,
+          after: after))
       }.observeOn(SerialDispatchQueueScheduler(globalConcurrentQueueQOS: .Background))
       .mapObject(LinkListing)
       .observeOn(MainScheduler.instance)
@@ -97,8 +102,9 @@ extension LinkListViewModel {
     return _loadingState.asObservable()
   }
 
-  var listingType: Observable<ListingType> {
+  var listingTypeName: Observable<String> {
     return _listingType.asObservable()
+      .map { $0.name }
   }
 
   func viewModelForIndex(index: Int) -> LinkItemViewModel? {
@@ -127,6 +133,20 @@ extension LinkListViewModel {
         }
 
       }.addDisposableTo(disposeBag)
+  }
+
+  func setListingType(listingType: ListingType) {
+    guard listingType != _listingType.value else { return }
+    _listingType.value = listingType
+    refresh()
+  }
+
+  func refresh() {
+    linkListings.value = []
+    _viewModels.value = []
+    disposeBag = DisposeBag()
+    _loadingState.value = .Normal
+    requestLinks()
   }
 }
 
