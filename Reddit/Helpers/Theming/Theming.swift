@@ -15,8 +15,8 @@ class Theming {
 
   private let _theme: Variable<Theme>
 
-  var theme: Theme {
-    return _theme.value
+  var theme: Observable<Theme> {
+    return _theme.asObservable()
   }
 
   init(theme: Theme) {
