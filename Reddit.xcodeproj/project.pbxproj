@@ -29,6 +29,8 @@
 		300C2AFA1D0989CB0046DFA4 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C2AEA1D097C1F0046DFA4 /* ImageProvider.swift */; };
 		300C2AFB1D0989E80046DFA4 /* String+HTMLDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C2AF71D0988990046DFA4 /* String+HTMLDecode.swift */; };
 		300C4D321D53AB8300659F32 /* URLRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4D311D53AB8300659F32 /* URLRouter.swift */; };
+		300C4D351D5491AD00659F32 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4D341D5491AD00659F32 /* AlertHelper.swift */; };
+		300C4D381D549CCD00659F32 /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4D371D549CCD00659F32 /* JSONHelper.swift */; };
 		302786481CD2668F0072F711 /* JSONKeyTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302786471CD2668F0072F711 /* JSONKeyTransform.swift */; };
 		302786491CD2668F0072F711 /* JSONKeyTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302786471CD2668F0072F711 /* JSONKeyTransform.swift */; };
 		3027864E1CD26CF80072F711 /* LastElementTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3027864D1CD26CF80072F711 /* LastElementTransform.swift */; };
@@ -265,6 +267,8 @@
 		300C2AF31D09877C0046DFA4 /* ImgurImageProviderSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImgurImageProviderSpec.swift; sourceTree = "<group>"; };
 		300C2AF71D0988990046DFA4 /* String+HTMLDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+HTMLDecode.swift"; sourceTree = "<group>"; };
 		300C4D311D53AB8300659F32 /* URLRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRouter.swift; sourceTree = "<group>"; };
+		300C4D341D5491AD00659F32 /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		300C4D371D549CCD00659F32 /* JSONHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONHelper.swift; sourceTree = "<group>"; };
 		302786471CD2668F0072F711 /* JSONKeyTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONKeyTransform.swift; sourceTree = "<group>"; };
 		3027864D1CD26CF80072F711 /* LastElementTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastElementTransform.swift; sourceTree = "<group>"; };
 		302786501CD26EA40072F711 /* CommentsListing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CommentsListing.json; sourceTree = "<group>"; };
@@ -536,6 +540,22 @@
 				300C4D311D53AB8300659F32 /* URLRouter.swift */,
 			);
 			path = URLRouter;
+			sourceTree = "<group>";
+		};
+		300C4D331D54919A00659F32 /* AlertHelper */ = {
+			isa = PBXGroup;
+			children = (
+				300C4D341D5491AD00659F32 /* AlertHelper.swift */,
+			);
+			path = AlertHelper;
+			sourceTree = "<group>";
+		};
+		300C4D361D549CB600659F32 /* JSONHelper */ = {
+			isa = PBXGroup;
+			children = (
+				300C4D371D549CCD00659F32 /* JSONHelper.swift */,
+			);
+			path = JSONHelper;
 			sourceTree = "<group>";
 		};
 		302786561CD271190072F711 /* Moya-ObjectMapper+Custom */ = {
@@ -965,8 +985,10 @@
 		308E96DD1C8769E300380735 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				300C4D331D54919A00659F32 /* AlertHelper */,
 				305F0F9B1CE211E800FF5F20 /* FileReader */,
 				305F0FA51CE21C2B00FF5F20 /* HTMLParser */,
+				300C4D361D549CB600659F32 /* JSONHelper */,
 				308E96F51C87768C00380735 /* JSONReader */,
 				30D9B8931D38EA1D00E8A290 /* MarkdownReader */,
 				300C2AC11D0716DB0046DFA4 /* Prefetcher */,
@@ -1722,6 +1744,7 @@
 				308E96EF1C87701600380735 /* ListingType.swift in Sources */,
 				308E96E91C876AA800380735 /* Network.swift in Sources */,
 				309462CC1CCD956200E18655 /* EmptyStringTransform.swift in Sources */,
+				300C4D351D5491AD00659F32 /* AlertHelper.swift in Sources */,
 				308601BB1CECAC2D00BFCB87 /* HTMLParser.swift in Sources */,
 				308D881B1CD0CABD00C78E74 /* MoreComments.swift in Sources */,
 				30482CA61CCFC8BA0063D238 /* AlerteableViewController.swift in Sources */,
@@ -1821,6 +1844,7 @@
 				30C641DE1D4F9F5700D37A7E /* MarkdownSubreddit.swift in Sources */,
 				30BC0F371CDA11BA00DB3E19 /* NSObject+ClassName.swift in Sources */,
 				30F6C9AC1C8A0C2200616707 /* Subreddit.swift in Sources */,
+				300C4D381D549CCD00659F32 /* JSONHelper.swift in Sources */,
 				303E287A1CE0D01800537BAB /* LinkListViewModel.swift in Sources */,
 				305F0F9D1CE211FC00FF5F20 /* FileReader.swift in Sources */,
 				303DAC121CD8FD5300712D91 /* TitledViewController.swift in Sources */,

@@ -17,7 +17,7 @@ extension RawRepresentable {
 
    - returns: The RawRepresentable value or nil.
    */
-  init?(optionalRawValue: RawValue?) {
+   init?(optionalRawValue: RawValue?) {
 
     guard let rawValue = optionalRawValue, value = Self(rawValue: rawValue) else { return nil }
 
