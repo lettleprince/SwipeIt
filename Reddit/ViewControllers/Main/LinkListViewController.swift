@@ -7,20 +7,25 @@
 //
 
 import UIKit
-import Async
 
 class LinkListViewController: UIViewController, TitledViewModelViewController,
 CloseableViewController {
 
-  // MARK: IBOutlets
+  // MARK: - IBOutlets
   @IBOutlet private weak var tableView: UITableView!
+  @IBOutlet private weak var listingTypeButton: UIBarButtonItem!
 
-  // MARK: Public Properties
+  // MARK: - Public Properties
   var viewModel: LinkListViewModel!
+
+  // MARK: - Private Properties
+  private lazy var alertHelper: AlertHelper = {
+    return AlertHelper(viewController: self)
+  }()
 
 }
 
-// MARK: Lifecycle
+// MARK: - Lifecycle
 extension LinkListViewController {
 
   override func viewDidLoad() {
@@ -31,10 +36,14 @@ extension LinkListViewController {
   }
 }
 
-// MARK: Setup
+// MARK: - Setup
 extension LinkListViewController {
 
   private func setupViews() {
+    setupTableView()
+  }
+
+  private func setupTableView() {
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 120
     tableView.rx_setDelegate(self)
@@ -65,6 +74,11 @@ extension LinkListViewController {
     tableView.rx_modelSelected(LinkItemViewModel)
       .subscribeNext { [weak self] viewModel in
         self?.openLinkViewModel(viewModel)
+      }.addDisposableTo(rx_disposeBag)
+
+    viewModel.listingTypeName
+      .subscribeNext { [weak self] listingTypeName in
+      self?.listingTypeButton.title = listingTypeName
     }.addDisposableTo(rx_disposeBag)
   }
 
@@ -74,7 +88,41 @@ extension LinkListViewController {
   }
 }
 
-// MARK: Cells
+// MARK: - IBActions
+extension LinkListViewController {
+
+  @IBAction private func listingTypeClicked() {
+    presentListingTypeActionSheet()
+  }
+}
+
+// MARK: - Alerts
+extension LinkListViewController {
+
+  private func presentListingTypeActionSheet() {
+    alertHelper.presentActionSheet(options: ListingType.names) { index in
+      guard let index = index else { return }
+      if let listingType = ListingType.typeAtIndex(index) {
+        self.viewModel.setListingType(listingType)
+      } else {
+        self.presentListingTypeRangeActionSheet(index)
+      }
+    }
+  }
+
+  private func presentListingTypeRangeActionSheet(listingTypeIndex: Int) {
+    alertHelper.presentActionSheet(options: ListingType.ListingTypeRange.names) { index in
+      guard let index = index,
+        range = ListingType.ListingTypeRange.rangeAtIndex(index),
+        listingType = ListingType.typeAtIndex(listingTypeIndex, range: range) else {
+          return
+      }
+      self.viewModel.setListingType(listingType)
+    }
+  }
+}
+
+// MARK: - Cells
 extension LinkListViewController {
 
   private func cellForImageLink(viewModel: LinkItemImageViewModel, index: Int) -> LinkImageCell {
@@ -96,12 +144,12 @@ extension LinkListViewController {
       cell.rx_readMore
         .subscribeNext { [weak self] viewModel in
           self?.openLinkViewModel(viewModel)
-      }.addDisposableTo(cell.rx_reusableDisposeBag)
+        }.addDisposableTo(cell.rx_reusableDisposeBag)
       return cell
   }
 }
 
-// MARK: Helpers
+// MARK: - Helpers
 extension LinkListViewController {
 
   private func openLinkViewModel(viewModel: LinkItemViewModel) {
@@ -124,12 +172,12 @@ extension LinkListViewController {
 
 }
 
-// MARK: UITableViewDelegate
+// MARK: - UITableViewDelegate
 extension LinkListViewController: UITableViewDelegate {
 
   func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath)
     -> UITableViewCellEditingStyle {
-    return .None
+      return .None
   }
 
   func scrollViewDidScroll(scrollView: UIScrollView) {

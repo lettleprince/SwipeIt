@@ -267,8 +267,15 @@
                             <constraint firstItem="nwX-t0-Lxx" firstAttribute="top" secondItem="f4I-jH-gmU" secondAttribute="top" id="vxY-f2-foz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="mvt-be-LNL"/>
+                    <navigationItem key="navigationItem" id="mvt-be-LNL">
+                        <barButtonItem key="rightBarButtonItem" title="Hot" id="RSw-2w-zVC">
+                            <connections>
+                                <action selector="listingTypeClicked" destination="waD-Qi-TaV" id="bzm-Wc-SD8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="listingTypeButton" destination="RSw-2w-zVC" id="pnk-JN-sMe"/>
                         <outlet property="tableView" destination="nwX-t0-Lxx" id="3QV-mF-4v9"/>
                     </connections>
                 </viewController>
