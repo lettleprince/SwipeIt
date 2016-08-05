@@ -13,9 +13,9 @@ enum ListingType: Equatable {
   case Hot
   case New
   case Rising
-  case Random
   case Controversial(range: ListingTypeRange)
   case Top(range: ListingTypeRange)
+  case Gilded
 
   var path: String {
     switch self {
@@ -25,12 +25,67 @@ enum ListingType: Equatable {
       return "new"
     case .Rising:
       return "rising"
-    case .Random:
-      return "random"
+    case .Controversial:
+      return "controversial"
+    case .Top:
+      return "top"
+    case .Gilded:
+      return "gilded"
+    }
+  }
+
+  var name: String {
+    switch self {
+    case .Hot:
+      return tr(.ListingTypeHot)
+    case .New:
+      return tr(.ListingTypeNew)
+    case .Rising:
+      return tr(.ListingTypeRising)
+    case .Controversial:
+      return tr(.ListingTypeControversial)
+    case .Top:
+      return tr(.ListingTypeTop)
+    case .Gilded:
+      return tr(.ListingTypeGilded)
+    }
+  }
+
+  var range: ListingTypeRange? {
+    switch self {
     case .Controversial(let range):
-      return "controversial/\(range)"
+      return range
     case .Top(let range):
-      return "top/\(range)"
+      return range
+    default:
+      return nil
+    }
+  }
+
+  static var names: [String] {
+    return [tr(.ListingTypeHot), tr(.ListingTypeNew), tr(.ListingTypeRising),
+            tr(.ListingTypeControversial), tr(.ListingTypeTop)]
+            //tr(.ListingTypeGilded)] Removed until comments are added
+  }
+
+  static func typeAtIndex(index: Int, range: ListingTypeRange? = nil) -> ListingType? {
+    switch index {
+    case 0:
+      return .Hot
+    case 1:
+      return .New
+    case 2:
+      return .Rising
+    case 3:
+      guard let range = range else { return nil }
+      return .Controversial(range: range)
+    case 4:
+      guard let range = range else { return nil }
+      return .Top(range: range)
+    case 5:
+      return .Gilded
+    default:
+      return .Hot
     }
   }
 
@@ -40,8 +95,21 @@ enum ListingType: Equatable {
     case Week = "week"
     case Month = "month"
     case Year = "year"
-  }
+    case AllTime = "all"
 
+    static var ranges: [ListingTypeRange] {
+      return [.Hour, .Day, .Week, .Month, .Year, .AllTime]
+    }
+
+    static func rangeAtIndex(index: Int) -> ListingTypeRange? {
+      return ranges.get(index)
+    }
+
+    static var names: [String] {
+      return [tr(.ListingTypeRangeHour), tr(.ListingTypeRangeDay), tr(.ListingTypeRangeWeek),
+              tr(.ListingTypeRangeMonth), tr(.ListingTypeRangeYear), tr(.ListingTypeRangeAllTime)]
+    }
+  }
 }
 
 func == (lhs: ListingType, rhs: ListingType) -> Bool {
@@ -52,12 +120,12 @@ func == (lhs: ListingType, rhs: ListingType) -> Bool {
     return true
   case (.Rising, .Rising):
     return true
-  case (.Random, .Random):
-    return true
   case (.Controversial(let lhsRange), .Controversial(let rhsRange)):
     return lhsRange == rhsRange
   case (.Top(let lhsRange), .Top(let rhsRange)):
     return lhsRange == rhsRange
+  case (.Gilded, .Gilded):
+    return true
   default:
     return false
   }

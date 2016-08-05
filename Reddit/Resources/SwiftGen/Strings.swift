@@ -39,6 +39,30 @@ enum L10n {
   case LinkContextLocked
   /// Read more
   case LinkContentSelfPostReadMore
+  /// Hot
+  case ListingTypeHot
+  /// New
+  case ListingTypeNew
+  /// Rising
+  case ListingTypeRising
+  /// Controversial
+  case ListingTypeControversial
+  /// Top
+  case ListingTypeTop
+  /// Gilded
+  case ListingTypeGilded
+  /// Past hour
+  case ListingTypeRangeHour
+  /// Past 24 hours
+  case ListingTypeRangeDay
+  /// Past week
+  case ListingTypeRangeWeek
+  /// Past month
+  case ListingTypeRangeMonth
+  /// Past year
+  case ListingTypeRangeYear
+  /// All-time
+  case ListingTypeRangeAllTime
 }
 
 extension L10n: CustomStringConvertible {
@@ -82,6 +106,30 @@ extension L10n: CustomStringConvertible {
         return L10n.tr("Link.Context.Locked")
       case .LinkContentSelfPostReadMore:
         return L10n.tr("Link.Content.SelfPost.ReadMore")
+      case .ListingTypeHot:
+        return L10n.tr("ListingType.Hot")
+      case .ListingTypeNew:
+        return L10n.tr("ListingType.New")
+      case .ListingTypeRising:
+        return L10n.tr("ListingType.Rising")
+      case .ListingTypeControversial:
+        return L10n.tr("ListingType.Controversial")
+      case .ListingTypeTop:
+        return L10n.tr("ListingType.Top")
+      case .ListingTypeGilded:
+        return L10n.tr("ListingType.Gilded")
+      case .ListingTypeRangeHour:
+        return L10n.tr("ListingType.Range.Hour")
+      case .ListingTypeRangeDay:
+        return L10n.tr("ListingType.Range.Day")
+      case .ListingTypeRangeWeek:
+        return L10n.tr("ListingType.Range.Week")
+      case .ListingTypeRangeMonth:
+        return L10n.tr("ListingType.Range.Month")
+      case .ListingTypeRangeYear:
+        return L10n.tr("ListingType.Range.Year")
+      case .ListingTypeRangeAllTime:
+        return L10n.tr("ListingType.Range.AllTime")
     }
   }
 

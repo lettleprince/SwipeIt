@@ -29,3 +29,18 @@
 "Link.Context.Stickied" = "Stickied";
 "Link.Context.Locked" = "Locked";
 "Link.Content.SelfPost.ReadMore" = "Read more";
+
+"ListingType.Hot" = "Hot";
+"ListingType.New" = "New";
+"ListingType.Rising" = "Rising";
+"ListingType.Controversial" = "Controversial";
+"ListingType.Top" = "Top";
+"ListingType.Gilded" = "Gilded";
+
+"ListingType.Range.Hour" = "Past hour";
+"ListingType.Range.Day" = "Past 24 hours";
+"ListingType.Range.Week" = "Past week";
+"ListingType.Range.Month" = "Past month";
+"ListingType.Range.Year" = "Past year";
+"ListingType.Range.AllTime" = "All-time";
+
