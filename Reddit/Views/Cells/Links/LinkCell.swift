@@ -20,15 +20,11 @@ class LinkCell: UITableViewCell, ReusableCell {
   var linkViewModel: LinkItemViewModel! {
     didSet {
       linkView.titleLabel.text = linkViewModel.title
-      linkViewModel.timeAgo
-        .bindTo(linkView.timeAgoLabel.rx_text)
-        .addDisposableTo(rx_reusableDisposeBag)
-      linkView.contextView.linkContext = linkViewModel.linkContext
-      linkView.authorButton.setTitle(linkViewModel.author, forState: .Normal)
-      linkView.subredditButton.setTitle(linkViewModel.subredditName, forState: .Normal)
-      linkView.contextView.goldLabel.text = linkViewModel.gilded
-      linkView.contextView.linkFlairLabel.text = linkViewModel.linkFlairText
-      linkView.contextView.authorFlairLabel.text = linkViewModel.authorFlairText
+      linkViewModel.contextAttributedString
+        .subscribeNext { [weak self] contextAttributedString in
+          self?.linkView.setContextAttributedText(contextAttributedString)
+        }.addDisposableTo(rx_reusableDisposeBag)
+
       linkViewModel.score
         .subscribeNext { [weak self] score in
           self?.linkView.votesButton.setTitle(score, forState: .Normal)

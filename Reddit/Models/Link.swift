@@ -84,6 +84,14 @@ struct Link: Votable, Mappable {
   var totalReports: Int!
 
   // MARK: Accessors
+  var subredditURL: NSURL {
+    return URLRouter.sharedInstance.subredditURL(subreddit)
+  }
+
+  var authorURL: NSURL {
+    return URLRouter.sharedInstance.userURL(author)
+  }
+
   private var previewImage: PreviewImage? {
     return previewImages?.first
   }

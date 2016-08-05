@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import DateTools
 import RxTimer
+import TTTAttributedLabel
 
 class LinkItemViewModel: ViewModel {
 
@@ -27,62 +28,79 @@ class LinkItemViewModel: ViewModel {
     return link.title
   }
 
-  var subredditName: String {
-    return link.subreddit
-  }
-
-  var author: String {
-    return link.author
-  }
-
   var totalComments: String {
     return "\(link.totalComments)"
   }
 
-  var gilded: String {
-    return "x\(link.gilded)"
+  // MARK: Private Observables
+  var timeAgo: Observable<NSAttributedString> {
+    return Observable
+      .combineLatest(Observable.just(link.created), NSTimer.rx_timer) { ($0, $1) }
+      .map { (created, _) -> String in
+        created.shortTimeAgoSinceNow()
+      }.distinctUntilChanged()
+      .map { NSAttributedString(string: $0) }
   }
 
-  var linkFlairText: String? {
-    return link.linkFlairText
+  private var subredditName: Observable<NSAttributedString> {
+    return Observable.just(NSAttributedString(string: link.subreddit,
+      attributes: [NSLinkAttributeName: link.subredditURL]))
   }
 
-  var authorFlairText: String? {
-    return link.authorFlairText
+  private var author: Observable<NSAttributedString> {
+    return Observable.just(NSAttributedString(string: link.author,
+      attributes: [NSLinkAttributeName: link.authorURL]))
   }
 
-  var linkContext: [LinkContext] {
-    var linkContext: [LinkContext] = [.TimeAgo, .Subreddit, .Author]
+  private var gilded: Observable<NSAttributedString?> {
+    let gildedString: String? = link.gilded > 0 ? "x\(link.gilded)" : nil
+    return Observable.just(gildedString.map { NSAttributedString(string: $0) })
+  }
 
-    if let authorFlairText = link.authorFlairText where authorFlairText.characters.count > 0 {
-      linkContext.append(.AuthorFlair)
+  private var linkFlairText: Observable<NSAttributedString?> {
+    return Observable
+      .combineLatest(Observable.just(link.linkFlairText),
+      Theming.sharedInstance.accentColor, Theming.sharedInstance.backgroundColor) { ($0, $1, $2) }
+      .map { (text, accentColor, backgroundColor) in
+        guard text?.characters.count > 0 else { return nil }
+        return text.map { NSAttributedString(string: " \($0) ",
+          attributes: [LinkView.tagAttributeName: true]) }
     }
+  }
 
-    if let linkFlairText = link.linkFlairText where linkFlairText.characters.count > 0 {
-      linkContext.append(.LinkFlair)
+
+  private var authorFlairText: Observable<NSAttributedString?> {
+    return Observable
+      .combineLatest(Observable.just(link.authorFlairText),
+      Theming.sharedInstance.accentColor, Theming.sharedInstance.backgroundColor) { ($0, $1, $2) }
+      .map { (text, accentColor, backgroundColor) in
+        guard text?.characters.count > 0 else { return nil }
+        return text.map { NSAttributedString(string: " \($0) ",
+          attributes: [LinkView.tagAttributeName: true]) }
     }
+  }
 
-    if link.gilded > 0 {
-      linkContext.append(.Gold)
-    }
+  private var stickied: Observable<NSAttributedString?> {
+    let stickiedString: String? = link.stickied == true ? tr(.LinkContextStickied) : nil
+    return Observable.just(stickiedString.map { NSAttributedString(string: $0) })
+  }
 
-    if link.stickied == true {
-      linkContext.append(.Stickied)
-    }
-
-    if link.locked == true {
-      linkContext.append(.Locked)
-    }
-
-    return linkContext
+  private var locked: Observable<NSAttributedString?> {
+    let lockedString: String? = link.locked == true ? tr(.LinkContextLocked) : nil
+    return Observable.just(lockedString.map { NSAttributedString(string: $0) })
   }
 
   // MARK: Observables
-  var timeAgo: Observable<String> {
+  var contextAttributedString: Observable<NSAttributedString> {
     return Observable
-      .combineLatest(Observable.just(link.created), NSTimer.rx_timer) { ($0, $1) }
-      .map { (created, _) in
-        created.shortTimeAgoSinceNow()
+      .combineLatest(timeAgo, subredditName, author, authorFlairText, linkFlairText, gilded,
+      stickied, locked) {
+        let result: [NSAttributedString?] = [$0, $1, $2, $3, $4, $5, $6, $7]
+        return result.flatMap { $0 }
+      }
+      .map { (attributedStrings: [NSAttributedString]) in
+        let separator = NSAttributedString(string: " ● ")
+        return attributedStrings.joinWithSeparator(separator)
     }
   }
 
@@ -149,7 +167,7 @@ extension LinkItemViewModel {
 
   private func vote(accessToken: AccessToken, oldVote: Vote, newVote: Vote) {
     Network.request(.Vote(token: accessToken.token, identifier: link.name,
-      direction: newVote.rawValue)).debug()
+      direction: newVote.rawValue))
       .subscribeError { [weak self] _ in
         self?.vote.value = oldVote
       }.addDisposableTo(disposeBag)
