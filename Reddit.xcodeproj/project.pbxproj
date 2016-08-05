@@ -31,6 +31,9 @@
 		300C4D321D53AB8300659F32 /* URLRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4D311D53AB8300659F32 /* URLRouter.swift */; };
 		300C4D351D5491AD00659F32 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4D341D5491AD00659F32 /* AlertHelper.swift */; };
 		300C4D381D549CCD00659F32 /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4D371D549CCD00659F32 /* JSONHelper.swift */; };
+		300C4D3A1D54CB1900659F32 /* ListingType+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4D391D54CB1900659F32 /* ListingType+Name.swift */; };
+		300C4D3B1D54CB9500659F32 /* Array+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C2AC51D0725C00046DFA4 /* Array+Optional.swift */; };
+		300C4D3C1D54CCFB00659F32 /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4D371D549CCD00659F32 /* JSONHelper.swift */; };
 		302786481CD2668F0072F711 /* JSONKeyTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302786471CD2668F0072F711 /* JSONKeyTransform.swift */; };
 		302786491CD2668F0072F711 /* JSONKeyTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302786471CD2668F0072F711 /* JSONKeyTransform.swift */; };
 		3027864E1CD26CF80072F711 /* LastElementTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3027864D1CD26CF80072F711 /* LastElementTransform.swift */; };
@@ -269,6 +272,7 @@
 		300C4D311D53AB8300659F32 /* URLRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRouter.swift; sourceTree = "<group>"; };
 		300C4D341D5491AD00659F32 /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		300C4D371D549CCD00659F32 /* JSONHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONHelper.swift; sourceTree = "<group>"; };
+		300C4D391D54CB1900659F32 /* ListingType+Name.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ListingType+Name.swift"; sourceTree = "<group>"; };
 		302786471CD2668F0072F711 /* JSONKeyTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONKeyTransform.swift; sourceTree = "<group>"; };
 		3027864D1CD26CF80072F711 /* LastElementTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastElementTransform.swift; sourceTree = "<group>"; };
 		302786501CD26EA40072F711 /* CommentsListing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CommentsListing.json; sourceTree = "<group>"; };
@@ -806,6 +810,7 @@
 				30482CA91CCFD8580063D238 /* SubmissionType.swift */,
 				30482CA71CCFD7E70063D238 /* SubredditType.swift */,
 				30F6C9AD1C8A115400616707 /* Voted.swift */,
+				300C4D391D54CB1900659F32 /* ListingType+Name.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1769,6 +1774,7 @@
 				305C08101CDCF827009D287D /* Sorter.swift in Sources */,
 				30DDB2521CCEDE52000B72E5 /* Images.swift in Sources */,
 				305C080B1CDCF417009D287D /* SubredditListItemViewModel.swift in Sources */,
+				300C4D3A1D54CB1900659F32 /* ListingType+Name.swift in Sources */,
 				300C2AB91D05E37C0046DFA4 /* LinkImageView.swift in Sources */,
 				300C2ADE1D087EAF0046DFA4 /* String+Regex.swift in Sources */,
 				305F0FB01CE23D0700FF5F20 /* LinkContextView.swift in Sources */,
@@ -1887,6 +1893,7 @@
 				3082160C1CCA846600D9A18B /* Edited.swift in Sources */,
 				305F0F991CE2117E00FF5F20 /* OpenGraphSpec.swift in Sources */,
 				303FA7C71CCA8E060027658E /* Votable.swift in Sources */,
+				300C4D3B1D54CB9500659F32 /* Array+Optional.swift in Sources */,
 				300C2AF51D0988550046DFA4 /* HTMLEncodingTransform.swift in Sources */,
 				308216121CCA846F00D9A18B /* ImageSource.swift in Sources */,
 				3027864F1CD26CF80072F711 /* LastElementTransform.swift in Sources */,
@@ -1913,6 +1920,7 @@
 				305F0FA81CE21EEA00FF5F20 /* AppLink.swift in Sources */,
 				308216111CCA846F00D9A18B /* PreviewImage.swift in Sources */,
 				303FA7CC1CCA8E1C0027658E /* EpochDateTransform.swift in Sources */,
+				300C4D3C1D54CCFB00659F32 /* JSONHelper.swift in Sources */,
 				308D88311CD0D75D00C78E74 /* SubredditListing.swift in Sources */,
 				300C2AC91D0734950046DFA4 /* PathTransform.swift in Sources */,
 				309462CD1CCD956200E18655 /* EmptyStringTransform.swift in Sources */,

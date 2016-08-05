@@ -111,9 +111,9 @@ extension LinkListViewController {
   }
 
   private func presentListingTypeRangeActionSheet(listingTypeIndex: Int) {
-    alertHelper.presentActionSheet(options: ListingType.ListingTypeRange.names) { index in
+    alertHelper.presentActionSheet(options: ListingTypeRange.names) { index in
       guard let index = index,
-        range = ListingType.ListingTypeRange.rangeAtIndex(index),
+        range = ListingTypeRange.rangeAtIndex(index),
         listingType = ListingType.typeAtIndex(listingTypeIndex, range: range) else {
           return
       }

@@ -18,7 +18,7 @@ class LinkListingSpec: QuickSpec {
       var listing: LinkListing?
       describe("can be loaded") {
         NetworkMock.provider.request(.LinkListing(token: nil, path: "/r/all",
-          listingPath: ListingType.Hot.path, after: nil))
+          listingPath: ListingType.Hot.path, listingTypeRange: "hot", after: nil))
           .mapObject(LinkListing)
           .subscribeNext { networkListing in
             listing = networkListing

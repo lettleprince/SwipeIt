@@ -34,22 +34,7 @@ enum ListingType: Equatable {
     }
   }
 
-  var name: String {
-    switch self {
-    case .Hot:
-      return tr(.ListingTypeHot)
-    case .New:
-      return tr(.ListingTypeNew)
-    case .Rising:
-      return tr(.ListingTypeRising)
-    case .Controversial:
-      return tr(.ListingTypeControversial)
-    case .Top:
-      return tr(.ListingTypeTop)
-    case .Gilded:
-      return tr(.ListingTypeGilded)
-    }
-  }
+
 
   var range: ListingTypeRange? {
     switch self {
@@ -62,11 +47,7 @@ enum ListingType: Equatable {
     }
   }
 
-  static var names: [String] {
-    return [tr(.ListingTypeHot), tr(.ListingTypeNew), tr(.ListingTypeRising),
-            tr(.ListingTypeControversial), tr(.ListingTypeTop)]
-            //tr(.ListingTypeGilded)] Removed until comments are added
-  }
+
 
   static func typeAtIndex(index: Int, range: ListingTypeRange? = nil) -> ListingType? {
     switch index {
@@ -89,28 +70,25 @@ enum ListingType: Equatable {
     }
   }
 
-  enum ListingTypeRange: String {
-    case Hour = "hour"
-    case Day = "day"
-    case Week = "week"
-    case Month = "month"
-    case Year = "year"
-    case AllTime = "all"
+}
 
-    static var ranges: [ListingTypeRange] {
-      return [.Hour, .Day, .Week, .Month, .Year, .AllTime]
-    }
+enum ListingTypeRange: String {
+  case Hour = "hour"
+  case Day = "day"
+  case Week = "week"
+  case Month = "month"
+  case Year = "year"
+  case AllTime = "all"
 
-    static func rangeAtIndex(index: Int) -> ListingTypeRange? {
-      return ranges.get(index)
-    }
+  static var ranges: [ListingTypeRange] {
+    return [.Hour, .Day, .Week, .Month, .Year, .AllTime]
+  }
 
-    static var names: [String] {
-      return [tr(.ListingTypeRangeHour), tr(.ListingTypeRangeDay), tr(.ListingTypeRangeWeek),
-              tr(.ListingTypeRangeMonth), tr(.ListingTypeRangeYear), tr(.ListingTypeRangeAllTime)]
-    }
+  static func rangeAtIndex(index: Int) -> ListingTypeRange? {
+    return ranges.get(index)
   }
 }
+
 
 func == (lhs: ListingType, rhs: ListingType) -> Bool {
   switch (lhs, rhs) {
