@@ -12,6 +12,14 @@ class URLRouter {
 
   static let sharedInstance = URLRouter()
 
+  func subredditURL(subredditName: String) -> NSURL {
+    return NSURL(string: "\(Constants.redditURL)/r/\(subredditName)")!
+  }
+
+  func userURL(username: String) -> NSURL {
+    return NSURL(string: "\(Constants.redditURL)/u/\(username)")!
+  }
+
   func openURL(URL: NSURL) -> Bool {
     return UIApplication.sharedApplication().openURL(URL)
   }
