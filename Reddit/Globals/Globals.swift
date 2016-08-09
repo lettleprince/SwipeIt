@@ -40,13 +40,12 @@ extension Globals {
 // MARK: User Defaults
 extension Globals {
 
-  // autoPlayGIF is reversed from userDefaults to allow true as the default value
   static var autoPlayGIF: Bool {
     get {
-      return !userDefaults.boolForKey("autoPlayGIF")
+      return userDefaults.boolForKey("autoPlayGIF")
     }
     set {
-      userDefaults.setBool(!newValue, forKey: "autoPlayGIF")
+      userDefaults.setBool(newValue, forKey: "autoPlayGIF")
     }
   }
 
