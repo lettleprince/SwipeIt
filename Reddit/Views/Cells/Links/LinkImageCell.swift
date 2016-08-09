@@ -21,7 +21,7 @@ class LinkImageCell: LinkCell {
     didSet {
       linkViewModel = linkImageViewModel
 
-      linkImageViewModel.imageSize.asObservable()
+      linkImageViewModel.imageSize
         .distinctUntilChanged()
         .subscribeNext { [weak self] size in
           self?.linkImageView.setImageSize(size)
