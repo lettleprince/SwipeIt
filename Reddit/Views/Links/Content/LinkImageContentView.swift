@@ -15,9 +15,13 @@ import RxColor
 // MARK: Properties and Initializer
 class LinkImageContentView: UIView {
 
+  private static let minimumProgress: Float = 0.01
+
   // MARK: IBInspectable
   @IBInspectable var spacing: CGFloat = 8 {
     didSet {
+      indicatorLabel.insets = UIEdgeInsets(top: spacing / 4, left: spacing / 2,
+                                           bottom: spacing / 4, right: spacing / 2)
       indicatorLabel.snp_updateConstraints { make in
         make.right.equalTo(self).inset(spacing)
         make.top.equalTo(self).offset(spacing)
@@ -48,13 +52,39 @@ class LinkImageContentView: UIView {
     return imageView
   }()
 
-  private lazy var indicatorLabel: UILabel = {
+  private lazy var loaderView: CircularLoaderView = {
+    let loaderView = CircularLoaderView()
+    loaderView.emptyLineWidth = 1 / UIScreen.mainScreen().scale
+    loaderView.progressLineWidth = 2
+    Theming.sharedInstance.accentColor.subscribeNext { accentColor in
+      loaderView.progressLineColor = accentColor
+      loaderView.emptyLineColor = accentColor
+      }.addDisposableTo(self.rx_disposeBag)
+    return loaderView
+  }()
+
+  private lazy var retryButton: BorderedButton = {
+    let retryButton = BorderedButton(type: .Custom)
+    retryButton.borderWidth = 1 / UIScreen.mainScreen().scale
+    retryButton.titleLabel?.font = UIFont.systemFontOfSize(UIFont.smallSystemFontSize())
+    retryButton.setTitle(tr(.Retry), forState: .Normal)
+    retryButton.alpha = 0
+    Theming.sharedInstance.accentColor
+      .bindTo(retryButton.rx_color)
+      .addDisposableTo(self.rx_disposeBag)
+    retryButton.addTarget(self, action: #selector(LinkImageContentView.retryClicked),
+                          forControlEvents: .TouchUpInside)
+    return retryButton
+  }()
+
+  private lazy var indicatorLabel: InsettedLabel = {
     let indicatorLabel = InsettedLabel()
     indicatorLabel.font = UIFont.systemFontOfSize(UIFont.smallSystemFontSize())
     indicatorLabel.layer.cornerRadius = 4
     indicatorLabel.layer.masksToBounds = true
     indicatorLabel.textAlignment = .Center
-    indicatorLabel.insets = UIEdgeInsets(top: 2, left: 4, bottom: 2, right: 4)
+    indicatorLabel.insets = UIEdgeInsets(top: self.spacing / 4, left: self.spacing / 2,
+                                         bottom: self.spacing / 4, right: self.spacing / 2)
     Theming.sharedInstance.backgroundColor
       .bindTo(indicatorLabel.rx_backgroundColor)
       .addDisposableTo(self.rx_disposeBag)
@@ -92,6 +122,8 @@ class LinkImageContentView: UIView {
   }()
 
   private var heightConstraint: Constraint? = nil
+  private var imageURL: NSURL? = nil
+  private var imageLoadingCompletion: ((UIImage?, NSURL?) -> Void)? = nil
 
   // MARK: Initializers
   override init(frame: CGRect) {
@@ -108,6 +140,8 @@ class LinkImageContentView: UIView {
   private func setup() {
     clipsToBounds = true
     addSubview(imageView)
+    addSubview(loaderView)
+    addSubview(retryButton)
     addSubview(indicatorLabel)
     addSubview(overlayView)
 
@@ -117,6 +151,16 @@ class LinkImageContentView: UIView {
   private func setupConstraints() {
     imageView.snp_makeConstraints { make in
       make.edges.equalTo(self)
+    }
+
+    loaderView.snp_makeConstraints { make in
+      make.center.equalTo(self)
+      make.height.width.equalTo(overlayCircleRadius / 2)
+    }
+
+    retryButton.snp_makeConstraints { make in
+      make.center.equalTo(self)
+      make.height.equalTo(overlayCircleRadius / 2)
     }
 
     indicatorLabel.snp_makeConstraints { make in
@@ -166,10 +210,45 @@ class LinkImageContentView: UIView {
   }
 
   func setImageWithURL(imageURL: NSURL?, completion: ((UIImage?, NSURL?) -> Void)? = nil) {
-    imageView.kf_setImageWithURL(imageURL, optionsInfo: [.Transition(.Fade(0.25))]) {
-      (image, _, _, imageURL) in
-      completion?(image, imageURL)
+    retryButton.alpha = 0
+    self.imageURL = imageURL
+    self.imageLoadingCompletion = completion
+    setProgress(0, animated: false)
+    imageView.kf_setImageWithURL(imageURL, optionsInfo: [.Transition(.Fade(0.25))],
+                                 progressBlock: { [weak self] (receivedSize, totalSize) in
+                                  self?.setProgress(Float(receivedSize) / Float(totalSize))
+      }, completionHandler: { [weak self] (image, error, _, imageURL) in
+        self?.setProgress(1)
+        self?.handleError(error)
+        completion?(image, imageURL)
+      })
+  }
+
+  private func setProgress(progress: Float, animated: Bool = true) {
+    var presentationProgress = max(LinkImageContentView.minimumProgress, progress)
+
+    if presentationProgress < loaderView.progress && progress != 0 {
+      presentationProgress = loaderView.progress
     }
+
+    loaderView.setProgress(presentationProgress, animated: animated)
+    switch presentationProgress {
+    case 0..<1:
+      loaderView.alpha = 1
+    case 1:
+      loaderView.alpha = 0
+    default:
+      break
+    }
+  }
+
+  private func handleError(error: NSError?) {
+    guard let _ = error else { return }
+    retryButton.alpha = 1
+  }
+
+  func retryClicked() {
+    setImageWithURL(imageURL, completion: imageLoadingCompletion)
   }
 
   func playGIF() {
