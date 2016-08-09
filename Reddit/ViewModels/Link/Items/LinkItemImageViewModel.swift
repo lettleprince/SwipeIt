@@ -45,6 +45,7 @@ class LinkItemImageViewModel: LinkItemViewModel {
   func setImageSize(imageSize: CGSize) {
     _imageSize.value = imageSize
   }
+
   override func preloadData() {
     guard let imageURL = imageURL else { return }
     prefetcher = Prefetcher(imageURL: imageURL) { [weak self] image in

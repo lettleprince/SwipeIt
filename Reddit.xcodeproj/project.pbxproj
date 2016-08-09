@@ -37,6 +37,8 @@
 		300C4D3F1D54D9E700659F32 /* NSAttributedString+Join.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4D3E1D54D9E700659F32 /* NSAttributedString+Join.swift */; };
 		300C4D411D54ED9E00659F32 /* NSMutableAttributedString+Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4D401D54ED9E00659F32 /* NSMutableAttributedString+Attributes.swift */; };
 		300C4D431D54FC7C00659F32 /* URLRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4D311D53AB8300659F32 /* URLRouter.swift */; };
+		301C6D621D58C83B00258D09 /* CircularLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301C6D611D58C83B00258D09 /* CircularLoaderView.swift */; };
+		301C6D641D5A216D00258D09 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301C6D631D5A216D00258D09 /* BorderedButton.swift */; };
 		302786481CD2668F0072F711 /* JSONKeyTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302786471CD2668F0072F711 /* JSONKeyTransform.swift */; };
 		302786491CD2668F0072F711 /* JSONKeyTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302786471CD2668F0072F711 /* JSONKeyTransform.swift */; };
 		3027864E1CD26CF80072F711 /* LastElementTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3027864D1CD26CF80072F711 /* LastElementTransform.swift */; };
@@ -277,6 +279,8 @@
 		300C4D391D54CB1900659F32 /* ListingType+Name.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ListingType+Name.swift"; sourceTree = "<group>"; };
 		300C4D3E1D54D9E700659F32 /* NSAttributedString+Join.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Join.swift"; sourceTree = "<group>"; };
 		300C4D401D54ED9E00659F32 /* NSMutableAttributedString+Attributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Attributes.swift"; sourceTree = "<group>"; };
+		301C6D611D58C83B00258D09 /* CircularLoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularLoaderView.swift; sourceTree = "<group>"; };
+		301C6D631D5A216D00258D09 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		302786471CD2668F0072F711 /* JSONKeyTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONKeyTransform.swift; sourceTree = "<group>"; };
 		3027864D1CD26CF80072F711 /* LastElementTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastElementTransform.swift; sourceTree = "<group>"; };
 		302786501CD26EA40072F711 /* CommentsListing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CommentsListing.json; sourceTree = "<group>"; };
@@ -579,6 +583,14 @@
 				300C4D401D54ED9E00659F32 /* NSMutableAttributedString+Attributes.swift */,
 			);
 			path = "NSMutableAttributedString+Attributes";
+			sourceTree = "<group>";
+		};
+		301C6D601D58C81D00258D09 /* Loaders */ = {
+			isa = PBXGroup;
+			children = (
+				301C6D611D58C83B00258D09 /* CircularLoaderView.swift */,
+			);
+			path = Loaders;
 			sourceTree = "<group>";
 		};
 		302786561CD271190072F711 /* Moya-ObjectMapper+Custom */ = {
@@ -1124,6 +1136,7 @@
 				30BC0F2F1CDA0F3F00DB3E19 /* Cells */,
 				30A8BB131D33CD4A00FE264A /* Labels */,
 				30390E3F1D05BED500DA89DD /* Links */,
+				301C6D601D58C81D00258D09 /* Loaders */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1270,6 +1283,7 @@
 		30D960691D343F2700808FC0 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				301C6D631D5A216D00258D09 /* BorderedButton.swift */,
 				30D9606A1D343F4100808FC0 /* LabelButton.swift */,
 			);
 			path = Buttons;
@@ -1775,6 +1789,8 @@
 				30482CA61CCFC8BA0063D238 /* AlerteableViewController.swift in Sources */,
 				30806BFD1C8D9B2A00EB1BD5 /* VotedTransform.swift in Sources */,
 				300C4D411D54ED9E00659F32 /* NSMutableAttributedString+Attributes.swift in Sources */,
+				301C6D621D58C83B00258D09 /* CircularLoaderView.swift in Sources */,
+				301C6D641D5A216D00258D09 /* BorderedButton.swift in Sources */,
 				308D88361CD0D8BB00C78E74 /* CommentsListing.swift in Sources */,
 				30806C051C8DA33800EB1BD5 /* EmbeddedMedia.swift in Sources */,
 				30BFD9FC1D50F66900539E4B /* Response+CustomMappers.swift in Sources */,
