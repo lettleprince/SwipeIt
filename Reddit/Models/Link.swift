@@ -85,11 +85,11 @@ struct Link: Votable, Mappable {
 
   // MARK: Accessors
   var subredditURL: NSURL {
-    return URLRouter.sharedInstance.subredditURL(subreddit)
+    return NSURL(string: "\(Constants.redditURL)/r/\(subreddit)")!
   }
 
   var authorURL: NSURL {
-    return URLRouter.sharedInstance.userURL(author)
+    return NSURL(string: "\(Constants.redditURL)/u/\(author)")!
   }
 
   private var previewImage: PreviewImage? {
@@ -163,13 +163,13 @@ struct Link: Votable, Mappable {
     author <- map["data.author"]
     upvoteRatio <- map["data.upvote_ratio"]
     authorFlairClass <- map["data.author_flair_css_class"]
-    authorFlairText <- map["data.author_flair_text"]
+    authorFlairText <- (map["data.author_flair_text"], EmptyStringTransform())
     clicked <- map["data.clicked"]
     domain <- map["data.domain"]
     hidden <- map["data.hidden"]
     selfPost <- map["data.is_self"]
     linkFlairClass <- map["data.link_flair_css_class"]
-    linkFlairText <- map["data.link_flair_text"]
+    linkFlairText <- (map["data.link_flair_text"], EmptyStringTransform())
     locked <- map["data.locked"]
     media <- map["data.media"]
     secureMedia <- map["data.secure_media"]

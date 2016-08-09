@@ -28,7 +28,7 @@ extension LinkType {
     } else if link.media?.type == "rich" {
       return .Album
     } else if link.imageURL != nil {
-      return link.imageURL?.pathExtension == ".gif" ? .GIF : .Image
+      return link.imageURL?.pathExtension == "gif" ? .GIF : .Image
     } else {
       return .LinkPost
     }

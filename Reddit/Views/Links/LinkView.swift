@@ -74,7 +74,6 @@ import TTTAttributedLabel
     label.numberOfLines = 0
     label.textAlignment = .Left
     label.delegate = self
-    label.enabledTextCheckingTypes = NSTextCheckingType.Link.rawValue
 
     Theming.sharedInstance.secondaryTextColor
       .bindTo(label.rx_textColor)
