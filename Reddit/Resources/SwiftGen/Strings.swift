@@ -63,6 +63,8 @@ enum L10n {
   case ListingTypeRangeYear
   /// All-time
   case ListingTypeRangeAllTime
+  /// Retry
+  case Retry
 }
 
 extension L10n: CustomStringConvertible {
@@ -130,6 +132,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr("ListingType.Range.Year")
       case .ListingTypeRangeAllTime:
         return L10n.tr("ListingType.Range.AllTime")
+      case .Retry:
+        return L10n.tr("Retry")
     }
   }
 
