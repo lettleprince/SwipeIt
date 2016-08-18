@@ -12,9 +12,8 @@ import Foundation
  Helpful function to be able to abstract observable sequences into void.
  e.g. Observable.just(something).map(void)
 
- - parameter _: _ anything is turned into void
-
+ - parameter _: anything is turned into void
  */
-func void<T>(_: T) -> Void {
+func void<T>(_: T) {
   return Void()
 }
