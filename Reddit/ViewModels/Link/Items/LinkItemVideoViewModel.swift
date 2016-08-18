@@ -16,9 +16,9 @@ class LinkItemVideoViewModel: LinkItemViewModel {
   let imageURL: NSURL?
   let videoURL: NSURL
 
-  override init(user: User?, accessToken: AccessToken?, link: Link) {
+  override init(user: User?, accessToken: AccessToken?, link: Link, showSubreddit: Bool) {
     imageURL = link.imageURL
     videoURL = link.url
-    super.init(user: user, accessToken: accessToken, link: link)
+    super.init(user: user, accessToken: accessToken, link: link, showSubreddit: showSubreddit)
   }
 }

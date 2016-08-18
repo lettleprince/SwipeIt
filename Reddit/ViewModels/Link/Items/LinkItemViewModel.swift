@@ -18,6 +18,7 @@ class LinkItemViewModel: ViewModel {
   private let user: User?
   private let accessToken: AccessToken?
   private let vote: Variable<Vote>
+  private let showSubreddit: Bool
 
   // MARK: Protected
   let disposeBag: DisposeBag = DisposeBag()
@@ -42,9 +43,9 @@ class LinkItemViewModel: ViewModel {
       .map { NSAttributedString(string: $0) }
   }
 
-  private var subredditName: Observable<NSAttributedString> {
-    return Observable.just(NSAttributedString(string: link.subreddit,
-      attributes: [NSLinkAttributeName: link.subredditURL]))
+  private var subredditName: Observable<NSAttributedString?> {
+    return Observable.just(showSubreddit ? NSAttributedString(string: link.subreddit,
+      attributes: [NSLinkAttributeName: link.subredditURL]) : nil)
   }
 
   private var author: Observable<NSAttributedString> {
@@ -123,11 +124,12 @@ class LinkItemViewModel: ViewModel {
   }
 
   // MARK: Initializer
-  init(user: User?, accessToken: AccessToken?, link: Link) {
+  init(user: User?, accessToken: AccessToken?, link: Link, showSubreddit: Bool) {
     self.user = user
     self.accessToken = accessToken
     self.link = link
     self.vote = Variable(link.vote)
+    self.showSubreddit = showSubreddit
 
     setupObservers()
   }
@@ -177,17 +179,21 @@ extension LinkItemViewModel {
 // MARK: Helpers
 extension LinkItemViewModel {
 
-  static func viewModelFromLink(link: Link, user: User?, accessToken: AccessToken?)
-    -> LinkItemViewModel {
+  static func viewModelFromLink(link: Link, user: User?, accessToken: AccessToken?,
+                                subredditOnly: Bool) -> LinkItemViewModel {
       switch link.type {
       case .Video:
-        return LinkItemVideoViewModel(user: user, accessToken: accessToken, link: link)
+        return LinkItemVideoViewModel(user: user, accessToken: accessToken, link: link,
+                                      showSubreddit: !subredditOnly)
       case .Image, .GIF, .Album:
-        return LinkItemImageViewModel(user: user, accessToken: accessToken, link: link)
+        return LinkItemImageViewModel(user: user, accessToken: accessToken, link: link,
+                                      showSubreddit: !subredditOnly)
       case .SelfPost:
-        return LinkItemSelfPostViewModel(user: user, accessToken: accessToken, link: link)
+        return LinkItemSelfPostViewModel(user: user, accessToken: accessToken, link: link,
+                                         showSubreddit: !subredditOnly)
       case .LinkPost:
-        return LinkItemLinkViewModel(user: user, accessToken: accessToken, link: link)
+        return LinkItemLinkViewModel(user: user, accessToken: accessToken, link: link,
+                                     showSubreddit: !subredditOnly)
       }
   }
 }

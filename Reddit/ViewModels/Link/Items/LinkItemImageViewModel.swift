@@ -28,13 +28,13 @@ class LinkItemImageViewModel: LinkItemViewModel {
     return _imageSize.asObservable()
   }
 
-  override init(user: User?, accessToken: AccessToken?, link: Link) {
+  override init(user: User?, accessToken: AccessToken?, link: Link, showSubreddit: Bool) {
     imageURL = link.imageURL
     indicator = LinkItemImageViewModel.indicatorFromLink(link)
     overlay = LinkItemImageViewModel.overlayFromLink(link)
     _imageSize = Variable(link.imageSize ?? LinkItemImageViewModel.defaultImageSize)
 
-    super.init(user: user, accessToken: accessToken, link: link)
+    super.init(user: user, accessToken: accessToken, link: link, showSubreddit: showSubreddit)
   }
 
   deinit {

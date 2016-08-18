@@ -18,9 +18,9 @@ class LinkItemSelfPostViewModel: LinkItemViewModel {
 
   let selfText: NSAttributedString
 
-  override init(user: User?, accessToken: AccessToken?, link: Link) {
+  override init(user: User?, accessToken: AccessToken?, link: Link, showSubreddit: Bool) {
     selfText = LinkItemSelfPostViewModel.attributedSelfText(link)
-    super.init(user: user, accessToken: accessToken, link: link)
+    super.init(user: user, accessToken: accessToken, link: link, showSubreddit: showSubreddit)
   }
 }
 

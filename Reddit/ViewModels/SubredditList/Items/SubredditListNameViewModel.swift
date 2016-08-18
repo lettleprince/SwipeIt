@@ -20,7 +20,8 @@ class SubredditListNameViewModel: SubredditListItemViewModel {
   let name: String
 
   var linkListViewModel: LinkListViewModel {
-    return LinkListViewModel(user: user, accessToken: accessToken, title: name, path: path)
+    return LinkListViewModel(user: user, accessToken: accessToken, title: name, path: path,
+                             subredditOnly: false)
   }
 
   // MARK: Initializer

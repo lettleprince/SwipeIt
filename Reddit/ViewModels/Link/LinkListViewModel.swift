@@ -15,6 +15,7 @@ class LinkListViewModel {
   // MARK: Private Properties
   private let _title: String
   private let path: String
+  private let subredditOnly: Bool
   private let user: User?
   private let accessToken: AccessToken?
   private let linkListings: Variable<[LinkListing]> = Variable([])
@@ -24,21 +25,22 @@ class LinkListViewModel {
   private let _loadingState = Variable<LoadingState>(.Normal)
 
   // MARK: Initializer
-  init(user: User?, accessToken: AccessToken?, title: String, path: String) {
+  init(user: User?, accessToken: AccessToken?, title: String, path: String, subredditOnly: Bool) {
     self.user = user
     self.accessToken = accessToken
     self._title = title
     self.path = path
+    self.subredditOnly = subredditOnly
   }
 
   convenience init(user: User?, accessToken: AccessToken?, subreddit: Subreddit) {
     self.init(user: user, accessToken: accessToken, title: subreddit.displayName,
-              path: subreddit.path)
+              path: subreddit.path, subredditOnly: true)
   }
 
   convenience init(user: User?, accessToken: AccessToken?, multireddit: Multireddit) {
     self.init(user: user, accessToken: accessToken, title: multireddit.name,
-              path: multireddit.path)
+              path: multireddit.path, subredditOnly: false)
   }
 }
 
@@ -71,6 +73,10 @@ extension LinkListViewModel {
       .map { (linkListings: [LinkListing]) -> [Link] in
         Array(linkListings.flatMap { $0.links }.flatten())
     }
+  }
+
+  private var subredditOnlyObservable: Observable<Bool> {
+    return .just(subredditOnly)
   }
 
   private var request: Observable<LinkListing> {
@@ -114,16 +120,18 @@ extension LinkListViewModel {
   func requestLinks() {
     guard _loadingState.value != .Loading else { return }
 
-    Observable.combineLatest(request, userObservable, accessTokenObservable) { ($0, $1, $2) }
-      .take(1)
+    Observable
+      .combineLatest(request, userObservable, accessTokenObservable, subredditOnlyObservable) {
+        ($0, $1, $2, $3)
+      }.take(1)
       .subscribe { [weak self] event in
         guard let `self` = self else { return }
 
         switch event {
-        case let .Next(linkListing, user, accessToken):
+        case let .Next(linkListing, user, accessToken, subredditOnly):
           self.linkListings.value.append(linkListing)
           let viewModels = LinkListViewModel.viewModelsFromLinkListing(linkListing,
-            user: user, accessToken: accessToken)
+            user: user, accessToken: accessToken, subredditOnly: subredditOnly)
           viewModels.forEach { $0.preloadData() }
           self._viewModels.value += viewModels
           self._loadingState.value = self._viewModels.value.count > 0 ? .Normal : .Empty
@@ -153,12 +161,12 @@ extension LinkListViewModel {
 // MARK: Helpers
 extension LinkListViewModel {
 
-
   private static func viewModelsFromLinkListing(linkListing: LinkListing, user: User?,
-                                                accessToken: AccessToken?)
+                                                accessToken: AccessToken?, subredditOnly: Bool)
     -> [LinkItemViewModel] {
       return linkListing.links.map { links in
-        LinkItemViewModel.viewModelFromLink(links, user: user, accessToken: accessToken)
+        LinkItemViewModel.viewModelFromLink(links, user: user, accessToken: accessToken,
+          subredditOnly: subredditOnly)
       }
   }
 }
