@@ -28,7 +28,7 @@ bundle install
 bundle exec pod install
 ```
 
-Now you can open `Reddit.xcworkspace` and Run the `Reddit` target onto your simulator or iOS device.
+Now you can open `SwipeIt.xcworkspace` and Run the `SwipeIt` target onto your simulator or iOS device.
 
 You can also run the tests by calling:
 
@@ -49,7 +49,7 @@ Variable naming conventions will be ignored whenever a **RxSwift**-based variabl
 The project follows this folder structure:
 
 ```
-Reddit
+SwipeIt
 ├── App
 │   └── AppDelegate
 ├── Enums

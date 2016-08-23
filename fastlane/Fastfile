@@ -73,7 +73,7 @@ platform :ios do
 
     sigh(
       development: true,
-      output: "/tmp/"
+      output_path: "/tmp/"
     )
 
     build(
@@ -102,6 +102,7 @@ platform :ios do
     sigh(
       skip_install: true,
       development: false,
+      output_path: "/tmp"
     )
 
     build(
@@ -110,7 +111,7 @@ platform :ios do
     )
 
     pilot(
-      ipa: "/tmp/#{SwipeIt}.ipa",
+      ipa: "/tmp/#{scheme}.ipa",
       skip_submission: true,
       team_id: ENV['SWIPEIT_ITUNES_TEAM_ID']
     )
@@ -130,9 +131,9 @@ platform :ios do
       configuration: scheme,
       use_legacy_build_api: false,
       include_bitcode: true,
-      workspace: "#{SwipeIt}.xcworkspace",
+      workspace: "#{scheme}.xcworkspace",
       output_directory: "/tmp", # Change to temp folder
-      output_name: "#{SwipeIt}.ipa",
+      output_name: "#{scheme}.ipa",
       codesigning_identity: "#{signingId}",
       xcargs: "ARCHIVE=YES" # Used to tell the Fabric run script to upload dSYM file
     )
