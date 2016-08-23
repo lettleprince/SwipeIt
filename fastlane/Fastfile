@@ -25,10 +25,12 @@ platform :ios do
 
   scheme = 'SwipeIt'
   commit = last_git_commit
+  run_location = is_ci? ? 'Travis' : 'Local'
 
   before_all do
     # ensure_git_status_clean
     ENV["SLACK_URL"] = ENV['SWIPEIT_SLACK_URL']
+
     slack(
       channel: "swipeit",
       payload: {
@@ -37,8 +39,9 @@ platform :ios do
         'Commit' => "https://github.com/ivanbruel/SwipeIt/commit/#{commit[:commit_hash]}"
       },
       default_payloads: [],
-      message: "Starting fastlane #{lane_context[SharedValues::LANE_NAME]}")
-    cocoapods
+      message: "#{run_location} running Fastlane #{lane_context[SharedValues::LANE_NAME]}")
+
+    cocoapods(repo_update: true)
 
     # increment_build_number
 
@@ -157,11 +160,11 @@ platform :ios do
         'Commit' => "https://github.com/ivanbruel/SwipeIt/commit/#{commit[:commit_hash]}"
       },
       default_payloads: [],
-      message: "Successfully distributed #{scheme} into #{lane} :rocket:")
+      message: "#{run_location} successfully distributed #{scheme} into #{lane} :rocket:")
   end
 
   error do |lane, exception|
-    notification(message: "Fastlane '#{lane}' errored") # Mac OS X Notification
+    notification(message: "#{run_location} Fastlane '#{lane}' errored") # Mac OS X Notification
     slack(message: exception.to_s, success: false)
   end
 end
