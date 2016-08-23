@@ -149,7 +149,7 @@ class LinkCardView: UIView {
     backgroundColor = .whiteColor()
     borderColor = UIColor(named: .DarkGray)
     borderWidth = 1
-    cornerRadius = 10
+    cornerRadius = 4
 
     addSubview(containerView)
     setupConstraints()
