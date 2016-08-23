@@ -24,13 +24,19 @@ default_platform :ios
 platform :ios do
 
   scheme = 'SwipeIt'
+  commit = last_git_commit
 
   before_all do
     # ensure_git_status_clean
     ENV["SLACK_URL"] = ENV['SWIPEIT_SLACK_URL']
     slack(
       channel: "swipeit",
-      default_payloads: [], # reduce the notification to the minimum
+      payload: {
+        'Message' => commit[:message],
+        'Author' => commit[:author],
+        'Commit' => "https://github.com/ivanbruel/SwipeIt/commit/#{commit[:commit_hash]}"
+      },
+      default_payloads: [],
       message: "Starting fastlane #{lane_context[SharedValues::LANE_NAME]}")
     cocoapods
 
@@ -46,12 +52,16 @@ platform :ios do
   desc "Submit a new Beta Build to Fabric"
   desc "This will also make sure the profile is up to date"
   lane :fabric do
+    build_number = Time.new.strftime("%y%m%d.%H%M")
+    increment_build_number build_number: build_number
     fabric_beta(scheme: scheme)
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :itc do
+    build_number = Time.new.strftime("%y%m%d.%H%M")
+    increment_build_number build_number: build_number
     itunes(scheme: scheme)
   end
 
@@ -74,7 +84,7 @@ platform :ios do
       api_token: ENV['SWIPEIT_FABRIC_CLIENT_ID'],
       build_secret: ENV['SWIPEIT_FABRIC_SECRET'],
       ipa_path: "/tmp/#{scheme}.ipa",
-      notes: "Running on #{environment}",
+      notes: commit[:message],
       groups: ['#{scheme}']
     )
 
@@ -135,9 +145,18 @@ platform :ios do
   after_all do |lane|
 
     notification(message: "Fastlane finished '#{lane}' successfully") # Mac OS X Notification
+    crashlytics(notes: commit[:message]) # message of commit
+    author = commit[:author] # author of the commit
+    hash = commit[:commit_hash] # long sha of commit
+    short_hash = commit[:abbreviated_commit_hash] # short sha of commit
     slack(
       channel: "swipeit",
-      default_payloads: [], # reduce the notification to the minimum
+      payload: {
+        'Message' => commit[:message],
+        'Author' => commit[:author],
+        'Commit' => "https://github.com/ivanbruel/SwipeIt/commit/#{commit[:commit_hash]}"
+      },
+      default_payloads: [],
       message: "Successfully distributed #{scheme} into #{lane} :rocket:")
   end
 

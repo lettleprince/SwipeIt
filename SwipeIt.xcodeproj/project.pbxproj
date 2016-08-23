@@ -938,11 +938,11 @@
 		308E96AB1C875B7E00380735 = {
 			isa = PBXGroup;
 			children = (
+				87E1AABE34087E3ED9CE91FC /* Frameworks */,
+				580D862E3166BF17F6E4AA57 /* Pods */,
 				308E96B51C875B7E00380735 /* Products */,
 				308E96B61C875B7E00380735 /* SwipeIt */,
 				308E96CB1C875B7F00380735 /* SwipeItTests */,
-				580D862E3166BF17F6E4AA57 /* Pods */,
-				87E1AABE34087E3ED9CE91FC /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
