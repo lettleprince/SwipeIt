@@ -1,7 +1,7 @@
 platform :ios, '9.0'
 use_frameworks!
 
-abstract_target 'RedditCommon' do
+abstract_target 'SwipeItCommon' do
 
   pod 'ObjectMapper'
   pod 'RxSwift'
@@ -12,7 +12,7 @@ abstract_target 'RedditCommon' do
   pod 'Result'
   pod 'Kanna'
 
-  target 'Reddit' do
+  target 'SwipeIt' do
 
     pod 'RxCocoa'
     pod 'Kingfisher'
@@ -32,14 +32,16 @@ abstract_target 'RedditCommon' do
     pod 'RxTimer'
     pod 'RxResult'
     pod 'RxColor'
-    
+    pod 'ZLSwipeableViewSwift', :git => 'https://github.com/zhxnlai/ZLSwipeableViewSwift'
+    pod 'Localizable'
+
   end
 
-  target 'RedditTests' do
+  target 'SwipeItTests' do
 
     pod 'Quick'
     pod 'Nimble'
-    
+
   end
-  
+
 end

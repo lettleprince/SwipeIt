@@ -1,13 +1,13 @@
-Reddit
+SwipeIt
 =================
 
 [![Swift 2.2](https://img.shields.io/badge/Swift-2.2-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Platform iOS](https://img.shields.io/badge/Platforms-iOS-lightgray.svg?style=flat)](https://developer.apple.com/swift/)
-[![Build Status](https://travis-ci.org/ivanbruel/Reddit-MVVM-Benchmark.svg?branch=master)](https://travis-ci.org/ivanbruel/Reddit-MVVM-Benchmark)
-[![codecov](https://codecov.io/gh/ivanbruel/Reddit-MVVM-Benchmark/branch/master/graph/badge.svg)](https://codecov.io/gh/ivanbruel/Reddit-MVVM-Benchmark)
+[![Build Status](https://travis-ci.org/ivanbruel/SwipeIt.svg?branch=master)](https://travis-ci.org/ivanbruel/SwipeIt)
+[![codecov](https://codecov.io/gh/ivanbruel/SwipeIt/branch/master/graph/badge.svg)](https://codecov.io/gh/ivanbruel/SwipeIt)
 [![codebeat badge](https://codebeat.co/badges/18e57729-b99d-4f4c-84a9-ef02203324c6)](https://codebeat.co/projects/github-com-ivanbruel-reddit-mvvm-benchmark)
-[![GitHub issues](https://img.shields.io/github/issues/ivanbruel/Reddit-MVVM-Benchmark.svg?style=flat)](https://github.com/ivanbruel/Reddit-MVVM-Benchmark/issues)
-[![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/ivanbruel/Reddit-MVVM-Benchmark/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/ivanbruel/SwipeIt.svg?style=flat)](https://github.com/ivanbruel/SwipeIt/issues)
+[![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/ivanbruel/SwipeIt/blob/master/LICENSE)
 [![Twitter](https://img.shields.io/badge/Twitter-@ivanbruel-blue.svg?style=flat)](http://twitter.com/ivanbruel)
 
 ## Getting Started
@@ -22,8 +22,8 @@ xcode-select --install
 The following commands will clone the repo and install all the required dependencies.
 
 ```bash
-git clone https://github.com/ivanbruel/Reddit-MVVM-Benchmark.git
-cd Reddit-MVVM-Benchmark
+git clone https://github.com/ivanbruel/SwipeIt.git
+cd SwipeIt
 bundle install
 bundle exec pod install
 ```
@@ -92,7 +92,7 @@ In order to enforce it to the filesystem we're using [Synx](https://github.com/v
 - [RxDataSources](https://github.com/RxSwiftCommunity/RxDataSources): Table and Collection View Data Sources for RxSwift
 
 ### Networking
- 
+
 - [Moya](https://github.com/Moya/Moya): Network abstraction layer written in Swift
 - [Moya-ObjectMapper](https://github.com/ivanbruel/Moya-ObjectMapper): ObjectMapper bindings for Moya and RxSwift
 - [Result](https://github.com/antitypical/Result): This is a Swift µframework providing Result
@@ -140,20 +140,22 @@ We are using [Travis](https://travis-ci.org/ivanbruel/MVVM-Benchmark) alongside 
 
 To make sure Fabric and iTunes can deploy, make sure you have them set to something similar to the following environment variables. **The values are only examples!**.
 
+**Note:** For ENV variables to work in Xcode you to set `$ defaults write com.apple.dt.Xcode UseSanitizedBuildSystemEnvironment -bool NO` and launch Xcode from the terminal. [Apple Developer Forums](https://forums.developer.apple.com/thread/8451)
+
 #### Fabric deployment
 
-- `REDDIT_SIGNING_IDENTITY_DEV`: iPhone Developer: Ivan Bruel (ID)
-- `REDDIT_FABRIC_CLIENT_ID`: API Key from [Fabric Organization](https://www.fabric.io/settings/organizations)
-- `REDDIT_FABRIC_SECRET`: Build Secret from [Fabric Organization](https://www.fabric.io/settings/organizations)
+- `SWIPEIT_SIGNING_IDENTITY_DEV`: iPhone Developer: Ivan Bruel (ID)
+- `SWIPEIT_FABRIC_CLIENT_ID`: API Key from [Fabric Organization](https://www.fabric.io/settings/organizations)
+- `SWIPEIT_FABRIC_SECRET`: Build Secret from [Fabric Organization](https://www.fabric.io/settings/organizations)
 
 #### iTunes deployment
 
-- `REDDIT_SIGNING_IDENTITY_PROD`: iPhone Distribution: Company Name (ID)
-- `REDDIT_ITUNES_TEAM_ID`: Team ID from [iTunes Membership](https://developer.apple.com/account/#/membership)
+- `SWIPEIT_SIGNING_IDENTITY_PROD`: iPhone Distribution: Company Name (ID)
+- `SWIPEIT_ITUNES_TEAM_ID`: Team ID from [iTunes Membership](https://developer.apple.com/account/#/membership)
 
 ### Deployment
 
-Although all the deployment is done through Travis, you can do it manually through [Fastlane](https://github.com/ivanbruel/Reddit-MVVM-Benchmark/blob/master/fastlane/README.md):
+Although all the deployment is done through Travis, you can do it manually through [Fastlane](https://github.com/ivanbruel/SwipeIt/blob/master/fastlane/README.md):
 
 #### Deployment to Fabric
 
@@ -169,7 +171,7 @@ bundle exec fastlane ios itunes
 
 ## Yet another Reddit app
 
-This application is being developed as a side project in an effort to benchmark MVVM vs. MVC architectures, you can read more about it in [Medium](https://medium.com/faber-dev/mvvm-benchmark-in-an-mvc-world-part-1-dab952617395) and in our [MVVM vs. MVC README](https://github.com/ivanbruel/Reddit-MVVM-Benchmark/blob/master/MVVM-MVC.md)
+This application is being developed as a side project in an effort to benchmark MVVM vs. MVC architectures, you can read more about it in [Medium](https://medium.com/faber-dev/mvvm-benchmark-in-an-mvc-world-part-1-dab952617395) and in our [MVVM vs. MVC README](https://github.com/ivanbruel/SwipeIt/blob/master/MVVM-MVC.md)
 
 ## Contributing
 

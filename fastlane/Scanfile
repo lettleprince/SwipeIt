@@ -1,3 +1,3 @@
-scheme "Reddit"
+scheme "SwipeIt"
 clean true
 output_types "html"

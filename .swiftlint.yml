@@ -1,6 +1,6 @@
 excluded:
-  - Reddit/Externals
-  - Reddit/Resources
+  - SwipeIt/Externals
+  - SwipeIt/Resources
   - Pods
-  - RedditTests
+  - SwipeItTests
   - fastlane

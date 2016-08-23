@@ -22,9 +22,12 @@ default_platform :ios
 
 
 platform :ios do
+
+  scheme = 'SwipeIt'
+
   before_all do
     # ensure_git_status_clean
-    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
+    ENV["SLACK_URL"] = ENV['SWIPEIT_SLACK_URL']
     cocoapods
 
     # increment_build_number
@@ -33,41 +36,42 @@ platform :ios do
 
   desc "Runs all the unit tests"
   lane :test do
-    scan(scheme: 'Reddit')
+    scan(scheme: scheme)
   end
 
   desc "Submit a new Beta Build to Fabric"
   desc "This will also make sure the profile is up to date"
   lane :fabric do
-    fabric_beta(scheme: "Reddit")
+    fabric_beta(scheme: scheme)
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :itc do
-    itunes(scheme: "Reddit")
+    itunes(scheme: scheme)
   end
 
   private_lane :fabric_beta do |options|
     scheme = options[:scheme]
 
     sigh(
-      development: true
+      development: true,
+      output: "/tmp/"
     )
 
     build(
       scheme: scheme,
-      signId: ENV['REDDIT_SIGNING_IDENTITY_DEV']
+      signId: ENV['SWIPEIT_SIGNING_IDENTITY_DEV']
     )
 
     environment = scheme.upcase
 
     crashlytics(
-      api_token: ENV['REDDIT_FABRIC_CLIENT_ID'],
-      build_secret: ENV['REDDIT_FABRIC_SECRET'],
-      ipa_path: "/tmp/Reddit.ipa",
+      api_token: ENV['SWIPEIT_FABRIC_CLIENT_ID'],
+      build_secret: ENV['SWIPEIT_FABRIC_SECRET'],
+      ipa_path: "/tmp/#{scheme}.ipa",
       notes: "Running on #{environment}",
-      groups: ['testers']
+      groups: ['#{scheme}']
     )
 
     post_build
@@ -85,13 +89,13 @@ platform :ios do
 
     build(
       scheme: scheme,
-      signId: ENV['REDDIT_SIGNING_IDENTITY_PROD']
+      signId: ENV['SWIPEIT_SIGNING_IDENTITY_PROD']
     )
 
     pilot(
-      ipa: "/tmp/Reddit.ipa",
+      ipa: "/tmp/#{SwipeIt}.ipa",
       skip_submission: true,
-      team_id: ENV['REDDIT_ITUNES_TEAM_ID']
+      team_id: ENV['SWIPEIT_ITUNES_TEAM_ID']
     )
 
     post_build
@@ -109,9 +113,9 @@ platform :ios do
       configuration: scheme,
       use_legacy_build_api: false,
       include_bitcode: true,
-      workspace: "Reddit.xcworkspace",
+      workspace: "#{SwipeIt}.xcworkspace",
       output_directory: "/tmp", # Change to temp folder
-      output_name: "Reddit.ipa",
+      output_name: "#{SwipeIt}.ipa",
       codesigning_identity: "#{signingId}",
       xcargs: "ARCHIVE=YES" # Used to tell the Fabric run script to upload dSYM file
     )
@@ -127,10 +131,15 @@ platform :ios do
   after_all do |lane|
 
     notification(message: "Fastlane finished '#{lane}' successfully") # Mac OS X Notification
+    slack(
+      channel: "swipeit",
+      default_payloads: [], # reduce the notification to the minimum
+      message: "Successfully distributed #{scheme} into #{lane} :rocket:")
   end
 
   error do |lane, exception|
     notification(message: "Fastlane '#{lane}' errored") # Mac OS X Notification
+    slack(message: exception.to_s, success: false)
   end
 end
 

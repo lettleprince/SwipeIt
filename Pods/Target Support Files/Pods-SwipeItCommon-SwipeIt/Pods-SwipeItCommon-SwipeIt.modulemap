@@ -1,0 +1,6 @@
+framework module Pods_SwipeItCommon_SwipeIt {
+  umbrella header "Pods-SwipeItCommon-SwipeIt-umbrella.h"
+
+  export *
+  module * { export * }
+}
