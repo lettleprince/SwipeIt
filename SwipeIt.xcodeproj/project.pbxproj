@@ -11,7 +11,6 @@
 		300C2AC61D0725C00046DFA4 /* Array+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C2AC51D0725C00046DFA4 /* Array+Optional.swift */; };
 		300C2AC81D0728920046DFA4 /* PathTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C2AC71D0728920046DFA4 /* PathTransform.swift */; };
 		300C2AC91D0734950046DFA4 /* PathTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C2AC71D0728920046DFA4 /* PathTransform.swift */; };
-		300C2AD81D0866360046DFA4 /* UITableView+RxPagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C2AD71D0866360046DFA4 /* UITableView+RxPagination.swift */; };
 		300C2ADB1D0868940046DFA4 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C2ADA1D0868930046DFA4 /* LoadingState.swift */; };
 		300C2ADE1D087EAF0046DFA4 /* String+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C2ADD1D087EAF0046DFA4 /* String+Regex.swift */; };
 		300C2AE51D088ACF0046DFA4 /* HTMLEncodingTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C2AE41D088ACF0046DFA4 /* HTMLEncodingTransform.swift */; };
@@ -111,6 +110,7 @@
 		305F0FA41CE21B8F00FF5F20 /* AppLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305F0FA31CE21B8F00FF5F20 /* AppLink.swift */; };
 		305F0FA81CE21EEA00FF5F20 /* AppLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305F0FA31CE21B8F00FF5F20 /* AppLink.swift */; };
 		305F0FA91CE21F5C00FF5F20 /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305F0FA61CE21C4000FF5F20 /* HTMLParser.swift */; };
+		306B84F71D6CB984001101F6 /* ZLSwipeableView+AnimateViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306B84F61D6CB984001101F6 /* ZLSwipeableView+AnimateViewHandler.swift */; };
 		306E2C0C1CD76958004AF2EF /* SubredditListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306E2C0B1CD76958004AF2EF /* SubredditListViewModel.swift */; };
 		306E2C131CD76ED9004AF2EF /* SubredditListSubredditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306E2C121CD76ED9004AF2EF /* SubredditListSubredditViewModel.swift */; };
 		306E2C151CD77A25004AF2EF /* SubscriptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306E2C141CD77A25004AF2EF /* SubscriptionsViewController.swift */; };
@@ -261,7 +261,6 @@
 		300C2AC21D0716F50046DFA4 /* Prefetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prefetcher.swift; sourceTree = "<group>"; };
 		300C2AC51D0725C00046DFA4 /* Array+Optional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Optional.swift"; sourceTree = "<group>"; };
 		300C2AC71D0728920046DFA4 /* PathTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathTransform.swift; sourceTree = "<group>"; };
-		300C2AD71D0866360046DFA4 /* UITableView+RxPagination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+RxPagination.swift"; sourceTree = "<group>"; };
 		300C2ADA1D0868930046DFA4 /* LoadingState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
 		300C2ADD1D087EAF0046DFA4 /* String+Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Regex.swift"; sourceTree = "<group>"; };
 		300C2AE41D088ACF0046DFA4 /* HTMLEncodingTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLEncodingTransform.swift; sourceTree = "<group>"; };
@@ -338,6 +337,7 @@
 		305F0FA31CE21B8F00FF5F20 /* AppLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLink.swift; sourceTree = "<group>"; };
 		305F0FA61CE21C4000FF5F20 /* HTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLParser.swift; sourceTree = "<group>"; };
 		305F0FAA1CE2251500FF5F20 /* LinkItemVideoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkItemVideoViewModel.swift; sourceTree = "<group>"; };
+		306B84F61D6CB984001101F6 /* ZLSwipeableView+AnimateViewHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ZLSwipeableView+AnimateViewHandler.swift"; sourceTree = "<group>"; };
 		306E2C0B1CD76958004AF2EF /* SubredditListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubredditListViewModel.swift; sourceTree = "<group>"; };
 		306E2C121CD76ED9004AF2EF /* SubredditListSubredditViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubredditListSubredditViewModel.swift; sourceTree = "<group>"; };
 		306E2C141CD77A25004AF2EF /* SubscriptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionsViewController.swift; sourceTree = "<group>"; };
@@ -484,14 +484,6 @@
 				300C2AC51D0725C00046DFA4 /* Array+Optional.swift */,
 			);
 			path = "Array+Optional";
-			sourceTree = "<group>";
-		};
-		300C2AD61D0866260046DFA4 /* UITableView+RxPagination */ = {
-			isa = PBXGroup;
-			children = (
-				300C2AD71D0866360046DFA4 /* UITableView+RxPagination.swift */,
-			);
-			path = "UITableView+RxPagination";
 			sourceTree = "<group>";
 		};
 		300C2AD91D08688A0046DFA4 /* Loading */ = {
@@ -805,6 +797,14 @@
 			path = HTMLParser;
 			sourceTree = "<group>";
 		};
+		306B84F51D6CB94B001101F6 /* ZLSwipeableView+AnimateViewHandler */ = {
+			isa = PBXGroup;
+			children = (
+				306B84F61D6CB984001101F6 /* ZLSwipeableView+AnimateViewHandler.swift */,
+			);
+			name = "ZLSwipeableView+AnimateViewHandler";
+			sourceTree = "<group>";
+		};
 		306E2C0A1CD7693A004AF2EF /* SubredditList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1008,6 +1008,7 @@
 		308E96DA1C8769D500380735 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				306B84F51D6CB94B001101F6 /* ZLSwipeableView+AnimateViewHandler */,
 				300C2AC41D0725B40046DFA4 /* Array+Optional */,
 				30BC0F2C1CDA0ADB00DB3E19 /* Array+Unique */,
 				303013D01D4FB6E000F700F0 /* CGSize+Ratio */,
@@ -1026,7 +1027,6 @@
 				30599BF31D67598900039CCA /* UIImage+Colorize */,
 				30DDB25C1CCEED7B000B72E5 /* UIStoryboardSegue+Navigation */,
 				30D9606C1D3445B300808FC0 /* UITableView+Deselect */,
-				300C2AD61D0866260046DFA4 /* UITableView+RxPagination */,
 				30599BED1D671D5100039CCA /* UIView+IBInspectable */,
 			);
 			path = Extensions;
@@ -1787,7 +1787,6 @@
 				303DAC1D1CD90F4000712D91 /* Duration.swift in Sources */,
 				300C4D3F1D54D9E700659F32 /* NSAttributedString+Join.swift in Sources */,
 				30968A691D391B6D00BC77D5 /* String+Range.swift in Sources */,
-				300C2AD81D0866360046DFA4 /* UITableView+RxPagination.swift in Sources */,
 				30DDB2351CCECA00000B72E5 /* WalkthroughViewController.swift in Sources */,
 				30DDB2691CCF5CED000B72E5 /* NowDateTransform.swift in Sources */,
 				305C08101CDCF827009D287D /* Sorter.swift in Sources */,
@@ -1812,6 +1811,7 @@
 				30F6C9AA1C8A096300616707 /* Link.swift in Sources */,
 				30599BFF1D68ABE200039CCA /* LinkItemImageViewModel.swift in Sources */,
 				30599C001D68ABE200039CCA /* LinkItemLinkViewModel.swift in Sources */,
+				306B84F71D6CB984001101F6 /* ZLSwipeableView+AnimateViewHandler.swift in Sources */,
 				30F6C9B21C8A142D00616707 /* Created.swift in Sources */,
 				30482CAA1CCFD8580063D238 /* SubmissionType.swift in Sources */,
 				30806BF81C8D978A00EB1BD5 /* Edited.swift in Sources */,

@@ -52,6 +52,7 @@ extension LinkSwipeViewController {
   }
 
   private func setupSwipeView() {
+    swipeView.animateView = ZLSwipeableView.tinderAnimateViewHandler()
     swipeView.numberOfHistoryItem = UInt.max
     swipeView.didTap = swipeViewTapped
     swipeView.didSwipe = swipeViewSwiped
@@ -114,10 +115,6 @@ extension LinkSwipeViewController {
       return nil
     }
 
-    if self.viewModel.viewModelForIndex(cardIndex + 4) == nil {
-      self.viewModel.requestLinks()
-    }
-
     let view: LinkCardView
     switch viewModel {
     case is LinkItemImageViewModel:
@@ -138,17 +135,23 @@ extension LinkSwipeViewController {
     updateUndoButton()
     currentCardView?.didAppear()
 
-    guard let linkCardView = view as? LinkCardView else { return }
+    guard let linkCardView = view as? LinkCardView, viewModel = linkCardView.viewModel else {
+      return
+    }
     switch inDirection {
     case Direction.Left:
-      linkCardView.viewModel?.downvote { [weak self] error in
+      viewModel.downvote { [weak self] error in
         self?.voteCompletion(error, view: view)
       }
     case Direction.Right:
-      linkCardView.viewModel?.upvote { [weak self] error in
+      viewModel.upvote { [weak self] error in
         self?.voteCompletion(error, view: view)
       }
     default: break
+    }
+
+    if self.viewModel.viewModelForIndex(cardIndex + 4) == nil {
+      self.viewModel.requestLinks()
     }
   }
 

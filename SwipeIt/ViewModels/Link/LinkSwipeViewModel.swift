@@ -78,6 +78,7 @@ extension LinkSwipeViewModel {
         pathObservable) { ($0, $1, $2, $3) }
       .take(1)
       .doOnNext { [weak self] _ in
+        print("loading")
         self?._loadingState.value = .Loading
       }.flatMap {
         (listingType: ListingType, after: String?, accessToken: AccessToken, path: String) in
@@ -111,8 +112,7 @@ extension LinkSwipeViewModel {
   }
 
   func requestLinks() {
-    guard _loadingState.value != .Loading else { print("still loading")
-      return }
+    guard _loadingState.value != .Loading else { return }
 
     Observable
       .combineLatest(request, userObservable, accessTokenObservable, subredditOnlyObservable) {
@@ -130,6 +130,9 @@ extension LinkSwipeViewModel {
           viewModels.forEach { $0.preloadData() }
           self._loadingState.value = self._viewModels.value.count > 0 ? .Normal : .Empty
           self._viewModels.value += viewModels
+          if viewModels.count <= 4 {
+            self.requestLinks()
+          }
         case .Error:
           self._loadingState.value = .Error
         default: break
@@ -162,7 +165,7 @@ extension LinkSwipeViewModel {
       return linkListing.links
         .filter { link in
           let vote: Vote = link.vote
-          return !link.stickied && vote == .None
+          return !link.stickied && vote == .None && link.type == .Image
         }.map { LinkItemViewModel.viewModelFromLink($0, user: user, accessToken: accessToken,
           subredditOnly: subredditOnly)
       }
