@@ -19,4 +19,4 @@ install:
 - bundle exec fastlane ios fabric
 after_success:
 - sleep 5
-- bash <(curl -s https://codecov.io/bash) -J 'Reddit'
+- bash <(curl -s https://codecov.io/bash) -J 'SwipeIt'
