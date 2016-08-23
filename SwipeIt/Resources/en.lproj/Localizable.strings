@@ -1,0 +1,49 @@
+/* 
+  Localizable.strings
+  Reddit
+
+  Created by Ivan Bruel on 26/04/16.
+  Copyright © 2016 Faber Ventures. All rights reserved.
+*/
+
+"Closeable.Button.Close" = "Close";
+
+"Walkthrough.Button.Login" = "Login";
+
+"Alert.Button.Cancel" = "Cancel";
+"Alert.Button.OK" = "OK";
+
+"Login.Title" = "Login";
+"Login.Error.Title" = "Login error";
+"Login.Error.Unknown" = "Could not log in. Please try again later";
+"Login.Error.UserCancelled" = "Login was cancelled";
+
+"Subscriptions.Title" = "Subscriptions";
+
+"Link.Context.PostedBy" = "%@ ago by %@";
+"Link.Context.PostedTo" = "to %@";
+"Link.Score.Hidden" = "hidden";
+"Link.Indicator.GIF" = "GIF";
+"Link.Indicator.NSFW" = "NSFW";
+"Link.Indicator.Spoiler" = "Spoiler";
+"Link.Indicator.Album" = "Album";
+"Link.Context.Stickied" = "Stickied";
+"Link.Context.Locked" = "Locked";
+"Link.Content.SelfPost.ReadMore" = "Read more";
+
+"ListingType.Hot" = "Hot";
+"ListingType.New" = "New";
+"ListingType.Rising" = "Rising";
+"ListingType.Controversial" = "Controversial";
+"ListingType.Top" = "Top";
+"ListingType.Gilded" = "Gilded";
+
+"ListingType.Range.Hour" = "Past hour";
+"ListingType.Range.Day" = "Past 24 hours";
+"ListingType.Range.Week" = "Past week";
+"ListingType.Range.Month" = "Past month";
+"ListingType.Range.Year" = "Past year";
+"ListingType.Range.AllTime" = "All-time";
+
+"Retry" = "Retry";
+

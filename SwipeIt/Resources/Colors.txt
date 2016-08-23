@@ -1,0 +1,7 @@
+iOSBlue: #007AFF
+Orange: #FF8B60
+Purple: #9494FF
+Yellow: #FFCC00
+LightGray: #F0F1F2
+DarkGray: #CBCCCD
+Green: #77CCA4
