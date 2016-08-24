@@ -6,6 +6,15 @@ sudo gem install fastlane
 ```
 # Available Actions
 ## iOS
+### ios travis
+```
+fastlane ios travis
+```
+Runs all the unit tests
+
+Submits a new Beta Build to Fabric
+
+Submits a new Beta Build to Apple TestFlight
 ### ios test
 ```
 fastlane ios test

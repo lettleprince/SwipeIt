@@ -151,7 +151,13 @@ To make sure Fabric and iTunes can deploy, make sure you have them set to someth
 #### iTunes deployment
 
 - `SWIPEIT_SIGNING_IDENTITY_PROD`: iPhone Distribution: Company Name (ID)
-- `SWIPEIT_ITUNES_TEAM_ID`: Team ID from [iTunes Membership](https://developer.apple.com/account/#/membership)
+- `SWIPEIT_TEAM_ID`: Team ID from [iTunes Membership](https://developer.apple.com/account/#/membership)
+- `SWIPEIT_ITUNES_TEAM_ID`: Team ID from [iTunes Connect](https://itunesconnect.apple.com/). (`$ pilot list` to check the number)
+- `SWIPEIT_TEAM_NAME`: Your Company Name
+
+#### Misc
+
+- `SWIPEIT_SLACK_URL`: https://hooks.slack.com/services/...
 
 ### Deployment
 

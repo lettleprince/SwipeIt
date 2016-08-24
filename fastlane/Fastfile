@@ -20,7 +20,6 @@ fastlane_version "1.5.0"
 
 default_platform :ios
 
-
 platform :ios do
 
   scheme = 'SwipeIt'
@@ -48,6 +47,15 @@ platform :ios do
   end
 
   desc "Runs all the unit tests"
+  desc "Submits a new Beta Build to Fabric"
+  desc "Submits a new Beta Build to Apple TestFlight"
+  lane :travis do
+    test
+    fabric
+    itc
+  end
+
+  desc "Runs all the unit tests"
   lane :test do
     scan(scheme: scheme)
   end
@@ -63,8 +71,6 @@ platform :ios do
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :itc do
-    build_number = Time.new.strftime("%y%m%d.%H%M")
-    increment_build_number build_number: build_number
     itunes(scheme: scheme)
   end
 
@@ -88,12 +94,9 @@ platform :ios do
       build_secret: ENV['SWIPEIT_FABRIC_SECRET'],
       ipa_path: "/tmp/#{scheme}.ipa",
       notes: commit[:message],
-      groups: ['#{scheme}']
+      groups: ["#{scheme}"]
     )
 
-    post_build
-
-    #post_to_slack(scheme: scheme, destination: "Crashlytics")
   end
 
   private_lane :itunes do |options|
@@ -113,12 +116,9 @@ platform :ios do
     pilot(
       ipa: "/tmp/#{scheme}.ipa",
       skip_submission: true,
-      team_id: ENV['SWIPEIT_ITUNES_TEAM_ID']
+      team_id: ENV['SWIPEIT_ITUNES_TEAM_ID'],
+      skip_waiting_for_build_processing: true
     )
-
-    post_build
-
-    #post_to_slack(scheme: scheme, destination: "TestFlight")
 
   end
 
@@ -135,19 +135,14 @@ platform :ios do
       output_directory: "/tmp", # Change to temp folder
       output_name: "#{scheme}.ipa",
       codesigning_identity: "#{signingId}",
+      clean: false,
       xcargs: "ARCHIVE=YES" # Used to tell the Fabric run script to upload dSYM file
     )
   end
 
-  private_lane :post_build do
-
-  end
-
-  # You can define as many lanes as you want
 
   # This lane is called, only if the executed lane was successful
   after_all do |lane|
-
     notification(message: "Fastlane finished '#{lane}' successfully") # Mac OS X Notification
     slack(
       channel: "swipeit",
