@@ -78,8 +78,8 @@ platform :ios do
     scheme = options[:scheme]
 
     sigh(
-      development: true,
-      output_path: "/tmp/"
+      development: true
+      #output_path: "/tmp/"
     )
 
     build(
@@ -104,8 +104,8 @@ platform :ios do
 
     sigh(
       skip_install: true,
-      development: false,
-      output_path: "/tmp"
+      development: false
+      #output_path: "/tmp"
     )
 
     build(
