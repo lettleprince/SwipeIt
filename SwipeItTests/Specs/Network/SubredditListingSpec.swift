@@ -17,7 +17,7 @@ class SubredditListSpec: QuickSpec {
     describe("A subreddit listing") {
       var listing: SubredditListing?
       describe("can be loaded") {
-        NetworkMock.provider.request(.SubredditListing(token: "token", after: nil))
+        NetworkMock.request(.SubredditListing(token: "token", after: nil))
           .mapObject(SubredditListing)
           .subscribeNext { networkListing in
             listing = networkListing

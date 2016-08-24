@@ -17,7 +17,7 @@ class UserDetailsSpec: QuickSpec {
     describe("A user") {
       var user: User?
       describe("can be loaded") {
-        NetworkMock.provider.request(.UserDetails(token: nil, username: "jakewharton"))
+        NetworkMock.request(.UserDetails(token: "token", username: "jakewharton"))
           .mapObject(User)
           .subscribeNext { networkUser in
             user = networkUser

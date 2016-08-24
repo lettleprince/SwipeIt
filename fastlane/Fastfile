@@ -149,10 +149,6 @@ platform :ios do
   after_all do |lane|
 
     notification(message: "Fastlane finished '#{lane}' successfully") # Mac OS X Notification
-    crashlytics(notes: commit[:message]) # message of commit
-    author = commit[:author] # author of the commit
-    hash = commit[:commit_hash] # long sha of commit
-    short_hash = commit[:abbreviated_commit_hash] # short sha of commit
     slack(
       channel: "swipeit",
       payload: {

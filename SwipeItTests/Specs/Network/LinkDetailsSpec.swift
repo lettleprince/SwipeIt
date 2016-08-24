@@ -18,7 +18,7 @@ class LinkDetailsSpec: QuickSpec {
       var link: Link?
       var commentsListing: CommentsListing?
       describe("can be loaded") {
-        NetworkMock.provider.request(.LinkDetails(token: nil,
+        NetworkMock.request(.LinkDetails(token: "token",
           permalink: "/r/programming/something/"))
           .mapPair(LinkListing.self, CommentsListing.self)
           .subscribeNext { (networkLinkListing, networkCommentsListing) in

@@ -17,7 +17,7 @@ class MultiredditListSpec: QuickSpec {
     describe("A multireddit listing") {
       var listing: [Multireddit]?
       describe("can be loaded") {
-        NetworkMock.provider.request(.MultiredditListing(token: "token"))
+        NetworkMock.request(.MultiredditListing(token: "token"))
           .mapArray(Multireddit)
           .subscribeNext { networkListing in
             listing = networkListing
