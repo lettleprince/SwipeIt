@@ -96,6 +96,7 @@ extension LinkSwipeViewController {
     guard swipeView.history.count > 0 else { return }
     currentCardView?.didDisappear()
     swipeView.rewind()
+    cardIndex -= 1
     updateUndoButton()
     currentViewModel?.unvote()
   }
