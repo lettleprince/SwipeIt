@@ -15,12 +15,33 @@ class LinkImageCardView: LinkCardView {
   override var viewModel: LinkItemViewModel? {
     didSet {
       guard let imageViewModel = viewModel as? LinkItemImageViewModel else { return }
-      imageView.kf_setImageWithURL(imageViewModel.imageURL)
+      imageView.kf_setImageWithURL(imageViewModel.imageURL, optionsInfo: [.Transition(.Fade(0.15))])
+      backgroundImageView.kf_setImageWithURL(imageViewModel.imageURL)
     }
   }
 
   // MARK: - Views
+  private lazy var imageContentView: UIView = {
+    let view = UIView()
+    view.backgroundColor = .clearColor()
+    view.clipsToBounds = false
+    view.addSubview(self.backgroundImageView)
+    view.addSubview(self.blurView)
+    view.addSubview(self.imageView)
+    return view
+  }()
+
   private lazy var imageView: AnimatedImageView = {
+    let imageView = AnimatedImageView()
+    imageView.autoPlayAnimatedImage = false
+    imageView.contentMode = .ScaleAspectFit
+    // Better performance while scrolling
+    imageView.framePreloadCount = 1
+    imageView.clipsToBounds = true
+    return imageView
+  }()
+
+  private lazy var backgroundImageView: AnimatedImageView = {
     let imageView = AnimatedImageView()
     imageView.autoPlayAnimatedImage = false
     imageView.contentMode = .ScaleAspectFill
@@ -28,6 +49,10 @@ class LinkImageCardView: LinkCardView {
     imageView.framePreloadCount = 1
     imageView.clipsToBounds = true
     return imageView
+  }()
+
+  private lazy var blurView: UIVisualEffectView = {
+    return UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
   }()
 
   // MARK - Initializers
@@ -47,16 +72,33 @@ class LinkImageCardView: LinkCardView {
   }
 
   private func commonInit() {
-    contentView = imageView
+    contentView = imageContentView
+    setupConstraints()
+  }
+
+  private func setupConstraints() {
+    blurView.snp_makeConstraints { make in
+      make.edges.equalTo(imageContentView)
+    }
+
+    imageView.snp_makeConstraints { make in
+      make.edges.equalTo(imageContentView)
+    }
+
+    backgroundImageView.snp_makeConstraints { make in
+      make.edges.equalTo(imageContentView)
+    }
   }
 
   override func didAppear() {
     super.didAppear()
     imageView.startAnimating()
+    backgroundImageView.startAnimating()
   }
 
   override func didDisappear() {
     super.didDisappear()
     imageView.stopAnimating()
+    backgroundImageView.stopAnimating()
   }
 }
