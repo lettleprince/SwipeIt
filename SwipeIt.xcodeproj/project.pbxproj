@@ -115,6 +115,7 @@
 		306E2C131CD76ED9004AF2EF /* SubredditListSubredditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306E2C121CD76ED9004AF2EF /* SubredditListSubredditViewModel.swift */; };
 		306E2C151CD77A25004AF2EF /* SubscriptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306E2C141CD77A25004AF2EF /* SubscriptionsViewController.swift */; };
 		306E2C181CD77BC1004AF2EF /* HideableHairlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306E2C171CD77BC1004AF2EF /* HideableHairlineViewController.swift */; };
+		3071BFD11D6F358800CA6E03 /* UIImage+Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071BFD01D6F358800CA6E03 /* UIImage+Scale.swift */; };
 		30806BF41C8D861500EB1BD5 /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806BF31C8D861500EB1BD5 /* Thing.swift */; };
 		30806BF61C8D878F00EB1BD5 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806BF51C8D878F00EB1BD5 /* Comment.swift */; };
 		30806BF81C8D978A00EB1BD5 /* Edited.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30806BF71C8D978A00EB1BD5 /* Edited.swift */; };
@@ -342,6 +343,7 @@
 		306E2C121CD76ED9004AF2EF /* SubredditListSubredditViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubredditListSubredditViewModel.swift; sourceTree = "<group>"; };
 		306E2C141CD77A25004AF2EF /* SubscriptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionsViewController.swift; sourceTree = "<group>"; };
 		306E2C171CD77BC1004AF2EF /* HideableHairlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HideableHairlineViewController.swift; sourceTree = "<group>"; };
+		3071BFD01D6F358800CA6E03 /* UIImage+Scale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Scale.swift"; sourceTree = "<group>"; };
 		30806BF31C8D861500EB1BD5 /* Thing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
 		30806BF51C8D878F00EB1BD5 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		30806BF71C8D978A00EB1BD5 /* Edited.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edited.swift; sourceTree = "<group>"; };
@@ -802,7 +804,7 @@
 			children = (
 				306B84F61D6CB984001101F6 /* ZLSwipeableView+AnimateViewHandler.swift */,
 			);
-			name = "ZLSwipeableView+AnimateViewHandler";
+			path = "ZLSwipeableView+AnimateViewHandler";
 			sourceTree = "<group>";
 		};
 		306E2C0A1CD7693A004AF2EF /* SubredditList */ = {
@@ -812,6 +814,14 @@
 				306E2C0B1CD76958004AF2EF /* SubredditListViewModel.swift */,
 			);
 			path = SubredditList;
+			sourceTree = "<group>";
+		};
+		3071BFCF1D6F357900CA6E03 /* UIImage+Scale */ = {
+			isa = PBXGroup;
+			children = (
+				3071BFD01D6F358800CA6E03 /* UIImage+Scale.swift */,
+			);
+			path = "UIImage+Scale";
 			sourceTree = "<group>";
 		};
 		308216151CCA866D00D9A18B /* Specs */ = {
@@ -1008,7 +1018,6 @@
 		308E96DA1C8769D500380735 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				306B84F51D6CB94B001101F6 /* ZLSwipeableView+AnimateViewHandler */,
 				300C2AC41D0725B40046DFA4 /* Array+Optional */,
 				30BC0F2C1CDA0ADB00DB3E19 /* Array+Unique */,
 				303013D01D4FB6E000F700F0 /* CGSize+Ratio */,
@@ -1025,9 +1034,11 @@
 				300C2ADC1D087EA50046DFA4 /* String+Regex */,
 				30D9B8961D38EC3900E8A290 /* UIFont+Traits */,
 				30599BF31D67598900039CCA /* UIImage+Colorize */,
+				3071BFCF1D6F357900CA6E03 /* UIImage+Scale */,
 				30DDB25C1CCEED7B000B72E5 /* UIStoryboardSegue+Navigation */,
 				30D9606C1D3445B300808FC0 /* UITableView+Deselect */,
 				30599BED1D671D5100039CCA /* UIView+IBInspectable */,
+				306B84F51D6CB94B001101F6 /* ZLSwipeableView+AnimateViewHandler */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1875,6 +1886,7 @@
 				30390E421D05C33000DA89DD /* Theming.swift in Sources */,
 				30BAC22F1CDA479100882942 /* InsettableScrollViewViewController.swift in Sources */,
 				30599BF51D67599700039CCA /* UIImage+Colorize.swift in Sources */,
+				3071BFD11D6F358800CA6E03 /* UIImage+Scale.swift in Sources */,
 				308E96ED1C876C2700380735 /* Constants.swift in Sources */,
 				30BC0F261CDA044300DB3E19 /* SubredditListViewController.swift in Sources */,
 				30DDB26C1CCF68B0000B72E5 /* QueryReader.swift in Sources */,
