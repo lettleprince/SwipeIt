@@ -42,6 +42,15 @@ platform :ios do
 
     cocoapods(repo_update: true)
 
+    create_keychain(
+      name: scheme,
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      lock_when_sleeps: true,
+      password: SecureRandom.base64
+    )
+
     # increment_build_number
 
   end
@@ -77,9 +86,13 @@ platform :ios do
   private_lane :fabric_beta do |options|
     scheme = options[:scheme]
 
-    cert(
-      development: true,
-      output_path: "/tmp")
+    # Import distribution certificate
+    import_certificate(
+      certificate_path: "fastlane/certificates/development.p12",
+      certificate_password: ENV["SWIPEIT_DEVELOPMENT_KEY"],
+      keychain_name: scheme
+    )
+
     sigh(
       development: true,
       output_path: "/tmp/"
@@ -105,7 +118,13 @@ platform :ios do
   private_lane :itunes do |options|
     scheme = options[:scheme]
 
-    cert(output_path: "/tmp")
+
+    # Import distribution certificate
+    import_certificate(
+      certificate_path: "fastlane/certificates/distribution.p12",
+      certificate_password: ENV["SWIPEIT_DISTRIBUTION_KEY"],
+      keychain_name: scheme
+    )
 
     sigh(
       skip_install: true,
