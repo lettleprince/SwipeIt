@@ -53,7 +53,7 @@ extension LinkSwipeViewController {
 
   private func setupSwipeView() {
     swipeView.animateView = ZLSwipeableView.tinderAnimateViewHandler()
-    swipeView.numberOfHistoryItem = UInt.max
+    swipeView.numberOfHistoryItem = 10
     swipeView.didTap = swipeViewTapped
     swipeView.didSwipe = swipeViewSwiped
     swipeView.didDisappear = swipeViewDisappeared
