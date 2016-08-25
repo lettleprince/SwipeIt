@@ -20,8 +20,6 @@
 
 "Subscriptions.Title" = "Subscriptions";
 
-"Link.Context.PostedBy" = "%@ ago by %@";
-"Link.Context.PostedTo" = "to %@";
 "Link.Score.Hidden" = "hidden";
 "Link.Indicator.GIF" = "GIF";
 "Link.Indicator.NSFW" = "NSFW";

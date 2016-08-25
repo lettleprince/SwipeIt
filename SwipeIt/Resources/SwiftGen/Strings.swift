@@ -21,10 +21,6 @@ enum L10n {
   case LoginErrorUserCancelled
   /// Subscriptions
   case SubscriptionsTitle
-  /// %@ ago by %@
-  case LinkContextPostedBy(String, String)
-  /// to %@
-  case LinkContextPostedTo(String)
   /// hidden
   case LinkScoreHidden
   /// GIF
@@ -92,10 +88,6 @@ extension L10n: CustomStringConvertible {
         return L10n.tr("Login.Error.UserCancelled")
       case .SubscriptionsTitle:
         return L10n.tr("Subscriptions.Title")
-      case .LinkContextPostedBy(let p0, let p1):
-        return L10n.tr("Link.Context.PostedBy", p0, p1)
-      case .LinkContextPostedTo(let p0):
-        return L10n.tr("Link.Context.PostedTo", p0)
       case .LinkScoreHidden:
         return L10n.tr("Link.Score.Hidden")
       case .LinkIndicatorGIF:
