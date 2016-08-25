@@ -47,16 +47,15 @@ platform :ios do
         unlock: true,
         timeout: 3600,
         lock_when_sleeps: true,
-        default_keychain: true,
         password: ENV['SWIPEIT_CERTIFICATE_KEY']
       )
     rescue
       unlock_keychain(
         path: keychain_name,
-        password: ENV['SWIPEIT_CERTIFICATE_KEY'],
-        set_default: true
+        password: ENV['SWIPEIT_CERTIFICATE_KEY']
       )
     end
+    sh "security list-keychains -s #{keychain_name}"
   end
 
   def cleanup_keychain(keychain_name)
@@ -69,17 +68,16 @@ platform :ios do
   end
 
   def handle_certificate(cert_name, key, keychain_name)
-    sh "openssl aes-256-cbc -k \"#{ENV['SWIPEIT_CERTIFICATE_KEY']}\" -in certificates/#{cert_name}.p12.enc -d -a -out certificates/#{cert_name}.p12"
+    sh "openssl aes-256-cbc -k \"#{ENV['SWIPEIT_CERTIFICATE_KEY']}\" -in certificates/#{cert_name}.p12.enc -d -a -out /tmp/#{cert_name}.p12"
     import_certificate(
-      certificate_path: "fastlane/certificates/#{cert_name}.p12",
+      certificate_path: "/tmp/#{cert_name}.p12",
       certificate_password: key,
       keychain_name: keychain_name
     )
   end
 
   def cleanup_certificates
-    sh "rm certificates/development.p12"
-    sh "rm certificates/distribution.p12"
+    sh "rm certificates/*.p12"
   end
 
   before_all do
@@ -203,8 +201,6 @@ platform :ios do
   error do |lane, exception|
     notification(message: "#{run_location} Fastlane '#{lane}' errored") # Mac OS X Notification
     slack_msg(exception.to_s, commit, false)
-    cleanup_certificates
-    cleanup_keychain(keychain_name)
   end
 end
 
