@@ -34,6 +34,7 @@ abstract_target 'SwipeItCommon' do
     pod 'RxColor'
     pod 'ZLSwipeableViewSwift', :git => 'https://github.com/zhxnlai/ZLSwipeableViewSwift'
     pod 'Localizable'
+    pod 'GPUImage2', :git => 'https://github.com/ivanbruel/GPUImage2'
 
   end
 
