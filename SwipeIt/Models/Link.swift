@@ -66,6 +66,7 @@ struct Link: Votable, Mappable {
   var stickied: Bool!
   var gilded: Int!
   var visited: Bool!
+  var postHint: String?
 
   // MARK: Misc
   var approvedBy: String!
@@ -193,6 +194,7 @@ struct Link: Votable, Mappable {
     gilded <- map["data.gilded"]
     visited <- map["data.visited"]
     previewImages <- map["data.preview.images"]
+    postHint <- map["data.post_hint"]
   }
 
   private mutating func mappingMisc(map: Map) {
