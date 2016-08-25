@@ -34,36 +34,36 @@ class LinkItemViewModel: ViewModel {
   }
 
   // MARK: Private Observables
-  private var timeAgo: Observable<String> {
-    return Observable.combineLatest(Observable.just(link.created), NSTimer.rx_timer) { ($0, $1) }
+  private var timeAgo: Observable<NSAttributedString> {
+    return Observable
+      .combineLatest(Observable.just(link.created), NSTimer.rx_timer) { ($0, $1) }
       .map { (created, _) -> String in
         created.shortTimeAgoSinceNow()
       }.distinctUntilChanged()
+      .map { NSAttributedString(string: $0) }
   }
 
-  private var subredditName: Observable<String?> {
-    return .just(showSubreddit ? "/r/\(link.subreddit)" : nil)
+  private var subredditName: Observable<NSAttributedString?> {
+    return Observable.just(showSubreddit ? NSAttributedString(string: link.subreddit,
+      attributes: [NSLinkAttributeName: link.subredditURL]) : nil)
   }
 
-  private var author: Observable<String> {
-    return .just("/u/\(link.author)")
-  }
-
-  private var gilded: Observable<NSAttributedString?> {
-    let gildedString: String? = link.gilded > 0 ? "x\(link.gilded)" : nil
-    return .just(gildedString.map { NSAttributedString(string: $0) })
+  private var author: Observable<NSAttributedString> {
+    return Observable.just(NSAttributedString(string: link.author,
+      attributes: [NSLinkAttributeName: link.authorURL]))
   }
 
   // MARK: Observables
   var context: Observable<NSAttributedString?> {
-    return Observable.combineLatest(timeAgo, author, subredditName) { ($0, $1, $2) }
-      .map { (timeAgo, author, subredditName) in
-        var buffer: [String] = [tr(.LinkContextPostedBy(timeAgo, author))]
-        if let subredditName = subredditName {
-          buffer.append(tr(.LinkContextPostedTo(subredditName)))
-        }
-        return buffer.joinWithSeparator("\n")
-      }.map { NSAttributedString(string: $0) }
+    return Observable
+      .combineLatest(timeAgo, subredditName, author) {
+        let result: [NSAttributedString?] = [$0, $1, $2]
+        return result.flatMap { $0 }
+      }
+      .map { (attributedStrings: [NSAttributedString]) in
+        let separator = NSAttributedString(string: " ● ")
+        return attributedStrings.joinWithSeparator(separator)
+    }
   }
 
   var comments: Observable<NSAttributedString> {

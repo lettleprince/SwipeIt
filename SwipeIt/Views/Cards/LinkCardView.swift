@@ -9,6 +9,7 @@
 import UIKit
 import RxColor
 import RxSwift
+import TTTAttributedLabel
 
 @IBDesignable
 class LinkCardView: UIView {
@@ -16,7 +17,7 @@ class LinkCardView: UIView {
   // MARK: - Constants
   private static let titleFontSize = UIFont.systemFontSize()
   private static let fontSize = UIFont.smallSystemFontSize()
-  private static let spacing: CGFloat = 8
+  private static let spacing: CGFloat = 10
 
   // MARK: - ViewModel
   var viewModel: LinkItemViewModel? {
@@ -25,8 +26,9 @@ class LinkCardView: UIView {
       animateOverlayPercentage(0)
       titleLabel.text = viewModel.title
       viewModel.context
-        .bindTo(contextLabel.rx_attributedText)
-        .addDisposableTo(rx_disposeBag)
+        .subscribeNext { [weak self] context in
+        self?.contextLabel.setText(context)
+      }.addDisposableTo(rx_disposeBag)
       let commentsIcon = viewModel.commentsIcon
         .map { commentsIcon -> NSAttributedString  in
           let attachment = ImageAttachment(commentsIcon,
@@ -54,6 +56,7 @@ class LinkCardView: UIView {
     let view = UIView()
     view.addSubview(self.titleLabel)
     view.addSubview(self.contextLabel)
+    view.addSubview(self.bottomBlurView)
     view.addSubview(self.statsLabel)
     view.addSubview(self.upvoteOverlayImageView)
     view.addSubview(self.downvoteOverlayImageView)
@@ -62,7 +65,7 @@ class LinkCardView: UIView {
 
   private lazy var titleLabel: UILabel = {
     let label = UILabel()
-    label.numberOfLines = 2
+    label.numberOfLines = 0
     label.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Vertical)
     label.font = UIFont.boldSystemFontOfSize(LinkCardView.titleFontSize)
     Theming.sharedInstance.textColor
@@ -71,17 +74,32 @@ class LinkCardView: UIView {
     return label
   }()
 
-  private lazy var contextLabel: UILabel = {
-    let label = UILabel(frame: CGRect.zero)
+  private lazy var contextLabel: TTTAttributedLabel = {
+    let label = TTTAttributedLabel(frame: CGRect.zero)
     label.font = UIFont.systemFontOfSize(LinkCardView.fontSize)
+    label.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Vertical)
+    label.numberOfLines = 1
     label.textAlignment = .Left
-    label.numberOfLines = 2
+    label.delegate = self
 
-    Theming.sharedInstance.textColor
+    Theming.sharedInstance.secondaryTextColor
       .bindTo(label.rx_textColor)
       .addDisposableTo(self.rx_disposeBag)
 
+    Theming.sharedInstance.accentColor
+      .subscribeNext { accentColor in
+        label.linkAttributes = [NSForegroundColorAttributeName: accentColor]
+        label.activeLinkAttributes = [NSForegroundColorAttributeName:
+          accentColor.colorWithAlphaComponent(0.5)]
+      }.addDisposableTo(self.rx_disposeBag)
+
     return label
+  }()
+
+  private lazy var bottomBlurView: UIVisualEffectView = {
+    let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .ExtraLight))
+    blurView.tintColor = .whiteColor()
+    return blurView
   }()
 
   private lazy var statsLabel: UILabel = {
@@ -117,8 +135,8 @@ class LinkCardView: UIView {
       guard let contentView = contentView else { return }
       containerView.addSubview(contentView)
       contentView.snp_makeConstraints { make in
-        make.top.equalTo(titleLabel.snp_bottom).offset(LinkCardView.spacing)
-        make.bottom.equalTo(contextLabel.snp_top).offset(-LinkCardView.spacing)
+        make.top.equalTo(contextLabel.snp_bottom).offset(LinkCardView.spacing)
+        make.bottom.equalTo(statsLabel.snp_top).offset(-LinkCardView.spacing)
         make.left.right.equalTo(containerView)
       }
       containerView.bringSubviewToFront(upvoteOverlayImageView)
@@ -168,25 +186,29 @@ class LinkCardView: UIView {
     }
 
     contextLabel.snp_makeConstraints { make in
+      make.top.equalTo(titleLabel.snp_bottom).offset(LinkCardView.spacing)
       make.left.equalTo(containerView).offset(LinkCardView.spacing)
-      make.bottom.equalTo(containerView).inset(LinkCardView.spacing)
-      make.right.equalTo(statsLabel.snp_left).offset(-LinkCardView.spacing)
-      make.height.greaterThanOrEqualTo(30)
-    }
-
-    statsLabel.snp_makeConstraints { make in
-      make.centerY.equalTo(contextLabel)
       make.right.equalTo(containerView).inset(LinkCardView.spacing)
     }
 
+    bottomBlurView.snp_makeConstraints { make in
+      make.right.left.bottom.equalTo(containerView)
+      make.height.equalTo(44)
+    }
+
+    statsLabel.snp_makeConstraints { make in
+      make.left.equalTo(bottomBlurView).offset(LinkCardView.spacing)
+      make.right.bottom.top.equalTo(bottomBlurView).inset(LinkCardView.spacing)
+    }
+
     upvoteOverlayImageView.snp_makeConstraints { make in
-      make.top.equalTo(titleLabel.snp_bottom)
+      make.top.equalTo(contextLabel.snp_bottom)
         .offset(LinkCardView.spacing * 2)
       make.left.equalTo(containerView).offset(LinkCardView.spacing)
     }
 
     downvoteOverlayImageView.snp_makeConstraints { make in
-      make.top.equalTo(titleLabel.snp_bottom)
+      make.top.equalTo(contextLabel.snp_bottom)
         .offset(LinkCardView.spacing * 2)
       make.right.equalTo(containerView).offset(-LinkCardView.spacing)
     }
@@ -242,4 +264,8 @@ extension LinkCardView {
     upvoteOverlayImageView.alpha = max(min(percentage, 1), 0)
     downvoteOverlayImageView.alpha = max(min(-percentage, 1), 0)
   }
+}
+
+extension LinkCardView: TTTAttributedLabelDelegate {
+  
 }
