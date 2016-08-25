@@ -27,26 +27,11 @@ class LinkCardView: UIView {
       titleLabel.text = viewModel.title
       viewModel.context
         .subscribeNext { [weak self] context in
-        self?.contextLabel.setText(context)
-      }.addDisposableTo(rx_disposeBag)
-      let commentsIcon = viewModel.commentsIcon
-        .map { commentsIcon -> NSAttributedString  in
-          let attachment = ImageAttachment(commentsIcon,
-            verticalOffset: UIFont.systemFontOfSize(LinkCardView.fontSize).descender)
-          return NSAttributedString(attachment: attachment)
-      }
-      let scoreIcon = viewModel.scoreIcon
-        .map { scoreIcon -> NSAttributedString in
-          let attachment = ImageAttachment(scoreIcon,
-            verticalOffset: UIFont.systemFontOfSize(LinkCardView.fontSize).descender)
-          return NSAttributedString(attachment: attachment)
-      }
-      Observable
-        .combineLatest(scoreIcon, viewModel.score, commentsIcon, viewModel.comments) {
-          ($0, $1, $2, $3)
-        }.map { (scoreIcon, score, commentsIcon, comments) in
-          return [scoreIcon, score, commentsIcon, comments].joinWithSeparator(" ")
-        }.bindTo(statsLabel.rx_attributedText)
+          self?.contextLabel.setText(context)
+        }.addDisposableTo(rx_disposeBag)
+      LinkCardView.statsAttributedString(viewModel.scoreIcon, score: viewModel.score,
+        commentsIcon: viewModel.commentsIcon, comments: viewModel.comments)
+        .bindTo(statsLabel.rx_attributedText)
         .addDisposableTo(rx_disposeBag)
     }
   }
@@ -56,7 +41,6 @@ class LinkCardView: UIView {
     let view = UIView()
     view.addSubview(self.titleLabel)
     view.addSubview(self.contextLabel)
-    view.addSubview(self.bottomBlurView)
     view.addSubview(self.statsLabel)
     view.addSubview(self.upvoteOverlayImageView)
     view.addSubview(self.downvoteOverlayImageView)
@@ -96,12 +80,6 @@ class LinkCardView: UIView {
     return label
   }()
 
-  private lazy var bottomBlurView: UIVisualEffectView = {
-    let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .ExtraLight))
-    blurView.tintColor = .whiteColor()
-    return blurView
-  }()
-
   private lazy var statsLabel: UILabel = {
     let label = UILabel(frame: CGRect.zero)
     label.font = UIFont.systemFontOfSize(LinkCardView.fontSize)
@@ -136,7 +114,7 @@ class LinkCardView: UIView {
       containerView.addSubview(contentView)
       contentView.snp_makeConstraints { make in
         make.top.equalTo(contextLabel.snp_bottom).offset(LinkCardView.spacing)
-        make.bottom.equalTo(statsLabel.snp_top).offset(-LinkCardView.spacing)
+        make.bottom.equalTo(statsLabel.snp_top)
         make.left.right.equalTo(containerView)
       }
       containerView.bringSubviewToFront(upvoteOverlayImageView)
@@ -191,14 +169,11 @@ class LinkCardView: UIView {
       make.right.equalTo(containerView).inset(LinkCardView.spacing)
     }
 
-    bottomBlurView.snp_makeConstraints { make in
-      make.right.left.bottom.equalTo(containerView)
-      make.height.equalTo(44)
-    }
-
     statsLabel.snp_makeConstraints { make in
-      make.left.equalTo(bottomBlurView).offset(LinkCardView.spacing)
-      make.right.bottom.top.equalTo(bottomBlurView).inset(LinkCardView.spacing)
+      make.bottom.equalTo(containerView)
+      make.right.equalTo(containerView).inset(LinkCardView.spacing)
+      make.left.equalTo(containerView).offset(LinkCardView.spacing)
+      make.height.equalTo(44)
     }
 
     upvoteOverlayImageView.snp_makeConstraints { make in
@@ -263,6 +238,34 @@ extension LinkCardView {
   func animateOverlayPercentage(percentage: CGFloat) {
     upvoteOverlayImageView.alpha = max(min(percentage, 1), 0)
     downvoteOverlayImageView.alpha = max(min(-percentage, 1), 0)
+  }
+}
+
+extension LinkCardView {
+
+  private static func statsAttributedString(scoreIcon: Observable<UIImage>,
+                                            score: Observable<NSAttributedString>,
+                                            commentsIcon: Observable<UIImage>,
+                                            comments: Observable<NSAttributedString>)
+    -> Observable<NSAttributedString?> {
+      let commentsIcon = commentsIcon
+        .map { commentsIcon -> NSAttributedString  in
+          let attachment = ImageAttachment(commentsIcon,
+            verticalOffset: UIFont.systemFontOfSize(LinkCardView.fontSize).descender)
+          return NSAttributedString(attachment: attachment)
+      }
+      let scoreIcon = scoreIcon
+        .map { scoreIcon -> NSAttributedString in
+          let attachment = ImageAttachment(scoreIcon,
+            verticalOffset: UIFont.systemFontOfSize(LinkCardView.fontSize).descender)
+          return NSAttributedString(attachment: attachment)
+      }
+      return Observable
+        .combineLatest(scoreIcon, score, commentsIcon, comments) {
+          ($0, $1, $2, $3)
+        }.map { (scoreIcon, score, commentsIcon, comments) in
+          return [scoreIcon, score, commentsIcon, comments].joinWithSeparator(" ")
+      }
   }
 }
 

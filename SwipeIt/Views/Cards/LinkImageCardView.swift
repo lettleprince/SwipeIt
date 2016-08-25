@@ -14,18 +14,22 @@ import GPUImage2
 @IBDesignable
 class LinkImageCardView: LinkCardView {
 
+  private static let fadeAnimationDuration: NSTimeInterval = 0.15
+
   override var viewModel: LinkItemViewModel? {
     didSet {
       guard let imageViewModel = viewModel as? LinkItemImageViewModel else { return }
+      let options: [KingfisherOptionsInfoItem] =
+        [.Transition(.Fade(LinkImageCardView.fadeAnimationDuration))]
       imageView
-        .kf_setImageWithURL(imageViewModel.imageURL, optionsInfo: [.Transition(.Fade(0.15))]) {
+        .kf_setImageWithURL(imageViewModel.imageURL, optionsInfo: options) {
           [weak self] (image, _, _, imageURL) in
           guard let image = image, backgroundImageView = self?.backgroundImageView
             where imageURL == imageViewModel.imageURL else {
-            self?.backgroundImageView.image = nil
-            return
+              self?.backgroundImageView.image = nil
+              return
           }
-          LinkImageCardView.blurImage(image, imageView: backgroundImageView)
+          LinkImageCardView.blurImage(image, into: backgroundImageView)
       }
     }
   }
@@ -44,6 +48,7 @@ class LinkImageCardView: LinkCardView {
     let imageView = AnimatedImageView()
     imageView.autoPlayAnimatedImage = false
     imageView.contentMode = .ScaleAspectFit
+    imageView.kf_showIndicatorWhenLoading = true
     // Better performance while scrolling
     imageView.framePreloadCount = 1
     imageView.clipsToBounds = true
@@ -102,22 +107,35 @@ class LinkImageCardView: LinkCardView {
 extension LinkImageCardView {
 
   /**
-   Blurs an image in a background thread and then sets the image to the imageView in the main thread
+   Blurs the provided image and sets it in the image view.
+   In order to save memory this function also scales down the image before processing.
+   In the end it will fade in the image into the image view.
 
    - parameter image:     The image to be blurred.
    - parameter imageView: The imageView in which to set the blurred image.
    */
-  private static func blurImage(image: UIImage, imageView: UIImageView) {
+  private static func blurImage(image: UIImage, into imageView: UIImageView) {
     Async.background {
+      let scaledImage = resizeImage(image, imageView: imageView)
       let blurFilter = iOSBlur()
       let brightnessFilter = BrightnessAdjustment()
       brightnessFilter.brightness = -0.2
-      let blurredImage = image.filterWithPipeline { (input, output) in
+      let blurredImage = scaledImage.filterWithPipeline { (input, output) in
         input --> blurFilter --> brightnessFilter --> output
       }
       Async.main {
-        imageView.image = blurredImage
+        UIView.transitionWithView(imageView, duration: fadeAnimationDuration,
+          options: .TransitionCrossDissolve, animations: {
+            imageView.image = blurredImage
+          }, completion: nil)
       }
     }
+  }
+
+  private static func resizeImage(image: UIImage, imageView: UIImageView) -> UIImage {
+    let screenWidth = UIScreen.mainScreen().bounds.width
+    let size = imageView.bounds.size != .zero ? imageView.bounds.size :
+      CGSize(width: screenWidth, height: screenWidth)
+    return image.scaleToSizeWithAspectFill(size)
   }
 }
