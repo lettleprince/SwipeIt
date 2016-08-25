@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import Async
 import Kingfisher
+import GPUImage2
 
 @IBDesignable
 class LinkImageCardView: LinkCardView {
@@ -15,8 +17,16 @@ class LinkImageCardView: LinkCardView {
   override var viewModel: LinkItemViewModel? {
     didSet {
       guard let imageViewModel = viewModel as? LinkItemImageViewModel else { return }
-      imageView.kf_setImageWithURL(imageViewModel.imageURL, optionsInfo: [.Transition(.Fade(0.15))])
-      backgroundImageView.kf_setImageWithURL(imageViewModel.imageURL)
+      imageView
+        .kf_setImageWithURL(imageViewModel.imageURL, optionsInfo: [.Transition(.Fade(0.15))]) {
+          [weak self] (image, _, _, imageURL) in
+          guard let image = image, backgroundImageView = self?.backgroundImageView
+            where imageURL == imageViewModel.imageURL else {
+            self?.backgroundImageView.image = nil
+            return
+          }
+          LinkImageCardView.blurImage(image, imageView: backgroundImageView)
+      }
     }
   }
 
@@ -26,7 +36,6 @@ class LinkImageCardView: LinkCardView {
     view.backgroundColor = .clearColor()
     view.clipsToBounds = false
     view.addSubview(self.backgroundImageView)
-    view.addSubview(self.blurView)
     view.addSubview(self.imageView)
     return view
   }()
@@ -41,18 +50,11 @@ class LinkImageCardView: LinkCardView {
     return imageView
   }()
 
-  private lazy var backgroundImageView: AnimatedImageView = {
-    let imageView = AnimatedImageView()
-    imageView.autoPlayAnimatedImage = false
+  private lazy var backgroundImageView: UIImageView = {
+    let imageView = UIImageView()
     imageView.contentMode = .ScaleAspectFill
-    // Better performance while scrolling
-    imageView.framePreloadCount = 1
     imageView.clipsToBounds = true
     return imageView
-  }()
-
-  private lazy var blurView: UIVisualEffectView = {
-    return UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
   }()
 
   // MARK - Initializers
@@ -77,10 +79,6 @@ class LinkImageCardView: LinkCardView {
   }
 
   private func setupConstraints() {
-    blurView.snp_makeConstraints { make in
-      make.edges.equalTo(imageContentView)
-    }
-
     imageView.snp_makeConstraints { make in
       make.edges.equalTo(imageContentView)
     }
@@ -93,12 +91,33 @@ class LinkImageCardView: LinkCardView {
   override func didAppear() {
     super.didAppear()
     imageView.startAnimating()
-    backgroundImageView.startAnimating()
   }
 
   override func didDisappear() {
     super.didDisappear()
     imageView.stopAnimating()
-    backgroundImageView.stopAnimating()
+  }
+}
+
+extension LinkImageCardView {
+
+  /**
+   Blurs an image in a background thread and then sets the image to the imageView in the main thread
+
+   - parameter image:     The image to be blurred.
+   - parameter imageView: The imageView in which to set the blurred image.
+   */
+  private static func blurImage(image: UIImage, imageView: UIImageView) {
+    Async.background {
+      let blurFilter = iOSBlur()
+      let brightnessFilter = BrightnessAdjustment()
+      brightnessFilter.brightness = -0.2
+      let blurredImage = image.filterWithPipeline { (input, output) in
+        input --> blurFilter --> brightnessFilter --> output
+      }
+      Async.main {
+        imageView.image = blurredImage
+      }
+    }
   }
 }
