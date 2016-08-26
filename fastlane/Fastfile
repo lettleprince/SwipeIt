@@ -88,7 +88,7 @@ platform :ios do
 
   private_lane :fabric_beta do |options|
     scheme = options[:scheme]
-    match(type: "adhoc", readonly: is_ci)
+    match(type: "adhoc", readonly: is_ci, force_for_new_devices: true)
 
     build(scheme: scheme, app_profile: ENV["sigh_#{bundle_name}_adhoc"])
 
