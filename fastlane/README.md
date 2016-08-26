@@ -20,6 +20,11 @@ Submits a new Beta Build to Apple TestFlight
 fastlane ios test
 ```
 Runs all the unit tests
+### ios release
+```
+fastlane ios release
+```
+
 ### ios fabric
 ```
 fastlane ios fabric

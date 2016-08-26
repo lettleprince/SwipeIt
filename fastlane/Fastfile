@@ -22,36 +22,14 @@ default_platform :ios
 
 platform :ios do
 
+  app_scheme = "SwipeIt"
   commit = last_git_commit
-  scheme = 'SwipeIt'
-  bundle_name = 'ios.ivanbruel.SwipeIt'
-  keychain_name = 'swipeit-keychain'
-  is_ci = is_ci?
-  run_location = is_ci ? 'Travis' : 'Local'
-
-  def slack_msg(msg, commit, success = true)
-    slack(
-      channel: "swipeit",
-      payload: {
-        'Message' => commit[:message],
-        'Author' => commit[:author],
-        'Commit' => "https://github.com/ivanbruel/SwipeIt/commit/#{commit[:commit_hash]}"
-      },
-      default_payloads: [],
-      message: msg,
-      success: success)
-  end
+  run_location = is_ci? ? 'Travis' : 'Local'
 
   before_all do
     # ensure_git_status_clean
-    ENV["SLACK_URL"] = ENV['SWIPEIT_SLACK_URL']
-    ENV["MATCH_PASSWORD"] = ENV["SWIPEIT_CERTIFICATE_KEY"]
-    ENV["FASTLANE_PASSWORD"] = ENV["SWIPEIT_ITUNES_PASSWORD"]
-
-    slack_msg("#{run_location} running Fastlane #{lane_context[SharedValues::LANE_NAME]}", commit)
-
-    cocoapods(repo_update: true)
-
+    setup
+    slack_msg(msg: "#{run_location} running Fastlane #{lane_context[SharedValues::LANE_NAME]}", success: true)
   end
 
   desc "Runs all the unit tests"
@@ -60,57 +38,67 @@ platform :ios do
   lane :travis do
     test
     if ENV['TRAVIS_PULL_REQUEST'] == "false" || !is_ci
-      build_number = Time.new.strftime("%y%m%d.%H%M")
-      increment_build_number build_number: build_number
-      fabric_beta(scheme: scheme)
-      itunes(scheme: scheme)
+      deploy
     end
   end
 
   desc "Runs all the unit tests"
   lane :test do
-    scan(scheme: scheme)
+    scan(scheme: app_scheme)
+  end
+
+  lane :release do
+    update_build_number
+    fabric_beta
+    itunes
   end
 
   desc "Submit a new Beta Build to Fabric"
   desc "This will also make sure the profile is up to date"
   lane :fabric do
-    increment_build_number(build_number: number_of_commits)
-    fabric_beta(scheme: scheme)
+    update_build_number
+    fabric_beta
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :itc do
-    increment_build_number(build_number: number_of_commits)
-    itunes(scheme: scheme)
+    update_build_number
+    itunes
   end
 
-  private_lane :fabric_beta do |options|
-    scheme = options[:scheme]
-    match(type: "adhoc", readonly: is_ci, force_for_new_devices: true)
+  private_lane :fabric_beta do
+    match(type: "adhoc", force_for_new_devices: true)
 
-    build(scheme: scheme, export_method: "ad-hoc", app_profile: ENV["sigh_#{bundle_name}_adhoc"])
+    gym(
+      scheme: app_scheme,
+      output_directory: ".build/",
+      clean: true,
+      xcargs: "ARCHIVE=YES"
+    )
 
     crashlytics(
       api_token: ENV['SWIPEIT_FABRIC_CLIENT_ID'],
       build_secret: ENV['SWIPEIT_FABRIC_SECRET'],
-      ipa_path: "/tmp/#{scheme}.ipa",
-      notes: last_git_commit[:message],
-      groups: ["#{scheme}"]
+      notes: commit[:message],
+      groups: [app_scheme]
     )
 
   end
 
-  private_lane :itunes do |options|
-    scheme = options[:scheme]
+  private_lane :itunes do
 
-    match(type: "appstore", readonly: is_ci)
+    match(type: "appstore")
 
-    build(scheme: scheme, export_method: "appstore", app_profile: ENV["sigh_#{bundle_name}_appstore"])
+    gym(
+      scheme: app_scheme,
+      include_bitcode: true,
+      output_directory: ".build/",
+      clean: true,
+      xcargs: "ARCHIVE=YES"
+    )
 
     pilot(
-      ipa: "/tmp/#{scheme}.ipa",
       skip_submission: true,
       team_id: ENV['SWIPEIT_ITUNES_TEAM_ID'],
       skip_waiting_for_build_processing: true
@@ -118,33 +106,42 @@ platform :ios do
 
   end
 
-  private_lane :build do |options|
-    scheme = options[:scheme]
-    app_profile = options[:app_profile]
-    export_method = options[:export_method]
-    gym(
-      scheme: scheme,
-      configuration: scheme,
-      use_legacy_build_api: false,
-      include_bitcode: true,
-      workspace: "#{scheme}.xcworkspace",
-      output_directory: "/tmp", # Change to temp folder
-      output_name: "#{scheme}.ipa",
-      export_method: export_method,
-      xcargs: "ARCHIVE=YES APP_PROFILE='#{app_profile}'" # Used to tell the Fabric run script to upload dSYM file
-    )
+  # Private Lanes
+  private_lane :setup do
+    ENV["SLACK_URL"] = ENV['SWIPEIT_SLACK_URL']
+    ENV["MATCH_PASSWORD"] = ENV["SWIPEIT_CERTIFICATE_KEY"]
+    ENV["FASTLANE_PASSWORD"] = ENV["SWIPEIT_ITUNES_PASSWORD"]
+
+    cocoapods(repo_update: true)
   end
 
+  private_lane :update_build_number do
+    build_number = Time.new.strftime("%y%m%d.%H%M")
+    increment_build_number build_number: build_number
+  end
+
+  private_lane :slack_msg do |params|
+    slack(
+      channel: "swipeit",
+      payload: {
+        'Message' => commit[:message],
+        'Author' => commit[:author],
+        'Commit' => "https://github.com/ivanbruel/SwipeIt/commit/#{commit[:commit_hash]}"
+      },
+      default_payloads: [],
+      message: params[:msg],
+      success: params[:success])
+  end
 
   # This lane is called, only if the executed lane was successful
   after_all do |lane|
     notification(message: "Fastlane finished '#{lane}' successfully") # Mac OS X Notification
-    slack_msg("#{run_location} successfully distributed #{scheme} into #{lane} :rocket:", commit)
+    slack_msg(msg: "#{run_location} successfully distributed #{scheme} into #{lane} :rocket:", success: true)
   end
 
   error do |lane, exception|
-    notification(message: "#{run_location} Fastlane '#{lane}' errored") # Mac OS X Notification
-    slack_msg(exception.to_s, commit, false)
+    notification(message: "Fastlane '#{lane}' errored") # Mac OS X Notification
+    slack_msg(msg: exception.to_s, success: false)
   end
 end
 
