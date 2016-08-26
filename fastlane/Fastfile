@@ -96,9 +96,11 @@ platform :ios do
   desc "Submits a new Beta Build to Apple TestFlight"
   lane :travis do
     test
-    update_build_version
-    fabric_beta(scheme: scheme)
-    itunes(scheme: scheme)
+    if ENV['TRAVIS_PULL_REQUEST'] == false
+      update_build_version
+      fabric_beta(scheme: scheme)
+      itunes(scheme: scheme)
+    end
   end
 
   desc "Runs all the unit tests"
