@@ -24,6 +24,7 @@ platform :ios do
 
   commit = last_git_commit
   scheme = 'SwipeIt'
+  bundle_name = 'ios.ivanbruel.SwipeIt'
   keychain_name = 'swipeit-keychain'
   is_ci = is_ci?
   run_location = is_ci ? 'Travis' : 'Local'
@@ -89,7 +90,7 @@ platform :ios do
     scheme = options[:scheme]
     match(type: "adhoc", readonly: is_ci)
 
-    build(scheme: scheme)
+    build(scheme: scheme, app_profile: ENV["sigh_#{bundle_name}_adhoc"])
 
     crashlytics(
       api_token: ENV['SWIPEIT_FABRIC_CLIENT_ID'],
@@ -106,7 +107,7 @@ platform :ios do
 
     match(type: "appstore", readonly: is_ci)
 
-    build(scheme: scheme)
+    build(scheme: scheme, app_profile: ENV["sigh_#{bundle_name}_appstore"])
 
     pilot(
       ipa: "/tmp/#{scheme}.ipa",
@@ -119,6 +120,7 @@ platform :ios do
 
   private_lane :build do |options|
     scheme = options[:scheme]
+    app_profile = options[:app_profile]
     gym(
       scheme: scheme,
       configuration: scheme,
@@ -128,7 +130,7 @@ platform :ios do
       output_directory: "/tmp", # Change to temp folder
       output_name: "#{scheme}.ipa",
       clean: false,
-      xcargs: "ARCHIVE=YES" # Used to tell the Fabric run script to upload dSYM file
+      xcargs: "ARCHIVE=YES APP_PROFILE=#{app_profile}" # Used to tell the Fabric run script to upload dSYM file
     )
   end
 
