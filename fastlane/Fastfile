@@ -12,7 +12,7 @@
 # opt_out_usage
 
 # If you want to automatically update fastlane if a new version is available:
-update_fastlane
+#update_fastlane
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
@@ -25,7 +25,8 @@ platform :ios do
   commit = last_git_commit
   scheme = 'SwipeIt'
   keychain_name = 'swipeit-keychain'
-  run_location = is_ci? ? 'Travis' : 'Local'
+  is_ci = is_ci?
+  run_location = is_ci ? 'Travis' : 'Local'
 
   def slack_msg(msg, commit, success = true)
     slack(
@@ -40,54 +41,15 @@ platform :ios do
       success: success)
   end
 
-  def handle_keychain(keychain_name)
-    begin
-      create_keychain(
-        name: keychain_name,
-        unlock: true,
-        timeout: 3600,
-        lock_when_sleeps: true,
-        password: ENV['SWIPEIT_CERTIFICATE_KEY']
-      )
-    rescue
-      unlock_keychain(
-        path: keychain_name,
-        password: ENV['SWIPEIT_CERTIFICATE_KEY']
-      )
-    end
-    sh "security list-keychains -s #{keychain_name}"
-  end
-
-  def cleanup_keychain(keychain_name)
-    delete_keychain(name: keychain_name)
-  end
-
-  def update_build_version
-    build_number = Time.new.strftime("%y%m%d.%H%M")
-    increment_build_number build_number: build_number
-  end
-
-  def handle_certificate(cert_name, key, keychain_name)
-    sh "openssl aes-256-cbc -k \"#{ENV['SWIPEIT_CERTIFICATE_KEY']}\" -in certificates/#{cert_name}.p12.enc -d -a -out /tmp/#{cert_name}.p12"
-    import_certificate(
-      certificate_path: "/tmp/#{cert_name}.p12",
-      certificate_password: key,
-      keychain_name: keychain_name
-    )
-  end
-
-  def cleanup_certificates
-    sh "rm certificates/*.p12"
-  end
-
   before_all do
     # ensure_git_status_clean
     ENV["SLACK_URL"] = ENV['SWIPEIT_SLACK_URL']
+    ENV["MATCH_PASSWORD"] = ENV["SWIPEIT_CERTIFICATE_KEY"]
+    ENV["FASTLANE_PASSWORD"] = ENV["SWIPEIT_ITUNES_PASSWORD"]
 
     slack_msg("#{run_location} running Fastlane #{lane_context[SharedValues::LANE_NAME]}", commit)
 
     cocoapods(repo_update: true)
-    handle_keychain(keychain_name)
 
   end
 
@@ -96,8 +58,9 @@ platform :ios do
   desc "Submits a new Beta Build to Apple TestFlight"
   lane :travis do
     test
-    if ENV['TRAVIS_PULL_REQUEST'] == "false"
-      update_build_version
+    if ENV['TRAVIS_PULL_REQUEST'] == "false" || !is_ci
+      build_number = Time.new.strftime("%y%m%d.%H%M")
+      increment_build_number build_number: build_numbe
       fabric_beta(scheme: scheme)
       itunes(scheme: scheme)
     end
@@ -111,32 +74,22 @@ platform :ios do
   desc "Submit a new Beta Build to Fabric"
   desc "This will also make sure the profile is up to date"
   lane :fabric do
-    update_build_version
+    increment_build_number(build_number: number_of_commits)
     fabric_beta(scheme: scheme)
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :itc do
-    update_build_version
+    increment_build_number(build_number: number_of_commits)
     itunes(scheme: scheme)
   end
 
   private_lane :fabric_beta do |options|
     scheme = options[:scheme]
-    handle_certificate("development", ENV['SWIPEIT_DEVELOPMENT_KEY'], keychain_name)
+    match(type: "adhoc", readonly: is_ci)
 
-    sigh(
-      development: true,
-      output_path: "/tmp/"
-    )
-
-    build(
-      scheme: scheme,
-      signId: ENV['SWIPEIT_SIGNING_IDENTITY_DEV']
-    )
-
-    environment = scheme.upcase
+    build(scheme: scheme)
 
     crashlytics(
       api_token: ENV['SWIPEIT_FABRIC_CLIENT_ID'],
@@ -151,18 +104,9 @@ platform :ios do
   private_lane :itunes do |options|
     scheme = options[:scheme]
 
-    handle_certificate("distribution", ENV['SWIPEIT_DISTRIBUTION_KEY'], keychain_name)
+    match(type: "appstore", readonly: is_ci)
 
-    sigh(
-      skip_install: true,
-      development: false,
-      output_path: "/tmp"
-    )
-
-    build(
-      scheme: scheme,
-      signId: ENV['SWIPEIT_SIGNING_IDENTITY_PROD']
-    )
+    build(scheme: scheme)
 
     pilot(
       ipa: "/tmp/#{scheme}.ipa",
@@ -175,17 +119,14 @@ platform :ios do
 
   private_lane :build do |options|
     scheme = options[:scheme]
-    signingId = options[:signId]
-
     gym(
-      scheme: "#{scheme}",
+      scheme: scheme,
       configuration: scheme,
       use_legacy_build_api: false,
       include_bitcode: true,
       workspace: "#{scheme}.xcworkspace",
       output_directory: "/tmp", # Change to temp folder
       output_name: "#{scheme}.ipa",
-      codesigning_identity: "#{signingId}",
       clean: false,
       xcargs: "ARCHIVE=YES" # Used to tell the Fabric run script to upload dSYM file
     )
@@ -196,8 +137,6 @@ platform :ios do
   after_all do |lane|
     notification(message: "Fastlane finished '#{lane}' successfully") # Mac OS X Notification
     slack_msg("#{run_location} successfully distributed #{scheme} into #{lane} :rocket:", commit)
-    cleanup_certificates
-    cleanup_keychain(keychain_name)
   end
 
   error do |lane, exception|

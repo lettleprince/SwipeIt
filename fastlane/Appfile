@@ -3,7 +3,7 @@ apple_id ENV["SWIPEIT_APPLE_ID"] # Your Apple email address
 
 # You can uncomment any of the lines below and add your own
 # team selection in case you're in multiple teams
-team_name ENV["SWIPEIT_TEAM_NAME"]
+# team_name ENV["SWIPEIT_TEAM_NAME"]
 team_id ENV["SWIPEIT_TEAM_ID"]
 
 
