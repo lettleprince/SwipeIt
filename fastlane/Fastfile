@@ -60,7 +60,7 @@ platform :ios do
     test
     if ENV['TRAVIS_PULL_REQUEST'] == "false" || !is_ci
       build_number = Time.new.strftime("%y%m%d.%H%M")
-      increment_build_number build_number: build_numbe
+      increment_build_number build_number: build_number
       fabric_beta(scheme: scheme)
       itunes(scheme: scheme)
     end
