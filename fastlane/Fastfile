@@ -90,7 +90,7 @@ platform :ios do
     scheme = options[:scheme]
     match(type: "adhoc", readonly: is_ci, force_for_new_devices: true)
 
-    build(scheme: scheme, app_profile: ENV["sigh_#{bundle_name}_adhoc"])
+    build(scheme: scheme, export_method: "ad-hoc", app_profile: ENV["sigh_#{bundle_name}_adhoc"])
 
     crashlytics(
       api_token: ENV['SWIPEIT_FABRIC_CLIENT_ID'],
@@ -107,7 +107,7 @@ platform :ios do
 
     match(type: "appstore", readonly: is_ci)
 
-    build(scheme: scheme, app_profile: ENV["sigh_#{bundle_name}_appstore"])
+    build(scheme: scheme, export_method: "appstore", app_profile: ENV["sigh_#{bundle_name}_appstore"])
 
     pilot(
       ipa: "/tmp/#{scheme}.ipa",
@@ -121,6 +121,7 @@ platform :ios do
   private_lane :build do |options|
     scheme = options[:scheme]
     app_profile = options[:app_profile]
+    export_method = options[:export_method]
     gym(
       scheme: scheme,
       configuration: scheme,
@@ -129,8 +130,8 @@ platform :ios do
       workspace: "#{scheme}.xcworkspace",
       output_directory: "/tmp", # Change to temp folder
       output_name: "#{scheme}.ipa",
-      clean: false,
-      xcargs: "ARCHIVE=YES APP_PROFILE=#{app_profile}" # Used to tell the Fabric run script to upload dSYM file
+      export_method: export_method,
+      xcargs: "ARCHIVE=YES APP_PROFILE='#{app_profile}'" # Used to tell the Fabric run script to upload dSYM file
     )
   end
 
