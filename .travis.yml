@@ -17,7 +17,7 @@ install:
 - bundle install
 - bundle exec fastlane ios travis
 before_install:
-- echo -e "machine gitlab.com\n login $SWIPEIT_CERTIFICATE_TOKEN" >> ~/.netrc
+- echo -e "machine gitlab.com\n login ivanbruel\n password $SWIPEIT_CERTIFICATE_TOKEN" >> ~/.netrc
 after_success:
 - bash <(curl -s https://codecov.io/bash) -J 'SwipeIt'
 - sleep 5
