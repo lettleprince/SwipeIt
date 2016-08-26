@@ -38,7 +38,7 @@ platform :ios do
   lane :travis do
     test
     if ENV['TRAVIS_PULL_REQUEST'] == "false" || !is_ci
-      deploy
+      release
     end
   end
 
