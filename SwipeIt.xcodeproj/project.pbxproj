@@ -1511,7 +1511,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 308E96D41C875B7F00380735 /* Build configuration list for PBXNativeTarget "SwipeItTests" */;
 			buildPhases = (
-				676C5290E5A08BAF268431C9 /* [CP] Check Pods Manifest.lock */,
 				A460C2466E6C579F1BE56238 /* [CP] Check Pods Manifest.lock */,
 				308E96C41C875B7F00380735 /* Sources */,
 				308E96C51C875B7F00380735 /* Frameworks */,
@@ -1679,21 +1678,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwipeItCommon-SwipeIt/Pods-SwipeItCommon-SwipeIt-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		676C5290E5A08BAF268431C9 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		878E378E7CC549D8D89DDBA4 /* [CP] Check Pods Manifest.lock */ = {

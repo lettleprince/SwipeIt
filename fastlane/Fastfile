@@ -75,27 +75,18 @@ platform :ios do
 
   private_lane :fabric_beta do |options|
     match(type: "adhoc", force_for_new_devices: true)
-    jobs = (sh "sysctl hw.ncpu | awk '{print $2}'").to_i
-    gym(
-      clean: options[:clean],
-      export_options: { :jobs => jobs }
-    )
+    gym(clean: options[:clean])
     if options[:test]
-      scan(clean: false)
+      scan(clean: false, skip_build: true)
     end
     upload_crashlytics
   end
 
   private_lane :itunes do |options|
     match(type: "appstore")
-    jobs = (sh "sysctl hw.ncpu | awk '{print $2}'").to_i
-    gym(
-      clean: options[:clean],
-      include_bitcode: true,
-      export_options: { :jobs => jobs }
-    )
+    gym(clean: options[:clean], include_bitcode: true)
     if options[:test]
-      scan(clean: false)
+      scan(clean: false, skip_build: true)
     end
     upload_itunes
   end
