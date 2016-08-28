@@ -6,9 +6,9 @@ sudo gem install fastlane
 ```
 # Available Actions
 ## iOS
-### ios travis
+### ios ci
 ```
-fastlane ios travis
+fastlane ios ci
 ```
 Runs all the unit tests
 
@@ -20,13 +20,6 @@ Submits a new Beta Build to Apple TestFlight
 fastlane ios test
 ```
 Runs all the unit tests
-### ios release
-```
-fastlane ios release
-```
-Release lane
-
-Tries to optimize time compiling by calling Gym before Scan
 ### ios fabric
 ```
 fastlane ios fabric

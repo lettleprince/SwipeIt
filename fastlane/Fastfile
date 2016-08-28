@@ -34,9 +34,13 @@ platform :ios do
   desc "Runs all the unit tests"
   desc "Submits a new Beta Build to Fabric"
   desc "Submits a new Beta Build to Apple TestFlight"
-  lane :travis do
-    if (ENV['TRAVIS_PULL_REQUEST'] == "false" && git_branch == "master") || !is_ci
-      release
+  lane :ci do
+    if is_ci && ENV['TRAVIS_PULL_REQUEST'] == "false"
+      if git_branch == "master"
+        itunes(test: true)
+      elsif git_branch == "development"
+        fabric(test: true)
+      end
     else
       test
     end
@@ -45,18 +49,6 @@ platform :ios do
   desc "Runs all the unit tests"
   lane :test do
     scan
-  end
-
-  desc "Release lane"
-  desc "Tries to optimize time compiling by calling Gym before Scan"
-  lane :release do
-    update_build_number
-    match(type: "adhoc", force_for_new_devices: true)
-    match(type: "appstore")
-    gym(include_bitcode: true)
-    scan(skip_build: true, clean: false)
-    upload_crashlytics
-    upload_itunes
   end
 
   desc "Submit a new Beta Build to Fabric"
@@ -73,15 +65,21 @@ platform :ios do
     itunes
   end
 
-  private_lane :fabric_beta do
+  private_lane :fabric_beta do |options|
     match(type: "adhoc", force_for_new_devices: true)
     gym
+    if options[:test]
+      scan
+    end
     upload_crashlytics
   end
 
-  private_lane :itunes do
+  private_lane :itunes do |options|
     match(type: "appstore")
     gym(include_bitcode: true)
+    if options[:test]
+      scan
+    end
     upload_itunes
   end
 
