@@ -35,9 +35,10 @@ platform :ios do
   desc "Submits a new Beta Build to Fabric"
   desc "Submits a new Beta Build to Apple TestFlight"
   lane :travis do
-    test
-    if ENV['TRAVIS_PULL_REQUEST'] == "false" || !is_ci
+    if (ENV['TRAVIS_PULL_REQUEST'] == "false" && git_branch == "master") || !is_ci
       release
+    else
+      test
     end
   end
 
@@ -46,10 +47,16 @@ platform :ios do
     scan
   end
 
+  desc "Release lane"
+  desc "Tries to optimize time compiling by calling Gym before Scan"
   lane :release do
     update_build_number
-    fabric_beta
-    itunes
+    match(type: "adhoc", force_for_new_devices: true)
+    match(type: "appstore")
+    gym(clean: false, include_bitcode: true)
+    scan(skip_build: true, clean: false)
+    upload_crashlytics
+    upload_itunes
   end
 
   desc "Submit a new Beta Build to Fabric"
@@ -68,30 +75,31 @@ platform :ios do
 
   private_lane :fabric_beta do
     match(type: "adhoc", force_for_new_devices: true)
-
     gym
+    upload_crashlytics
+  end
 
+  private_lane :itunes do
+    match(type: "appstore")
+    gym(include_bitcode: true)
+    upload_itunes
+  end
+
+  private_lane :upload_crashlytics do
     crashlytics(
       api_token: ENV['SWIPEIT_FABRIC_CLIENT_ID'],
       build_secret: ENV['SWIPEIT_FABRIC_SECRET'],
       notes: commit[:message],
       groups: ["SwipeIt"]
     )
-
   end
 
-  private_lane :itunes do
-
-    match(type: "appstore")
-
-    gym(include_bitcode: true)
-
+  private_lane :upload_itunes do
     pilot(
       skip_submission: true,
       team_id: ENV['SWIPEIT_ITUNES_TEAM_ID'],
       skip_waiting_for_build_processing: true
     )
-
   end
 
   # Private Lanes
