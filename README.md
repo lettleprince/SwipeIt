@@ -90,6 +90,9 @@ In order to enforce it to the filesystem we're using [Synx](https://github.com/v
 - [Cell+Rx](https://github.com/ivanbruel/Cell-Rx): Handy RxSwift extensions on UITableViewCell and UICollectionViewCell, including rx_reusableDisposeBag
 - [RxOptional](https://github.com/RxSwiftCommunity/RxOptional): RxSwift extensions for Swift optionals and "Occupiable" types
 - [RxDataSources](https://github.com/RxSwiftCommunity/RxDataSources): Table and Collection View Data Sources for RxSwift
+- [RxTimer](https://github.com/ivanbruel/RxTimer): RxTimer adds RxSwift Timer bindings.
+- [RxResult](https://github.com/ivanbruel/RxResult): Result bindings for RxSwift.
+- [RxColor](https://github.com/ivanbruel/RxColor): RxSwift bindings for common UIColor setters
 
 ### Networking
 
@@ -99,9 +102,12 @@ In order to enforce it to the filesystem we're using [Synx](https://github.com/v
 - [RxAlamofire](https://github.com/RxSwiftCommunity/RxAlamofire): RxSwift wrapper around the elegant HTTP networking in Swift Alamofire
 - [Kingfisher](https://github.com/onevcat/Kingfisher): A lightweight and pure Swift implemented library for downloading and caching image from the web.
 
-### UI Components
+### UI
 
-None at the moment
+- [GPUImage2](https://github.com/BradLarson/GPUImage2): GPUImage 2 is a BSD-licensed Swift framework for GPU-accelerated video and image processing.
+- [ZLSwipeableViewSwift](https://github.com/zhxnlai/ZLSwipeableViewSwift): A simple view for building card like interface inspired by Tinder and Potluck.
+- [TTTAttributedLabel](https://github.com/TTTAttributedLabel/TTTAttributedLabel): A drop-in replacement for UILabel that supports attributes, data detectors, links, and more
+- [MarkdownKit](https://github.com/ivanbruel/MarkdownKit): A simple and customizable Markdown Parser for Swift
 
 ### Utilities
 
@@ -110,7 +116,6 @@ None at the moment
 - [Device](https://github.com/Ekhoo/Device): Light weight tool for detecting the current device and screen size written in swift
 - [AsyncSwift](https://github.com/duemunk/Async): Syntactic sugar in Swift for asynchronous dispatches in Grand Central Dispatch
 - [SnapKit](https://github.com/SnapKit/SnapKit): SnapKit is a DSL to make Auto Layout easy on both iOS and OS X
-
 
 ### Environment
 
@@ -142,18 +147,26 @@ To make sure Fabric and iTunes can deploy, make sure you have them set to someth
 
 **Note:** For ENV variables to work in Xcode you to set `$ defaults write com.apple.dt.Xcode UseSanitizedBuildSystemEnvironment -bool NO` and launch Xcode from the terminal. [Apple Developer Forums](https://forums.developer.apple.com/thread/8451)
 
+#### Signing
+
+- `SWIPEIT_SIGNING_IDENTITY_DIST`: iPhone Distribution: Company Name (ID)
+- `SWIPEIT_CERTIFICATE_KEY`: The Certificate key used in [Match](https://github.com/fastlane/fastlane/tree/master/match)
+- `SWIPEIT_CERTIFICATE_USER`: The username for the git being where Match is saving the Certificates.
+- `SWIPEIT_CERTIFICATE_TOKEN`: The access token for the git being where Match is saving the Certificates.
+- `SWIPEIT_CERTIFICATE_GIT`: The address or the git being where Match is saving the Certificates. (e.g. https://gitlab.com/username/Certificates)
+
 #### Fabric deployment
 
-- `SWIPEIT_SIGNING_IDENTITY_DEV`: iPhone Developer: Ivan Bruel (ID)
 - `SWIPEIT_FABRIC_CLIENT_ID`: API Key from [Fabric Organization](https://www.fabric.io/settings/organizations)
 - `SWIPEIT_FABRIC_SECRET`: Build Secret from [Fabric Organization](https://www.fabric.io/settings/organizations)
 
 #### iTunes deployment
 
-- `SWIPEIT_SIGNING_IDENTITY_PROD`: iPhone Distribution: Company Name (ID)
 - `SWIPEIT_TEAM_ID`: Team ID from [iTunes Membership](https://developer.apple.com/account/#/membership)
 - `SWIPEIT_ITUNES_TEAM_ID`: Team ID from [iTunes Connect](https://itunesconnect.apple.com/). (`$ pilot list` to check the number)
 - `SWIPEIT_TEAM_NAME`: Your Company Name
+- `SWIPEIT_APPLE_ID`: Your Apple ID (e.g. john@apple.com)
+- `SWIPEIT_ITUNES_PASSWORD`: The password for your Apple ID
 
 #### Misc
 
