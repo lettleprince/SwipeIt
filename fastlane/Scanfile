@@ -1,3 +1,4 @@
 scheme "SwipeIt"
 clean true
 output_types "html"
+code_coverage: true

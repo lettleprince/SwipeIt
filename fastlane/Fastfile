@@ -53,7 +53,7 @@ platform :ios do
     update_build_number
     match(type: "adhoc", force_for_new_devices: true)
     match(type: "appstore")
-    gym(clean: false, include_bitcode: true)
+    gym(include_bitcode: true)
     scan(skip_build: true, clean: false)
     upload_crashlytics
     upload_itunes
