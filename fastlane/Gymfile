@@ -1,0 +1,5 @@
+scheme "SwipeIt"
+output_directory ".build/"
+codesigning_identity ENV["SWIPEIT_SIGNING_IDENTITY_DISTRIBUTION"]
+include_symbols true
+xcargs "ARCHIVE=YES"

@@ -1,10 +1,4 @@
-###################### More Options ######################
-# If you want to have even more control, check out the documentation
-# https://github.com/KrauseFx/deliver/blob/master/Deliverfile.md
-
-
-###################### Automatically generated ######################
-# Feel free to remove the following line if you use fastlane (which you should)
-
-app_identifier "ios.ivanbruel.SwipeIt" # The bundle identifier of your app
-username ENV["SWIPEIT_APPLE_ID"] # your Apple ID user
+app_identifier "ios.ivanbruel.SwipeIt"
+username ENV["SWIPEIT_APPLE_ID"]
+copyright "#{Time.now.year} Ivan Bruel"
+automatic_release false

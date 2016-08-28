@@ -1,9 +1,5 @@
-git_url "https://gitlab.com/ivanbruel/SwipeIt-Certificates/"
-
-type "development" # The default type, can be: appstore, adhoc or development
-
-# app_identifier "tools.fastlane.app" 
-# username "user@fastlane.tools" # Your Apple Developer Portal username
-
-# For all available options run `match --help`
-# Remove the # in the beginning of the line to enable the other options
+git_url ENV["SWIPEIT_CERTIFICATE_GIT"]
+type "development"
+app_identifier "ios.ivanbruel.SwipeIt"
+username ENV["SWIPEIT_APPLE_ID"]
+team_id ENV["SWIPEIT_TEAM_ID"]
