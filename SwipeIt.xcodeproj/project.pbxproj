@@ -246,16 +246,6 @@
 		FFC364A7096FA2055429D719 /* Pods_SwipeItCommon_SwipeItTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF98ED1642859FA50C74B61 /* Pods_SwipeItCommon_SwipeItTests.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		308E96C91C875B7F00380735 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 308E96AC1C875B7E00380735 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 308E96B31C875B7E00380735;
-			remoteInfo = Reddit;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		100070D4E175D8EF1EE7C833 /* Pods-SwipeItCommon-SwipeIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwipeItCommon-SwipeIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwipeItCommon-SwipeIt/Pods-SwipeItCommon-SwipeIt.release.xcconfig"; sourceTree = "<group>"; };
 		300C2ABA1D05EBD90046DFA4 /* LinkImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkImageCell.swift; sourceTree = "<group>"; };
@@ -1521,7 +1511,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				308E96CA1C875B7F00380735 /* PBXTargetDependency */,
 			);
 			name = SwipeItTests;
 			productName = RedditTests;
@@ -1968,14 +1957,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		308E96CA1C875B7F00380735 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 308E96B31C875B7E00380735 /* SwipeIt */;
-			targetProxy = 308E96C91C875B7F00380735 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		30DDB24B1CCEDE19000B72E5 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -2105,6 +2086,7 @@
 			baseConfigurationReference = 72995F791D4D8CD58FACE773 /* Pods-SwipeItCommon-SwipeItTests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SwipeItTests/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vc.faber.RedditTests;
@@ -2118,6 +2100,7 @@
 			baseConfigurationReference = 7C98BF9F525B0EB1442B9579 /* Pods-SwipeItCommon-SwipeItTests.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				INFOPLIST_FILE = SwipeItTests/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vc.faber.RedditTests;

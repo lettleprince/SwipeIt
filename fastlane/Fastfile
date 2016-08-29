@@ -77,7 +77,7 @@ platform :ios do
     match(type: "adhoc", force_for_new_devices: true)
     gym(clean: options[:clean])
     if options[:test]
-      scan(clean: false, skip_build: true)
+      scan(clean: false, skip_build: true, configuration: "release")
     end
     upload_crashlytics
   end
@@ -86,7 +86,7 @@ platform :ios do
     match(type: "appstore")
     gym(clean: options[:clean], include_bitcode: true)
     if options[:test]
-      scan(clean: false, skip_build: true)
+      scan(clean: false, skip_build: true, configuration: "release")
     end
     upload_itunes
   end
