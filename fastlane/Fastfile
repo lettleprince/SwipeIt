@@ -114,7 +114,7 @@ platform :ios do
     ENV["MATCH_PASSWORD"] = ENV["SWIPEIT_CERTIFICATE_KEY"]
     ENV["FASTLANE_PASSWORD"] = ENV["SWIPEIT_ITUNES_PASSWORD"]
 
-    cocoapods(repo_update: true)
+    #cocoapods(repo_update: true)
   end
 
   private_lane :update_build_number do
