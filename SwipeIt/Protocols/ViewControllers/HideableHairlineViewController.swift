@@ -27,8 +27,8 @@ extension HideableHairlineViewController where Self: UIViewController {
 
   private func findHairline() -> UIImageView? {
     return navigationController?.navigationBar.subviews
-      .flatMap { $0.subviews }
-      .flatMap { $0 as? UIImageView }
+      .flatMap { (view: UIView) -> [UIView] in view.subviews }
+      .flatMap { (view: UIView) -> UIImageView? in view as? UIImageView }
       .filter { $0.bounds.size.width == self.navigationController?.navigationBar.bounds.size.width }
       .filter { $0.bounds.size.height <= 2 }
       .first

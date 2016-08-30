@@ -48,10 +48,12 @@ extension SubredditListViewModel {
 
   private var subredditsObservable: Observable<[Subreddit]> {
     return subredditListings.asObservable()
-      .filter { (subredditListing: [SubredditListing]) in
+      .filter { (subredditListing: [SubredditListing]) -> Bool in
         return subredditListing.last?.after == nil && subredditListing.count > 0
       }.map { (subredditListings: [SubredditListing]) -> [Subreddit] in
-        Array(subredditListings.flatMap { $0.subreddits }.flatten())
+        Array(subredditListings.flatMap { (subredditListing: SubredditListing) -> [Subreddit]? in
+          subredditListing.subreddits
+          }.flatten())
     }
   }
 
@@ -84,9 +86,11 @@ extension SubredditListViewModel {
   func requestAllSubreddits() {
     subredditListings
       .asDriver()
-      .filter { $0.count == 0 || $0.last?.after != nil }
-      .map { $0.last?.after }
-      .driveNext { [weak self] after in
+      .filter { (subredditListings: [SubredditListing]) -> Bool in
+        subredditListings.count == 0 || subredditListings.last?.after != nil
+      }.map { (subredditListings: [SubredditListing]) -> String? in
+        subredditListings.last?.after
+      }.driveNext { [weak self] after in
         self?.requestSubreddits(after)
       }.addDisposableTo(disposeBag)
   }

@@ -27,23 +27,7 @@ struct Multireddit: Mappable {
   var keyColor: String?
   var iconName: String?
 
-  lazy var username: String? = {
-    do {
-      let regex = try NSRegularExpression(pattern: "\(Constants.redditURL)/user/(.*)/m/",
-                                          options: [])
-      let path = self.url.absoluteString
-      if let firstMatch = regex
-        .firstMatchInString(path, options: [],
-                            range: NSRange(location: 0, length: path.characters.count)) {
-        let nsRange = firstMatch.rangeAtIndex(1)
-        let initialIndex = path.startIndex.advancedBy(nsRange.location)
-        let endIndex = path.startIndex.advancedBy(nsRange.location + nsRange.length)
-
-        return path.substringWithRange(initialIndex..<endIndex)
-      }
-    } catch { }
-    return nil
-  }()
+  lazy var username: String? = self.parseUsername()
 
   // MARK: JSON
   init?(_ map: Map) { }
@@ -65,4 +49,26 @@ struct Multireddit: Mappable {
     iconName <- (map["data.icon_name"], EmptyStringTransform())
   }
 
+}
+
+// MARK: Helpers
+extension Multireddit {
+
+  private func parseUsername() -> String? {
+    do {
+      let regex = try NSRegularExpression(pattern: "\(Constants.redditURL)/user/(.*)/m/",
+                                          options: [])
+      let path = self.url.absoluteString
+      if let firstMatch = regex
+        .firstMatchInString(path, options: [],
+                            range: NSRange(location: 0, length: path.characters.count)) {
+        let nsRange = firstMatch.rangeAtIndex(1)
+        let initialIndex = path.startIndex.advancedBy(nsRange.location)
+        let endIndex = path.startIndex.advancedBy(nsRange.location + nsRange.length)
+
+        return path.substringWithRange(initialIndex..<endIndex)
+      }
+    } catch { }
+    return nil
+  }
 }

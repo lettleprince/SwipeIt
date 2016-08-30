@@ -37,76 +37,12 @@ class LinkCardView: UIView {
   }
 
   // MARK: - Views
-  private lazy var containerView: UIView = {
-    let view = UIView()
-    view.addSubview(self.titleLabel)
-    view.addSubview(self.contextLabel)
-    view.addSubview(self.statsLabel)
-    view.addSubview(self.upvoteOverlayImageView)
-    view.addSubview(self.downvoteOverlayImageView)
-    return view
-  }()
-
-  private lazy var titleLabel: UILabel = {
-    let label = UILabel()
-    label.numberOfLines = 0
-    label.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Vertical)
-    label.font = UIFont.boldSystemFontOfSize(LinkCardView.titleFontSize)
-    Theming.sharedInstance.textColor
-      .bindTo(label.rx_textColor)
-      .addDisposableTo(self.rx_disposeBag)
-    return label
-  }()
-
-  private lazy var contextLabel: TTTAttributedLabel = {
-    let label = TTTAttributedLabel(frame: CGRect.zero)
-    label.font = UIFont.systemFontOfSize(LinkCardView.fontSize)
-    label.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Vertical)
-    label.numberOfLines = 1
-    label.textAlignment = .Left
-    label.delegate = self
-
-    Theming.sharedInstance.secondaryTextColor
-      .bindTo(label.rx_textColor)
-      .addDisposableTo(self.rx_disposeBag)
-
-    Theming.sharedInstance.accentColor
-      .subscribeNext { accentColor in
-        label.linkAttributes = [NSForegroundColorAttributeName: accentColor]
-        label.activeLinkAttributes = [NSForegroundColorAttributeName:
-          accentColor.colorWithAlphaComponent(0.5)]
-      }.addDisposableTo(self.rx_disposeBag)
-
-    return label
-  }()
-
-  private lazy var statsLabel: UILabel = {
-    let label = UILabel(frame: CGRect.zero)
-    label.font = UIFont.systemFontOfSize(LinkCardView.fontSize)
-    label.textAlignment = .Right
-
-    Theming.sharedInstance.textColor
-      .bindTo(label.rx_textColor)
-      .addDisposableTo(self.rx_disposeBag)
-
-    return label
-  }()
-
-  private lazy var upvoteOverlayImageView: UIImageView = {
-    let imageView = UIImageView(image: UIImage(asset: .UpvoteOverlay))
-    imageView.contentMode = .ScaleAspectFit
-    imageView.alpha = 0
-    imageView.tintColor = UIColor(named: .Orange)
-    return imageView
-  }()
-
-  private lazy var downvoteOverlayImageView: UIImageView = {
-    let imageView = UIImageView(image: UIImage(asset: .DownvoteOverlay))
-    imageView.contentMode = .ScaleAspectFit
-    imageView.alpha = 0
-    imageView.tintColor = UIColor(named: .Purple)
-    return imageView
-  }()
+  private lazy var containerView: UIView = self.createContentView()
+  private lazy var titleLabel: UILabel = self.createTitleLabel()
+  private lazy var contextLabel: TTTAttributedLabel = self.createContextLabel()
+  private lazy var statsLabel: UILabel = self.createStatsLabel()
+  private lazy var upvoteOverlayImageView: UIImageView = self.createUpvoteOverlayImageView()
+  private lazy var downvoteOverlayImageView: UIImageView = self.createDownvoteOverlayImageView()
 
   var contentView: UIView? = nil {
     didSet {
@@ -266,6 +202,77 @@ extension LinkCardView {
         }.map { (scoreIcon, score, commentsIcon, comments) in
           return [scoreIcon, score, commentsIcon, comments].joinWithSeparator(" ")
       }
+  }
+
+  private func createContextLabel() -> TTTAttributedLabel {
+    let label = TTTAttributedLabel(frame: CGRect.zero)
+    label.font = UIFont.systemFontOfSize(LinkCardView.fontSize)
+    label.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Vertical)
+    label.numberOfLines = 1
+    label.textAlignment = .Left
+    label.delegate = self
+
+    Theming.sharedInstance.secondaryTextColor
+      .bindTo(label.rx_textColor)
+      .addDisposableTo(self.rx_disposeBag)
+
+    Theming.sharedInstance.accentColor
+      .subscribeNext { accentColor in
+        label.linkAttributes = [NSForegroundColorAttributeName: accentColor]
+        label.activeLinkAttributes = [NSForegroundColorAttributeName:
+          accentColor.colorWithAlphaComponent(0.5)]
+      }.addDisposableTo(self.rx_disposeBag)
+
+    return label
+  }
+
+  private func createUpvoteOverlayImageView() -> UIImageView {
+    let imageView = UIImageView(image: UIImage(asset: .UpvoteOverlay))
+    imageView.contentMode = .ScaleAspectFit
+    imageView.alpha = 0
+    imageView.tintColor = UIColor(named: .Orange)
+    return imageView
+  }
+
+  private func createDownvoteOverlayImageView() -> UIImageView {
+    let imageView = UIImageView(image: UIImage(asset: .DownvoteOverlay))
+    imageView.contentMode = .ScaleAspectFit
+    imageView.alpha = 0
+    imageView.tintColor = UIColor(named: .Purple)
+    return imageView
+  }
+
+  private func createTitleLabel() -> UILabel {
+    let label = UILabel()
+    label.numberOfLines = 0
+    label.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Vertical)
+    label.font = UIFont.boldSystemFontOfSize(LinkCardView.titleFontSize)
+    Theming.sharedInstance.textColor
+      .bindTo(label.rx_textColor)
+      .addDisposableTo(self.rx_disposeBag)
+    return label
+  }
+
+  private func createStatsLabel() -> UILabel {
+    let label = UILabel(frame: CGRect.zero)
+    label.font = UIFont.systemFontOfSize(LinkCardView.fontSize)
+    label.textAlignment = .Right
+
+    Theming.sharedInstance.textColor
+      .bindTo(label.rx_textColor)
+      .addDisposableTo(self.rx_disposeBag)
+
+    return label
+  }
+
+  private func createContentView() -> UIView {
+    let view = UIView()
+    view.addSubview(self.titleLabel)
+    view.addSubview(self.contextLabel)
+    view.addSubview(self.statsLabel)
+    view.addSubview(self.upvoteOverlayImageView)
+    view.addSubview(self.downvoteOverlayImageView)
+    return view
   }
 }
 

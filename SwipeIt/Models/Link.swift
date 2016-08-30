@@ -98,10 +98,19 @@ struct Link: Votable, Mappable {
   }
 
   var imageURL: NSURL? {
-    if let imageURL = ImgurImageProvider.imageURLFromLink(self)
-      ?? previewImage?.gifSource?.url
-      ?? previewImage?.nsfwSource?.url
-      ?? previewImage?.source.url {
+    if let imageURL = ImgurImageProvider.imageURLFromLink(self){
+      return imageURL
+    }
+
+    if let imageURL = previewImage?.gifSource?.url {
+      return imageURL
+    }
+
+    if let imageURL = previewImage?.nsfwSource?.url {
+      return imageURL
+    }
+
+    if let imageURL = previewImage?.source.url {
       return imageURL
     }
     return url.absoluteString.matchesWithRegex(Link.imageExtensionRegex) ? url : nil
