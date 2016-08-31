@@ -1,5 +1,8 @@
 osx_image: xcode7.3
 language: objective-c
+cache:
+  - bundler
+  - cocoapods
 env:
   global:
   - FASTLANE_SKIP_UPDATE_CHECK=true
@@ -18,13 +21,13 @@ env:
   - secure: e2ee0blRA7imCcy9WVbY1ioNEzungBVU+CFH+wVWOItsHVx68vIrnGBefyA/oXCgTHLPDjFYHV0dO/3krWrVirqp0j4UfYnuS2IImPNuXmq9fbq2jAnV0SN9DF6tCj5GL31jtCJUr1jSjnypT+Cgn1oH52lnsqZBHuqF1HAjC9CDq0oqGbcKyC+SKH+DL8TmHtAM1E3fanYNz9C/6PYEqXJsP5C+zWR6KB0uzoZBtbGy8GTSEUQcejja/5zEWhzTAjQtbP8Gsw1XJJn6sFIZ9A1i9R+0oUkCu6aR3ExXxBaMzEl+6oIGAJBGOZz7LocX/QAa09iKV0/f/hCD94H9QVubO6mcKiyCn5JCvywZY5iLo1Ku/VNkbyTTAIAU3/CguZXVvkTLZLNebKUrmSarKoqs7ZYnJ0eTi/65tQ4Zgag8Hg5xyj6VKOKdJjKXsGm82OhtYG0BT9IKDSEYwcKYhusx/0V7yQV+cwkxoA7F0ArnO0t+z+BQPXriPufmR9XDZVSp8ERRY/h6hGEQnaYg1vjBMb9eZMjHhgjyCrNeHXDpf4RKcWlRvp6yrBpLNPNIVabTW4+XGRpDAqUNJ08sfGqL/YtOLVRRwXWLVVIgZW73+bNSeRBd0eHcelqAcRrBxgwD5cVgLuoT2IVyrRFakz2n11Yy0zorRlujyacM/UM=
   - secure: f8GbQ5dhB5gNCEa5GiZNJgfXR9ELAeoYzSHtqi/eOvMuUr0RuVKF3l4RV7Tdtl2Sbep82K828Z8QFRL0j1TSz4AJTz2dPavgmyZWl8npEJin1Wzx/dH+dPL9E6Qk56j0Piac46q7aWbeNnAaBjIWx43O8ORg1/H6MC7LkJbmN9u2OKlz6jDMgJFaHHA7E0W/e6laW8w/yfrT8ejLQY0nhJKVPL+2Ph2/PZ6FXPRPEUPWFdKrEvNil5Mly8tHFBz9A88PcI0ZbjOMsyO95jJa6Zb2mWAaovog4dadRmdchORFM1yklxyYRGx7mlEa85/r4rsY3mxqSxzIiQlhnxvOLcHFDJg0eTd1n2SkxhzCkdNhw6Y4CWSSaWA0PMwZyFDPob2I09fB8McUkoaX6VNYX4AftqwifJ1Fh/r5PW0EaI/I3UwjLZ5o9lEZuZuW+NXendrZ2Z680iBbH+Y+0ze17lYBM7yIsmGULFb5UST+VtlecV0hRxgwfLwgbdIyjl5/lnWE0nopsd8jzzuiQzjKX07ts0xIDufbZQSpAcvBTqQcC5lBns5/BGRxEC9MCn258JAx1biRx2mkkIm8G7wNZKlHz7KSHZAgZYkDf9SKukepKBwzcEiSqGJVZyzC4/wYvjHStMJPnsJuk00mS4K+sDd5GNgEF79vQH77vpYkBoM=
 install:
-- bundle install
-- bundle exec fastlane ci
+  - bundle install
+  - bundle exec fastlane ci
 before_install:
-- echo -e "machine gitlab.com\n login $SWIPEIT_CERTIFICATE_USER\n password $SWIPEIT_CERTIFICATE_TOKEN" >> ~/.netrc
+  - echo -e "machine gitlab.com\n login $SWIPEIT_CERTIFICATE_USER\n password $SWIPEIT_CERTIFICATE_TOKEN" >> ~/.netrc
 after_success:
-- bash <(curl -s https://codecov.io/bash) -J 'SwipeIt'
-- sleep 5
+  - bash <(curl -s https://codecov.io/bash) -J 'SwipeIt'
+  - sleep 5
 notifications:
   slack:
     secure: DQ08htmrpAIAZOaEpM+0BckkmWENwo+MuRVpCCfGboAb6Y3szI5aUy+kV7562Y4XCqLVreksEe2sZLqMOGqi0jiBM2jL5L6koftzenEcLvyrTQN0HxVATyWLcVfHxK/FINFDuI3hkZKtea/XhHAK4dbpKFkyKn7gNay1eG+UigGXzJf7aUR6tllaf4P7vG0TJgOgk4cYeJ0ZQc/qdehxZHSGFHzj4ACaINmNNP4DxhzxTBRYykqfewUkuxoVPB21DNkMkplOLEJsJtCQs9gdJrdpW3ocatPIQSVNqnBU1A2mbJbmG6MOSvIr87j9UnGJ9yovDF7y8Rz4h9QXDsAixaY1FfnQU7NFVimpmoLyQlE1VwU0Zsh/vVUesRIN8YyHgcs/JMbzzLfv+xBvuTwWJRIqB3srKSS4MgxBqEPJwytmw4JucFBmP3wZ0pXdTIqJtHCRHwhcXY2L7alGLCuobNwY9EAopgtlPJuTgO0Pp+ellDQIhtqMMtotCdy/YMLHMESg6ytF5PQmNXu8FD863A8R9o9BJ0Edws50XKApVvWdX1aGO/DY2n8TBTI3mT/BqBCEri724uLnwWkJL7JTC82+2S0b4vfyxRO9U6CofLMYWR6KYAxPpq5NVjBOaUsBJ2UyRWr3MK8731ck0BXDoTh4rzqiogCR6YgoUUuuUkQ=

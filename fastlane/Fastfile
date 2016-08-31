@@ -37,15 +37,23 @@ platform :ios do
   lane :ci do
     if is_ci && ENV['TRAVIS_PULL_REQUEST'] == "false"
       if git_branch == "master"
-        update_build_number
-        itunes(test: true, clean: true)
+        test_itunes
       elsif git_branch == "development"
-        update_build_number
-        fabric_beta(test: true, clean: true)
+        test_fabric
       end
     else
       test
     end
+  end
+
+  lane :test_itunes do
+    update_build_number
+    itunes(test: true, clean: true)
+  end
+
+  lane :test_fabric do
+    update_build_number
+    fabric_beta(test: true, clean: true)
   end
 
   lane :release do

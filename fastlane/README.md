@@ -15,6 +15,16 @@ Runs all the unit tests
 Submits a new Beta Build to Fabric
 
 Submits a new Beta Build to Apple TestFlight
+### ios test_itunes
+```
+fastlane ios test_itunes
+```
+
+### ios test_fabric
+```
+fastlane ios test_fabric
+```
+
 ### ios release
 ```
 fastlane ios release
@@ -39,11 +49,6 @@ fastlane ios itc
 Submit a new Beta Build to Apple TestFlight
 
 This will also make sure the profile is up to date
-### ios fabric_beta
-```
-fastlane ios fabric_beta
-```
-
 
 ----
 

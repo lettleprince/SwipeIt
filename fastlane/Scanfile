@@ -1,4 +1,4 @@
 scheme "SwipeIt"
 clean true
 output_types "html"
-code_coverage true
+xcargs "IDEBuildOperationMaxNumberOfConcurrentCompileTasks=`sysctl -n hw.ncpu`"
