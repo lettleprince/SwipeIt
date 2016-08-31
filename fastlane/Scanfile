@@ -1,4 +1,5 @@
-scheme "SwipeIt"
+scheme "SwipeItTests"
 output_types "html"
 xcargs "IDEBuildOperationMaxNumberOfConcurrentCompileTasks=`sysctl -n hw.ncpu`"
 skip_build true
+derived_data_path ".build/DerivedData"
