@@ -46,7 +46,7 @@ platform :ios do
 
   lane :release do
     update_build_number
-    fabric_beta(test: true)
+    fabric_beta
     itunes
   end
 
