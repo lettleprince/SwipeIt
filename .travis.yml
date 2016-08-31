@@ -22,7 +22,9 @@ env:
   - secure: f8GbQ5dhB5gNCEa5GiZNJgfXR9ELAeoYzSHtqi/eOvMuUr0RuVKF3l4RV7Tdtl2Sbep82K828Z8QFRL0j1TSz4AJTz2dPavgmyZWl8npEJin1Wzx/dH+dPL9E6Qk56j0Piac46q7aWbeNnAaBjIWx43O8ORg1/H6MC7LkJbmN9u2OKlz6jDMgJFaHHA7E0W/e6laW8w/yfrT8ejLQY0nhJKVPL+2Ph2/PZ6FXPRPEUPWFdKrEvNil5Mly8tHFBz9A88PcI0ZbjOMsyO95jJa6Zb2mWAaovog4dadRmdchORFM1yklxyYRGx7mlEa85/r4rsY3mxqSxzIiQlhnxvOLcHFDJg0eTd1n2SkxhzCkdNhw6Y4CWSSaWA0PMwZyFDPob2I09fB8McUkoaX6VNYX4AftqwifJ1Fh/r5PW0EaI/I3UwjLZ5o9lEZuZuW+NXendrZ2Z680iBbH+Y+0ze17lYBM7yIsmGULFb5UST+VtlecV0hRxgwfLwgbdIyjl5/lnWE0nopsd8jzzuiQzjKX07ts0xIDufbZQSpAcvBTqQcC5lBns5/BGRxEC9MCn258JAx1biRx2mkkIm8G7wNZKlHz7KSHZAgZYkDf9SKukepKBwzcEiSqGJVZyzC4/wYvjHStMJPnsJuk00mS4K+sDd5GNgEF79vQH77vpYkBoM=
 install:
   - bundle install
-  - bundle exec fastlane ci
+script:
+  - bundle exec fastlane test
+  - bundle exec fastlane ci_deploy
 before_install:
   - echo -e "machine gitlab.com\n login $SWIPEIT_CERTIFICATE_USER\n password $SWIPEIT_CERTIFICATE_TOKEN" >> ~/.netrc
 after_success:

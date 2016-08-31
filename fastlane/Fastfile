@@ -34,32 +34,20 @@ platform :ios do
   desc "Runs all the unit tests"
   desc "Submits a new Beta Build to Fabric"
   desc "Submits a new Beta Build to Apple TestFlight"
-  lane :ci do
+  lane :ci_release do
     if is_ci && ENV['TRAVIS_PULL_REQUEST'] == "false"
       if git_branch == "master"
-        test_itunes
+        itunes
       elsif git_branch == "development"
-        test_fabric
+        fabric
       end
-    else
-      test
     end
-  end
-
-  lane :test_itunes do
-    update_build_number
-    itunes(test: true, clean: true)
-  end
-
-  lane :test_fabric do
-    update_build_number
-    fabric_beta(test: true, clean: true)
   end
 
   lane :release do
     update_build_number
     fabric_beta(test: true)
-    itunes(clean: false)
+    itunes
   end
 
   desc "Runs all the unit tests"
@@ -71,31 +59,25 @@ platform :ios do
   desc "This will also make sure the profile is up to date"
   lane :fabric do
     update_build_number
-    fabric_beta(clean: true)
+    fabric_beta
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :itc do
     update_build_number
-    itunes(clean: true)
+    itunes
   end
 
   private_lane :fabric_beta do |options|
     match(type: "adhoc", force_for_new_devices: true)
-    gym(clean: options[:clean])
-    if options[:test]
-      scan(clean: false, skip_build: true)
-    end
+    gym
     upload_crashlytics
   end
 
   private_lane :itunes do |options|
     match(type: "appstore")
-    gym(clean: options[:clean], include_bitcode: true)
-    if options[:test]
-      scan(clean: false, skip_build: true)
-    end
+    gym(include_bitcode: true)
     upload_itunes
   end
 

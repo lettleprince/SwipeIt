@@ -2,5 +2,4 @@ scheme "SwipeIt"
 output_directory ".build/"
 codesigning_identity ENV["SWIPEIT_IDENTITY_DIST"]
 include_symbols true
-clean true
 xcargs "ARCHIVE=YES IDEBuildOperationMaxNumberOfConcurrentCompileTasks=`sysctl -n hw.ncpu`"
