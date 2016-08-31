@@ -6,9 +6,9 @@ sudo gem install fastlane
 ```
 # Available Actions
 ## iOS
-### ios ci_release
+### ios ci
 ```
-fastlane ios ci_release
+fastlane ios ci
 ```
 Runs all the unit tests
 

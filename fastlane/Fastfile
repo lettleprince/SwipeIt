@@ -53,7 +53,7 @@ platform :ios do
 
   desc "Runs all the unit tests"
   lane :test do
-    scan
+    scan(devices: ["iPhone 6s"])
   end
 
   desc "Submit a new Beta Build to Fabric"
