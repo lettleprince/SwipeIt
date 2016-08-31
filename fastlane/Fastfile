@@ -38,7 +38,7 @@ platform :ios do
     test
     if is_ci && ENV['TRAVIS_PULL_REQUEST'] == "false"
       if git_branch == "master"
-        itunes
+        itc
       elsif git_branch == "development"
         fabric
       end
