@@ -34,7 +34,8 @@ platform :ios do
   desc "Runs all the unit tests"
   desc "Submits a new Beta Build to Fabric"
   desc "Submits a new Beta Build to Apple TestFlight"
-  lane :ci_release do
+  lane :ci do
+    test
     if is_ci && ENV['TRAVIS_PULL_REQUEST'] == "false"
       if git_branch == "master"
         itunes
