@@ -8,7 +8,6 @@ PODS:
   - DateTools (1.7.0)
   - Device (1.0.3)
   - Fabric (1.6.8)
-  - GPUImage2 (0.1.0)
   - Kanna (1.1.0)
   - KeychainSwift (3.0.16)
   - Kingfisher (2.5.0)
@@ -71,7 +70,6 @@ DEPENDENCIES:
   - DateTools
   - Device
   - Fabric
-  - GPUImage2 (from `https://github.com/ivanbruel/GPUImage2`)
   - Kanna
   - KeychainSwift (~> 3.0)
   - Kingfisher
@@ -98,8 +96,6 @@ DEPENDENCIES:
   - ZLSwipeableViewSwift (from `https://github.com/zhxnlai/ZLSwipeableViewSwift`)
 
 EXTERNAL SOURCES:
-  GPUImage2:
-    :git: https://github.com/ivanbruel/GPUImage2
   ObjectMapper:
     :branch: compile_time
     :git: https://github.com/ivanbruel/ObjectMapper
@@ -109,9 +105,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/zhxnlai/ZLSwipeableViewSwift
 
 CHECKOUT OPTIONS:
-  GPUImage2:
-    :commit: 3fdc09ae07c502d2548194d6ea2f856c3ed40c3d
-    :git: https://github.com/ivanbruel/GPUImage2
   ObjectMapper:
     :commit: f5734cce614d9a089a4d4d40c74a75a0b9e7bd99
     :git: https://github.com/ivanbruel/ObjectMapper
@@ -130,7 +123,6 @@ SPEC CHECKSUMS:
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   Device: bcf333c7c497edabe6df9560fd64f1e255d45b2b
   Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
-  GPUImage2: 4ff31f41a47e240e5474b49d9e83e95e2ff5c562
   Kanna: 355ed0193e5d8caf4fd996856b5bc98d586c11b6
   KeychainSwift: a5bb85cd498ce2217b55e055ec59e9268d83384c
   Kingfisher: d467bd710907ec9aa94aaddecaa5390aa3559819
@@ -156,6 +148,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   ZLSwipeableViewSwift: f5ee94c2e4220f900f5a129118af2aef23062900
 
-PODFILE CHECKSUM: 4275c2e8f77d327b4480edd78e0ffb22875cd555
+PODFILE CHECKSUM: c25927c70e88f06269706da101fdb8da1bc78946
 
 COCOAPODS: 1.0.1

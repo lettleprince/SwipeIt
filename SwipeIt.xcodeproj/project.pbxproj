@@ -195,6 +195,7 @@
 		30BC0F371CDA11BA00DB3E19 /* NSObject+ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BC0F361CDA11BA00DB3E19 /* NSObject+ClassName.swift */; };
 		30BFD9FC1D50F66900539E4B /* Response+CustomMappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302786571CD2714F0072F711 /* Response+CustomMappers.swift */; };
 		30BFD9FD1D50F66A00539E4B /* Response+CustomMappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302786571CD2714F0072F711 /* Response+CustomMappers.swift */; };
+		30C241B81D7835A00058B82C /* UIImageEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C241B71D7835A00058B82C /* UIImageEffects.swift */; };
 		30C2FC201D6B1DC40085603C /* ImageAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C2FC1F1D6B1DC40085603C /* ImageAttachment.swift */; };
 		30C641DE1D4F9F5700D37A7E /* MarkdownSubreddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C641DD1D4F9F5700D37A7E /* MarkdownSubreddit.swift */; };
 		30C641E01D4F9F6400D37A7E /* MarkdownUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C641DF1D4F9F6400D37A7E /* MarkdownUser.swift */; };
@@ -390,6 +391,7 @@
 		30BC0F301CDA0F6800DB3E19 /* SubredditListItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubredditListItemTableViewCell.swift; sourceTree = "<group>"; };
 		30BC0F331CDA103000DB3E19 /* ReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
 		30BC0F361CDA11BA00DB3E19 /* NSObject+ClassName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassName.swift"; sourceTree = "<group>"; };
+		30C241B71D7835A00058B82C /* UIImageEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageEffects.swift; path = UIImageEffects/UIImageEffects.swift; sourceTree = "<group>"; };
 		30C2FC1F1D6B1DC40085603C /* ImageAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAttachment.swift; sourceTree = "<group>"; };
 		30C641DD1D4F9F5700D37A7E /* MarkdownSubreddit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownSubreddit.swift; sourceTree = "<group>"; };
 		30C641DF1D4F9F6400D37A7E /* MarkdownUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownUser.swift; sourceTree = "<group>"; };
@@ -1035,6 +1037,7 @@
 		308E96DB1C8769DA00380735 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
+				30C241B61D78358C0058B82C /* UIImageEffects */,
 				300C2AE11D088A2D0046DFA4 /* String+HTMLDecode */,
 			);
 			path = Externals;
@@ -1294,6 +1297,14 @@
 				30BC0F361CDA11BA00DB3E19 /* NSObject+ClassName.swift */,
 			);
 			path = "NSObject+ClassName";
+			sourceTree = "<group>";
+		};
+		30C241B61D78358C0058B82C /* UIImageEffects */ = {
+			isa = PBXGroup;
+			children = (
+				30C241B71D7835A00058B82C /* UIImageEffects.swift */,
+			);
+			name = UIImageEffects;
 			sourceTree = "<group>";
 		};
 		30C2FC1E1D6B1DB10085603C /* ImageAttachment */ = {
@@ -1749,6 +1760,7 @@
 				308E96E91C876AA800380735 /* Network.swift in Sources */,
 				309462CC1CCD956200E18655 /* EmptyStringTransform.swift in Sources */,
 				300C4D351D5491AD00659F32 /* AlertHelper.swift in Sources */,
+				30C241B81D7835A00058B82C /* UIImageEffects.swift in Sources */,
 				308601BB1CECAC2D00BFCB87 /* HTMLParser.swift in Sources */,
 				308D881B1CD0CABD00C78E74 /* MoreComments.swift in Sources */,
 				30482CA61CCFC8BA0063D238 /* AlerteableViewController.swift in Sources */,

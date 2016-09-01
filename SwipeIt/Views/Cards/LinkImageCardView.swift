@@ -9,7 +9,6 @@
 import UIKit
 import Async
 import Kingfisher
-import GPUImage2
 
 @IBDesignable
 class LinkImageCardView: LinkCardView {
@@ -94,12 +93,7 @@ extension LinkImageCardView {
   private static func blurImage(image: UIImage, into imageView: UIImageView) {
     Async.background {
       let scaledImage = resizeImage(image, imageView: imageView)
-      let blurFilter = iOSBlur()
-      let brightnessFilter = BrightnessAdjustment()
-      brightnessFilter.brightness = -0.2
-      let blurredImage = scaledImage.filterWithPipeline { (input, output) in
-        input --> blurFilter --> brightnessFilter --> output
-      }
+      let blurredImage = scaledImage.applyDarkEffect()
       Async.main {
         UIView.transitionWithView(imageView, duration: fadeAnimationDuration,
           options: .TransitionCrossDissolve, animations: {

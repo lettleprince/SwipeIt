@@ -134,7 +134,7 @@ In order to enforce it to the filesystem we're using [Synx](https://github.com/v
 In order to run the tests execute:
 
 ```bash
-bundle exec fastlane ios tests
+bundle exec fastlane ios test
 ```
 
 ## Continuous Integration
@@ -179,13 +179,13 @@ Although all the deployment is done through Travis, you can do it manually throu
 #### Deployment to Fabric
 
 ```bash
-bundle exec fastlane ios fabric
+bundle exec fastlane fabric
 ```
 
 ### Deployment to iTunes Connect
 
 ```bash
-bundle exec fastlane ios itunes
+bundle exec fastlane itc
 ```
 
 ## Yet another Reddit app
