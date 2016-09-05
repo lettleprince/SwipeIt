@@ -109,6 +109,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/RxTimer/RxTimer.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SnapKit/SnapKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TTTAttributedLabel/TTTAttributedLabel.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/TextStyle/TextStyle.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ZLSwipeableViewSwift/ZLSwipeableViewSwift.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -137,5 +138,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/RxTimer/RxTimer.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SnapKit/SnapKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TTTAttributedLabel/TTTAttributedLabel.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/TextStyle/TextStyle.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ZLSwipeableViewSwift/ZLSwipeableViewSwift.framework"
 fi

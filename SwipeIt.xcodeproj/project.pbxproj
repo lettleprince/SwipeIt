@@ -242,6 +242,7 @@
 		30F6C9AE1C8A115400616707 /* Voted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F6C9AD1C8A115400616707 /* Voted.swift */; };
 		30F6C9B01C8A142500616707 /* Votable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F6C9AF1C8A142500616707 /* Votable.swift */; };
 		30F6C9B21C8A142D00616707 /* Created.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F6C9B11C8A142D00616707 /* Created.swift */; };
+		30F9EDFA1D79972D00A74E82 /* UIImageViewTopAligned.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F9EDF91D79972D00A74E82 /* UIImageViewTopAligned.swift */; };
 		9DF5D57A1F9A6372EB4A4112 /* Pods_SwipeItCommon_SwipeIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A91B8A9F21AE0AC8EEDC5B7 /* Pods_SwipeItCommon_SwipeIt.framework */; };
 		FFC364A7096FA2055429D719 /* Pods_SwipeItCommon_SwipeItTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF98ED1642859FA50C74B61 /* Pods_SwipeItCommon_SwipeItTests.framework */; };
 /* End PBXBuildFile section */
@@ -436,6 +437,7 @@
 		30F6C9AD1C8A115400616707 /* Voted.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Voted.swift; sourceTree = "<group>"; };
 		30F6C9AF1C8A142500616707 /* Votable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Votable.swift; sourceTree = "<group>"; };
 		30F6C9B11C8A142D00616707 /* Created.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Created.swift; sourceTree = "<group>"; };
+		30F9EDF91D79972D00A74E82 /* UIImageViewTopAligned.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewTopAligned.swift; sourceTree = "<group>"; };
 		72995F791D4D8CD58FACE773 /* Pods-SwipeItCommon-SwipeItTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwipeItCommon-SwipeItTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwipeItCommon-SwipeItTests/Pods-SwipeItCommon-SwipeItTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7C98BF9F525B0EB1442B9579 /* Pods-SwipeItCommon-SwipeItTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwipeItCommon-SwipeItTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwipeItCommon-SwipeItTests/Pods-SwipeItCommon-SwipeItTests.release.xcconfig"; sourceTree = "<group>"; };
 		7E36053B273990D8DB6716EE /* Pods-SwipeItCommon-SwipeIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwipeItCommon-SwipeIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwipeItCommon-SwipeIt/Pods-SwipeItCommon-SwipeIt.debug.xcconfig"; sourceTree = "<group>"; };
@@ -693,6 +695,7 @@
 			isa = PBXGroup;
 			children = (
 				30599BF11D671F1200039CCA /* CircleView.swift */,
+				30F9EDF91D79972D00A74E82 /* UIImageViewTopAligned.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1872,6 +1875,7 @@
 				30599BF51D67599700039CCA /* UIImage+Colorize.swift in Sources */,
 				3071BFD11D6F358800CA6E03 /* UIImage+Scale.swift in Sources */,
 				308E96ED1C876C2700380735 /* Constants.swift in Sources */,
+				30F9EDFA1D79972D00A74E82 /* UIImageViewTopAligned.swift in Sources */,
 				30BC0F261CDA044300DB3E19 /* SubredditListViewController.swift in Sources */,
 				30DDB26C1CCF68B0000B72E5 /* QueryReader.swift in Sources */,
 				305C08001CDCE72E009D287D /* MultiredditListItemTableViewCell.swift in Sources */,

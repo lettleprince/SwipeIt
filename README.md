@@ -131,12 +131,6 @@ In order to enforce it to the filesystem we're using [Synx](https://github.com/v
 - [Quick](https://github.com/Quick/Quick): The Swift (and Objective-C) testing framework.
 - [Nimble](https://github.com/Quick/Nimble): A Matcher Framework for Swift and Objective-C
 
-In order to run the tests execute:
-
-```bash
-bundle exec fastlane ios test
-```
-
 ## Continuous Integration
 
 We are using [Travis](https://travis-ci.org/ivanbruel/MVVM-Benchmark) alongside [Fastlane](https://fastlane.tools/) to perform continuous integration both by unit testing and deploying to [Fabric](https://fabric.io) or [iTunes Connect](https://itunesconnect.apple.com) later on.
