@@ -35,9 +35,9 @@ class LinkImageCardView: LinkCardView {
 
   // MARK: - Views
   private lazy var imageContentView: UIView = self.createImageContentView()
-  private lazy var imageView: AnimatedImageView = self.createImageView()
+  private lazy var imageView: UIImageViewTopAligned = self.createImageView()
   private lazy var backgroundImageView: UIImageView = self.createBackgroundImageView()
-  
+
   // MARK - Initializers
   override init() {
     super.init(frame: .zero)
@@ -113,20 +113,15 @@ extension LinkImageCardView {
   private func createImageContentView() -> UIView {
     let view = UIView()
     view.backgroundColor = .clearColor()
-    view.clipsToBounds = false
+    view.clipsToBounds = true
     view.addSubview(self.backgroundImageView)
     view.addSubview(self.imageView)
     return view
   }
 
-  private func createImageView() -> AnimatedImageView {
-    let imageView = AnimatedImageView()
-    imageView.autoPlayAnimatedImage = false
+  private func createImageView() -> UIImageViewTopAligned {
+    let imageView = UIImageViewTopAligned()
     imageView.contentMode = .ScaleAspectFit
-    imageView.kf_showIndicatorWhenLoading = true
-    // Better performance while scrolling
-    imageView.framePreloadCount = 1
-    imageView.clipsToBounds = true
     return imageView
   }
 
