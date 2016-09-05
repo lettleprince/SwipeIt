@@ -10,12 +10,13 @@ import Foundation
 
 extension RawRepresentable {
 
+
   /**
    Failable initializer for RawRepresentables with optional raw values
 
-   :param: optionalRawValue An optional raw value.
+   - parameter optionalRawValue: An optional raw value.
 
-   :returns: The RawRepresentable value or nil.
+   - returns: The RawRepresentable value or nil.
    */
    init?(optionalRawValue: RawValue?) {
 

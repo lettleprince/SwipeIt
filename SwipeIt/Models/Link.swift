@@ -98,7 +98,7 @@ struct Link: Votable, Mappable {
   }
 
   var imageURL: NSURL? {
-    if let imageURL = ImgurImageProvider.imageURLFromLink(self){
+    if let imageURL = ImgurImageProvider.imageURLFromLink(self) {
       return imageURL
     }
 

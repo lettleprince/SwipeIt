@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-// MARK: Properties, Lifecycle and API
+// MARK: - Properties, Lifecycle and API
 class WebViewController: UIViewController {
 
   let webView = WKWebView()
@@ -31,7 +31,7 @@ class WebViewController: UIViewController {
   }
 }
 
-//MARK: Setup
+// MARK: - Setup
 extension WebViewController: WKNavigationDelegate {
 
   private func setupViews() {
@@ -73,7 +73,7 @@ extension WebViewController: WKNavigationDelegate {
   }
 }
 
-// MARK: Animations
+// MARK: - Animations
 extension WebViewController {
 
   private func hideProgressView() {
