@@ -19,11 +19,11 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>160829.0024</string>
+	<string>160901.1145</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
-		<string>f48c0270cdcb52b2aaab56c937aab0a54cca059b</string>
+		<string>${SWIPEIT_FABRIC_CLIENT_ID}</string>
 		<key>Kits</key>
 		<array>
 			<dict>
