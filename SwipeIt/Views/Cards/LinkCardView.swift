@@ -9,14 +9,13 @@
 import UIKit
 import RxColor
 import RxSwift
+import TextStyle
 import TTTAttributedLabel
 
 @IBDesignable
 class LinkCardView: UIView {
 
   // MARK: - Constants
-  private static let titleFontSize = UIFont.systemFontSize()
-  private static let fontSize = UIFont.smallSystemFontSize()
   private static let spacing: CGFloat = 10
 
   // MARK: - ViewModel
@@ -25,12 +24,22 @@ class LinkCardView: UIView {
       guard let viewModel = viewModel else { return }
       animateOverlayPercentage(0)
       titleLabel.text = viewModel.title
-      viewModel.context
-        .subscribeNext { [weak self] context in
-          self?.contextLabel.setText(context)
+
+      Observable.combineLatest(viewModel.context, TextStyle.Caption1.rx_font) { ($0, $1) }
+        .subscribeNext { [weak self] (context, font) in
+          guard let context = context else {
+            self?.contextLabel.setText(nil)
+            return
+          }
+          let mutableContext = NSMutableAttributedString(attributedString: context)
+          mutableContext.setFont(font)
+          self?.contextLabel.setText(mutableContext)
         }.addDisposableTo(rx_disposeBag)
-      LinkCardView.statsAttributedString(viewModel.scoreIcon, score: viewModel.score,
-        commentsIcon: viewModel.commentsIcon, comments: viewModel.comments)
+
+      LinkCardView
+        .statsAttributedString(viewModel.scoreIcon, score: viewModel.score,
+          commentsIcon: viewModel.commentsIcon, comments: viewModel.comments,
+          font: TextStyle.Caption1.rx_font)
         .bindTo(statsLabel.rx_attributedText)
         .addDisposableTo(rx_disposeBag)
     }
@@ -182,18 +191,17 @@ extension LinkCardView {
   private static func statsAttributedString(scoreIcon: Observable<UIImage>,
                                             score: Observable<NSAttributedString>,
                                             commentsIcon: Observable<UIImage>,
-                                            comments: Observable<NSAttributedString>)
+                                            comments: Observable<NSAttributedString>,
+                                            font: Observable<UIFont>)
     -> Observable<NSAttributedString?> {
-      let commentsIcon = commentsIcon
-        .map { commentsIcon -> NSAttributedString  in
-          let attachment = ImageAttachment(commentsIcon,
-            verticalOffset: UIFont.systemFontOfSize(LinkCardView.fontSize).descender)
+      let commentsIcon = Observable.combineLatest(commentsIcon, font) { ($0, $1) }
+        .map { (commentsIcon, font) -> NSAttributedString  in
+          let attachment = ImageAttachment(commentsIcon, verticalOffset: font.descender)
           return NSAttributedString(attachment: attachment)
       }
-      let scoreIcon = scoreIcon
-        .map { scoreIcon -> NSAttributedString in
-          let attachment = ImageAttachment(scoreIcon,
-            verticalOffset: UIFont.systemFontOfSize(LinkCardView.fontSize).descender)
+      let scoreIcon = Observable.combineLatest(scoreIcon, font) { ($0, $1) }
+        .map { (scoreIcon, font) -> NSAttributedString in
+          let attachment = ImageAttachment(scoreIcon, verticalOffset: font.descender)
           return NSAttributedString(attachment: attachment)
       }
       return Observable
@@ -206,7 +214,6 @@ extension LinkCardView {
 
   private func createContextLabel() -> TTTAttributedLabel {
     let label = TTTAttributedLabel(frame: CGRect.zero)
-    label.font = UIFont.systemFontOfSize(LinkCardView.fontSize)
     label.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Vertical)
     label.numberOfLines = 1
     label.textAlignment = .Left
@@ -246,7 +253,11 @@ extension LinkCardView {
     let label = UILabel()
     label.numberOfLines = 0
     label.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Vertical)
-    label.font = UIFont.boldSystemFontOfSize(LinkCardView.titleFontSize)
+
+    TextStyle.Subheadline.rx_font
+      .bindTo(label.rx_font)
+      .addDisposableTo(self.rx_disposeBag)
+
     Theming.sharedInstance.textColor
       .bindTo(label.rx_textColor)
       .addDisposableTo(self.rx_disposeBag)
@@ -255,7 +266,9 @@ extension LinkCardView {
 
   private func createStatsLabel() -> UILabel {
     let label = UILabel(frame: CGRect.zero)
-    label.font = UIFont.systemFontOfSize(LinkCardView.fontSize)
+    TextStyle.Caption1.rx_font
+      .bindTo(label.rx_font)
+      .addDisposableTo(self.rx_disposeBag)
     label.textAlignment = .Right
 
     Theming.sharedInstance.textColor
@@ -277,5 +290,5 @@ extension LinkCardView {
 }
 
 extension LinkCardView: TTTAttributedLabelDelegate {
-  
+
 }
