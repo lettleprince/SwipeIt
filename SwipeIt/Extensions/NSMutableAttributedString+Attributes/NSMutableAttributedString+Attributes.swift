@@ -18,6 +18,10 @@ extension NSAttributedString {
 
 extension NSMutableAttributedString {
 
+  func setFont(font: UIFont) {
+    addAttribute(NSFontAttributeName, value: font, range: range)
+  }
+
   func setTextColor(textColor: UIColor) {
     addAttribute(NSForegroundColorAttributeName, value: textColor, range: range)
   }
