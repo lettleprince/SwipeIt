@@ -2,6 +2,8 @@
 
 import Foundation
 
+// swiftlint:disable file_length
+// swiftlint:disable type_body_length
 enum L10n {
   /// Close
   case CloseableButtonClose
@@ -64,6 +66,7 @@ enum L10n {
   /// Retry
   case Retry
 }
+// swiftlint:enable type_body_length
 
 extension L10n: CustomStringConvertible {
   var description: String { return self.string }

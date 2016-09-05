@@ -37,15 +37,32 @@ extension UIViewController {
   }
 }
 
+// swiftlint:disable file_length
+// swiftlint:disable type_body_length
+
 struct StoryboardScene {
   enum LaunchScreen: StoryboardSceneType {
     static let storyboardName = "LaunchScreen"
   }
   enum Main: StoryboardSceneType {
     static let storyboardName = "Main"
+
+    static func initialViewController() -> UINavigationController {
+      guard let vc = storyboard().instantiateInitialViewController() as? UINavigationController else {
+        fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
+      }
+      return vc
+    }
   }
   enum Onboarding: StoryboardSceneType {
     static let storyboardName = "Onboarding"
+
+    static func initialViewController() -> UINavigationController {
+      guard let vc = storyboard().instantiateInitialViewController() as? UINavigationController else {
+        fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
+      }
+      return vc
+    }
   }
 }
 

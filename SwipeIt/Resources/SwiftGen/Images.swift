@@ -8,6 +8,8 @@
   typealias Image = NSImage
 #endif
 
+// swiftlint:disable file_length
+// swiftlint:disable type_body_length
 enum Asset: String {
   case CommentsGlyph = "CommentsGlyph"
   case DownvotedGlyph = "DownvotedGlyph"
@@ -24,6 +26,7 @@ enum Asset: String {
     return Image(asset: self)
   }
 }
+// swiftlint:enable type_body_length
 
 extension Image {
   convenience init!(asset: Asset) {
