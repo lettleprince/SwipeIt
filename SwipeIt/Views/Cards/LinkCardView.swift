@@ -49,6 +49,7 @@ class LinkCardView: UIView {
   private lazy var containerView: UIView = self.createContentView()
   private lazy var titleLabel: UILabel = self.createTitleLabel()
   private lazy var contextLabel: TTTAttributedLabel = self.createContextLabel()
+  private lazy var bottomBar: UIVisualEffectView = self.createBottomBar()
   private lazy var statsLabel: UILabel = self.createStatsLabel()
   private lazy var upvoteOverlayImageView: UIImageView = self.createUpvoteOverlayImageView()
   private lazy var downvoteOverlayImageView: UIImageView = self.createDownvoteOverlayImageView()
@@ -59,11 +60,12 @@ class LinkCardView: UIView {
       containerView.addSubview(contentView)
       contentView.snp_makeConstraints { make in
         make.top.equalTo(contextLabel.snp_bottom).offset(LinkCardView.spacing)
-        make.bottom.equalTo(statsLabel.snp_top)
+        make.bottom.equalTo(bottomBar.snp_top)
         make.left.right.equalTo(containerView)
       }
       containerView.bringSubviewToFront(upvoteOverlayImageView)
       containerView.bringSubviewToFront(downvoteOverlayImageView)
+      containerView.bringSubviewToFront(bottomBar)
     }
     willSet {
       contentView?.removeFromSuperview()
@@ -88,9 +90,10 @@ class LinkCardView: UIView {
 
   private func commonInit() {
     backgroundColor = .whiteColor()
-    borderColor = UIColor(named: .DarkGray)
+    borderColor = UIColor(named: .Gray)
     borderWidth = 1
     cornerRadius = 4
+    clipsToBounds = true
 
     addSubview(containerView)
     setupConstraints()
@@ -114,11 +117,15 @@ class LinkCardView: UIView {
       make.right.equalTo(containerView).inset(LinkCardView.spacing)
     }
 
-    statsLabel.snp_makeConstraints { make in
-      make.bottom.equalTo(containerView)
-      make.right.equalTo(containerView).inset(LinkCardView.spacing)
-      make.left.equalTo(containerView).offset(LinkCardView.spacing)
+    bottomBar.snp_makeConstraints { make in
+      make.bottom.left.right.equalTo(containerView)
       make.height.equalTo(44)
+    }
+
+    statsLabel.snp_makeConstraints { make in
+      make.bottom.right.equalTo(bottomBar).offset(-LinkCardView.spacing)
+      make.right.equalTo(bottomBar).inset(LinkCardView.spacing)
+      make.top.left.equalTo(bottomBar).offset(LinkCardView.spacing)
     }
 
     upvoteOverlayImageView.snp_makeConstraints { make in
@@ -173,7 +180,9 @@ extension LinkCardView {
   }
 
   // MARK: Lifecycle
-  func didAppear() { }
+  func didAppear() {
+    animateOverlayPercentage(0)
+  }
 
   func didDisappear() {
     animateOverlayPercentage(0)
@@ -278,11 +287,18 @@ extension LinkCardView {
     return label
   }
 
+  private func createBottomBar() -> UIVisualEffectView {
+    let view = UIVisualEffectView(effect: UIBlurEffect(style: .ExtraLight))
+    view.tintColor = .whiteColor()
+    view.addSubview(self.statsLabel)
+    return view
+  }
+
   private func createContentView() -> UIView {
     let view = UIView()
     view.addSubview(self.titleLabel)
     view.addSubview(self.contextLabel)
-    view.addSubview(self.statsLabel)
+    view.addSubview(self.bottomBar)
     view.addSubview(self.upvoteOverlayImageView)
     view.addSubview(self.downvoteOverlayImageView)
     return view
