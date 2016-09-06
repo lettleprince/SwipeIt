@@ -40,21 +40,12 @@ extension Globals {
 // MARK: User Defaults
 extension Globals {
 
-  static var autoPlayGIF: Bool {
+  static var hideVotedPosts: Bool {
     get {
-      return userDefaults.boolForKey("autoPlayGIF")
+      return userDefaults.boolForKey("hideVotedPosts")
     }
     set {
-      userDefaults.setBool(newValue, forKey: "autoPlayGIF")
-    }
-  }
-
-  static var playGIFScrolling: Bool {
-    get {
-      return userDefaults.boolForKey("playGIFScrolling")
-    }
-    set {
-      userDefaults.setBool(newValue, forKey: "playGIFScrolling")
+      userDefaults.setBool(newValue, forKey: "hideVotedPosts")
     }
   }
 
