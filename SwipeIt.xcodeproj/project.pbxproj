@@ -185,6 +185,8 @@
 		30A4817F1CCF6FDC000F1090 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A4817E1CCF6FDC000F1090 /* LoginError.swift */; };
 		30A481801CCF7461000F1090 /* NowDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DDB2681CCF5CED000B72E5 /* NowDateTransform.swift */; };
 		30A8BB151D33CD5A00FE264A /* InsettedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8BB141D33CD5A00FE264A /* InsettedLabel.swift */; };
+		30A944141D7EC552004B841F /* PostHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A944131D7EC552004B841F /* PostHint.swift */; };
+		30A944151D7EC555004B841F /* PostHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A944131D7EC552004B841F /* PostHint.swift */; };
 		30BAC22F1CDA479100882942 /* InsettableScrollViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BAC22E1CDA479100882942 /* InsettableScrollViewViewController.swift */; };
 		30BC0F261CDA044300DB3E19 /* SubredditListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BC0F251CDA044300DB3E19 /* SubredditListViewController.swift */; };
 		30BC0F281CDA09AD00DB3E19 /* SectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BC0F271CDA09AD00DB3E19 /* SectionViewModel.swift */; };
@@ -384,6 +386,7 @@
 		30968A681D391B6D00BC77D5 /* String+Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Range.swift"; sourceTree = "<group>"; };
 		30A4817E1CCF6FDC000F1090 /* LoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		30A8BB141D33CD5A00FE264A /* InsettedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsettedLabel.swift; sourceTree = "<group>"; };
+		30A944131D7EC552004B841F /* PostHint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostHint.swift; sourceTree = "<group>"; };
 		30BAC22E1CDA479100882942 /* InsettableScrollViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsettableScrollViewViewController.swift; sourceTree = "<group>"; };
 		30BC0F251CDA044300DB3E19 /* SubredditListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubredditListViewController.swift; sourceTree = "<group>"; };
 		30BC0F271CDA09AD00DB3E19 /* SectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionViewModel.swift; sourceTree = "<group>"; };
@@ -392,7 +395,7 @@
 		30BC0F301CDA0F6800DB3E19 /* SubredditListItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubredditListItemTableViewCell.swift; sourceTree = "<group>"; };
 		30BC0F331CDA103000DB3E19 /* ReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
 		30BC0F361CDA11BA00DB3E19 /* NSObject+ClassName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassName.swift"; sourceTree = "<group>"; };
-		30C241B71D7835A00058B82C /* UIImageEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageEffects.swift; path = UIImageEffects/UIImageEffects.swift; sourceTree = "<group>"; };
+		30C241B71D7835A00058B82C /* UIImageEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageEffects.swift; sourceTree = "<group>"; };
 		30C2FC1F1D6B1DC40085603C /* ImageAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAttachment.swift; sourceTree = "<group>"; };
 		30C641DD1D4F9F5700D37A7E /* MarkdownSubreddit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownSubreddit.swift; sourceTree = "<group>"; };
 		30C641DF1D4F9F6400D37A7E /* MarkdownUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownUser.swift; sourceTree = "<group>"; };
@@ -868,6 +871,7 @@
 				300C4D391D54CB1900659F32 /* ListingType+Name.swift */,
 				308E96EE1C87701600380735 /* ListingType.swift */,
 				308D88201CD0CCB600C78E74 /* MultiredditVisibility.swift */,
+				30A944131D7EC552004B841F /* PostHint.swift */,
 				303DAC1A1CD90CDA00712D91 /* Scope.swift */,
 				30482CA91CCFD8580063D238 /* SubmissionType.swift */,
 				30482CA71CCFD7E70063D238 /* SubredditType.swift */,
@@ -1040,8 +1044,8 @@
 		308E96DB1C8769DA00380735 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
-				30C241B61D78358C0058B82C /* UIImageEffects */,
 				300C2AE11D088A2D0046DFA4 /* String+HTMLDecode */,
+				30C241B61D78358C0058B82C /* UIImageEffects */,
 			);
 			path = Externals;
 			sourceTree = "<group>";
@@ -1307,7 +1311,7 @@
 			children = (
 				30C241B71D7835A00058B82C /* UIImageEffects.swift */,
 			);
-			name = UIImageEffects;
+			path = UIImageEffects;
 			sourceTree = "<group>";
 		};
 		30C2FC1E1D6B1DB10085603C /* ImageAttachment */ = {
@@ -1847,6 +1851,7 @@
 				305C08121CDCF9D2009D287D /* MultiredditListViewController.swift in Sources */,
 				303DAC1B1CD90CDA00712D91 /* Scope.swift in Sources */,
 				30806BFB1C8D9A6C00EB1BD5 /* EditedTransform.swift in Sources */,
+				30A944141D7EC552004B841F /* PostHint.swift in Sources */,
 				303E288B1CE1F2B800537BAB /* OpenGraphViewModel.swift in Sources */,
 				308D882A1CD0D57500C78E74 /* User.swift in Sources */,
 				30BC0F2E1CDA0AEE00DB3E19 /* Array+Unique.swift in Sources */,
@@ -1953,6 +1958,7 @@
 				300C2AFB1D0989E80046DFA4 /* String+HTMLDecode.swift in Sources */,
 				308216131CCA846F00D9A18B /* Media.swift in Sources */,
 				30DDB22E1CCE66B2000B72E5 /* SelfLinkSpec.swift in Sources */,
+				30A944151D7EC555004B841F /* PostHint.swift in Sources */,
 				303FA7CB1CCA8E190027658E /* EditedTransform.swift in Sources */,
 				30DDB2311CCE69BB000B72E5 /* EmptyURLTransform.swift in Sources */,
 				308D882E1CD0D6B700C78E74 /* NilBoolTransform.swift in Sources */,
