@@ -22,7 +22,6 @@ class LinkSwipeViewController: UIViewController, CloseableViewController {
   // MARK: - ViewModel
   var viewModel: LinkSwipeViewModel!
 
-
   // MARK: Properties
   private var cardIndex: Int = 0
   private lazy var shareHelper: ShareHelper = ShareHelper(viewController: self)
@@ -38,7 +37,9 @@ extension LinkSwipeViewController {
 
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    swipeView.nextView = swipeViewNextView
+    swipeView.nextView = { [weak self] in
+      self?.swipeViewNextView()
+    }
   }
 }
 
@@ -54,11 +55,21 @@ extension LinkSwipeViewController {
   private func setupSwipeView() {
     swipeView.animateView = ZLSwipeableView.tinderAnimateViewHandler()
     swipeView.numberOfHistoryItem = 10
-    swipeView.didTap = swipeViewTapped
-    swipeView.didSwipe = swipeViewSwiped
-    swipeView.didDisappear = swipeViewDisappeared
-    swipeView.swiping = swipeViewSwiping
-    swipeView.didCancel = swipeViewDidCancelSwiping
+    swipeView.didTap = { [weak self] (view, location) in
+      self?.swipeViewTapped(view, location: location)
+    }
+    swipeView.didSwipe = { [weak self] (view, direction, directionVector) in
+      self?.swipeViewSwiped(view, inDirection: direction, directionVector: directionVector)
+    }
+    swipeView.didDisappear = { [weak self] view in
+      self?.swipeViewDisappeared(view)
+    }
+    swipeView.swiping = { [weak self] (view, location, translation) in
+      self?.swipeViewSwiping(view, atLocation: location, translation: translation)
+    }
+    swipeView.didCancel = { [weak self] view in
+      self?.swipeViewDidCancelSwiping(view)
+    }
 
     updateUndoButton()
   }
@@ -99,6 +110,7 @@ extension LinkSwipeViewController {
     cardIndex -= 1
     updateUndoButton()
     currentViewModel?.unvote()
+    currentCardView?.didAppear()
   }
 
   @IBAction private func shareClick() {
