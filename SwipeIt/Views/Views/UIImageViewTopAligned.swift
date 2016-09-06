@@ -63,11 +63,12 @@ public class UIImageViewTopAligned: UIImageView {
 
   private func commonInit() {
     realImageView.autoPlayAnimatedImage = false
-    realImageView.kf_showIndicatorWhenLoading = true
+    kf_showIndicatorWhenLoading = true
     // Better performance while scrolling
     realImageView.framePreloadCount = 1
     realImageView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
     realImageView.contentMode = contentMode
+    realImageView.frame = bounds
     addSubview(realImageView)
 
     if super.image != nil {
@@ -75,10 +76,28 @@ public class UIImageViewTopAligned: UIImageView {
     }
   }
 
+  public override func layoutSubviews() {
+    super.layoutSubviews()
+    updateLayout()
+  }
+
+  public override func startAnimating() {
+    super.startAnimating()
+    realImageView.startAnimating()
+  }
+
+  public override func stopAnimating() {
+    super.stopAnimating()
+    realImageView.stopAnimating()
+  }
+
+  // MARK: - Private methods
   private func updateLayout() {
-    guard let image = realImageView.image else {
+    guard let _ = image else {
+      realImageView.frame = bounds
       return
     }
+
     let realSize = realContentSize()
 
     var realFrame = CGRect(x: (bounds.size.width - realSize.width) / 2.0,
@@ -86,13 +105,7 @@ public class UIImageViewTopAligned: UIImageView {
                            width: realSize.width,
                            height: realSize.height)
 
-    let size = bounds.size
-    let scaleX = size.width / image.size.width
-    let scaleY = size.height / image.size.height
-
-    let scale = max(scaleX, scaleY)
-
-    if scale < 1.0 {
+    if realSize.height > bounds.size.height {
       realFrame.origin.y = 0.0
     }
     realImageView.frame = realFrame.integral
@@ -102,14 +115,8 @@ public class UIImageViewTopAligned: UIImageView {
     layer.contents = nil
   }
 
-  public override func layoutSubviews() {
-    super.layoutSubviews()
-    updateLayout()
-  }
-
-  // MARK: - Private methods
   private func realContentSize() -> CGSize {
-    var size = bounds.size
+    let size = bounds.size
 
     guard let image = realImageView.image else {
       return size
@@ -118,11 +125,16 @@ public class UIImageViewTopAligned: UIImageView {
     let scaleX = size.width / image.size.width
     let scaleY = size.height / image.size.height
 
-    let scale = max(scaleX, scaleY)
+    let scale = min(scaleX, scaleY)
+    let height = image.size.height * scale
 
-    size = CGSize(width: image.size.width * scale,
-                  height: image.size.height * scale)
-    return size
+    if height < size.height {
+      return CGSize(width: image.size.width * scale, height: height)
+    } else {
+      let maxScale = max(scaleX, scaleY)
+      return CGSize(width: image.size.width * maxScale,
+                    height: image.size.height * maxScale)
+    }
   }
 
   // MARK: - UIImageView overloads

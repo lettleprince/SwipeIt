@@ -113,14 +113,14 @@ extension LinkImageCardView {
   private func createImageContentView() -> UIView {
     let view = UIView()
     view.backgroundColor = .clearColor()
-    view.clipsToBounds = true
+    //view.clipsToBounds = true
     view.addSubview(self.backgroundImageView)
     view.addSubview(self.imageView)
     return view
   }
 
   private func createImageView() -> UIImageViewTopAligned {
-    let imageView = UIImageViewTopAligned()
+    let imageView = UIImageViewTopAligned(frame: .zero)
     imageView.contentMode = .ScaleAspectFit
     return imageView
   }
