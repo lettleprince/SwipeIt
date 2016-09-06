@@ -14,14 +14,14 @@ class CircleButton: UIButton {
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     setImage(imageForState(.Normal)?.tint(.whiteColor()), forState: .Highlighted)
-    setImage(imageForState(.Normal)?.tint(UIColor(named: .DarkGray)), forState: .Disabled)
+    setImage(imageForState(.Normal)?.tint(UIColor(named: .Gray)), forState: .Disabled)
 
   }
 
   override func setImage(image: UIImage?, forState state: UIControlState) {
     if state == .Normal {
       setImage(image?.tint(.whiteColor()), forState: .Highlighted)
-      setImage(image?.tint(UIColor(named: .DarkGray)), forState: .Disabled)
+      setImage(image?.tint(UIColor(named: .Gray)), forState: .Disabled)
     }
     super.setImage(image, forState: state)
   }
