@@ -25,14 +25,17 @@ class LinkCardView: UIView {
       animateOverlayPercentage(0)
       titleLabel.text = viewModel.title
 
-      Observable.combineLatest(viewModel.context, TextStyle.Caption1.rx_font) { ($0, $1) }
-        .subscribeNext { [weak self] (context, font) in
+      Observable
+        .combineLatest(viewModel.context, TextStyle.Caption1.rx_font,
+        Theming.sharedInstance.secondaryTextColor) { ($0, $1, $2) }
+        .subscribeNext { [weak self] (context, font, textColor) in
           guard let context = context else {
             self?.contextLabel.setText(nil)
             return
           }
           let mutableContext = NSMutableAttributedString(attributedString: context)
           mutableContext.setFont(font)
+          mutableContext.setTextColor(textColor)
           self?.contextLabel.setText(mutableContext)
         }.addDisposableTo(rx_disposeBag)
 
@@ -49,6 +52,7 @@ class LinkCardView: UIView {
   private lazy var containerView: UIView = self.createContentView()
   private lazy var titleLabel: UILabel = self.createTitleLabel()
   private lazy var contextLabel: TTTAttributedLabel = self.createContextLabel()
+  private lazy var topBar: UIVisualEffectView = self.createTopBar()
   private lazy var bottomBar: UIVisualEffectView = self.createBottomBar()
   private lazy var statsLabel: UILabel = self.createStatsLabel()
   private lazy var upvoteOverlayImageView: UIImageView = self.createUpvoteOverlayImageView()
@@ -106,15 +110,20 @@ class LinkCardView: UIView {
       make.height.equalTo(bounds.height)
     }
 
+    topBar.snp_makeConstraints { make in
+      make.top.left.right.equalTo(containerView)
+    }
+
     titleLabel.snp_makeConstraints { make in
-      make.top.left.equalTo(containerView).offset(LinkCardView.spacing)
-      make.right.equalTo(containerView).inset(LinkCardView.spacing)
+      make.top.left.equalTo(topBar).offset(LinkCardView.spacing)
+      make.right.equalTo(topBar).inset(LinkCardView.spacing)
     }
 
     contextLabel.snp_makeConstraints { make in
       make.top.equalTo(titleLabel.snp_bottom).offset(LinkCardView.spacing)
-      make.left.equalTo(containerView).offset(LinkCardView.spacing)
-      make.right.equalTo(containerView).inset(LinkCardView.spacing)
+      make.left.equalTo(bottomBar).offset(LinkCardView.spacing)
+      make.right.equalTo(bottomBar).inset(LinkCardView.spacing)
+      make.bottom.equalTo(topBar).inset(LinkCardView.spacing)
     }
 
     bottomBar.snp_makeConstraints { make in
@@ -195,31 +204,8 @@ extension LinkCardView {
   }
 }
 
+// MARK: - View Builders
 extension LinkCardView {
-
-  private static func statsAttributedString(scoreIcon: Observable<UIImage>,
-                                            score: Observable<NSAttributedString>,
-                                            commentsIcon: Observable<UIImage>,
-                                            comments: Observable<NSAttributedString>,
-                                            font: Observable<UIFont>)
-    -> Observable<NSAttributedString?> {
-      let commentsIcon = Observable.combineLatest(commentsIcon, font) { ($0, $1) }
-        .map { (commentsIcon, font) -> NSAttributedString  in
-          let attachment = ImageAttachment(commentsIcon, verticalOffset: font.descender)
-          return NSAttributedString(attachment: attachment)
-      }
-      let scoreIcon = Observable.combineLatest(scoreIcon, font) { ($0, $1) }
-        .map { (scoreIcon, font) -> NSAttributedString in
-          let attachment = ImageAttachment(scoreIcon, verticalOffset: font.descender)
-          return NSAttributedString(attachment: attachment)
-      }
-      return Observable
-        .combineLatest(scoreIcon, score, commentsIcon, comments) {
-          ($0, $1, $2, $3)
-        }.map { (scoreIcon, score, commentsIcon, comments) in
-          return [scoreIcon, score, commentsIcon, comments].joinWithSeparator(" ")
-      }
-  }
 
   private func createContextLabel() -> TTTAttributedLabel {
     let label = TTTAttributedLabel(frame: CGRect.zero)
@@ -289,22 +275,53 @@ extension LinkCardView {
 
   private func createBottomBar() -> UIVisualEffectView {
     let view = UIVisualEffectView(effect: UIBlurEffect(style: .ExtraLight))
-    view.tintColor = .whiteColor()
     view.addSubview(self.statsLabel)
+    return view
+  }
+
+  private func createTopBar() -> UIVisualEffectView {
+    let view = UIVisualEffectView(effect: UIBlurEffect(style: .ExtraLight))
+    view.addSubview(self.titleLabel)
+    view.addSubview(self.contextLabel)
     return view
   }
 
   private func createContentView() -> UIView {
     let view = UIView()
-    view.addSubview(self.titleLabel)
-    view.addSubview(self.contextLabel)
     view.addSubview(self.bottomBar)
+    view.addSubview(self.topBar)
     view.addSubview(self.upvoteOverlayImageView)
     view.addSubview(self.downvoteOverlayImageView)
     return view
   }
 }
 
-extension LinkCardView: TTTAttributedLabelDelegate {
+// MARK: - Helpers
+extension LinkCardView {
 
+  private static func statsAttributedString(scoreIcon: Observable<UIImage>,
+                                            score: Observable<NSAttributedString>,
+                                            commentsIcon: Observable<UIImage>,
+                                            comments: Observable<NSAttributedString>,
+                                            font: Observable<UIFont>)
+    -> Observable<NSAttributedString?> {
+      let commentsIcon = iconAttributedString(commentsIcon, font: font)
+      let scoreIcon = iconAttributedString(scoreIcon, font: font)
+      return Observable
+        .combineLatest(scoreIcon, score, commentsIcon, comments) {
+          [$0, $1, $2, $3].joinWithSeparator(" ")
+      }
+  }
+
+  private static func iconAttributedString(icon: Observable<UIImage>, font: Observable<UIFont>)
+    -> Observable<NSAttributedString> {
+      return Observable.combineLatest(icon, font) { (commentsIcon, font) -> NSAttributedString in
+        let attachment = ImageAttachment(commentsIcon, verticalOffset: font.descender)
+        return NSAttributedString(attachment: attachment)
+      }
+  }
+}
+
+extension LinkCardView: TTTAttributedLabelDelegate {
+  
 }

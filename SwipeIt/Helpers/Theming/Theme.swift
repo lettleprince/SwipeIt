@@ -24,9 +24,9 @@ enum Theme: String {
   var secondaryTextColor: UIColor {
     switch self {
     case .Light:
-      return .darkGrayColor()
+      return UIColor(named: .DarkGray)
     case .Dark:
-      return .lightGrayColor()
+      return UIColor(named: .LightGray)
     }
   }
 

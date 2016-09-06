@@ -93,7 +93,7 @@ extension LinkImageCardView {
   private static func blurImage(image: UIImage, into imageView: UIImageView) {
     Async.background {
       let scaledImage = resizeImage(image, imageView: imageView)
-      let blurredImage = scaledImage.applyDarkEffect()
+      let blurredImage = scaledImage.applyExtraLightEffect()
       Async.main {
         UIView.transitionWithView(imageView, duration: fadeAnimationDuration,
           options: .TransitionCrossDissolve, animations: {
