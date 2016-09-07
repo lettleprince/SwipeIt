@@ -56,19 +56,24 @@ extension LinkSwipeViewController {
     swipeView.animateView = ZLSwipeableView.tinderAnimateViewHandler()
     swipeView.numberOfHistoryItem = 10
     swipeView.didTap = { [weak self] (view, location) in
-      self?.swipeViewTapped(view, location: location)
+      guard let linkCardView = view as? LinkCardView else { return }
+      self?.swipeViewTapped(linkCardView, location: location)
     }
     swipeView.didSwipe = { [weak self] (view, direction, directionVector) in
-      self?.swipeViewSwiped(view, inDirection: direction, directionVector: directionVector)
+      guard let linkCardView = view as? LinkCardView else { return }
+      self?.swipeViewSwiped(linkCardView, inDirection: direction, directionVector: directionVector)
     }
     swipeView.didDisappear = { [weak self] view in
-      self?.swipeViewDisappeared(view)
+      guard let linkCardView = view as? LinkCardView else { return }
+      self?.swipeViewDisappeared(linkCardView)
     }
     swipeView.swiping = { [weak self] (view, location, translation) in
-      self?.swipeViewSwiping(view, atLocation: location, translation: translation)
+      guard let linkCardView = view as? LinkCardView else { return }
+      self?.swipeViewSwiping(linkCardView, atLocation: location, translation: translation)
     }
     swipeView.didCancel = { [weak self] view in
-      self?.swipeViewDidCancelSwiping(view)
+      guard let linkCardView = view as? LinkCardView else { return }
+      self?.swipeViewDidCancelSwiping(linkCardView)
     }
 
     updateUndoButton()
@@ -144,11 +149,11 @@ extension LinkSwipeViewController {
     return view
   }
 
-  private func swipeViewSwiped(view: UIView, inDirection: Direction, directionVector: CGVector) {
+  private func swipeViewSwiped(view: LinkCardView, inDirection: Direction, directionVector: CGVector) {
     updateUndoButton()
     currentCardView?.didAppear()
 
-    guard let linkCardView = view as? LinkCardView, viewModel = linkCardView.viewModel else {
+    guard let viewModel = view.viewModel else {
       return
     }
     switch inDirection {
@@ -168,26 +173,25 @@ extension LinkSwipeViewController {
     }
   }
 
-  private func swipeViewTapped(view: UIView, location: CGPoint) {
+  private func swipeViewTapped(view: LinkCardView, location: CGPoint) {
 
   }
 
-  private func swipeViewDisappeared(view: UIView) {
-    (view as? LinkCardView)?.didDisappear()
+  private func swipeViewDisappeared(view: LinkCardView) {
+    view.didDisappear()
   }
 
-  private func swipeViewSwiping(view: UIView, atLocation: CGPoint, translation: CGPoint) {
-    guard let linkCardView = view as? LinkCardView else { return }
+  private func swipeViewSwiping(view: LinkCardView, atLocation: CGPoint, translation: CGPoint) {
     let offset = translation.x
     let direction: CGFloat = offset >= 0 ? 1 : -1
-    let percentage: CGFloat = ((20 ... 60).clamp(abs(offset)) - 20)/40 * direction
-    linkCardView.animateOverlayPercentage(percentage)
-
+    let min: CGFloat = 20
+    let max: CGFloat = 40
+    let percentage: CGFloat = ((min ... max).clamp(abs(offset)) - min)/(max - min) * direction
+    view.animateOverlayPercentage(percentage)
   }
 
-  private func swipeViewDidCancelSwiping(view: UIView) {
-    guard let linkCardView = view as? LinkCardView else { return }
-    linkCardView.animateOverlayPercentage(0)
+  private func swipeViewDidCancelSwiping(view: LinkCardView) {
+    view.animateOverlayPercentage(0)
   }
 }
 
