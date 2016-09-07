@@ -10,7 +10,6 @@ import UIKit
 import Async
 import Kingfisher
 
-@IBDesignable
 class LinkImageCardView: LinkCardView {
 
   private static let fadeAnimationDuration: NSTimeInterval = 0.15

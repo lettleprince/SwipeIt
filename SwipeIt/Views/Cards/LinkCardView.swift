@@ -12,7 +12,6 @@ import RxSwift
 import TextStyle
 import TTTAttributedLabel
 
-@IBDesignable
 class LinkCardView: UIView {
 
   // MARK: - Constants
