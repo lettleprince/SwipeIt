@@ -138,13 +138,13 @@ class LinkCardView: UIView {
     }
 
     upvoteOverlayImageView.snp_makeConstraints { make in
-      make.top.equalTo(contextLabel.snp_bottom)
+      make.top.equalTo(topBar.snp_bottom)
         .offset(LinkCardView.spacing * 2)
       make.left.equalTo(containerView).offset(LinkCardView.spacing)
     }
 
     downvoteOverlayImageView.snp_makeConstraints { make in
-      make.top.equalTo(contextLabel.snp_bottom)
+      make.top.equalTo(topBar.snp_bottom)
         .offset(LinkCardView.spacing * 2)
       make.right.equalTo(containerView).offset(-LinkCardView.spacing)
     }
@@ -155,7 +155,6 @@ class LinkCardView: UIView {
     statsLabel.setContentCompressionResistancePriority(UILayoutPriorityDefaultHigh,
                                                        forAxis: .Horizontal)
   }
-
 }
 
 // MARK: - API
@@ -238,7 +237,7 @@ extension LinkCardView {
 
   private func createUpvoteOverlayView() -> VoteOverlayView {
     let view = VoteOverlayView()
-    view.text = "UPVOTE"
+    view.text = tr(.LinkUpvote).uppercaseString
     view.tintColor = UIColor(named: .Orange)
     view.transform = CGAffineTransformMakeRotation(-CGFloat(M_PI)/6)
     return view
@@ -246,7 +245,7 @@ extension LinkCardView {
 
   private func createDownvoteOverlayView() -> VoteOverlayView {
     let view = VoteOverlayView()
-    view.text = "DOWNVOTE"
+    view.text = tr(.LinkDownvote).uppercaseString
     view.tintColor = UIColor(named: .Purple)
     view.transform = CGAffineTransformMakeRotation(CGFloat(M_PI)/6)
     return view

@@ -39,6 +39,10 @@ enum L10n {
   case LinkContextLocked
   /// Read more
   case LinkContentSelfPostReadMore
+  /// Upvote
+  case LinkUpvote
+  /// Downvote
+  case LinkDownvote
   /// Hot
   case ListingTypeHot
   /// New
@@ -107,6 +111,10 @@ extension L10n: CustomStringConvertible {
         return L10n.tr("Link.Context.Locked")
       case .LinkContentSelfPostReadMore:
         return L10n.tr("Link.Content.SelfPost.ReadMore")
+      case .LinkUpvote:
+        return L10n.tr("Link.Upvote")
+      case .LinkDownvote:
+        return L10n.tr("Link.Downvote")
       case .ListingTypeHot:
         return L10n.tr("ListingType.Hot")
       case .ListingTypeNew:
