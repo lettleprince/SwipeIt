@@ -54,8 +54,8 @@ class LinkCardView: UIView {
   private lazy var topBar: UIVisualEffectView = self.createTopBar()
   private lazy var bottomBar: UIVisualEffectView = self.createBottomBar()
   private lazy var statsLabel: UILabel = self.createStatsLabel()
-  private lazy var upvoteOverlayImageView: UIImageView = self.createUpvoteOverlayImageView()
-  private lazy var downvoteOverlayImageView: UIImageView = self.createDownvoteOverlayImageView()
+  private lazy var upvoteOverlayImageView: VoteOverlayView = self.createUpvoteOverlayView()
+  private lazy var downvoteOverlayImageView: VoteOverlayView = self.createDownvoteOverlayView()
 
   var contentView: UIView? = nil {
     didSet {
@@ -97,6 +97,7 @@ class LinkCardView: UIView {
     borderWidth = 1
     cornerRadius = 4
     clipsToBounds = true
+    opaque = true
 
     addSubview(containerView)
     setupConstraints()
@@ -198,8 +199,16 @@ extension LinkCardView {
 
   // MARK: Animation
   func animateOverlayPercentage(percentage: CGFloat) {
-    upvoteOverlayImageView.alpha = max(min(percentage, 1), 0)
-    downvoteOverlayImageView.alpha = max(min(-percentage, 1), 0)
+    let upvoteAlpha = max(min(percentage, 1), 0)
+    let downvoteAlpha = max(min(-percentage, 1), 0)
+
+    if upvoteAlpha != upvoteOverlayImageView.alpha {
+      upvoteOverlayImageView.alpha = upvoteAlpha
+    }
+
+    if downvoteAlpha != downvoteOverlayImageView.alpha {
+      downvoteOverlayImageView.alpha = downvoteAlpha
+    }
   }
 }
 
@@ -227,20 +236,20 @@ extension LinkCardView {
     return label
   }
 
-  private func createUpvoteOverlayImageView() -> UIImageView {
-    let imageView = UIImageView(image: UIImage(asset: .UpvoteOverlay))
-    imageView.contentMode = .ScaleAspectFit
-    imageView.alpha = 0
-    imageView.tintColor = UIColor(named: .Orange)
-    return imageView
+  private func createUpvoteOverlayView() -> VoteOverlayView {
+    let view = VoteOverlayView()
+    view.text = "UPVOTE"
+    view.tintColor = UIColor(named: .Orange)
+    view.transform = CGAffineTransformMakeRotation(-CGFloat(M_PI)/6)
+    return view
   }
 
-  private func createDownvoteOverlayImageView() -> UIImageView {
-    let imageView = UIImageView(image: UIImage(asset: .DownvoteOverlay))
-    imageView.contentMode = .ScaleAspectFit
-    imageView.alpha = 0
-    imageView.tintColor = UIColor(named: .Purple)
-    return imageView
+  private func createDownvoteOverlayView() -> VoteOverlayView {
+    let view = VoteOverlayView()
+    view.text = "DOWNVOTE"
+    view.tintColor = UIColor(named: .Purple)
+    view.transform = CGAffineTransformMakeRotation(CGFloat(M_PI)/6)
+    return view
   }
 
   private func createTitleLabel() -> UILabel {
@@ -265,7 +274,7 @@ extension LinkCardView {
       .addDisposableTo(self.rx_disposeBag)
     label.textAlignment = .Right
 
-    Theming.sharedInstance.textColor
+    Theming.sharedInstance.secondaryTextColor
       .bindTo(label.rx_textColor)
       .addDisposableTo(self.rx_disposeBag)
 
@@ -304,8 +313,10 @@ extension LinkCardView {
                                             comments: Observable<NSAttributedString>,
                                             font: Observable<UIFont>)
     -> Observable<NSAttributedString?> {
+
       let commentsIcon = iconAttributedString(commentsIcon, font: font)
       let scoreIcon = iconAttributedString(scoreIcon, font: font)
+
       return Observable
         .combineLatest(scoreIcon, score, commentsIcon, comments) {
           [$0, $1, $2, $3].joinWithSeparator(" ")
@@ -322,5 +333,5 @@ extension LinkCardView {
 }
 
 extension LinkCardView: TTTAttributedLabelDelegate {
-  
+
 }
