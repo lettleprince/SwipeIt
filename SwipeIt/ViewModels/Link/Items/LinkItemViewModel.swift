@@ -18,6 +18,7 @@ class LinkItemViewModel: ViewModel {
   private let user: User
   private let accessToken: AccessToken
   private let vote: Variable<Vote>
+  private let saved: Variable<Bool>
   private let showSubreddit: Bool
 
   // MARK: Protected
@@ -65,11 +66,17 @@ class LinkItemViewModel: ViewModel {
   }
 
   var comments: Observable<NSAttributedString> {
-    return .just(NSAttributedString(string: "\(link.totalComments)"))
+    let comments = link.totalComments > 1 ? tr(.LinkComments) : tr(.LinkComment)
+    return .just(NSAttributedString(string: "\(link.totalComments) \(comments)"))
   }
 
   var commentsIcon: Observable<UIImage> {
     return .just(UIImage(asset: .CommentsGlyph))
+  }
+
+  var save: Observable<String> {
+    return saved.asObservable()
+      .map { $0 ? tr(.LinkUnsave) : tr(.LinkSave) }
   }
 
   var score: Observable<NSAttributedString> {
@@ -111,6 +118,7 @@ class LinkItemViewModel: ViewModel {
     self.link = link
     self.vote = Variable(link.vote)
     self.showSubreddit = showSubreddit
+    self.saved = Variable(link.saved)
   }
 
   // MARK: API
@@ -129,10 +137,50 @@ class LinkItemViewModel: ViewModel {
   func unvote() {
     vote(.None)
   }
+
+  func toggleSave(completion: (ErrorType?) -> Void) {
+    save(completion)
+  }
+
+  func sendReport(reason: String, completion: (ErrorType?) -> Void) {
+    report(reason, completion: completion)
+  }
 }
 
 // MARK: Network
 extension LinkItemViewModel {
+
+  private func report(reason: String, completion: ((ErrorType?) -> Void)? = nil) {
+    Network.request(.Report(token: accessToken.token, identifier: link.name,
+      reason: reason))
+      .subscribe { event in
+        switch event {
+        case .Error(let error):
+          completion?(error)
+        case .Next:
+          completion?(nil)
+        default: break
+        }
+      }.addDisposableTo(disposeBag)
+  }
+
+  private func save(completion: ((ErrorType?) -> Void)? = nil) {
+    let oldSaved = self.saved.value
+    self.saved.value = !oldSaved
+    let request = oldSaved ? RedditAPI.Unsave(token: accessToken.token, identifier: link.name) :
+      RedditAPI.Save(token: accessToken.token, identifier: link.name)
+    Network.request(request)
+      .subscribe { [weak self] event in
+        switch event {
+        case .Error(let error):
+          self?.saved.value = oldSaved
+          completion?(error)
+        case .Next:
+          completion?(nil)
+        default: break
+        }
+      }.addDisposableTo(disposeBag)
+  }
 
   private func vote(vote: Vote, completion: ((ErrorType?) -> Void)? = nil) {
     let oldVote = self.vote.value
