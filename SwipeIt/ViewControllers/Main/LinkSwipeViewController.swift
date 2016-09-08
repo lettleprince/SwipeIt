@@ -87,7 +87,7 @@ extension LinkSwipeViewController {
     viewModel.viewModels
       .subscribeNext { [weak self] _ in
         self?.swipeView.loadViews()
-    }.addDisposableTo(rx_disposeBag)
+      }.addDisposableTo(rx_disposeBag)
   }
 
   private func updateUndoButton() {
@@ -149,7 +149,8 @@ extension LinkSwipeViewController {
     return view
   }
 
-  private func swipeViewSwiped(view: LinkCardView, inDirection: Direction, directionVector: CGVector) {
+  private func swipeViewSwiped(view: LinkCardView, inDirection: Direction,
+                               directionVector: CGVector) {
     updateUndoButton()
     currentCardView?.didAppear()
 

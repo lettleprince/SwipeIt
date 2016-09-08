@@ -324,8 +324,8 @@ extension LinkCardView {
 
   private static func iconAttributedString(icon: Observable<UIImage>, font: Observable<UIFont>)
     -> Observable<NSAttributedString> {
-      return Observable.combineLatest(icon, font) { (commentsIcon, font) -> NSAttributedString in
-        let attachment = ImageAttachment(commentsIcon, verticalOffset: font.descender)
+      return Observable.combineLatest(icon, font) { (icon, font) -> NSAttributedString in
+        let attachment = ImageAttachment(icon, verticalOffset: font.descender)
         return NSAttributedString(attachment: attachment)
       }
   }

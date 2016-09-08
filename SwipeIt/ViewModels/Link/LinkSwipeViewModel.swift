@@ -78,7 +78,6 @@ extension LinkSwipeViewModel {
         pathObservable) { ($0, $1, $2, $3) }
       .take(1)
       .doOnNext { [weak self] _ in
-        print("loading")
         self?._loadingState.value = .Loading
       }.flatMap {
         (listingType: ListingType, after: String?, accessToken: AccessToken, path: String) in
@@ -123,7 +122,6 @@ extension LinkSwipeViewModel {
 
         switch event {
         case let .Next(linkListing, user, accessToken, subredditOnly):
-          print("loaded \(linkListing.after)")
           self.linkListings.value.append(linkListing)
           let viewModels = LinkSwipeViewModel.viewModelsFromLinkListing(linkListing,
             user: user, accessToken: accessToken, subredditOnly: subredditOnly)
