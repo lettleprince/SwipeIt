@@ -28,7 +28,7 @@ class ImageAttachment: NSTextAttachment {
     let height = lineFrag.size.height
     let imageSize = image.size
 
-    return CGRect(x: 0, y: verticalOffset - (imageSize.height - height)/2,
+    return CGRect(x: 0, y: round(verticalOffset - (imageSize.height - height)/2),
                   width: imageSize.width, height: imageSize.height)
   }
 }
