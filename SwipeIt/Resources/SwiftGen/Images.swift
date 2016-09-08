@@ -15,6 +15,7 @@ enum Asset: String {
   case DownvotedGlyph = "DownvotedGlyph"
   case DownvoteIcon = "DownvoteIcon"
   case DownvoteOverlay = "DownvoteOverlay"
+  case MoreIcon = "MoreIcon"
   case NotVotedGlyph = "NotVotedGlyph"
   case ShareIcon = "ShareIcon"
   case UndoIcon = "UndoIcon"
