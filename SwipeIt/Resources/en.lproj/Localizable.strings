@@ -30,6 +30,20 @@
 "Link.Content.SelfPost.ReadMore" = "Read more";
 "Link.Upvote" = "Upvote";
 "Link.Downvote" = "Downvote";
+"Link.Comment" = "comment";
+"Link.Comments" = "comments";
+"Link.Report" = "Report";
+"Link.Save" = "Save";
+"Link.Unsave" = "Unsave";
+"Link.OpenInSafari" = "Open in Safari";
+"Link.Report.Spam" = "Spam";
+"Link.Report.VoteManipulation" = "Vote manipulation";
+"Link.Report.PersonalInfo" = "Personal information";
+"Link.Report.SexualizingMinors" = "Sexualizing minors";
+"Link.Report.BreakingReddit" = "Breaking reddit";
+"Link.Report.Other" = "Other";
+"Link.Report.Other.Reason" = "What other rule does it break?";
+"Link.Report.Other.Hint" = "Other reason (max 100 characters)";
 
 "ListingType.Hot" = "Hot";
 "ListingType.New" = "New";
