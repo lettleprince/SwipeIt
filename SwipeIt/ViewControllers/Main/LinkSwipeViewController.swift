@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import ZLSwipeableViewSwift
 
-class LinkSwipeViewController: UIViewController, CloseableViewController {
+class LinkSwipeViewController: UIViewController, CloseableViewController, AlerteableViewController {
 
   // MARK: - IBOutlets
   @IBOutlet private weak var swipeView: ZLSwipeableView!
@@ -25,6 +25,7 @@ class LinkSwipeViewController: UIViewController, CloseableViewController {
   // MARK: Properties
   private var cardIndex: Int = 0
   private lazy var shareHelper: ShareHelper = ShareHelper(viewController: self)
+  private lazy var alertHelper: AlertHelper = AlertHelper(viewController: self)
 }
 
 // MARK: - Lifecycle
@@ -146,6 +147,7 @@ extension LinkSwipeViewController {
     }
     cardIndex += 1
     view.viewModel = viewModel
+    view.moreOptionsClicked = swipeViewDidClickMore
     return view
   }
 
@@ -194,10 +196,68 @@ extension LinkSwipeViewController {
   private func swipeViewDidCancelSwiping(view: LinkCardView) {
     view.animateOverlayPercentage(0)
   }
+
+  private func swipeViewDidClickMore(view: LinkCardView) {
+    guard let viewModel = view.viewModel else { return }
+    viewModel.save.take(1)
+      .subscribeNext { [weak self] save in
+        let options = [save, tr(.LinkReport), tr(.LinkOpenInSafari)]
+        self?.alertHelper.presentActionSheet(options: options) { index in
+          guard let index = index else { return }
+          switch index {
+          case 0:
+            viewModel.toggleSave { error in
+            }
+          case 1:
+            self?.report(viewModel)
+          case 2:
+            self?.openInSafari(viewModel)
+          default: break
+          }
+        }
+      }.addDisposableTo(rx_disposeBag)
+  }
 }
 
 // MARK: - Helpers
 extension LinkSwipeViewController {
+
+  private func openInSafari(viewModel: LinkItemViewModel) {
+    UIApplication.sharedApplication().openURL(viewModel.url)
+  }
+
+  private func report(viewModel: LinkItemViewModel) {
+    let reasons: [String] = [tr(.LinkReportSpam), tr(.LinkReportVoteManipulation),
+                             tr(.LinkReportPersonalInfo), tr(.LinkReportSexualizingMinors),
+                             tr(.LinkReportBreakingReddit), tr(.LinkReportOther)]
+    alertHelper.presentActionSheet(options: reasons) { [weak self] index in
+      guard let index = index else { return }
+      guard index != 5 else {
+        self?.reportOtherReason(viewModel)
+        return
+      }
+      self?.reportWithReason(reasons[index], viewModel: viewModel)
+    }
+  }
+
+  private func reportOtherReason(viewModel: LinkItemViewModel) {
+    let textfield = AlertTextField(text: nil, placeholder: tr(.LinkReportOtherHint))
+    presentAlert(tr(.LinkReport), message: tr(.LinkReportOtherReason),
+                 textField: textfield, buttonTitle: tr(.LinkReport),
+                 cancelButtonTitle: tr(.AlertButtonCancel)) { [weak self] alertClicked in
+                  switch alertClicked {
+                  case let .ButtonWithText(reason):
+                    self?.reportWithReason(reason, viewModel: viewModel)
+                  default: return
+                  }
+    }
+  }
+
+  private func reportWithReason(reason: String?, viewModel: LinkItemViewModel) {
+    guard let reason = reason else { return }
+    viewModel.sendReport(reason) { error in
+    }
+  }
 
   private func voteCompletion(error: ErrorType?, view: UIView) {
     guard let _ = error where swipeView.history.last == view else {
