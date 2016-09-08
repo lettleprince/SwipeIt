@@ -39,10 +39,15 @@ class LinkCardView: UIView {
         }.addDisposableTo(rx_disposeBag)
 
       LinkCardView
-        .statsAttributedString(viewModel.scoreIcon, score: viewModel.score,
-          commentsIcon: viewModel.commentsIcon, comments: viewModel.comments,
+        .statsAttributedString(viewModel.scoreIcon, text: viewModel.score,
           font: TextStyle.Caption1.rx_font)
-        .bindTo(statsLabel.rx_attributedText)
+        .bindTo(scoreLabel.rx_attributedText)
+        .addDisposableTo(rx_disposeBag)
+
+      LinkCardView
+        .statsAttributedString(viewModel.commentsIcon, text: viewModel.comments,
+          font: TextStyle.Caption1.rx_font)
+        .bindTo(commentsLabel.rx_attributedText)
         .addDisposableTo(rx_disposeBag)
     }
   }
@@ -53,9 +58,11 @@ class LinkCardView: UIView {
   private lazy var contextLabel: TTTAttributedLabel = self.createContextLabel()
   private lazy var topBar: UIVisualEffectView = self.createTopBar()
   private lazy var bottomBar: UIVisualEffectView = self.createBottomBar()
-  private lazy var statsLabel: UILabel = self.createStatsLabel()
+  private lazy var commentsLabel: UILabel = self.createStatsLabel()
+  private lazy var scoreLabel: UILabel = self.createScoreLabel()
   private lazy var upvoteOverlayImageView: VoteOverlayView = self.createUpvoteOverlayView()
   private lazy var downvoteOverlayImageView: VoteOverlayView = self.createDownvoteOverlayView()
+  lazy var moreButton: UIButton = self.createMoreButton()
 
   var contentView: UIView? = nil {
     didSet {
@@ -74,6 +81,8 @@ class LinkCardView: UIView {
       contentView?.removeFromSuperview()
     }
   }
+
+  var moreOptionsClicked: ((LinkCardView) -> Void)? = nil
 
   // MARK: - Initializers
   init() {
@@ -131,29 +140,41 @@ class LinkCardView: UIView {
       make.height.equalTo(44)
     }
 
-    statsLabel.snp_makeConstraints { make in
-      make.bottom.right.equalTo(bottomBar).offset(-LinkCardView.spacing)
+    moreButton.snp_makeConstraints { make in
+      make.bottom.equalTo(bottomBar).offset(-LinkCardView.spacing)
       make.right.equalTo(bottomBar).inset(LinkCardView.spacing)
+      make.top.equalTo(bottomBar).offset(LinkCardView.spacing)
+      make.width.equalTo(moreButton.snp_height)
+    }
+
+    commentsLabel.snp_makeConstraints { make in
+      make.bottom.equalTo(bottomBar).offset(-LinkCardView.spacing)
       make.top.left.equalTo(bottomBar).offset(LinkCardView.spacing)
     }
 
+    scoreLabel.snp_makeConstraints { make in
+      make.bottom.equalTo(bottomBar).offset(-LinkCardView.spacing)
+      make.right.equalTo(moreButton.snp_left).offset(-LinkCardView.spacing)
+      make.top.equalTo(bottomBar).offset(LinkCardView.spacing)
+      make.left.equalTo(commentsLabel.snp_right).offset(LinkCardView.spacing)
+    }
+
     upvoteOverlayImageView.snp_makeConstraints { make in
-      make.top.equalTo(topBar.snp_bottom)
-        .offset(LinkCardView.spacing * 2)
+      make.top.equalTo(topBar.snp_bottom).offset(LinkCardView.spacing * 3)
       make.left.equalTo(containerView).offset(LinkCardView.spacing)
     }
 
     downvoteOverlayImageView.snp_makeConstraints { make in
-      make.top.equalTo(topBar.snp_bottom)
-        .offset(LinkCardView.spacing * 2)
+      make.top.equalTo(topBar.snp_bottom).offset(LinkCardView.spacing * 3)
       make.right.equalTo(containerView).offset(-LinkCardView.spacing)
     }
 
-    [titleLabel, contextLabel, statsLabel]
+    [titleLabel, contextLabel, commentsLabel, scoreLabel]
       .forEach { $0.setContentHuggingPriority(UILayoutPriorityRequired, forAxis: .Vertical) }
 
-    statsLabel.setContentCompressionResistancePriority(UILayoutPriorityDefaultHigh,
-                                                       forAxis: .Horizontal)
+    [commentsLabel, scoreLabel].forEach {
+      $0.setContentCompressionResistancePriority(UILayoutPriorityDefaultHigh, forAxis: .Horizontal)
+    }
   }
 }
 
@@ -178,12 +199,21 @@ extension LinkCardView {
     }
   }
 
-  var statsText: String? {
+  var commentsText: String? {
     get {
-      return statsLabel.text
+      return commentsLabel.text
     }
     set {
-      statsLabel.text = newValue
+      commentsLabel.text = newValue
+    }
+  }
+
+  var scoreText: String? {
+    get {
+      return scoreLabel.text
+    }
+    set {
+      scoreLabel.text = newValue
     }
   }
 
@@ -280,9 +310,31 @@ extension LinkCardView {
     return label
   }
 
+  private func createScoreLabel() -> UILabel {
+    let label = createStatsLabel()
+    label.textAlignment = .Right
+    return label
+  }
+
+  private func createMoreButton() -> UIButton {
+    let button = UIButton(type: .Custom)
+    button.setImage(UIImage(asset: .MoreIcon), forState: .Normal)
+    Theming.sharedInstance.accentColor
+      .subscribeNext { color in
+        button.setImage(UIImage(asset: .MoreIcon).tint(color), forState: .Highlighted)
+      }.addDisposableTo(self.rx_disposeBag)
+    button.rx_tap.subscribeNext { [weak self] _ in
+      guard let `self` = self else { return }
+      self.moreOptionsClicked?(self)
+    }.addDisposableTo(self.rx_disposeBag)
+    return button
+  }
+
   private func createBottomBar() -> UIVisualEffectView {
     let view = UIVisualEffectView(effect: UIBlurEffect(style: .ExtraLight))
-    view.addSubview(self.statsLabel)
+    view.addSubview(self.commentsLabel)
+    view.addSubview(self.scoreLabel)
+    view.addSubview(self.moreButton)
     return view
   }
 
@@ -306,19 +358,15 @@ extension LinkCardView {
 // MARK: - Helpers
 extension LinkCardView {
 
-  private static func statsAttributedString(scoreIcon: Observable<UIImage>,
-                                            score: Observable<NSAttributedString>,
-                                            commentsIcon: Observable<UIImage>,
-                                            comments: Observable<NSAttributedString>,
+  private static func statsAttributedString(icon: Observable<UIImage>,
+                                            text: Observable<NSAttributedString>,
                                             font: Observable<UIFont>)
     -> Observable<NSAttributedString?> {
 
-      let commentsIcon = iconAttributedString(commentsIcon, font: font)
-      let scoreIcon = iconAttributedString(scoreIcon, font: font)
+      let icon = iconAttributedString(icon, font: font)
 
-      return Observable
-        .combineLatest(scoreIcon, score, commentsIcon, comments) {
-          [$0, $1, $2, $3].joinWithSeparator(" ")
+      return Observable.combineLatest(icon, text) {
+          [$0, $1].joinWithSeparator(" ")
       }
   }
 
