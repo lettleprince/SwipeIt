@@ -17,11 +17,15 @@ struct LinkListing: Mappable, Listing {
   var links: [Link]!
 
   // MARK: JSON
-  init?(_ map: Map) { }
+  init?(_ map: Map) {
+    guard let data = map.JSONDictionary["data"] as? [String: AnyObject],
+      children = data["children"] as? [AnyObject] where children.count > 0 else {
+        return nil
+    }
+  }
 
   mutating func mapping(map: Map) {
     mappingListing(map)
     links <- map["data.children"]
   }
-
 }

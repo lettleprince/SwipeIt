@@ -9,9 +9,7 @@
 import UIKit
 import Async
 import Kingfisher
-import GPUImage2
 
-@IBDesignable
 class LinkImageCardView: LinkCardView {
 
   private static let fadeAnimationDuration: NSTimeInterval = 0.15
@@ -36,9 +34,9 @@ class LinkImageCardView: LinkCardView {
 
   // MARK: - Views
   private lazy var imageContentView: UIView = self.createImageContentView()
-  private lazy var imageView: AnimatedImageView = self.createImageView()
+  private lazy var imageView: UIImageViewTopAligned = self.createImageView()
   private lazy var backgroundImageView: UIImageView = self.createBackgroundImageView()
-  
+
   // MARK - Initializers
   override init() {
     super.init(frame: .zero)
@@ -94,12 +92,7 @@ extension LinkImageCardView {
   private static func blurImage(image: UIImage, into imageView: UIImageView) {
     Async.background {
       let scaledImage = resizeImage(image, imageView: imageView)
-      let blurFilter = iOSBlur()
-      let brightnessFilter = BrightnessAdjustment()
-      brightnessFilter.brightness = -0.2
-      let blurredImage = scaledImage.filterWithPipeline { (input, output) in
-        input --> blurFilter --> brightnessFilter --> output
-      }
+      let blurredImage = scaledImage.applyExtraLightEffect()
       Async.main {
         UIView.transitionWithView(imageView, duration: fadeAnimationDuration,
           options: .TransitionCrossDissolve, animations: {
@@ -119,20 +112,15 @@ extension LinkImageCardView {
   private func createImageContentView() -> UIView {
     let view = UIView()
     view.backgroundColor = .clearColor()
-    view.clipsToBounds = false
+    //view.clipsToBounds = true
     view.addSubview(self.backgroundImageView)
     view.addSubview(self.imageView)
     return view
   }
 
-  private func createImageView() -> AnimatedImageView {
-    let imageView = AnimatedImageView()
-    imageView.autoPlayAnimatedImage = false
+  private func createImageView() -> UIImageViewTopAligned {
+    let imageView = UIImageViewTopAligned(frame: .zero)
     imageView.contentMode = .ScaleAspectFit
-    imageView.kf_showIndicatorWhenLoading = true
-    // Better performance while scrolling
-    imageView.framePreloadCount = 1
-    imageView.clipsToBounds = true
     return imageView
   }
 

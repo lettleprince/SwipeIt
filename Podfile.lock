@@ -8,14 +8,13 @@ PODS:
   - DateTools (1.7.0)
   - Device (1.0.3)
   - Fabric (1.6.8)
-  - GPUImage2 (0.1.0)
-  - Kanna (1.1.0)
+  - Kanna (1.1.1)
   - KeychainSwift (3.0.16)
-  - Kingfisher (2.5.0)
+  - Kingfisher (2.5.1)
   - Localizable (0.1.0):
     - Localizable/Core (= 0.1.0)
   - Localizable/Core (0.1.0)
-  - MarkdownKit (1.0.3)
+  - MarkdownKit (1.1.0)
   - Moya (7.0.0):
     - Moya/Core (= 7.0.0)
   - Moya-ObjectMapper/Core (1.3.1):
@@ -60,7 +59,12 @@ PODS:
   - RxTimer (1.0):
     - RxSwift (~> 2.6)
   - SnapKit (0.22.0)
-  - SwiftGen (2.0.0)
+  - SwiftGen (3.0.0)
+  - TextStyle/Core (1.0.1)
+  - TextStyle/RxSwift (1.0.1):
+    - RxCocoa (~> 2.0)
+    - RxSwift (~> 2.0)
+    - TextStyle/Core
   - TTTAttributedLabel (2.0.0)
   - ZLSwipeableViewSwift (0.0.7)
 
@@ -71,7 +75,6 @@ DEPENDENCIES:
   - DateTools
   - Device
   - Fabric
-  - GPUImage2 (from `https://github.com/ivanbruel/GPUImage2`)
   - Kanna
   - KeychainSwift (~> 3.0)
   - Kingfisher
@@ -81,7 +84,7 @@ DEPENDENCIES:
   - Moya/RxSwift
   - Nimble
   - NSObject+Rx
-  - ObjectMapper (from `https://github.com/ivanbruel/ObjectMapper`, branch `compile_time`)
+  - ObjectMapper (from `https://github.com/Hearst-DD/ObjectMapper`)
   - Quick
   - Result
   - RxAlamofire
@@ -94,32 +97,27 @@ DEPENDENCIES:
   - RxTimer
   - SnapKit
   - SwiftGen
+  - TextStyle/RxSwift
   - TTTAttributedLabel (from `https://github.com/ivanbruel/TTTAttributedLabel`)
   - ZLSwipeableViewSwift (from `https://github.com/zhxnlai/ZLSwipeableViewSwift`)
 
 EXTERNAL SOURCES:
-  GPUImage2:
-    :git: https://github.com/ivanbruel/GPUImage2
   ObjectMapper:
-    :branch: compile_time
-    :git: https://github.com/ivanbruel/ObjectMapper
+    :git: https://github.com/Hearst-DD/ObjectMapper
   TTTAttributedLabel:
     :git: https://github.com/ivanbruel/TTTAttributedLabel
   ZLSwipeableViewSwift:
     :git: https://github.com/zhxnlai/ZLSwipeableViewSwift
 
 CHECKOUT OPTIONS:
-  GPUImage2:
-    :commit: 3fdc09ae07c502d2548194d6ea2f856c3ed40c3d
-    :git: https://github.com/ivanbruel/GPUImage2
   ObjectMapper:
-    :commit: f5734cce614d9a089a4d4d40c74a75a0b9e7bd99
-    :git: https://github.com/ivanbruel/ObjectMapper
+    :commit: e1cd7c2260ae7ebf46dbc7f8effac6dd41913ec1
+    :git: https://github.com/Hearst-DD/ObjectMapper
   TTTAttributedLabel:
     :commit: b960ccde0b9781ee9e406a0757cf127dfd1ee820
     :git: https://github.com/ivanbruel/TTTAttributedLabel
   ZLSwipeableViewSwift:
-    :commit: 43b834fe0185718f901990408df7f401414fce43
+    :commit: 7b62c83f0022f3a47f69da2dda8aa8b8a467ac13
     :git: https://github.com/zhxnlai/ZLSwipeableViewSwift
 
 SPEC CHECKSUMS:
@@ -130,12 +128,11 @@ SPEC CHECKSUMS:
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   Device: bcf333c7c497edabe6df9560fd64f1e255d45b2b
   Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
-  GPUImage2: 4ff31f41a47e240e5474b49d9e83e95e2ff5c562
-  Kanna: 355ed0193e5d8caf4fd996856b5bc98d586c11b6
+  Kanna: 9d3118cff609bd21eb374be5be590b544941160f
   KeychainSwift: a5bb85cd498ce2217b55e055ec59e9268d83384c
-  Kingfisher: d467bd710907ec9aa94aaddecaa5390aa3559819
+  Kingfisher: 9b82e0e1f1a296f149a50bbc2214532eaa4df4f1
   Localizable: 2a52c1711df05635f0b1d34acc81bf1a34fb4b7e
-  MarkdownKit: 82e36166884b3afae588528f38abab321d18cfcc
+  MarkdownKit: 60d759cd14169144e4b159cb34312f8a5dd77570
   Moya: f004b82418fb8165ee1fc9f86190db4b3611fda9
   Moya-ObjectMapper: 52f15abd982efc8ba2ce3fc49619555c926c14a1
   Nimble: 97a0a4cae5124c117115634b2d055d8c97d0af19
@@ -152,10 +149,11 @@ SPEC CHECKSUMS:
   RxSwift: 77f3a0b15324baa7a1c9bfa9f199648a82424e26
   RxTimer: f3acacf6e2071a10b8bc1528fadc21d62fd038b4
   SnapKit: 0dd2fd157330f1ea11fd84da13e6be8a7a22bae0
-  SwiftGen: 67c900e9f1db8168612f2df843ec20a66783a8e5
+  SwiftGen: f679cd0ed4173a5da3b01efd0da23542bf82f6ab
+  TextStyle: 5acd517bafc00d1c9954718f7beb12ca60913ebb
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   ZLSwipeableViewSwift: f5ee94c2e4220f900f5a129118af2aef23062900
 
-PODFILE CHECKSUM: 4275c2e8f77d327b4480edd78e0ffb22875cd555
+PODFILE CHECKSUM: 95ff09f522aa1a13f22431337b3dd02195890855
 
 COCOAPODS: 1.0.1

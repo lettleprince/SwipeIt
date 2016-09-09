@@ -101,7 +101,9 @@ extension SubredditListViewModel {
 
   private func requestSubreddits(after: String?) {
     Network.request(.SubredditListing(token: accessToken.token, after: after))
+      .observeOn(SerialDispatchQueueScheduler(globalConcurrentQueueQOS: .Background))
       .mapObject(SubredditListing)
+      .observeOn(MainScheduler.instance)
       .bindNext { [weak self] subredditListing in
         self?.subredditListings.value.append(subredditListing)
       }.addDisposableTo(disposeBag)

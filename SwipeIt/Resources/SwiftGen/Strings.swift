@@ -2,6 +2,8 @@
 
 import Foundation
 
+// swiftlint:disable file_length
+// swiftlint:disable type_body_length
 enum L10n {
   /// Close
   case CloseableButtonClose
@@ -37,6 +39,38 @@ enum L10n {
   case LinkContextLocked
   /// Read more
   case LinkContentSelfPostReadMore
+  /// Upvote
+  case LinkUpvote
+  /// Downvote
+  case LinkDownvote
+  /// comment
+  case LinkComment
+  /// comments
+  case LinkComments
+  /// Report
+  case LinkReport
+  /// Save
+  case LinkSave
+  /// Unsave
+  case LinkUnsave
+  /// Open in Safari
+  case LinkOpenInSafari
+  /// Spam
+  case LinkReportSpam
+  /// Vote manipulation
+  case LinkReportVoteManipulation
+  /// Personal information
+  case LinkReportPersonalInfo
+  /// Sexualizing minors
+  case LinkReportSexualizingMinors
+  /// Breaking reddit
+  case LinkReportBreakingReddit
+  /// Other
+  case LinkReportOther
+  /// What other rule does it break?
+  case LinkReportOtherReason
+  /// Other reason (max 100 characters)
+  case LinkReportOtherHint
   /// Hot
   case ListingTypeHot
   /// New
@@ -64,6 +98,7 @@ enum L10n {
   /// Retry
   case Retry
 }
+// swiftlint:enable type_body_length
 
 extension L10n: CustomStringConvertible {
   var description: String { return self.string }
@@ -104,6 +139,38 @@ extension L10n: CustomStringConvertible {
         return L10n.tr("Link.Context.Locked")
       case .LinkContentSelfPostReadMore:
         return L10n.tr("Link.Content.SelfPost.ReadMore")
+      case .LinkUpvote:
+        return L10n.tr("Link.Upvote")
+      case .LinkDownvote:
+        return L10n.tr("Link.Downvote")
+      case .LinkComment:
+        return L10n.tr("Link.Comment")
+      case .LinkComments:
+        return L10n.tr("Link.Comments")
+      case .LinkReport:
+        return L10n.tr("Link.Report")
+      case .LinkSave:
+        return L10n.tr("Link.Save")
+      case .LinkUnsave:
+        return L10n.tr("Link.Unsave")
+      case .LinkOpenInSafari:
+        return L10n.tr("Link.OpenInSafari")
+      case .LinkReportSpam:
+        return L10n.tr("Link.Report.Spam")
+      case .LinkReportVoteManipulation:
+        return L10n.tr("Link.Report.VoteManipulation")
+      case .LinkReportPersonalInfo:
+        return L10n.tr("Link.Report.PersonalInfo")
+      case .LinkReportSexualizingMinors:
+        return L10n.tr("Link.Report.SexualizingMinors")
+      case .LinkReportBreakingReddit:
+        return L10n.tr("Link.Report.BreakingReddit")
+      case .LinkReportOther:
+        return L10n.tr("Link.Report.Other")
+      case .LinkReportOtherReason:
+        return L10n.tr("Link.Report.Other.Reason")
+      case .LinkReportOtherHint:
+        return L10n.tr("Link.Report.Other.Hint")
       case .ListingTypeHot:
         return L10n.tr("ListingType.Hot")
       case .ListingTypeNew:

@@ -19,10 +19,15 @@ extension Color {
   }
 }
 
+// swiftlint:disable file_length
+// swiftlint:disable type_body_length
 enum ColorName {
+  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#555555"></span>
+  /// Alpha: 100% <br/> (0x555555ff)
+  case DarkGray
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#cbcccd"></span>
   /// Alpha: 100% <br/> (0xcbcccdff)
-  case DarkGray
+  case Gray
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#77cca4"></span>
   /// Alpha: 100% <br/> (0x77cca4ff)
   case Green
@@ -44,7 +49,8 @@ enum ColorName {
 
   var rgbaValue: UInt32 {
     switch self {
-    case .DarkGray: return 0xcbcccdff
+    case .DarkGray: return 0x555555ff
+    case .Gray: return 0xcbcccdff
     case .Green: return 0x77cca4ff
     case .LightGray: return 0xf0f1f2ff
     case .Orange: return 0xff8b60ff
@@ -58,6 +64,7 @@ enum ColorName {
     return Color(named: self)
   }
 }
+// swiftlint:enable type_body_length
 
 extension Color {
   convenience init(named name: ColorName) {

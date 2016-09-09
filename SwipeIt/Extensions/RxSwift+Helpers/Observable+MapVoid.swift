@@ -7,13 +7,17 @@
 //
 
 import Foundation
+import RxSwift
 
-/**
- Helpful function to be able to abstract observable sequences into void.
- e.g. Observable.just(something).map(void)
+extension Observable {
 
- - parameter _: anything is turned into void
- */
-func void<T>(_: T) {
-  return Void()
+  /**
+   Helpful function to be able to abstract observable sequences into void.
+   e.g. Observable.just(something).mapVoid()
+
+   - returns: anything is turned into void
+   */
+  func mapVoid() -> Observable<Void> {
+    return map { _ in Void() }
+  }
 }

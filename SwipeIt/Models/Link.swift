@@ -66,7 +66,7 @@ struct Link: Votable, Mappable {
   var stickied: Bool!
   var gilded: Int!
   var visited: Bool!
-  var postHint: String?
+  var postHint: PostHint?
 
   // MARK: Misc
   var approvedBy: String!
@@ -98,8 +98,12 @@ struct Link: Votable, Mappable {
   }
 
   var imageURL: NSURL? {
-    if let imageURL = ImgurImageProvider.imageURLFromLink(self){
+    if let imageURL = ImgurImageProvider.imageURLFromLink(self) {
       return imageURL
+    }
+
+    guard postHint == .Image else {
+      return nil
     }
 
     if let imageURL = previewImage?.gifSource?.url {

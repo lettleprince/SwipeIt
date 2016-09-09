@@ -26,8 +26,8 @@ extension CloseableViewController where Self: UIViewController {
     let closeButton = UIBarButtonItem(title: tr(.CloseableButtonClose), style: .Plain, target: nil,
                                       action: nil)
     closeButton.rx_tap
-      .bindNext { _ in
-        self.dismissViewControllerAnimated(true, completion: nil)
+      .bindNext { [weak self] _ in
+        self?.dismissViewControllerAnimated(true, completion: nil)
       }.addDisposableTo(rx_disposeBag)
     navigationItem.leftBarButtonItem = closeButton
   }

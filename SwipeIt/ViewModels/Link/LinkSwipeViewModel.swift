@@ -78,7 +78,6 @@ extension LinkSwipeViewModel {
         pathObservable) { ($0, $1, $2, $3) }
       .take(1)
       .doOnNext { [weak self] _ in
-        print("loading")
         self?._loadingState.value = .Loading
       }.flatMap {
         (listingType: ListingType, after: String?, accessToken: AccessToken, path: String) in
@@ -123,7 +122,6 @@ extension LinkSwipeViewModel {
 
         switch event {
         case let .Next(linkListing, user, accessToken, subredditOnly):
-          print("loaded \(linkListing.after)")
           self.linkListings.value.append(linkListing)
           let viewModels = LinkSwipeViewModel.viewModelsFromLinkListing(linkListing,
             user: user, accessToken: accessToken, subredditOnly: subredditOnly)
@@ -163,10 +161,10 @@ extension LinkSwipeViewModel {
                                                 accessToken: AccessToken, subredditOnly: Bool)
     -> [LinkItemViewModel] {
       return linkListing.links
-        .filter { link in
-          let vote: Vote = link.vote
-          return !link.stickied && vote == .None && link.type == .Image
-        }.map { LinkItemViewModel.viewModelFromLink($0, user: user, accessToken: accessToken,
+        .filter { !$0.stickied }
+        .filter { !Globals.hideVotedPosts || $0.vote == .None }
+        .filter { $0.type == .Image || $0.type == .GIF }
+        .map { LinkItemViewModel.viewModelFromLink($0, user: user, accessToken: accessToken,
           subredditOnly: subredditOnly)
       }
   }

@@ -10,7 +10,7 @@ import UIKit
 
 class ShareHelper {
 
-  private let viewController: UIViewController
+  private weak var viewController: UIViewController?
 
   init(viewController: UIViewController) {
     self.viewController = viewController
@@ -28,6 +28,6 @@ class ShareHelper {
                                                     UIActivityTypeOpenInIBooks]
 
     activityViewController.popoverPresentationController?.sourceView = fromView
-    viewController.presentViewController(activityViewController, animated: true, completion: nil)
+    viewController?.presentViewController(activityViewController, animated: true, completion: nil)
   }
 }

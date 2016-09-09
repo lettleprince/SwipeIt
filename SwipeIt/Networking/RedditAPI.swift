@@ -22,6 +22,9 @@ enum RedditAPI {
   case UserDetails(token: String, username: String)
   case UserMeDetails(token: String)
   case Vote(token: String, identifier: String, direction: Int)
+  case Save(token: String, identifier: String)
+  case Unsave(token: String, identifier: String)
+  case Report(token: String, identifier: String, reason: String)
 
 }
 
@@ -54,12 +57,18 @@ extension RedditAPI: TargetType {
       return "/user/\(username)/about"
     case .Vote:
       return "/api/vote"
+    case .Save:
+      return "/api/save"
+    case .Unsave:
+      return "/api/unsave"
+    case .Report:
+      return "/api/report"
     }
   }
 
   var method: Moya.Method {
     switch self {
-    case .AccessToken, .RefreshToken, .Vote:
+    case .AccessToken, .RefreshToken, .Vote, .Save, .Unsave, .Report:
       return .POST
     default:
       return .GET
@@ -95,6 +104,12 @@ extension RedditAPI: TargetType {
       return JSONHelper.flatJSON(["after": after, "t": listingTypeRange])
     case .Vote(_, let identifier, let direction):
       return ["id": identifier, "dir": direction]
+    case .Save(_, let identifier):
+      return ["id": identifier]
+    case .Unsave(_, let identifier):
+      return ["id": identifier]
+    case .Report(_, let identifier, let reason):
+      return ["thing_id": identifier, "reason": reason]
     default:
       return nil
     }
@@ -118,6 +133,8 @@ extension RedditAPI: TargetType {
       return JSONReader.readJSONData("UserDetails")
     case .Vote:
       return JSONReader.readJSONData("Upvoted")
+    default:
+      return NSData()
     }
   }
 
@@ -132,7 +149,7 @@ extension RedditAPI: TargetType {
     switch self {
     case .AccessToken, .RefreshToken:
       return .URL
-    case .Vote:
+    case .Vote, . Save, .Unsave, .Report:
       return .URLEncodedInURL
     default:
       return method == .GET ? .URL : .JSON
@@ -154,6 +171,12 @@ extension RedditAPI: TargetType {
     case .UserMeDetails(let token):
       return token
     case .Vote(let token, _, _):
+      return token
+    case .Save(let token, _):
+      return token
+    case .Unsave(let token, _):
+      return token
+    case .Report(let token, _, _):
       return token
     default:
       return nil

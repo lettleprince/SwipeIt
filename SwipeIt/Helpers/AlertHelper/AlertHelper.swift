@@ -21,7 +21,7 @@ class AlertHelper {
     let alertController = UIAlertController(title: title, message: message,
                                             preferredStyle: .ActionSheet)
 
-    let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { action in
+    let cancelAction = UIAlertAction(title: tr(.AlertButtonCancel), style: .Cancel) { action in
       clicked(nil)
     }
     alertController.addAction(cancelAction)
@@ -35,4 +35,5 @@ class AlertHelper {
 
     viewController.presentViewController(alertController, animated: true, completion: nil)
   }
+
 }
