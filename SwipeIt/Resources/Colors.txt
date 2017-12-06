@@ -3,5 +3,6 @@ Orange: #FF8B60
 Purple: #9494FF
 Yellow: #FFCC00
 LightGray: #F0F1F2
-DarkGray: #CBCCCD
+Gray: #CBCCCD
+DarkGray: #555555
 Green: #77CCA4

@@ -3,7 +3,7 @@ use_frameworks!
 
 abstract_target 'SwipeItCommon' do
 
-  pod 'ObjectMapper', :git => 'https://github.com/ivanbruel/ObjectMapper', :branch => 'compile_time'
+  pod 'ObjectMapper', :git => 'https://github.com/Hearst-DD/ObjectMapper'
   pod 'RxSwift'
   pod 'Moya/RxSwift'
   pod 'Moya-ObjectMapper/RxSwift'
@@ -34,7 +34,7 @@ abstract_target 'SwipeItCommon' do
     pod 'RxColor'
     pod 'ZLSwipeableViewSwift', :git => 'https://github.com/zhxnlai/ZLSwipeableViewSwift'
     pod 'Localizable'
-    pod 'GPUImage2', :git => 'https://github.com/ivanbruel/GPUImage2'
+    pod 'TextStyle/RxSwift'
 
   end
 

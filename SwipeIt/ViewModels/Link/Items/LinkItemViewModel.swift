@@ -18,6 +18,7 @@ class LinkItemViewModel: ViewModel {
   private let user: User
   private let accessToken: AccessToken
   private let vote: Variable<Vote>
+  private let saved: Variable<Bool>
   private let showSubreddit: Bool
 
   // MARK: Protected
@@ -59,20 +60,23 @@ class LinkItemViewModel: ViewModel {
       .combineLatest(timeAgo, subredditName, author) {
         let result: [NSAttributedString?] = [$0, $1, $2]
         return result.flatMap { $0 }
-      }
-      .map { (attributedStrings: [NSAttributedString]) in
-        let separator = NSAttributedString(string: " ● ")
-        return attributedStrings.joinWithSeparator(separator)
+      }.map { (attributedStrings: [NSAttributedString]) in
+        return attributedStrings.joinWithSeparator(" ● ")
     }
   }
 
   var comments: Observable<NSAttributedString> {
-    return .just(NSAttributedString(string: "\(link.totalComments)",
-      attributes: [NSForegroundColorAttributeName: UIColor(named: .DarkGray)]))
+    let comments = link.totalComments > 1 ? tr(.LinkComments) : tr(.LinkComment)
+    return .just(NSAttributedString(string: "\(link.totalComments) \(comments)"))
   }
 
   var commentsIcon: Observable<UIImage> {
     return .just(UIImage(asset: .CommentsGlyph))
+  }
+
+  var save: Observable<String> {
+    return saved.asObservable()
+      .map { $0 ? tr(.LinkUnsave) : tr(.LinkSave) }
   }
 
   var score: Observable<NSAttributedString> {
@@ -80,17 +84,16 @@ class LinkItemViewModel: ViewModel {
       .combineLatest(Observable.just(link), vote.asObservable()) { ($0, $1) }
       .map { (link, vote) in
         let score = link.hideScore == true ? tr(.LinkScoreHidden) : "\(link.scoreWithVote(vote))"
-        let color: UIColor
         switch vote {
         case .Downvote:
-          color = UIColor(named: .Purple)
+          return NSAttributedString(string: score,
+            attributes: [NSForegroundColorAttributeName: UIColor(named: .Purple)])
         case .Upvote:
-          color = UIColor(named: .Orange)
-        case .None:
-          color = UIColor(named: .DarkGray)
+          return NSAttributedString(string: score,
+            attributes: [NSForegroundColorAttributeName: UIColor(named: .Orange)])
+        default:
+          return NSAttributedString(string: score)
         }
-        return NSAttributedString(string: score,
-          attributes: [NSForegroundColorAttributeName: color])
     }
   }
 
@@ -115,6 +118,7 @@ class LinkItemViewModel: ViewModel {
     self.link = link
     self.vote = Variable(link.vote)
     self.showSubreddit = showSubreddit
+    self.saved = Variable(link.saved)
   }
 
   // MARK: API
@@ -133,19 +137,60 @@ class LinkItemViewModel: ViewModel {
   func unvote() {
     vote(.None)
   }
+
+  func toggleSave(completion: (ErrorType?) -> Void) {
+    save(completion)
+  }
+
+  func sendReport(reason: String, completion: (ErrorType?) -> Void) {
+    report(reason, completion: completion)
+  }
 }
 
 // MARK: Network
 extension LinkItemViewModel {
 
+  private func report(reason: String, completion: ((ErrorType?) -> Void)? = nil) {
+    Network.request(.Report(token: accessToken.token, identifier: link.name,
+      reason: reason))
+      .subscribe { event in
+        switch event {
+        case .Error(let error):
+          completion?(error)
+        case .Next:
+          completion?(nil)
+        default: break
+        }
+      }.addDisposableTo(disposeBag)
+  }
+
+  private func save(completion: ((ErrorType?) -> Void)? = nil) {
+    let oldSaved = self.saved.value
+    self.saved.value = !oldSaved
+    let request = oldSaved ? RedditAPI.Unsave(token: accessToken.token, identifier: link.name) :
+      RedditAPI.Save(token: accessToken.token, identifier: link.name)
+    Network.request(request)
+      .subscribe { [weak self] event in
+        switch event {
+        case .Error(let error):
+          self?.saved.value = oldSaved
+          completion?(error)
+        case .Next:
+          completion?(nil)
+        default: break
+        }
+      }.addDisposableTo(disposeBag)
+  }
+
   private func vote(vote: Vote, completion: ((ErrorType?) -> Void)? = nil) {
+    let oldVote = self.vote.value
     self.vote.value = vote
     Network.request(.Vote(token: accessToken.token, identifier: link.name,
       direction: vote.rawValue))
       .subscribe { [weak self] event in
         switch event {
         case .Error(let error):
-          self?.vote.value = .None
+          self?.vote.value = oldVote
           completion?(error)
         case .Next:
           completion?(nil)

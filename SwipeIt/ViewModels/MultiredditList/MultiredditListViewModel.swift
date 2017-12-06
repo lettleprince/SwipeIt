@@ -60,7 +60,9 @@ extension MultiredditListViewModel {
 
   func requestMultireddits() {
     Network.request(.MultiredditListing(token: accessToken.token))
+      .observeOn(SerialDispatchQueueScheduler(globalConcurrentQueueQOS: .Background))
       .mapArray(Multireddit)
+      .observeOn(MainScheduler.instance)
       .bindNext { [weak self] multireddits in
         self?.multireddits.value = multireddits
       }.addDisposableTo(disposeBag)

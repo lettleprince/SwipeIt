@@ -90,7 +90,7 @@ class AlbumLinkSpec: QuickSpec {
 
         it("has the album link type") {
           expect(link.type) == LinkType.Album
-          expect(link.imageURL) == NSURL(string: "https://i.redditmedia.com/HEdWun2jEkdgqAvGb68rMH_kLp_X0x9fBNc6OqDNj4M.jpg?s=c12bec494c5118bf471541587d686b0c")
+          expect(link.imageURL).to(beNil())
           //expect(link.imageSize) == CGSize(width: 460, height: 460)
         }
       }

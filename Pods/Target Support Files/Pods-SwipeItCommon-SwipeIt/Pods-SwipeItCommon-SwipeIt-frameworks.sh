@@ -89,7 +89,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Cell+Rx/Cell_Rx.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DateTools/DateTools.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Device/Device.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/GPUImage2/GPUImage2.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Kanna/Kanna.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KeychainSwift/KeychainSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Kingfisher/Kingfisher.framework"
@@ -110,6 +109,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/RxTimer/RxTimer.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SnapKit/SnapKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TTTAttributedLabel/TTTAttributedLabel.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/TextStyle/TextStyle.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ZLSwipeableViewSwift/ZLSwipeableViewSwift.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -118,7 +118,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Cell+Rx/Cell_Rx.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DateTools/DateTools.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Device/Device.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/GPUImage2/GPUImage2.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Kanna/Kanna.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KeychainSwift/KeychainSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Kingfisher/Kingfisher.framework"
@@ -139,5 +138,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/RxTimer/RxTimer.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SnapKit/SnapKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TTTAttributedLabel/TTTAttributedLabel.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/TextStyle/TextStyle.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ZLSwipeableViewSwift/ZLSwipeableViewSwift.framework"
 fi

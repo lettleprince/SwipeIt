@@ -132,7 +132,9 @@ extension LoginViewModel {
   private func getAccessToken(code: String) {
     Network.request(.AccessToken(code: code, redirectURL: LoginViewModel.redirectURL,
       clientId: LoginViewModel.clientId))
+      .observeOn(SerialDispatchQueueScheduler(globalConcurrentQueueQOS: .Background))
       .mapObject(AccessToken)
+      .observeOn(MainScheduler.instance)
       .bindNext { [weak self] accessToken in
         self?.successfulLogin(accessToken)
       }.addDisposableTo(disposeBag)
@@ -144,7 +146,9 @@ extension LoginViewModel {
 
     let networkRequest = Network.request(.RefreshToken(refreshToken: refreshToken,
       clientId: LoginViewModel.clientId))
+      .observeOn(SerialDispatchQueueScheduler(globalConcurrentQueueQOS: .Background))
       .mapObject(AccessToken)
+      .observeOn(MainScheduler.instance)
 
     Observable
       .combineLatest(networkRequest, Observable.just(refreshToken)) { ($0, $1) }
